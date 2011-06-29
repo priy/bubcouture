@@ -1,0 +1,224 @@
+/*=挂件预设
+=============================================================================================*/
+.AdvBanner{
+	margin-bottom:5px;
+}
+.mktprice1{
+	text-decoration: line-through;
+}
+.more{
+	margin:5px 5px 0 0;
+	text-align:right;
+}
+
+.ArticleList td a,
+.ArticleList li a{
+	background:url(arrs.gif) no-repeat 0 -21px;
+	display:block;
+	padding-left:8px;
+}
+.Article-Tabs,
+.GoodsList-Tabs{
+	border-color:#3F93C2;
+}
+.Article-Tabs .current,
+.GoodsList-Tabs .current{
+	background-color:#F0FAFD;
+}
+.GoodsListWrap{
+	padding:10px 0;
+}
+/*=搜索 
+=============================================================================================*/
+.SearchBar table{
+	padding:0 0 2px 0;
+    margin-top:-2px;
+}
+.SearchBar table td{
+	padding:0 2px 0 0;
+}
+.SearchBar .search_label span{
+	display:none;
+}
+.SearchBar .keywords{
+	width:105px;
+}
+.SearchBar .btn_search{
+	background:url(btn_search.gif) no-repeat;
+    border:none;
+    color:#8d857f;
+    height:17px;
+    font-size:0;
+    overflow:hidden;
+    line-height:9999px;
+    width:37px;
+    cursor:pointer;
+    *margin-top:3px;
+}
+.SearchBar .btn_advsearch{
+	display:inline-block;
+    display:-moz-inline-block;
+    *display:inline;
+    zoom:1;
+    margin-left:2px;
+    _margin-left:0;
+    width:28px;
+    height:20px;
+    text-indent:-9999px;
+    *text-indent:0;
+    font-size:0;
+    line-height:0;
+    overflow:hidden;
+	background:url(btn_search.gif) no-repeat 0 -16px;
+	*background:url(btn_search.gif) no-repeat 0 -12px;
+}
+/*=排行榜 
+=============================================================================================*/
+.RankingList .pic{
+	text-align:center;
+}
+.RankingList li{
+	background:url(dotted.gif) repeat-x 0 bottom;
+	padding:5px;
+}
+.RankingList li span{
+	font-size:16px;
+	font-family:Arial, Helvetica, sans-serif;
+	color:#7f3217;
+	font-weight:bold;
+    margin-right:5px;
+}
+.OrderList .orderprice{
+	color:#990000;
+	display:block;
+	padding:0 0 0 15px;
+}
+.OrderList li{
+	background:url(dotted.gif) repeat-x 0 bottom;
+	padding:5px;
+}
+
+.GoodsList h6{
+	overflow:hidden;
+	text-overflow:ellipsis;
+	white-space:nowrap;
+}
+/*=站点地图
+=============================================================================================*/
+.SiteMaps td a{
+	padding:5px;
+}
+.SiteMaps h3 a{
+	background:url(arrs.gif) no-repeat 0 -82px;
+	padding:0 0 0 13px;
+}
+.Navigation{
+	border:none;
+    color:#2E2E2E;
+	border-bottom:1px solid #DAD1BC;
+    margin:5px 0 20px 0;
+    font-weight:bold;
+    padding:0 0 0 10px;
+}
+.Navigation span{
+	color:#CC6600;
+    font-weight:normal;
+}
+.Navigation .now{
+  font-weight:normal;
+  color:#FE5B03;
+}
+.Navigation a{
+	color:#333333;
+}
+/*=商品购买区
+=============================================================================================*/
+.ShopCartWrap{
+	margin:10px;
+}
+/*=商品分类
+=============================================================================================*/
+.GoodsCategoryWrap{
+	margin:0 10px;
+}
+.c-cat-depth-1,
+.s-cat-depth-1{
+	background:url(dotted.gif) repeat-x 0 bottom;
+    padding:6px 0;
+}
+.c-cat-depth-1 a,
+.s-cat-depth-1 a{
+	background:url(arrs.gif) no-repeat 0 -57px;
+	font-weight:bold;
+	color:#2e2e2e;
+    display:inline;
+}
+.c-cat-depth-2,
+.s-cat-depth-2{
+    line-height:150%;
+    margin:3px 0 0 25px;
+}
+.c-cat-depth-2 a,
+.s-cat-depth-2 a{
+	background:none;
+	border:none;
+    color:#575757;
+	font-weight:normal;
+	padding:0;
+    margin:0;
+}
+.c-cat-depth-3,
+.s-cat-depth-3{
+	margin:3px 0 0 10px;
+}
+.c-cat-depth-3 a,
+.s-cat-depth-3 a{
+	color:#3B5F9F;
+	background:none;
+	padding:0;
+}
+
+.e-cat-depth-1 p{
+	margin:0;
+	padding:2px 0 2px 10px;
+	border-bottom:1px solid #E1E1E1;
+}
+.e-cat-depth-2 p{
+	padding:2px 0 2px 15px;
+    border:none;
+}
+.e-cat-depth-3{
+	padding:0 0 0 20px;
+}
+
+.e-cat-depth-1 .nosymbols,
+.e-cat-depth-1 .symbols{
+	display:block;
+	float:left;
+	width:10px;
+}
+.e-cat-depth-1 .symbols{
+	background:url(arrs.gif) no-repeat 0 -83px;
+	text-indent:-9999px;
+}
+.e-cat-depth-1 .show{
+	background-position: 0 -113px;
+}
+.e-cat-depth-1 span{
+	cursor:pointer;
+	margin:0 2px;
+}
+.e-cat-depth-1 a{
+	color:#000;
+	font-weight:bold;
+}
+.e-cat-depth-2 a{
+	font-weight:normal;
+	color:#000;
+}
+.e-cat-depth-3{
+	margin-left:18px;
+}
+.e-cat-depth-3 a{
+  color:#2C4F83;
+}

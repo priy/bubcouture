@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<{header}>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link rel="stylesheet" type="text/css" href="images/css.css" />
+</head><body>
+<div id="AllWrap">
+<div id="Top">
+  <div id="Logo"><{widgets id="header_01"}></div>
+  <div id="TopMenuWrap">
+
+  <div class="span-6 floatRight textright last" style="line-height:25px;"><{widgets id="header_02"}></div>
+  <div class="span-12 floatRight textright "><{widgets id="header_04"}></div>
+  <script>
+  if($E('.btn_search')){
+    $E('.btn_search').set('value','')
+  }
+  
+  if($E('.SearchBar')){
+    $E('.SearchBar table').set('align','right')
+  }
+  
+  </script>
+  </div>
+  <div class="clear"> </div>
+</div>
+<div id="Menu">
+  <div class="bg">
+    <ul>
+      <{widgets id="header_03"}>
+      <!--        <li class="home"><a href="#">首页</a></li>
+        <li class="cart"><a href="#">购物车</a></li>
+        <li class="account"><a href="#">帐户</a></li>
+        <li class="help"><a href="#">帮助</a></li>-->
+    </ul>
+  </div>
+  <div class="clear"></div>
+</div>
+

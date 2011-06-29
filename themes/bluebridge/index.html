@@ -1,0 +1,127 @@
+﻿ <{require file="block/header.html"}>
+ 
+<div id="container">
+<div class="collumnbanner"> <{widgets id="collumnbanner"}></div><div class="sliderWrap">
+<div class="title"><{widgets id="Top_Title"}></div>
+<div class="morelinks"><{widgets id="Top_linkmore"}></div>
+
+
+</div>
+<div id="slidergoods">
+
+<{widgets id="slidergoods"}> </div>
+  <div class="mainn">
+    <div id="leftbar">
+    <div class="bar4 maincat">
+        <div class="top">
+          <h3>商品分类</h3>
+        </div>
+        <div class="bg4">
+          <div class="body">
+            <{widgets id="sidercate"}> </div>
+        </div>
+        <div class="foot"></div>
+      </div>
+    <div class="bar4">
+        <div class="top">
+          <h3>销售排行榜</h3>
+        </div>
+        <div class="bg4">
+          <div class="body">
+            <div style="width:100%;">
+              <div style="float:left; margin-left:2px;"><{widgets id="middleitmeshowpic-5"}></div>
+              <div style="float:left; margin-left:0px;"><{widgets id="middleSepContent-6"}></div>
+            </div>
+            <{widgets id="middleSepContent-2"}>
+ </div>
+        </div>
+        <div class="foot"></div>
+      </div>
+      <div id="ads1"><{widgets id="middleSepContent-1"}></div>
+      <div class="bar4">
+        <div class="top">
+          <h3>销售排行榜</h3>
+        </div>
+        <div class="bg4">
+          <div class="body">
+            <div style="width:100%;">
+              <div style="float:left; margin-left:2px;"><{widgets id="middleitmeshowpic-5"}></div>
+              <div style="float:left; margin-left:0px;"><{widgets id="middleSepContent-6"}></div>
+            </div>
+            <{widgets id="middleSepContent-2"}></div>
+        </div>
+        <div class="foot"></div>
+      </div>
+    </div>
+    <div id="center1">
+      <div id="flash1"><{widgets id="Banner_seriesA"}></div>
+      <div id="tuijian"> 
+        <div class="nbook">
+          <div style="margin:10px 0;">
+            <div style="float:left;"><{widgets id="middleitmeshowpic-3"}></div>
+            <div style="float:left; margin-left:5px; width:340px;"><{widgets id="middleitmeshowpic-2"}></div>
+          </div>
+          <div class="clear"></div>
+          <div> <{widgets id="middleitmeshowpic-1"}> </div>
+          <div class="clear"></div>
+        </div>
+      </div>
+      <div class="tejia clearfix">
+        <div class="tjbg">
+          <h3><{widgets id="middleMainTitle-1"}></h3>
+           </div>
+        <div id="productlist">
+          <div class="line"></div>
+          <{widgets id="middleCulomnPic-1"}>
+          <div class="clear"></div>
+        </div>
+        <div class="pdbottom"></div>
+      </div>
+      <div class="tejia clearfix">
+        <div class="tjbg">
+          <h3><{widgets id="middleMainTitle-2"}></h3>
+           </div>
+        <div id="productlist">
+          <div class="line"></div>
+          <{widgets id="middleCulomnPic-2"}>
+          <div class="clear"></div>
+        </div>
+        <div class="pdbottom"></div>
+      </div>
+      
+    </div>
+    <div id="rightbar"><{widgets id="middleright-3"}> 
+      
+       </div>
+  </div>
+</div>
+<script>
+
+	try{
+	var elmaskLengh=$('slidergoods').getSize().x;
+    itemsWrapLength=elmaskLengh/6;
+	$ES('#slidergoods .GoodsListWrap .itemsWrap').setStyle('width',itemsWrapLength);
+    $E('#slidergoods .GoodsListWrap').setStyle('width',itemsWrapLength*$ES('#slidergoods .GoodsListWrap .itemsWrap').length+10);
+	var	sliderSize=0;
+	function slidergoodsOnTime(){
+	sliderSize=sliderSize-$E('#slidergoods .GoodsListWrap .itemsWrap').getSize().x;
+	elmainLengh=$E('#slidergoods .GoodsListWrap').getSize().x;
+	overflowLength=elmainLengh-elmaskLengh;
+	if(sliderSize>-overflowLength){
+		$E('#slidergoods .GoodsListWrap').tween('left', sliderSize);
+		}
+		else{
+		$E('#slidergoods .GoodsListWrap').tween('left', 0);	
+		sliderSize=0;	
+			}
+	}
+   var MyInterval=setInterval("slidergoodsOnTime()",3000);
+	}catch(e){}
+	
+
+</script>
+<div class="bottomAllShow">
+<div class="titlewrap"><div class="title"></div></div>
+
+<{widgets id="middleCulomnPic-3"}></div>
+<{require file="block/footer.html"}> 

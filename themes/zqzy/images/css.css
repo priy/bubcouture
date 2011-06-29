@@ -1,0 +1,240 @@
+﻿@import url("border.css");
+@import url("widget.css");
+
+
+
+body {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #666666;
+	line-height: 180%;
+	margin:0;
+}
+#AllWrap{
+	width:1000px; 
+	margin:0 auto;
+	overflow:hidden;
+}
+
+#Top{
+	position:relative;
+	text-align:center;
+	padding-top:35px;
+}
+   #Top .TopWrap{
+	margin:0 auto;
+	width:1000px;
+	position:relative;
+   }
+
+		#Top #Logo{	
+	      position:absolute;
+	      top:-30px;
+	      width:200px;
+	      height:68px;
+	      line-height:80px;
+	      left:0;
+		}
+		
+		
+#TopLinks{
+	position:absolute;
+	top:-30px;
+	right:10px;
+}
+#LeftColumn{
+	width:190px;
+	float:left;
+	overflow:hidden;
+}
+#RightColumn{
+	width:190px;
+	float:right;
+	overflow:hidden;
+}
+#Main{
+	float:left;
+	width:605px;
+	*display:inline;
+	margin-left:8px;
+	overflow:hidden;
+}
+#InnerRightColumn{
+	float:left;
+	overflow:hidden;
+	margin:0 0 0 8px;
+	width:795px;
+	*display:inline;
+}
+#InfoBar {
+	margin:0 auto;
+	width:850px;
+	padding:10px 0;
+	text-align:center;
+}
+
+																					
+/*=主菜单
+=============================================================================================*/
+#Menu{
+	margin-left:250px;
+}
+		#Menu .menus{
+			float:left;
+		}
+
+#Menu .links{
+	float:left;
+	color:#ccc;
+}
+#Menu .links a{
+	display:inline;
+	float:none;
+	margin:0 5px;
+}
+#Menu .links{
+	overflow:hidden;
+}
+#Menu .links ul{
+	margin-left:-1px;
+}
+#Menu .links li{
+	display:inline;
+	border-left:1px solid #CCCCCC;
+}
+
+#Menu a{
+	position:relative;
+}
+#Menu b{
+	position:absolute;
+	top:6px;
+	left:15px;
+	width:19px;
+	height:19px;
+	background:url(gift.gif) no-repeat;
+	text-indent:-9999px;
+}
+#Menu .menuone{
+   background:url(menubg.gif) no-repeat;
+   padding-left:10px;
+}
+#Menu .menuone a{
+   background-color:#6633FF;
+}
+
+#Menu .menutwo{
+   background:url(menubg.gif) -190px 0 no-repeat;
+   padding-left:20px;
+}
+#Menu span.menutwor{
+   background:url(menubg.gif)  -698px 0 no-repeat;
+   padding-left:15px;
+   float:left;
+   height:33px;
+}
+#Menu .menuthree{
+   background:url(menubg.gif)  -444px 0 no-repeat;
+   padding-left:30px;
+}
+#Menu .menucart{
+   background:url(topnav-cart.gif) no-repeat 0 5px ;
+   padding-left:10px;
+}
+#Menu a{
+	text-align:center;
+	float:left;
+	display:block;
+	color:#0328C1;
+	font-size:12px;
+	line-height:33px;
+	width:60px;
+	text-decoration: none;
+}
+#Menu a:hover{
+	color:#c60;
+	text-decoration: underline;
+}			
+#Menu .fmenu{
+	padding-top:5px;
+}
+	
+/*=
+=============================================================================================*/	
+#SearchWrap{
+	text-align:center;
+	background:url(az-subnav-bg.gif) repeat-x;
+	border-top:1px solid #67a5c4;
+	color:#FFFFFF;
+  	padding-bottom:5px;
+	margin-top:-2px;
+	_margin-top:-1px;
+}
+#SearchWrap a{
+	color:#FFFFFF;
+}
+#SearchWrap .SearchBar{
+	margin:5px auto 0 auto;
+}
+#SearchWrap .htlinks a{
+	color:#333333;
+	padding:0 5px;
+}
+#SearchWrap .htlinks{
+	margin:8px;
+	margin-left:-210px;
+}
+#SearchWrap .htlinks div{
+	display:inline;
+}
+#SearchWrap .btn_search{
+	text-indent:-9999px;
+	background:url(search.gif) no-repeat;
+	width:24px;
+	height:24px;
+	border:none;
+	cursor:pointer;
+	*text-indent:0;
+	*line-height:9999px;
+	*font-size:-1;
+	position:relative;
+}
+#SearchWrap .keywords{
+  	width:280px;
+}
+/*=显示底部区域
+=============================================================================================*/
+#Foot{
+	width:1000px;
+	margin:0 auto;
+	margin-top:10px;
+}
+#FootMenu{
+   padding:20px 5px 5px 5px;
+   border:1px solid #ccc;
+   border-bottom:none;
+   *height:1%;
+}
+#FootMenu .menu a{
+   color:#0328C1;
+}
+#FootMenu .menu  a:hover{
+    color:#FF9900;
+	text-decoration:underline;
+}
+#FootLinks{
+	background:#ffc;
+	padding:5px;
+	border:1px solid #ccc;
+	text-align:center;
+	*height:1%;
+}
+#FootLinks .TreeList{
+	overflow:hidden;
+}
+#FootLinks .TreeList div{
+	font-weight:normal;
+	display:inline;
+	padding:0 10px;
+	border-right:1px solid #CCCCCC;
+}

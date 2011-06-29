@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<{header}>
+<link rel="stylesheet" type="text/css" href="images/css.css" />
+<style>
+.border1 .border-body,
+.border2 .border-body{
+	border-color:<{$theme.color_1}>;
+}
+.border1 .border-top,
+.border2 .border-top{
+	background-color:<{$theme.color_2}>;
+}
+.border1 h3,
+.border2 h3{
+	color:<{$theme.color_3}>;
+}
+#Menu,
+#Menu a{
+	background-color:<{$theme.color_4}>;
+	color:<{$theme.color_5}>;
+}
+</style>
+</head>
+<body>
+<div id="AllWrap">
+<div id="Top">
+	<div id="Logo"><{widgets}></div>
+	<div id="TopMenu"><{widgets}></div>
+	<div id="Menu"><{widgets}></div>
+</div>
+<div id="Search">
+	<{widgets}>
+</div>

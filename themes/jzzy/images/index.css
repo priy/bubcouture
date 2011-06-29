@@ -1,0 +1,310 @@
+﻿body {
+	font-family: "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #666666;
+	line-height: 20px;
+	margin:0;
+	padding:0;
+	text-align:center;
+	
+}
+/*=首页布局 
+=============================================================================================*/
+#IndexAllWrap{
+	width:1000px; 
+	margin:0 auto;
+	text-align:left;
+	overflow:hidden;
+
+}
+#Indexleftbox{
+	width:184px;
+	float:left;
+	padding-top:10px;
+	overflow:hidden;
+	
+}
+#Indexmainbox{
+	float:left;
+	width:810px;
+	padding-left:6px;
+	overflow:hidden;/*这里的hidden并无实际作用，仅仅为了用dreamweaver打开编辑的时候，不至于因为文字或标签过程而撑破页面*/
+}
+
+/*=头部和菜单
+TPL_TOP TPL_MENU 
+=============================================================================================*/
+#top{
+	width:1000px;
+	text-align:left;
+	margin:0 auto;
+	height:74px;
+	_overflow:hidden;
+	
+}
+#top .logo{/*logo*/
+	float:left;
+}
+/*-----头部的购物信息、登录信息、帮助三个栏位-------------*/
+#top .topinfo dt, 
+#top .topinfo dd{
+	float:left;
+}
+#top .topinfo dl{
+	margin:10px;
+	float:right;
+	line-height:18px;
+	
+}
+#top .topinfo dd{
+	padding:0 15px 0 5px;
+	border-right:1px solid #ccc;
+	height:30px;
+}
+#top .topinfo dt{
+	vertical-align:middle;
+	padding:5px 10px 0 3px;
+}
+/*--顶部的tab菜单----------------*/
+#TopTabMenu{
+	width:1000px;
+	height:28px;
+	_height:23px;
+	padding-left:20px;
+	text-align:left;
+	margin:0;
+	_margin-bottom:-5px;
+
+}
+#TopTabMenu ul{
+	float:left;
+
+}
+#TopTabMenu a.more{
+	padding:8px 0 0 10px;
+}
+#TopTabMenu li{
+	float:left;
+	margin-right:1px;
+	white-space:nowrap;
+}
+#TopTabMenu li a{
+	background:url(maintab-l.gif) no-repeat;
+	display:block;
+	height:28px;
+	float:left;
+	padding-left:10px;
+	color:#fff;
+	font-weight:700;
+	line-height:32px;
+	white-space:nowrap;
+}
+#TopTabMenu li.gift{
+	position:relative;
+	z-index:1;
+}
+#TopTabMenu li.gift b{
+	position:absolute;
+	left:0;
+	top:-15px;
+	z-index:1;
+}
+#TopTabMenu li a span{
+	background:url(maintab-r.gif) no-repeat right 0;
+	display:block;
+	padding-right:10px;
+}
+#TopTabMenu li.special a{
+	background:url(maintab-special-l.gif) no-repeat;
+	display:block;
+	height:28px;
+	float:left;
+	padding-left:10px;
+	color:#fff;
+	font-weight:700;
+	line-height:32px;
+	white-space:nowrap;
+}
+#TopTabMenu li.special a span{
+	background:url(maintab-special-r.gif) no-repeat right 0;
+	display:block;
+	padding-right:10px;
+}
+#TopTabMenu li a:hover{
+	background:url(maintab-l-o.gif) no-repeat;
+}
+#TopTabMenu li a:hover span{
+	background:url(maintab-r-o.gif) no-repeat right 0;
+}
+/*--顶部的tab菜单下面的色快链接----------------*/
+#ButtonLinks{
+	height:34px;/*ie7 firefox 使用那这条规则*/
+	_height:30px;/*ie6使用这条规则*/
+}
+#ButtonLinks a{
+	display:block;
+	float:left;
+	margin:3px 4px;
+	padding:1px 5px;
+	border-color:#fff #ccc9a8 #ccc9a8 #fff;
+	border-style:solid;
+	border-width:1px;
+	background:#fffbd3;
+}
+#ButtonLinks a:hover{
+	background:#f90;
+	color:#fff;
+}
+
+/*=搜索栏
+=============================================================================================*/
+#SearchBar{
+	background:#000 url(searchbar-bg.gif) repeat-x;
+	height:34px;
+	position:relative;
+	width:776px;
+	padding-left:40px;
+	vertical-align:middle;
+	color:#000;
+	z-index:1;
+}
+#SearchBar .left{
+	background:url(searchbar-l.gif) repeat-x;
+	width:33px;
+	height:34px;
+	position:absolute;
+	left:0;
+	top:0;
+	z-index:1;
+}
+#SearchBar .right{
+	background:url(searchbar-r.gif) repeat-x;
+	width:31px;
+	height:34px;
+	position:absolute;
+	right:0;
+	top:0;
+	z-index:1;
+}
+#SearchBar .search{
+	color:#fff;
+}
+#SearchBar .search a{
+	color:#fff;
+	padding-left:40px;
+}
+/*=中部banner区域 | 
+=============================================================================================*/
+#BannerArea{
+	padding:10px;
+
+}
+#BannerArea div{
+	overflow:hidden;
+
+}
+#BannerArea .BannerArea1{
+	border:1px solid #f2f2f2;
+	padding:4px;
+	width:423px;
+	height:204px;
+
+}
+#BannerArea .marqueetext{
+	border:1px solid #f2f2f2;
+	padding:4px;
+	width:423px;
+	height:25px;
+	border:1px solid #ccc;
+	margin:2px 0;
+	border-bottom:3px solid #e3e3e3;
+	float:left;
+
+}
+#BannerArea .marqueetext .title{
+	float:left;
+	padding:2px 4px;
+	background:#000;
+	color:#fff;
+}
+#BannerArea .BannerArea2{
+	margin:0 1px;
+	position:relative;
+	border:1px solid #ccc;
+	width:160px;
+	height:250px;
+	float:left;
+	overflow:hidden;
+}
+#imageContainer img {
+	display:none;
+	position:absolute;
+	top:0; left:0;
+}
+#BannerArea .BannerArea3{
+	margin:0 1px;
+	width:188px;
+	height:250px;
+	overflow:hidden;
+	float:left;
+}
+#BannerArea .BannerArea3 img{
+	margin-bottom:3px;
+	border:1px solid #ccc;
+}
+.bigbanner{
+	text-align:center;
+}
+.bigbanner img{
+	border:1px solid #ccc;
+}
+/*=底部
+TPL_BOTTOM
+=============================================================================================*/
+#foot{
+	clear:both;
+	margin-top:30px;
+	padding:20px 10px 0 10px;
+	background:url(footbg.gif) repeat-x;
+
+}
+#foot div.infoitems{
+	float:left;
+	padding-left:70px;
+	padding-top:35px;
+	margin-left:40px;
+	width:210px;
+	_width:200px;
+	overflow:hidden;
+}
+#foot .shopping{
+	background:url(bottom_shopping.gif) no-repeat;
+}
+#foot .qa{
+	background:url(bottom_qa.gif) no-repeat;
+}
+#foot .help{
+	background:url(bottom_help.gif) no-repeat;
+}
+#foot div.infoitems ul li a{
+	background:url(articleitems.gif) no-repeat 0 3px;
+	padding-left:15px;
+	border-bottom:1px dotted #ccc;
+	display:block;
+	color:#666;
+	width:90%;
+}
+#foot div.infoitems ul li a:hover{
+	background:url(articleitems.gif) no-repeat 3px 3px;
+	border-bottom:1px solid #f90;
+}
+#foot .copyright{
+	text-align:center;
+	background:url(footbg.gif) repeat-x;
+	padding-top:15px;
+}
+#foot p{
+	margin:0;
+	padding:4px 0;
+}
+

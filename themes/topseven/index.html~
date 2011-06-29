@@ -1,0 +1,21 @@
+
+<{require file="block/header.html"}>
+<div class="AllWrap MainBorder">
+<div class="AllWrap clearfix">
+  <div class="homeMainColumn">
+    <div class="topMainBannerArea">
+       <{widgets id="ad_seriers a"}>
+    </div>
+  </div>
+</div>
+<div class="AllWrap clearfix" style="margin-bottom:10px;">
+  <div>
+    <div id="slidergoods"><{widgets id="slidergoods"}> </div>
+  </div>
+<{widgets id="middleright-vcat"}>
+  </div>
+</div>
+
+<{require file="block/footer.html"}>
+<div class="float-icons"/> 
+</div>

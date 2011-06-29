@@ -1,6 +1,6 @@
 <?php
 class app_shopex_stat extends app{
-    var $ver = 1.5;
+    var $ver = 1.1;
     var $name='营销统计工具';
     var $website = 'http://www.shopex.cn';
     var $author = 'shopex';
@@ -38,7 +38,7 @@ class app_shopex_stat extends app{
 
 
     function getMenu(&$menu){
-        $menu['analytics']['items'][]= array_unshift($menu['analytics']['items'],array('type'=>'group','label'=>'营销统计工具','items'=>array(array("type"=>'menu','label'=>__('查看分析报表'),'link'=>'?ctl=plugins/stat_ctl&act=index&redirect=1'))) );
+        $menu['analytics']['items'][]= array_unshift($menu['analytics']['items'],array('type'=>'group','label'=>'营销统计工具','items'=>array(array("type"=>'menu','label'=>__('查看分析报表'),'link'=>'index.php?ctl=plugins/stat_ctl&act=index&redirect=1'))) );
     }
 
     function install(){

@@ -1,50 +1,36 @@
 <div class="ItemsWarp clearfix">
+<ul>
 <{assign var='zindex' value='1000'}>
 <{foreach from=$products item="product"}>
-  <div class="items-list <{$mask_webslice}>" product="<{$product.goods_id}>" id="pdt-<{$product.goods_id}>">
-  <table width="100%" border="0" cellspacing="0" cellpadding="0">
-  <tr>
-    <td class="goodpic" valign="middle" style='<{if $env.conf.site.thumbnail_pic_width !=0 && $env.conf.site.thumbnail_pic_height !=0}> width:<{$env.conf.site.thumbnail_pic_width}>px;<{/if}>'>
+  <li class="items-list <{$mask_webslice}>" product="<{$product.goods_id}>" id="pdt-<{$product.goods_id}>">
+    <div class="goodpic" valign="middle" >
   
-  <a target="_blank" style='<{if $env.conf.site.thumbnail_pic_width !=0 && $env.conf.site.thumbnail_pic_height !=0}> width:<{$env.conf.site.thumbnail_pic_width}>px;height:<{$env.conf.site.thumbnail_pic_height}>px;<{/if}>' href="<{link ctl="product" act="index" arg0=$product.goods_id}>">
+  <a target="_blank" href="<{link ctl="product" act="index" arg0=$product.goods_id}>">
     <img  src="<{$product.thumbnail_pic|default:$env.conf.site.default_thumbnail_pic|storager}>"  alt="<{$product.name|escape:html}>"/>
     <{*<span class='zoom-handle' pic='<{$product.big_pic|default:$env.conf.site.default_big_pic|storager}>'>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>*}>
   </a>
-  </td>
-  <td width='10px;'>&nbsp;</td>
-    <td class="goodinfo">
+  </div>
+    <div class="goodinfo">
       <h6><a href="<{link ctl="product" act="index" arg0=$product.goods_id}>" title="<{$product.name|escape:html}>" class="entry-title" target="_blank"><{$product.name|escape:"html"}></a></h6>
       <{$product.brief}>
-    </td>
-    <td class="price_button" width="250">
+    </div>
+    <div class="price_button" width="250">
           <ul>
-            <li><span class="price1"><{$product.price|cur}></span><{if $product.mktprice && $setting.mktprice}><span class="mktprice1"><{t}>市场价: <{/t}><{$product.mktprice|cur}></span><{/if}></li>
+            <li><span class="price1">Price:<{$product.price|cur}></span><{if $product.mktprice && $setting.mktprice}><span class="mktprice1"><{t}>MSRP: <{/t}><{$product.mktprice|cur}></span><{/if}></li>
+<!--
             <{if $product.mktprice > $product.price && $setting.mktprice && $setting.saveprice > 0}>
             <li style="padding-left:4px; padding-top:8px;"><span class="saveprice1"> <{if $setting.saveprice == 1}>节省：<{$product.mktprice-$product.price|cur}>
                     <{elseif $setting.saveprice == 2}>优惠:<{$product.price/$product.mktprice*100|number:'2'}>%
                     <{elseif $setting.saveprice == 3}><{$product.price/$product.mktprice*10|number:'1'}>折
 					<{/if}></span></li>
             <{/if}>
-            <!--<li class="intro rank-<{$product.rank|default:3}>">Rank <{$product.rank|default:3}></li>-->
-          </ul>    
-    
-        <ul class="button">
-      
-            <{goodsmenu product=$product setting=$setting login=$LOGIN zindex=$zindex--}>
-      
-            <li class="btncmp">
-                       <a href="javascript:void(0)" onclick="gcompare.add({gid:'<{$product.goods_id}>',gname:'<{$product.name|addslashes|escape:html}>',gtype:'<{$product.type_id}>'});" class="btncmp" title="商品对比">
-              <{t}>商品对比<{/t}>
-             </a>
-            </li>
-        </ul>    
-    
-    </td>
-  </tr>
-</table>
-
-  </div>
-<{/foreach}>
+            <li class="intro rank-<{$product.rank|default:3}>">Rank <{$product.rank|default:3}></li>
+-->
+          </ul>
+    </div>
+  </li>
+  <{/foreach}>
+</ul>
 </div>
 
 <{*

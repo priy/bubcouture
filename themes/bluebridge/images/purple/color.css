@@ -1,0 +1,10 @@
+﻿.login1 { background:url( 1_06.gif) repeat-x;}
+#nav { background:url( book2_03.gif) no-repeat; }
+#productsort a { background:url(book2_04.gif) repeat-x 0 -10px; }
+#nav ul {background:url( book2_04.gif); }
+#loginer { background:url( book2_06.gif) no-repeat right; }
+.Article-Tabs .current,
+.GoodsList-Tabs .current{ background:url(book2_04.gif) 0 -60px;color:#fff;}
+#tuijian { width:494px; background:url( tbg_42.jpg) no-repeat; }
+h3{ color:#762752}
+#slidergoods{ border:3px solid  #ccc}

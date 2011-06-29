@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme><name>追求卓越</name><id>zqzy</id><version>ShopEx4.8</version><info></info><author>ShopEx</author><site>http://www.shopex.cn</site><update_url></update_url><borders><set key="默认样式" tpl="borders/border1.html" /><set key="首页主区域" tpl="borders/border2.html" /><set key="边栏样式" tpl="borders/border3.html" /><set key="边栏带头部样式" tpl="borders/border4.html" /><set key="首页广告位" tpl="borders/border5.html" /><set key="底部文章" tpl="borders/border6.html" /><set key="帮助中心" tpl="borders/border7.html" /></borders><views></views><config></config></theme>

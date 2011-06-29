@@ -1,0 +1,266 @@
+﻿/*默认样式
+/*=============================================================================================*/
+.border1{
+	border:1px solid #ACD3E2;
+	padding:5px;
+	margin-bottom:5px;
+	*height:1%;
+}
+  .border1 h3,.border1 h3 a{
+	font-size:14px;
+	color:#CD6702;
+	padding-left:3px;
+	margin: 3px 0px 3px 0;
+	text-decoration:none;
+   }
+   
+.border1 .GoodsList{
+	text-align:center;
+}
+/* 首页主区域
+/*=============================================================================================*/
+
+.border2{
+	margin-bottom:5px;
+}
+		.border2 h3{
+			color:#000;
+			margin:0;
+			padding:0;
+			line-height:25px;
+		}
+		.border2 .border-top{
+			background:url(border2.gif) no-repeat;
+			height:29px;
+		}
+				.border2 .border-top .bg{
+					background:url(border2.gif) no-repeat right 0;
+					height:25px;
+				}
+				
+		.border2 .border-body{
+		}
+
+
+#newgoods h3{
+	text-indent:-9999px;
+	background:url(newsgoods.gif) no-repeat;
+	width:90px;
+	height:28px;
+}
+#specialgoods h3{
+	text-indent:-9999px;
+	background:url(specialgoods-title.gif) no-repeat;
+	width:90px;
+	height:28px;
+}
+/* 边栏样式
+/*=============================================================================================*/
+.border3{
+	border:solid 1px #CCCC98;
+	margin-bottom:5px;
+	padding:5px;
+	*height:1%;
+}
+  .border3 h3,.border3 h3 a{
+	font-size:14px;
+	color:#CD6702;
+	padding-left:3px;
+	margin: 3px 0px 3px 0;
+	text-decoration:none;
+   }
+
+.border3 .GoodsList{
+	text-align:center;
+}
+#hotgoods .GoodsList{
+	text-align:left;
+}
+#hotgoods h6 a{
+	border-bottom:1px dotted #CCCCCC;
+	color:#0328C1;
+	display:block;
+	font-weight:normal;
+}
+#hotgoods li{
+	border-bottom:1px solid #CCCCCC;
+	color:#FF9900;
+	text-align:right;
+}
+
+/* 边栏带头部样式
+/*=============================================================================================*/
+
+.border4{
+	margin-bottom:5px;
+}
+		.border4 h3{
+			color:#fff;
+			margin:0;
+			padding:0;
+			font-size:14px;
+			line-height:25px;
+		}
+		.border4 .border-top{
+			background:url(../images/border4.gif) no-repeat;
+			height:25px;
+		}
+				.border4 .border-top .bg{
+					background:url(border4.gif) no-repeat right 0;
+					height:25px;
+					margin-left:10px;
+				}
+				
+		.border4 .border-body{
+			border:1px solid #5C9EC0;
+			border-bottom:none;
+			border-top:none;
+			*height:1%;
+		}
+		.border4 .border-foot{
+			background:url(border4.gif) no-repeat 0 -26px;
+			height:4px;
+			overflow:hidden;
+		}
+				.border4 .border-foot .bg{
+					background:url(border4.gif) no-repeat right -26px;
+					height:4px;
+					margin-left:10px;
+				}
+				
+/* 首页广告位
+/*=============================================================================================*/
+.border5{
+	margin-bottom:5px;
+}
+		.border5 h3{
+			color:#000;
+			margin:0;
+			padding:0;
+			line-height:25px;
+		}
+		.border5 .border-top{
+			background:url(border5.gif) no-repeat;
+			height:6px;
+		}
+				.border5 .border-top .bg{
+					background:url(border5.gif) no-repeat right 0;
+					height:6px;
+					margin-left:10px;
+				}
+				
+		.border5 .border-body{
+			border:1px solid #C3CD91;
+			border-top:none;
+		}
+				.border5 .border-body .bg{
+					background:url(border5bg.gif) repeat-y right 0;
+					margin-left:2px;
+					text-align:center;
+				}
+		.border5 .border-foot{
+			background:url(border5.gif) no-repeat 0 -200px;
+			height:14px;
+		}
+				.border5 .border-foot .bg{
+					background:url(border5.gif) no-repeat right -200px;
+					height:14px;
+					margin-left:10px;
+				}
+
+
+/* 底部文章
+/*=============================================================================================*/
+.border6{
+	float:left;
+	padding:35px 0 0 70px;
+	width:210px;
+	margin:0 0 0 40px;
+	*display:inline;
+}
+	.border6 h3{
+			color:#000;
+			margin:3px;
+			padding:0;
+			border-bottom:1px solid #E4E4E4;
+			line-height:33px;
+		}
+	.border6 .TreeList div,
+	.border6 .ArticleList li{
+		padding:0;
+		border-bottom:1px dotted #CCCCCC;
+		line-height:20px;
+ 	}
+	.border6 .TreeList a,
+	.border6 .ArticleList a{
+		padding:0 0 0 20px;
+		background:url(../images/articleitems.gif) no-repeat 6px 5px;
+		display:block;
+		padding-left:15px;
+	}
+	
+	
+		
+#footshopping h3,
+#footqa h3,
+#foothelp h3{
+	text-indent:-9999px;
+	margin:0;
+	line-height:0;
+	border:none;
+}
+
+#footshopping{
+	background:url(bottom_shopping.gif) no-repeat;
+}
+#footqa{
+	background:url(bottom_qa.gif) no-repeat;
+}
+#foothelp{
+	background:url(bottom_help.gif) no-repeat;
+}
+/* 帮助中心
+/*=============================================================================================*/
+.border7{
+	margin:0 0 5px 0;
+	border:1px solid #ddddcc;
+	*height:1%;
+}
+.border7 h3{
+	background:#ddddcc;
+	height:25px;
+	line-height:25px;
+	font-size:14px;
+	font-weight:bold;
+	color:#000000;
+	margin:0;
+	padding:0 0 0 10px;
+}
+.border7 .border-body{
+	padding:5px;
+}
+
+.border7{
+	line-height:1.8em;
+}
+.border7 .TreeList .cat1{
+	background:#efefef;
+	padding:0 0 0 5px;
+	margin:5px 0;
+}
+.border7 .TreeList .cat1 a{
+	background:url(arrs.gif) no-repeat 0 -201px;
+	padding:0 0 0 13px;
+	color:#333;
+}
+.border7 .TreeList a:hover{
+	color:#FF6600;
+}
+.border7 .TreeList .cat2{
+	padding:0 0 0 18px;
+}
+.border7 .TreeList .cat2 a{
+	background:url(articleitems.gif) no-repeat 0 3px;
+	padding:0 0 0 10px;
+	color:#666;
+}

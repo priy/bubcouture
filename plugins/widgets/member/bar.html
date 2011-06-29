@@ -1,21 +1,21 @@
-您好<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}>：<{$env.cookie.UNAME}><{/if}></span>！
+Welcome<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}>：<{$env.cookie.UNAME}><{/if}></span>！
 <{if !$env.cookie.MEMBER}>
 <span id="loginBar_<{$widgets_id}>">
 <{foreach from=$data.login_content item=login}>
 <{$login}>
 <{/foreach}>
-  <a href="<{link ctl=passport act=login}>"><{t}>[请登录]<{/t}></a>&nbsp;&nbsp;
+  <a href="<{link ctl=passport act=login}>"><{t}>[Login]<{/t}></a>&nbsp;&nbsp;
   <{if $data.open_id_open}>
-      [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>信任登录<{/t}></a>]&nbsp;&nbsp;
-	  <div id="accountlogin" ><h5>您还可以使用以下帐号登录：</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">更多»</a></div>
+      [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>Trust Login<{/t}></a>]&nbsp;&nbsp;
+	  <div id="accountlogin" ><h5>You can login with follow account:</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">More»</a></div>
 	  </div>
 	  <{/if}>
-  <a href="<{link ctl=passport act=signup}>"><{t}>[免费注册]<{/t}></a>
+  <a href="<{link ctl=passport act=signup}>"><{t}>[Regist]<{/t}></a>
 </span> 
 <{else}>
 <span id="memberBar_<{$widgets_id}>">
-  <a href="<{link ctl=member act=index}>"><{t}>[会员中心]<{/t}></a>&nbsp;&nbsp;
-  <a href="<{link ctl=passport act=logout}>"><{t}>[退出]<{/t}></a>
+  <a href="<{link ctl=member act=index}>"><{t}>[User Center]<{/t}></a>&nbsp;&nbsp;
+  <a href="<{link ctl=passport act=logout}>"><{t}>[Logout]<{/t}></a>
 </span>
 <{/if}>
   <{if $data.open_id_open && !$env.cookie.MEMBER}>

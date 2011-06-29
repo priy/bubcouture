@@ -48,37 +48,6 @@
     </div>
 <{/if}>
 
-<{if $SpecFlatList}>
-<div class="division" id='goods-spec-content-flat'>
-  <table class='goods-spec' width='100%' >
-    <{foreach from=$SpecFlatList key=FlatKey item=FlatSpec}>
-    <tr>
-        <td class="textright" style="padding-right:6px; width:72px; white-space:nowrap"><{$FlatSpec.name}>：</td>
-        <td style=" border-bottom:1px solid #eee; line-height:22px;" class="flatshow">
-            <ul>
-            <{foreach from=$SpecFlatList[$FlatKey].spec_value item=FlatSpecval key=FlatSkey}>
-                <{if $FlatSpec.spec_type=="image"}>
-                    <li><a href="<{selector key=$FlatSpec.type value="{$FlatKey},{$FlatSkey}"}>" <{if $FlatSpecval.selected}>class="selected"<{/if}>>
-                    <img src="<{$FlatSpecval.spec_image|default:$env.conf.spec.default.pic|storager}>" alt="<{$FlatSpecval.spec_value}>" title="<{$FlatSpecval.spec_value}>" width="20" height="20">
-                    </a>
-                   </li>
-                <{else}>
-                    <li <{if $FlatSpecval.selected}>class="selected"<{/if}>>
-                    <a href="<{selector key=$FlatSpec.type value="{$FlatKey},{$FlatSkey}"}>" <{if $FlatSpecval.selected}>class="selected"<{/if}>>
-                      <span><{$FlatSpecval.spec_value}></span>
-                    </a>
-                    </li>
-
-                <{/if}>
-            <{/foreach}>
-            </ul>
-        </td>
-    </tr>
-    <{/foreach}>
-  </table>
-</div>
-<{/if}>
-
 
 
 <{if $SpecSelList || $searchSelect}>

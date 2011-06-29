@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme><name>奢华好礼</name><id>shhl</id><version>ShopEx4.8</version><info></info><author>ShopEx</author><site>http://www.shopex.cn</site><update_url></update_url><borders><set key="默认" tpl="borders/border1.html" /><set key="首页商品列表" tpl="borders/border2.html" /></borders><views></views><config></config></theme>

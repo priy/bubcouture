@@ -1,0 +1,129 @@
+<{require file="block/header.html"}>
+<div class="AllWrap clearfix">
+  <div class="mainColumn clearfix">
+    <div class="topMainBannerArea">
+      <div class="top"></div>
+      <div class="bg clearfix">
+        <div class="a"><{widgets id="Banner_seriesA"}></div>
+        <div class="b">
+          <div id="slidergoods"><{widgets id="slidergoods"}></div>
+        </div>
+      </div>
+      <div class="bottom"></div>
+    </div>
+    <div class="clearfix">
+    
+    <div class="mainColumn_left">
+      <div class="tabcontent">
+        <div class="body"><{widgets id="middleitmeshowPro-1"}></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+    <div class="mainColumn_right">
+        <div class="mainrightContent">
+            <div class="t"></div>
+            <div class="b"><{widgets id="middleright-1"}></div>
+            <div class="bo"></div>
+        </div>
+    
+    
+    
+    </div>
+    </div>
+    
+   <div class="coloredbg ">
+            <div class="t"></div>
+            <div class="b clearfix"><ul><li><{widgets id="middleCulomnPic-1"}></li><li><{widgets id="middleCulomnPic-2"}></li><li><{widgets id="middleCulomnPic-3"}></li><li><{widgets id="middleCulomnPic-4"}></li><li><{widgets id="middleCulomnPic-5"}></li><li><{widgets id="middleCulomnPic-6"}></li></ul></div>
+            <div class="bo"></div>
+        </div> 
+        
+   <div class="clearfix">     
+   <div class="mainColumn_left">
+      <div class="tabcontent">
+        <div class="body"><{widgets id="middleitmeshowPro-2"}></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  <div class="mainColumn_right">
+        <div class="mainrightContent">
+            <div class="t"></div>
+            <div class="b"><{widgets id="middleright-2"}></div>
+            <div class="bo"></div>
+        </div>
+    
+    
+    
+    </div>  
+   </div> 
+   <div style="margin:10px 0"><{widgets id="middlecolumnpic"}></div>
+   
+    <div class="clearfix">     
+   <div class="mainColumn_left">
+      <div class="tabcontent">
+        <div class="body"><{widgets id="middleitmeshowPro-3"}></div>
+        <div class="bottom"></div>
+      </div>
+    </div>
+  <div class="mainColumn_right">
+
+            <div class="b"><{widgets id="middleright-3"}></div>
+    
+    
+    
+    </div>  
+   </div>   
+   
+   
+   
+   
+  </div>
+  <div class="sideColumn">
+    <div class="sideWrapTop"></div>
+    <div class="sideWrapBg"><{widgets id="allInSider"}></div>
+    <div class="sideWrapBottom"></div>
+    <{widgets id="toprightcolumn"}></div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<script>
+
+	try{
+	var elmaskLengh=$('slidergoods').getSize().x;
+    itemsWrapLength=elmaskLengh/2;
+	$ES('#slidergoods .GoodsListWrap .itemsWrap').setStyle('width',itemsWrapLength);
+    $E('#slidergoods .GoodsListWrap').setStyle('width',itemsWrapLength*$ES('#slidergoods .GoodsListWrap .itemsWrap').length+10);
+	var	sliderSize=0;
+	function slidergoodsOnTime(){
+	sliderSize=sliderSize-$E('#slidergoods .GoodsListWrap .itemsWrap').getSize().x;
+	elmainLengh=$E('#slidergoods .GoodsListWrap').getSize().x;
+	overflowLength=elmainLengh-elmaskLengh;
+	if(sliderSize>-overflowLength){
+		$E('#slidergoods .GoodsListWrap').tween('left', sliderSize);
+		}
+		else{
+		$E('#slidergoods .GoodsListWrap').tween('left', 0);	
+		sliderSize=0;	
+			}
+	}
+   var MyInterval=setInterval("slidergoodsOnTime()",3000);
+	}catch(e){}
+	
+
+</script>
+<{require file="block/footer.html"}> 

@@ -1,0 +1,126 @@
+/*=默认	 边栏样式
+=============================================================================================*/
+.border1{
+	border:1px solid #CCC;
+	background:#fff;
+	margin:0 0 5px 0;
+	*width:99%;
+}
+.border1 .border-top{
+	background:url(left_1.jpg) repeat-x;
+	border-bottom:1px solid #ccc;
+	height:26px;
+	line-height:26px;
+	padding-left:25px;
+	font-weight:bold;
+}
+.border1 .border-top h3{
+	color:#000000;
+	background:url(left_2.jpg) no-repeat 2px;
+	padding-left:20px;
+	margin:0;
+}
+
+
+
+.border1 .box{padding-left:25px;margin:5px 0;}
+.border1 .news{	padding:3px;}
+.border1 .probox ul li{
+	background:url(arrow_right.gif) no-repeat;
+	padding-left:15px;
+	border-bottom:1px solid #ccc;
+	background-position:5px;
+	height:1.6em;
+	line-height:1.6em;
+	overflow:hidden;
+	white-space:nowrap;
+}
+.border1 .probox ul li a{
+	color:#333;
+	text-decoration:none;
+}
+.border1 .probox ul li a:hover{
+	text-decoration:underline;
+	color:#FF6600;
+}
+
+.border1 .news ul li{
+	background:url(arr3.gif) no-repeat;
+	padding-left:12px;
+	background-position:1px;
+	overflow:hidden;
+	white-space:nowrap;
+	height:1.6em;
+	line-height:1.6em;
+}
+.border1 .news ul li a{
+	color:#333;
+	text-decoration:none;
+}
+.border1 .news ul li a:hover{
+	text-decoration:underline;
+	color:#FF6600;
+}
+
+
+.border1 .GoodsList {
+	text-align:center;
+}
+/*=首页中栏样式
+=============================================================================================*/
+.border2{
+	margin:0 0 5px 0;
+}
+.border2 h3{
+	color:#fff;
+	position:absolute;
+	top:20px;
+	left:60px;
+	font-family:"微软雅黑",Arial, Helvetica, sans-serif;
+	font-size:14px;
+	letter-spacing:0.2em;
+}
+.border2 .border-body{
+	padding:5px;
+	border:1px solid #ccc;
+	*width:99%;
+}
+
+
+.border2 .GoodsList{
+	text-align:center;
+}
+.border2 .GoodsList .item{
+	border-bottom:1px dotted #ccc;
+	padding-bottom:5px;
+	margin:5px 0;
+}
+.border2 .titleImg{
+	background-color:#ebebeb;
+	text-align:center;
+}
+
+.border2 h6 a{
+	color:#FF6600;
+}
+.border2 .GoodsList li{
+	background:url(arrs.gif) no-repeat 0 -255px;
+	padding:0 0 0 13px;
+	text-align:left;
+}
+.border2 .GoodsList .itemsWrap{
+	border-right:1px solid #eee;
+}
+
+
+
+#t1 .border-top{
+	position:relative;
+	height:48px;
+	background:url(t1.gif) no-repeat;
+}
+#t2 .border-top{
+	position:relative;
+	height:48px;
+	background:url(t2.gif) no-repeat;
+}

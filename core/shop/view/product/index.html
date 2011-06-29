@@ -84,13 +84,13 @@
 
 
       <ul class="goodsprops clearfix">
-        <{if $goods.bn && $goodsBnShow}><li><span><{t}>商品编号：<{/t}></span><{$goods.bn}></li><{/if}>
-        <{if $goods.weight && $goods.weight != 0.000 }><li><span><{t}>商品重量：<{/t}></span><span id="goodsWeight"><{if $goods.weight}><{$goods.weight}><{else}><{$goods.weight.0.bn}><{/if}></span><{t}> 克(g)<{/t}></li><{/if}>
+        <{if $goods.bn && $goodsBnShow}><li><span><{t}>Goods ID:<{/t}></span><{$goods.bn}></li><{/if}>
+        <{if $goods.weight && $goods.weight != 0.000 }><li><span><{t}>Weight:<{/t}></span><span id="goodsWeight"><{if $goods.weight}><{$goods.weight}><{else}><{$goods.weight.0.bn}><{/if}></span><{t}> gram(g)<{/t}></li><{/if}>
 
-        <{if $goods.product_bn || $goods.products.0.bn}><li><span><{t}>货　　号：<{/t}></span><span id="goodsBn"><{if $goods.product_bn}><{$goods.product_bn}><{else}><{$goods.products.0.bn}><{/if}></span></li><{/if}>
+        <{if $goods.product_bn || $goods.products.0.bn}><li><span><{t}>Product ID:<{/t}></span><span id="goodsBn"><{if $goods.product_bn}><{$goods.product_bn}><{else}><{$goods.products.0.bn}><{/if}></span></li><{/if}>
 
-        <{if $goods.brand_name}><li><span><{t}>品　　牌：<{/t}></span><{if $goodsproplink}><a href="<{selector type='b' key=$goods.brand_id}>" target="_blank"><{$goods.brand_name}></a><{else}><{$goods.brand_name}><{/if}></li><{/if}>
-        <{if $goods.unit}><li><span><{t}>计量单位：<{/t}></span><{$goods.unit}></li><{/if}>
+        <{if $goods.brand_name}><li><span><{t}>Brand:<{/t}></span><{if $goodsproplink}><a href="<{selector type='b' key=$goods.brand_id}>" target="_blank"><{$goods.brand_name}></a><{else}><{$goods.brand_name}><{/if}></li><{/if}>
+        <{if $goods.unit}><li><span><{t}>measuring unit:<{/t}></span><{$goods.unit}></li><{/if}>
         <{if $goods.setting.score && $goods.score}><li><span><{t}>所得积分：<{/t}></span><span id="goodsScore"><{$goods.score}></span><{/if}>
     <{if $trading.score && $trading.score <>$goods.score}><li><{t}>特价积分：<{/t}><{$trading.score}></li><{/if}>
     <{if $goodspropposition<>2}>
@@ -124,7 +124,7 @@
 
       <{if $goods.setting.mktprice}>
       <li>
-        <span><{t}>市场价：<{/t}></span><i class="mktprice1">
+        <span><{t}>MSRP:<{/t}></span><i class="mktprice1">
 
        <{if $goods.minmktprice && $goods.maxmktprice}>
             <{if $goods.minmktprice neq $goods.maxmktprice}>
@@ -141,7 +141,7 @@
       <{/if}>
 
     <li>
-       <span><{t}>销售价：<{/t}></span>
+       <span><{t}>Price:<{/t}></span>
       <span class="price1">
             <{if $goods.minprice && $goods.maxprice}>
                 <{if $goods.minprice neq $goods.maxprice}>
@@ -287,7 +287,7 @@
                             <{else}>
                                 <img src="<{$subDesc.spec_image|storager}>"  alt="<{$subDesc.spec_value}>" title="<{$subDesc.spec_value}>" width="<{$specimagewidth}>" height="<{$specimageheight}>">
                             <{/if}>
-                              <i title='点击取消选择'>&nbsp;</i>
+                              <i title='Click to Cancel'>&nbsp;</i>
                             </a>
                             </li>
                             <{/if}>
@@ -324,7 +324,7 @@
                         <{else}>
                             <img src="<{$subDesc.spec_image|storager}>" style='border:1px #ccc solid' alt="<{$subDesc.spec_value}>" title="<{$subDesc.spec_value}>" width="<{$specimagewidth}>" height="<{$specimageheight}>">
                         <{/if}>
-                        <i title='点击取消选择'>&nbsp;</i>
+                        <i title='Click to Cancel'>&nbsp;</i>
                         </a>
                         </li>
                         <{/if}>
@@ -344,7 +344,7 @@
          <div class='buyinfo'>
          <table width='auto'>
             <tr>
-               <td><span><{t}>购买数量：<{/t}></span></td>
+               <td><span><{t}>Quantity：<{/t}></span></td>
                <td><div class="Numinput">
                     <input type="text" name="goods[num]" size="5" value=1 />
                     <span  class="numadjust increase"></span>
@@ -366,16 +366,16 @@
   <div class="floatLeft">
         <{if count($goods.products)>0}>
                 <{if $env.conf.system.goods.fastbuy}>
-                    <input class="actbtn btn-fastbuy" value="立即购买" type="button" />
+                    <input class="actbtn btn-fastbuy" value="Buy Now" type="button" />
                 <{/if}>
-            <input class="actbtn btn-buy" value="加入购物车" type="submit" />
+            <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
             <input  class="actbtn btn-notify" value="缺货登记" type="submit" style="display: none;" />
         <{else}>
             <{if $goods.store-$goods.freez>0 || $goods.store==''}>
                 <{if $env.conf.system.goods.fastbuy}>
-                    <input class="actbtn btn-fastbuy" value="立即购买" type="button" />
+                    <input class="actbtn btn-fastbuy" value="Buy Now" type="button" />
                 <{/if}>
-                <input class="actbtn btn-buy" value="加入购物车" type="submit" />
+                <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
             <{else}>
                 <input  class="actbtn btn-notify" value="缺货登记" type="submit" />
             <{/if}>
@@ -385,9 +385,9 @@
     <ul>
       <li <{if $login!="nologin"}>star="<{$goods.goods_id}>"<{/if}> class="star-off" title=<{$goods.name|escape:"html"}>>
 				  <{if $login=="nologin"}>
-				   <a href="<{link ctl="passport" act="login"}>" class="btn-fav"><{t}>收藏此商品<{/t}></a>
+				   <a href="<{link ctl="passport" act="login"}>" class="btn-fav"><{t}>add to my favorites<{/t}></a>
 				  <{else}>
-				  <a href="#" rel="nofollow" onclick="return false;"  class="btn-fav"><{t}>收藏此商品<{/t}></a>
+				  <a href="#" rel="nofollow" onclick="return false;"  class="btn-fav"><{t}>add to my favorites<{/t}></a>
 				   
                     
                   <{/if}>
@@ -432,7 +432,7 @@
             <{/if}>
             <span class="memberprice"><{t}>配件价格：<{/t}><i><{$items.adjprice|cur}></i></span>
         </td>
-        <td><{t}>数量：<{/t}><input size="2" maxlength='10'  type="text" autocomplete='off' value="<{if $adj.min_num == 0}>1<{else}><{$adj.min_num|default:1}><{/if}>" name='count_check_<{$items.product_id}>' /></td>
+        <td><{t}>Quantity:<{/t}><input size="2" maxlength='10'  type="text" autocomplete='off' value="<{if $adj.min_num == 0}>1<{else}><{$adj.min_num|default:1}><{/if}>" name='count_check_<{$items.product_id}>' /></td>
         <td<{if $items.marketable == 'false' || $items.disabled == 'true'}> style="display:none"<{/if}>><a title="您可以单把独这个商品加入购物车" buy="<{$items.goods_id}>" product="<{$items.product_id}>" type="g" href="<{link ctl="cart" act="addGoodsToCart" arg0=$items.goods_id arg1=$items.product_id}>" <{if $goods.setting.buytarget==2}> target="_blank_cart"<{elseif $goods.setting.buytarget==3}> target="_dialog_minicart"<{/if}> class="addtocart" rel="nofollow"><{img src="statics/icons/btn_adj_buy.gif" alt="您可以单把独这个商品加入购物车"}></a></td>
         <td>
           <input type='hidden' name='goods[adjunct][<{$adj_key}>][<{$items.product_id}>]' value='' disabled='true'/>
@@ -566,7 +566,7 @@
 
 
 <{if $goods.intro}>
-<div class="section pdtdetail" tab="商品详情">
+<div class="section pdtdetail" tab="Details">
 
 <div class="goodsprop_ultra clearfix">
     <{if $goodspropposition<>1}>
@@ -598,8 +598,8 @@
 
 
 <{if count($goods.params)>0 && $goods.params}>
-<div class="section pdtdetail" tab="详细参数" >
-<h2><{t}>详细参数<{/t}></h2>
+<div class="section pdtdetail" tab="Params" >
+<h2><{t}>Params<{/t}></h2>
 <div class="body"  id="goods-params">
 <table width="100%" cellpadding="0" cellspacing="0" class="liststyle data">
 <col class="span-4 ColColorGray fontcolorBlack"></col>
@@ -618,8 +618,8 @@
 
 
 <{if $goods.link_count > 0}>
-<div class="section pdtdetail" tab="相关商品">
-<h2><{t}>相关商品<{/t}></h2>
+<div class="section pdtdetail" tab="Related">
+<h2><{t}>Related<{/t}></h2>
 <div class="body" id="goods-rels">
   <div class="GoodsSearchWrap">
     <table width="100%" border="0" cellpadding="0" cellspacing="6">

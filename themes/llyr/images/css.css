@@ -1,0 +1,262 @@
+﻿@import url("border.css");
+@import url("widget.css");
+
+body {
+  	background:url(bg.jpg) no-repeat center 0;
+	font-family: "Tahoma", "Arial", "Helvetica", "sans-serif";
+	font-size: 12px;
+	color: #666666;
+	margin:0;
+}
+#AllWrap{
+	width:960px; 
+	margin:0 auto;
+}
+
+#Top{
+	width:960px;
+    margin:20px auto 8px;
+}
+#Logo{
+	float:left;
+  	width:200px;
+    margin:0 0 0 18px;
+}
+#TopLinks{
+  	clear:right;
+	float:right;
+    margin:10px 20px 0 0;
+    text-align:right;
+    line-height:120%;
+}
+
+
+																					
+/*=主菜单
+=============================================================================================*/
+#MenuWrap{
+  	background:url(menu_bg.jpg) repeat-x;
+	height:39px;
+  	line-height:39px;
+    overflow:hidden;
+    margin-bottom:5px;
+}
+#Menu{
+  	width:960px;
+    margin:0 auto;
+    overflow:hidden;
+  	background:url(menu_bg.jpg) no-repeat;
+    text-align:center;
+}
+#Menu .lbg, #Menu .rbg, #Menu .cbg, #Menu li{
+    overflow:hidden;
+  	background:url(menu_bg.jpg) no-repeat;
+  	display:inline-block;
+    display:-moz-inline-stack;
+    *display:inline;
+    zoom:1;
+}
+#Menu .cbg{
+    min-width:90px;
+}
+#Menu ul{
+  	display:inline;
+}
+#Menu .lbg{
+  	width:98px;
+  	background-position:0 -39px;
+}
+#Menu .rbg{
+  	width:98px;
+  	background-position:0 -78px;
+}
+#Menu li{
+  	width:92px;
+  	background-position:0 -117px;
+    text-align:center;
+    *position:relative;
+    *top:-2px;
+    _top:-1px;
+}
+#Menu li a{
+  	*position:relative;
+    *left:-13px;
+	color:#FFFFFF;
+  	font-weight:bold;
+    overflow:hidden;
+}
+
+	
+/*=热卖商品区域
+=============================================================================================*/
+.hotwrap{
+  	margin-bottom:7px;
+}
+.hotwrap .top{
+  	background:url(hot_bg.gif) no-repeat;
+    padding-left:10px;
+    height:5px;
+}
+.hotwrap .top .bd{
+  	background:url(hot_bg.gif) no-repeat right 0;
+    padding-right:10px;
+    height:5px;
+    position:relative;
+}
+.hotwrap .body{
+  	background:url(hot_bg.gif) no-repeat 0 bottom;
+    padding-left:5px;
+}
+.hotwrap .body .bd{
+  	background:url(hot_bg.gif) no-repeat right bottom;
+    padding:0 5px 3px 0;
+    position:relative;
+}
+.hotwrap h3.title{
+  	clear:both;
+  	background:url(hot_t.gif) no-repeat;
+    position:absolute;
+    left:-5px;
+    top:-10px;
+    _top:-19px;
+    text-indent:-9999px;
+    width:43px;
+    height:42px;
+    z-index:99;
+}
+.hotwrap .body .span-6{
+  	background:url(hot_bg2.gif) no-repeat right 0;
+    padding:10px 23px 0 0;
+    margin:-5px 2px 0 0;
+    _top:-9px;
+    position:relative;
+    z-index:3;
+}
+.hotwrap .AdvBanner{
+  	float:left;
+}
+.hotwrap .body .last{
+  	padding-right:0;
+    margin-right:0;
+    background:none;
+}
+
+
+/*=首页商品列表
+=============================================================================================*/
+.goodsliststyle1{ margin:0 0 10px 0; padding:0 3px 0 0; background:#BCABF2 url(b6_bg.gif) no-repeat right bottom;}
+.goodsliststyle1 .bg{ background:#BCABF2 url(b6_bg.gif) no-repeat; padding:0;}
+.goodsliststyle1 .listimg{ width:150px; padding-top:50px;}
+
+.goodsliststyle2{ margin:0 0 10px 0; padding:0 3px 0 0; background:#FFA6B7 url(b7_bg.gif) no-repeat right bottom;}
+.goodsliststyle2 .bg{ background:#FFA6B7 url(b7_bg.gif) no-repeat; padding:2px 0 0;}
+.goodsliststyle2 .listimg{ width:150px; padding-top:50px;}
+
+.goodsliststyle3{ margin:0 0 10px 0; padding:0 3px 0 0; background:#EDC893 url(b8_bg.gif) no-repeat right bottom;}
+.goodsliststyle3 .bg{ background:#EDC893 url(b8_bg.gif) no-repeat; padding:2px 0 0;}
+.goodsliststyle3 .listimg{ width:150px; padding-top:50px;}
+/*=底部文章
+=============================================================================================*/
+.fawrap{
+  	border:3px solid #dadada;
+}
+.fawrap .span-6{
+  	width:250px;
+    border-right:1px solid #efefef;
+    margin:5px;
+    *display:inline;
+}
+.fawrap .last{
+  	width:210px;
+    border:none;
+}
+/*首页底部快捷链接*/
+#qlinks{
+  	padding:25px 0 0 0;
+    width:165px;
+    margin:0 auto;
+}
+#qlinks li{
+  	float:left;
+    background:url(qlinks.jpg) no-repeat;
+}
+#qlinks li a{
+  	width:55px;
+    height:68px;
+  	display:block;
+  	text-indent:-9999px;
+}
+#qlinks .q1{
+  	background-position:0 0;
+}
+#qlinks .q2{
+  	background-position:-55px 0;
+}
+#qlinks .q3{
+  	background-position:-110px 0;
+}
+#qlinks .q4{
+  	background-position:0 -68px;
+}
+#qlinks .q5{
+  	background-position:-55px -68px;
+}
+#qlinks .q6{
+  	background-position:-110px -68px;
+}
+/*=显示底部区域
+=============================================================================================*/
+#Foot{
+	width:960px;
+	margin:0 auto;
+}
+#FootLinksWrap{
+  	margin-top:40px;
+    background:#f6f6f6;
+    border-top:1px solid #dcdcdc;
+    border-bottom:1px solid #c2c2c2;
+}
+#FootLinks{
+  	width:820px;
+    margin:0 auto;
+    padding:15px 20px 10px 120px;
+    line-height:180%;
+}
+#FootLinks .TreeList{
+	float:left;
+    width:20%;
+}
+#FootLinks .TreeList .cat1{
+	font-weight:bold;
+    color:#656565;
+    padding:3px 0 10px;
+}
+#FootLinks .TreeList .cat2{
+	background:url(arrs.gif) no-repeat 0 -22px;
+    margin-left:10px;
+}
+
+
+
+#FootMenu{
+   margin:10px 0;
+}
+#FootMenu .menu a{
+   color:#828282;
+}
+#FootMenu .TreeList{
+	overflow:hidden;
+    text-align:center;
+}
+#FootMenu .TreeList div{
+	font-weight:normal;
+	display:inline;
+	padding:0 10px;
+	border-right:1px solid #CCCCCC;
+}
+#Copyright *{
+	text-align:center;
+}
+.cut{
+	overflow:hidden;
+}

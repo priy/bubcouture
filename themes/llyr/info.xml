@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>靓丽伊人</name>
+	<id>llyr</id>
+	<version>ShopEx4.8</version>
+	<info></info>
+	<author>ShopEx</author>
+	<site>http://www.shopex.cn</site>
+	<update_url></update_url>
+	<borders>
+		<set key="边栏样式" tpl="borders/border1.html" />
+		<set key="商品分类" tpl="borders/border2.html" />
+		<set key="商店公告" tpl="borders/border3.html" />
+		<set key="促销信息" tpl="borders/border4.html" />
+		<set key="热卖商品" tpl="borders/border5.html" />
+		<set key="首页商品列表" tpl="borders/border6.html" />
+		<set key="页尾文章列表" tpl="borders/border9.html" />
+	</borders>
+	<views></views>
+	<config></config>
+</theme>

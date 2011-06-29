@@ -1,0 +1,147 @@
+﻿/*默认样式
+/*=============================================================================================*/
+.border1{
+	padding:5px;
+    margin-bottom:15px;
+}
+.border1 h3{
+    font-size:14px;
+    background:url(b1.gif) no-repeat;
+    padding:0 0 0 27px;
+    height:27px;
+    line-height:25px;
+    color:#ac5816;
+}
+   
+.border1 .GoodsList{
+	text-align:center;
+}
+.border1 .GoodsListWrap .itemsWrap{
+	border-right:1px dotted #CCCCCC;
+    margin-bottom:20px;
+}
+.border1 .GoodsListWrap .last{
+	border:none;
+}
+/* 边栏样式
+/*=============================================================================================*/
+.border2{
+	margin-bottom:10px;
+    border-bottom:1px solid #e5e5e5;
+}
+.border2 h3{
+	font-size:14px;
+    color:#ffffff;
+    margin:0;
+    padding:0;
+}
+.border2 .border-top{
+    background:url(b2.gif) no-repeat;
+    height:25px;
+    line-height:28px;
+    padding-left:12px;
+}
+.border2 .border-top .bg{
+    background:url(b2.gif) no-repeat right 0;
+}     
+.border2 .border-body{
+	background:url(b2bg.gif) repeat-y;
+    padding:0 0 1px 10px;
+}
+.border2 .border-body .bg{
+	background:url(b2bg.gif) repeat-y right 0;
+    padding:10px 10px 5px 0;
+}
+
+
+.border2 .GoodsList{
+	text-align:center;
+}
+.border2 .GoodsList .item{
+	padding-top:10px;
+    padding-bottom:10px;
+    background:url(dotted.gif) repeat-x 0 bottom;
+}
+/* 边栏样式2
+/*=============================================================================================*/
+.border3{
+	margin-bottom:10px;
+}
+.border3 h3{
+	font-family:"微软雅黑",Tahoma,Arial;
+    font-size:14px;
+    line-height:14px;
+    color:#904305;
+    text-align:center;
+    border-bottom:2px solid #e2e2e2;
+    padding:4px 0 10px 0;
+    margin:0 0 10px 0;
+}
+.border3 .border-top{
+    background:url(b3.gif) no-repeat;
+    height:9px;
+    overflow:hidden;
+    padding-left:10px;
+}
+.border3 .border-top .bg{
+    background:url(b3.gif) no-repeat right 0;
+    height:9px;
+}
+.border3 .border-body{
+	background:url(b2bg.gif) repeat-y;
+    padding:0 0 0 10px;
+}
+.border3 .border-body .bg{
+	background:url(b2bg.gif) repeat-y right 0;
+    padding:0 10px 0 0;
+}
+.border3 .border-foot{
+    background:url(b3.gif) no-repeat 0 -20px;
+    height:9px;
+    overflow:hidden;
+    padding-left:10px;
+}
+.border3 .border-foot .bg{
+    background:url(b3.gif) no-repeat right -20px;
+    padding-top:10px;
+    height:9px;
+}
+
+
+.border3 .GoodsList{
+	text-align:center;
+}
+/*默认样式
+/*=============================================================================================*/
+.border4{
+	padding:3px;
+    border:1px solid #e1e1e1;
+    *height:1%;
+    margin:5px 0;
+}
+.border4 h3{
+    font-size:14px;
+    color:#ac5816;
+}
+   
+.border4 .GoodsList{
+	text-align:center;
+}
+
+/*misc
+/*=============================================================================================*/
+#qlinks{
+	border:none;
+    overflow:hidden;
+    margin-bottom:8px;
+}
+#qlinks .TreeList .cat1{
+	white-space:nowrap;
+    overflow:hidden;
+    font-weight:normal;
+    text-overflow:ellipsis;
+	background:url(arrs.gif) no-repeat 0 6px;
+    padding:0 0 0 12px;
+    float:left;
+    width:26%;
+}

@@ -28,8 +28,7 @@ class shopex_stat_listener extends pageFactory{
              }
              else {
                  $info_v['from'] = 'admin';
-				 $status =  &$this->system->loadModel("system/status");
-                 $status->set('site.orderinfo',serialize($info_v));
+                 $this->system->setConf('site.orderinfo',serialize($info_v));
              }
        }
     }
@@ -47,8 +46,7 @@ class shopex_stat_listener extends pageFactory{
         }
         if ($order_data){
            $info_v = array('order_id'=>$order_data['order_id'],'status'=>$pay_status);
-		   $status =  &$this->system->loadModel("system/status");
-           $status->set('site.payinfo',serialize($info_v));
+           $this->system->setConf('site.payinfo',serialize($info_v));
          }
     }
 
@@ -65,8 +63,8 @@ class shopex_stat_listener extends pageFactory{
 
         if ($order_data){
             $info_v = array('order_id'=>$order_data['order_id'],'ship_status'=>$ship_status);
-		    $status =  &$this->system->loadModel("system/status");
-            $status->set('site.goods_status',serialize($info_v));
+            //$result = setcookie(COOKIE_PFIX."[SHOPEX_STATINFO]", serialize($info_v),0,"/");
+            $this->system->setConf('site.goods_status',serialize($info_v));
 
           }
     }
@@ -98,8 +96,8 @@ class shopex_stat_listener extends pageFactory{
            else {$money='undo';}
 
            $info_money = array('uid'=>$money_data['member_id'],'money'=>$money);
-		   $status =  &$this->system->loadModel("system/status");
-           $status->set('addmoney',$info_money);
+
+           $this->system->setconf('addmoney',$info_money);
         }
   }
 

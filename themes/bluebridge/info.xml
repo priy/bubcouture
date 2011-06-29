@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+  <name>水岸蓝桥</name>
+  <id>bluebridge</id>
+  <version>ShopEx4.8</version>
+  <info></info>
+  <author>ShopEx</author>
+  <site>http://www.shopex.cn</site>
+  <update_url></update_url>
+  <borders>
+    <set key="1像素灰色边框" tpl="borders/1pxGrayBorder.html" />
+    <set key="底部文章列表边框" tpl="borders/border4.html" />
+    <set key="通用灰色背景边框" tpl="borders/border_darkblue.html" />
+    <set key="通用无色边框" tpl="borders/border_lightgreen.html" />
+    <set key="通用圆角灰色边框" tpl="borders/border_conergray.html" />
+  </borders>
+  <views></views>
+  <config></config>
+</theme>

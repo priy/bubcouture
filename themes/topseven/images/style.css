@@ -1,0 +1,17 @@
+.btn-fastbuy {
+    background: url("btn-fastbuy.png") repeat scroll 0 0 transparent;
+    float: left;
+    margin-right: 5px;
+    width: 120px;
+}
+.btn-buy {
+    background: url("btn-buy.png") repeat scroll 0 0 transparent;
+    float: left;
+    width: 120px;
+}
+.CartWrap .CartNav {
+    background:none;
+    height: 64px;
+    padding-right: 10px;
+}
+

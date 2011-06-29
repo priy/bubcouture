@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+  <name>简着主义</name>
+  <id>jzzy</id>
+  <version>ShopEx4.8</version>
+  <info>ShopEx</info>
+  <author>shopex</author>
+  <site>http://www.shopex.cn</site>
+  <update_url></update_url>
+  <borders>
+    <set key="默认样式" tpl="borders/border12.html" />
+    <set key="深蓝色边框" tpl="borders/border1.html" />
+    <set key="亮灰色边框" tpl="borders/border2.html" />
+    <set key="灰色边框" tpl="borders/border3.html" />
+    <set key="靛蓝色边框" tpl="borders/border4.html" />
+    <set key="亮红色边框" tpl="borders/border5.html" />
+    <set key="橙色边框" tpl="borders/border6.html" />
+    <set key="亮绿色边框" tpl="borders/border7.html" />
+    <set key="圆角灰色边框" tpl="borders/border8.html" />
+    <set key="水晶蓝色背景" tpl="borders/border9.html" />
+    <set key="水晶橙色背景" tpl="borders/border10.html" />
+    <set key="水晶灰色背景" tpl="borders/border11.html" />
+	<set key="联系我们背景" tpl="borders/border13.html" />
+	<set key="即时通讯背景" tpl="borders/border14.html" />
+	
+  </borders>
+  <views></views>
+  <config></config>
+</theme>

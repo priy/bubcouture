@@ -1,0 +1,2 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme><name>风尚前线</name><id>fsqx</id><version>ShopEx4.8</version><info></info><author>ShopEx</author><site>http://www.shopex.cn</site><update_url></update_url><borders><set key="默认" tpl="borders/border1.html" /><set key="粗边框" tpl="borders/border2.html" /><set key="主区域头部" tpl="borders/border3.html" /><set key="大列表" tpl="borders/border4.html" /><set key="底部文章" tpl="borders/border5.html" /><set key="帮助中心" tpl="borders/border6.html" /></borders><views></views><config></config></theme>

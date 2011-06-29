@@ -1,13 +1,13 @@
 
 <div class="ArticleDetailsWrap">
   <h2 class="textcenter"><{$article.title}></h2><a href="<{link ctl=article act=showList arg0=$cat.cat_id}>"><{$cat.cat_info}></a>
-  <div class=" textcenter fontnormal fontcolorGray pubdate"><{t}>发布日期：<{/t}><{$article.uptime|userdate}></div>
+  <div class=" textcenter fontnormal fontcolorGray pubdate"><{t}>Publish Date:<{/t}><{$article.uptime|userdate}></div>
   <hr  />
 
   <p><{$article.content}></p>
   <{if $goods}>
-<div class="section" tab="相关商品">
-	<h2 ><{t}>相关商品<{/t}></h2>
+<div class="section" tab="Relate Goods">
+	<h2 ><{t}>Relate Goods<{/t}></h2>
 	<div class='num_left' style="width:12px;height:250px;margin-top:2px;border:1px solid #ccc;float:left;cursor:pointer;background:transparent url(statics/scollpicarrow.gif) no-repeat scroll 0 50%;"></div>
 	<div class="num_right" style="width:12px;height:250px;margin-top:2px;border:1px solid #ccc;float:right;cursor:pointer;;background:transparent url(statics/scollpicarrow.gif) no-repeat scroll 0 50%;background-position:100% 50%;"></div>
 <div class="body" id="goods-rels" style="overflow:hidden;height:260px;width:95%;">

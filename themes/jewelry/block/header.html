@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<{header}>
+<link rel="stylesheet" type="text/css" href="images/css.css" />
+
+</head><body>
+<div class="AllWrap">
+  <div class="headerInfo">
+    <div class="logo" id="logo"><{widgets id="logo"}></div>
+    <div class="topMenu"><{widgets id="t1"}></div>
+    <div class="info fontcolorRed font20px fontbold"><{widgets id="t2"}></div>
+    <div class="cartBar"><{widgets id="cartBar"}></div>
+    <div class="topbtn"><{widgets id="topnews"}></div>
+    <div class="menu clearfix"><{widgets id="menu"}></div>
+    <div class="submenu clearfix"><{widgets id="submenu"}></div>
+    <div class="headerSearchBar">
+      <div class="span-9 last"><{widgets id="search"}></div>
+      <div class="span-7 textnowrap" style="overflow:hidden; margin-top:3px"><{widgets id="searchkeywords"}></div>
+    </div>
+    <div class="loginBar"><{widgets id="loginBar"}></div>
+  </div>
+</div>
+<script>
+if($E('.topbtn .ArticleListWrap li')){
+	
+	var articleHeight=$E('.topbtn .ArticleListWrap').getSize().y;
+	var artNum=$ES('.topbtn .ArticleListWrap li').length;
+	var artNumHeight=$E('.topbtn .ArticleListWrap li').getSize().y;
+	$E('.topbtn .ArticleListWrap').setStyle('top',0);
+    var i=1;
+	function topArtMove(){
+		
+		if(i<artNum){
+		$E('.topbtn .ArticleListWrap').tween('top',-artNumHeight*i);		
+		}
+		else{
+		$E('.topbtn .ArticleListWrap').tween('top',0);
+		i=0
+			}
+		i++;
+	}
+	var topArtMoveInterval=setInterval("topArtMove()",3000);
+}
+</script>

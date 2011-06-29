@@ -1,0 +1,18 @@
+﻿.headerInfo{  background:url(bodytop.gif);}
+.headerInfo  .menu  li   { background:url(menulisep.gif) right 50% no-repeat}
+.headerInfo  .menu li a:hover  { background:url(menuover.gif); color:#fff; }
+.SearchBar .btn_search{	background:url(btn-search.gif) no-repeat;}
+
+.topMainBannerArea .top{ background:url(maintopbanner-t.gif); height:12px;}
+.topMainBannerArea .bg{ background:url(maintopbanner-bg.gif); padding:0 8px;}
+.topMainBannerArea .bottom{ background:url(maintopbanner-b.gif); height:12px;}
+
+.coloredbg .t{ background:url(coloredbg-top.gif)}
+.coloredbg .b{ background:url(coloredbg-bg.gif)}
+.coloredbg .bo{ background:url(coloredbg-bottom.gif)}
+
+.Article-Tabs .current,
+.GoodsList-Tabs .current{ background:url(tabcurrnet.gif) no-repeat;}
+
+.siderCommonBorder{}
+.siderCommonBorder .top{background:url(siderCommonBorderTitle-purple.gif)}

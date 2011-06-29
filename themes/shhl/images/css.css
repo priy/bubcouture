@@ -1,0 +1,268 @@
+
+@import url("border.css");
+@import url("widget.css");
+
+
+body{
+	font-size:12px;
+	font-family: Verdana, Arial, Helvetica, sans-serif;
+	margin:0;
+	color:#333;
+}
+#AllWrap{
+	width:1000px;
+	margin:0 auto;
+}
+#Top{
+	height:76px;
+	position:relative;
+}
+#Logo{
+	float:left;
+	width:200px;
+}
+#Top .menuwrap{
+	margin-left:230px;
+	margin-top:16px;
+}
+#TopMenu{
+	position:absolute;
+	bottom:35px;
+}
+#TopMenu ul li{
+	display:block;
+	background:url(top_wh2.gif) no-repeat;
+	width:85px;
+	height:23px;
+	line-height:23px;
+	text-align:center;
+	margin:0 5px;
+	float:left;
+}
+#TopMenu ul li a{
+	background:url(cc1.gif) no-repeat 0 3px;
+	padding-left:15px;
+	text-decoration:none;
+	color:#333;
+}
+#Menu{
+	position:absolute;
+	bottom:0;
+	margin-bottom:-2px;
+}
+#Menu ul li{
+	margin:0 1px;
+	float:left;
+}
+#Menu ul li a{
+	display:block;
+	background:url(top_menu_left_bg1.gif) no-repeat;
+	width:78px;
+	height:27px;
+	color:#333;
+	line-height:27px;
+	text-align:center;
+	text-decoration:none;
+	font-weight:bold;}
+#Menu ul li a:hover{
+	background:url(top_menu_active_left_bg1.gif) no-repeat;
+	width:78px;
+	height:27px;
+}	
+		
+#SearchWrap{
+	background:url(first_section_bg1.gif) repeat-x;
+	height:38px;
+	border:1px solid #646464;
+	border-bottom:none;
+}
+#Search{	
+	padding:8px;
+}
+#Search .SearchBar{
+	float:left;
+	width:70%;
+}
+#Search .btn_search{
+	border:none;
+	background:url(btn_search.gif) no-repeat;
+	height:20px;
+	width:43px;
+	cursor:pointer;
+	color:#8d723c;
+	text-indent:-9999px;
+	*text-indent:0;
+	*font-size:-1;
+	*line-height:9999px;
+}
+
+#InfoWrap{
+	background:#38475E;
+	padding:2px;
+	padding-left:20px;
+	color:#FFFFFF;
+}
+#InfoWrap .ArticleList{
+	overflow:hidden;
+}
+#InfoWrap .ArticleList li{
+	float:left;
+	width:150px;
+	background:none;
+}
+#InfoWrap .ArticleList a{
+	color:#FFFFFF;
+	background:none;
+	padding-left:3px;
+}
+
+#TopMenu .TreeList div{
+	display:block;
+	background:url(top_wh2.gif) no-repeat;
+	width:85px;
+	height:23px;
+	line-height:23px;
+	text-align:center;
+	margin:0 5px;
+	float:left;
+  	overflow:hidden;
+}
+#TopMenu .TreeList a{
+	background:url(cc1.gif) no-repeat 0 3px;
+	padding-left:15px;
+	text-decoration:none;
+	color:#333;
+   	overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+}
+
+
+#SubMenu {
+	clear:both;
+	background:url(third_section_bg1.gif) repeat-x;
+	height:22px;
+	border-left:1px solid #38475E;
+	border-right:1px solid #38475E;
+	text-align:center;
+	padding:10px 0;
+	margin-bottom:5px;
+}
+#SubMenu ul li,
+#SubMenu .TreeList div{
+	display:inline-block;
+	display:-moz-inline-stack;
+	*display:inline;
+	zoom:1;
+	background:url(top_wh2.gif) no-repeat;
+	width:85px;
+	height:23px;
+	line-height:23px;
+	margin:0 5px;
+	text-align:left;
+}
+#SubMenu ul li a,
+#SubMenu .TreeList a{
+	background-position:10px 5px !important;
+	background:url(cc1.gif) no-repeat 10px 3px;
+	padding-top:2px !important;
+	padding-left:25px;
+	color:#333;
+	text-decoration:none;
+ 	overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+#SubMenu ul li a:hover{
+	color:#FF9900;
+}
+	
+	
+
+#LeftColumn,
+#RightColumn{
+	*display:inline;
+	width:200px;
+	float:left;
+}
+#Main{
+	*display:inline;
+	float:left;
+	width:587px;
+	margin:0 6px;
+	overflow:hidden;
+}
+#InnerRightColumn{
+	*dispaly:inline;
+	width:787px;
+	overflow:hidden;
+	float:left;
+	margin:0 0 0 5px;
+}
+
+	
+#flashcontent{
+	text-align:center;
+	margin:0 0 10px 0;
+}	
+	
+
+		
+		
+
+			#Main .adbanner{
+			height:132px;
+			text-align:center;
+			font-size:15px;
+			line-height:132px;}
+			
+			#Main .pro{
+			margin-top:5px;}
+				#Main .pro .title{
+				background:url(software.jpg) no-repeat;
+				height:48px;
+				text-indent:-999px;}
+				
+				#Main .pro .probox{
+				border:1px solid #ccc;
+				border-right:none;
+				}
+				#Main .pro .probox .prolist{
+				border-bottom:1px dotted #ccc;
+				border-right:1px solid #ccc;
+				width:200px;
+				float:left;
+				margin-left:2px;}
+				#Main .pro .probox .prolist img{	padding-left:30px;}
+				#Main .pro .probox .prolist .proname{
+				text-align:center;
+				color:#FF6600;
+				font-weight:bold;}
+				#Main .pro .probox .prolist ul li{
+				background:url(double_arrow_right.gif) no-repeat;
+				padding-left:20px;
+				background-position:2px;}
+
+
+
+
+#Foot{
+	clear:both;
+	margin-top:10px;
+}
+#Foot{
+	border:1px solid #CCCCCC;
+	background:url(left_1.jpg) repeat-x;
+  	padding:0 0 10px 80px;
+}
+#Foot .TreeList{
+  	float:left;
+    width:24%;
+	line-height:20px;
+}
+#Foot .TreeList .cat1{
+  	font-weight:bold;
+    margin:2px 0 8px 0;
+}
+		

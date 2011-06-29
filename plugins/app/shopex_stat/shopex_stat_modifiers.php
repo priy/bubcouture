@@ -13,10 +13,8 @@ class shopex_stat_modifiers extends pageFactory{
 
     function print_footer( &$content ){
 
-        $status = &$this->system->loadModel('system/status');
-        $status->set('site.rsc_rpc','1');
-
-        if($status->get('site.rsc_rpc')&&defined('RSC_RPC') && ($certificate = $this->system->getConf('certificate.id'))){
+        $this->system->setConf('site.rsc_rpc','1');
+        if($this->system->getConf('site.rsc_rpc')&&defined('RSC_RPC') && ($certificate = $this->system->getConf('certificate.id'))){
             $p = '';
 
             if (isset($_COOKIE["SHOPEX_STATINFO"])){
@@ -25,30 +23,30 @@ class shopex_stat_modifiers extends pageFactory{
                 }
             }
              //后台订单
-            if($status->get('site.orderinfo')){
-                $orderinfo = unserialize($status->get('site.orderinfo'));
+            if($this->system->getConf('site.orderinfo')){
+                $orderinfo = unserialize($this->system->getConf('site.orderinfo'));
                 foreach ($orderinfo as $key=>$value){
                  $p .= '&'.$key."=".urlencode($value);
                 }
             }
 
              //后台添加用户
-            if($status->get('site.addmenbyadmin')){
-                $userinfo = unserialize($status->get('site.addmenbyadmin'));
+            if($this->system->getConf('site.addmenbyadmin')){
+                $userinfo = unserialize($this->system->getConf('site.addmenbyadmin'));
                 foreach ($userinfo as $key=>$value){
                  $p .= '&'.$key."=".urlencode($value);
                 }
             }
 
-            if($status->get('site.payinfo')){
-              $payinfo = unserialize($status->get('site.payinfo'));
+            if($this->system->getConf('site.payinfo')){
+              $payinfo = unserialize($this->system->getConf('site.payinfo'));
               foreach ($payinfo as $key=>$value){
                   $p .= '&'.$key."=".urlencode($value);
                 }
             }
 
-            if($status->get('site.goods_status')){
-              $goods_status = unserialize($status->get('site.goods_status'));
+            if($this->system->getConf('site.goods_status')){
+              $goods_status = unserialize($this->system->getConf('site.goods_status'));
               foreach ($goods_status as $key=>$value){
                    $p .= '&'.$key."=".urlencode($value);
                }
@@ -129,11 +127,11 @@ class shopex_stat_modifiers extends pageFactory{
         $result = setcookie(COOKIE_PFIX."[SHOPEX_STATINFO]", "",0,"/");
         $result = setcookie(COOKIE_PFIX."[SHOPEX_STATINFO_GOODS]", "",0,"/");
 
-        $status->set('site.orderinfo','');
-        $status->set('site.addmenbyadmin','');
-        $status->set('site.goods_status','');
-        $status->set('addmoney','');
-        $status->set('site.payinfo','');
+        $this->system->setConf('site.orderinfo','');
+        $this->system->setConf('site.addmenbyadmin','');
+        $this->system->setConf('site.goods_status','');
+        $this->system->setConf('addmoney','');
+        $this->system->setConf('site.payinfo','');
         return str_replace('</body>',$RSC_RPC_STR.'</body>',$content);
         //$p = '';
     }

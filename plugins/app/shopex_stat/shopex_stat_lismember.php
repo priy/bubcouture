@@ -16,8 +16,7 @@ class shopex_stat_lismember extends ctl_member{
         $name = $_POST['uname'];
         $stuats = 'back';
         $info_mem = array('aid'=>$id,'aname'=>$name,'style'=>$stuats);
-        $status =  &$this->system->loadModel("system/status");
-        $status->set('site.addmenbyadmin',serialize($info_mem));
+        $this->system->setConf('site.addmenbyadmin',serialize($info_mem));
 
     }
 }

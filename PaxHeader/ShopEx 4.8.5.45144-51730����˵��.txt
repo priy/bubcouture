@@ -1,0 +1,6 @@
+57 path=www/ShopEx 4.8.5.45144-51730Éý¼¶ËµÃ÷.txt
+20 ctime=1306247491
+20 atime=1309266106
+18 SCHILY.dev=102
+22 SCHILY.ino=1015553
+18 SCHILY.nlink=1

@@ -2,17 +2,17 @@
 
 <{if $env.cookie.MEMBER}>
 <ul id="memberBar_<{$widgets_id}>">
-  <li>欢迎您,<span id="uname_<{$widgets_id}>"><{$env.cookie.UNAME}></span>！</li>
-  <li class="buttonbar"><a href="<{link ctl=member act=index}>"><{t}>[会员中心]<{/t}></a>|<a href="<{link ctl=passport act=logout}>"><{t}>[退出]<{/t}></a></li>
+  <li>Welcome,<span id="uname_<{$widgets_id}>"><{$env.cookie.UNAME}></span>！</li>
+  <li class="buttonbar"><a href="<{link ctl=member act=index}>"><{t}>[User Center]<{/t}></a>|<a href="<{link ctl=passport act=logout}>"><{t}>[Logout]<{/t}></a></li>
 </ul>
 <{else}>
 <form action="./?passport-verify.html" method="post" id="loginBar_<{$widgets_id}>" class='member-loginform'>
   <div class="inputarea">
-    <label for="in_login">用户名：</label><input type="text" id="in_login" name="login" class="inputstyle userinput"/><br />
-    <label for="in_passwd">密&nbsp;&nbsp;&nbsp;&nbsp;码：</label><input type="password" id="in_passwd" name="passwd" class="inputstyle userinput"/><br />
+    <label for="in_login">Name:</label><input type="text" id="in_login" name="login" class="inputstyle userinput"/><br />
+    <label for="in_passwd">Password:</label><input type="password" id="in_passwd" name="passwd" class="inputstyle userinput"/><br />
   <{if $data.valideCode}>
-    <label for="in_vcode">验证码：</label><span id='verifyCodebox_<{$widgets_id}>'><{input style='width:40px;' class="inputstyle"  type="digits" required="true" name="loginverifycode" id="iptlogin"  tabindex="3"}><span class='verifyCode' style='display:none;'><img src="#" border="1" id="LoginimgVerifyCode_<{$widgets_id}>"/><br />
-<a href="javascript:changeimg_<{$widgets_id}>()">看不清楚?换个图片</a>
+    <label for="in_vcode">Code:</label><span id='verifyCodebox_<{$widgets_id}>'><{input style='width:40px;' class="inputstyle"  type="digits" required="true" name="loginverifycode" id="iptlogin"  tabindex="3"}><span class='verifyCode' style='display:none;'><img src="#" border="1" id="LoginimgVerifyCode_<{$widgets_id}>"/><br />
+<a href="javascript:changeimg_<{$widgets_id}>()">Refresh Image</a>
                </span>
 			   </span>
 
@@ -22,7 +22,7 @@
   <div class="buttonbar">
     <div class="reg"><{foreach from=$data.login_content item=login}>
 	<{$login}>|
-	<{/foreach}><a href = "<{link ctl='passport' act='signup'}>"><{t}>[免费注册]<{/t}></a>|<a href = "<{link ctl='passport' act='lost'}>"><{t}>忘记密码?<{/t}></a></div>
+	<{/foreach}><a href = "<{link ctl='passport' act='signup'}>"><{t}>[Regist]<{/t}></a>|<a href = "<{link ctl='passport' act='lost'}>"><{t}>Forgot Password?<{/t}></a></div>
   </div>
   </form>
 <{/if}>

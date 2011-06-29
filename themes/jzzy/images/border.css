@@ -1,0 +1,189 @@
+﻿/* 边框1*/
+/*=============================================================================================*/
+.BorderOne{
+	margin:3px;
+}
+		.BorderOne h3{
+			color:#fff;
+			margin:0;
+			padding:0;
+			line-height:25px;
+			font-size:12px;
+		}
+		.BorderOne .Border-top{
+			background:url(BorderOne.gif) no-repeat;
+			height:25px;
+		}
+				.BorderOne .Border-top .bg{
+					background:url(BorderOne.gif) no-repeat right 0;
+					height:25px;
+					margin-left:10px;
+				}
+				
+		.BorderOne .Border-body{
+			background:url(BorderOnebg.gif) repeat-y;
+			margin-right:0 2px;
+		}
+				.BorderOne .Border-body .bg{
+					background:url(BorderOnebg.gif) repeat-y right 0;
+					margin-left:2px;
+					padding:5px;
+				}
+		.BorderOne .Border-foot{
+			background:url(BorderOne.gif) no-repeat 0 -200px;
+			height:14px;
+		}
+				.BorderOne .Border-foot .bg{
+					background:url(BorderOne.gif) no-repeat right -200px;
+					height:14px;
+					margin-left:10px;
+				}
+
+/* 不同边框的颜色*/				
+		.BorderOne .gray{
+			background:url(BorderOne.gif) no-repeat 0 -25px;
+		}
+				.BorderOne .gray .bg{
+					background:url(BorderOne.gif) no-repeat right -25px;
+				}
+				.BorderOne .gray h3{
+					color:#000;
+				}					
+		.BorderOne .LightGray{
+			background:url(BorderOne.gif) no-repeat 0 -50px;
+		}
+				.BorderOne .LightGray .bg{
+					background:url(BorderOne.gif) no-repeat right -50px;
+				}
+				.BorderOne .LightGray h3{
+					color:#000;
+				}									
+				
+		.BorderOne .blue{
+			background:url(BorderOne.gif) no-repeat 0 -75px;
+		}
+				.BorderOne .blue .bg{
+					background:url(BorderOne.gif) no-repeat right -75px;
+				}				
+		.BorderOne .red{
+			background:url(BorderOne.gif) no-repeat 0 -100px;
+		}
+				.BorderOne .red .bg{
+					background:url(BorderOne.gif) no-repeat right -100px;
+				}				
+				
+		.BorderOne .yellow{
+			background:url(BorderOne.gif) no-repeat 0 -125px;
+		}
+				.BorderOne .yellow .bg{
+					background:url(BorderOne.gif) no-repeat right -125px;
+				}
+		.BorderOne .green{
+			background:url(BorderOne.gif) no-repeat 0 -150px;
+		}
+				.BorderOne .green .bg{
+					background:url(BorderOne.gif) no-repeat right -150px;
+				}
+		.BorderOne .white{
+			background:url(BorderOne.gif) no-repeat 0 -175px;
+		}
+				.BorderOne .white .bg{
+					background:url(BorderOne.gif) no-repeat right -175px;
+				}				
+				.BorderOne .white h3{
+					color:#000;
+					
+				}					
+/* 边框2*/
+/*=============================================================================================*/
+
+.BorderTwo{
+	width:158px;
+	height:100px;
+	margin:5px 0;
+	padding:5px;
+}
+		.BorderTwoGray{
+			background:url(BorderTwo.gif) 0 0;
+		}	
+		.BorderTwoBlue{
+			background:url(BorderTwo.gif) 0 -109px;
+		}
+		.BorderTwoOrange{
+			background:url(BorderTwo.gif) 0 -220px;
+		}	
+/* 边框3*/
+/*=============================================================================================*/
+.BorderThree{
+	margin:3px;
+}
+		.BorderThree h3{
+			color:#000;
+			margin:0;
+			padding:0;
+			line-height:33px;
+			font-size:12px;
+		}
+		.BorderThree .Border-top{
+			background:url(BorderThree.gif) no-repeat;
+			height:33px;
+		}
+				.BorderThree .Border-top .bg{
+					background:url(BorderThree.gif) no-repeat right 0;
+					height:33px;
+					margin-left:10px;
+				}
+				
+		.BorderThree .Border-body{
+			background:url(BorderOnebg.gif) repeat-y;
+			margin-right:0 2px;
+
+		}
+				.BorderThree .Border-body .bg{
+					background:url(BorderOnebg.gif) repeat-y right 0;
+					margin-left:2px;
+					text-align:center;
+					padding-top:8px;
+				}
+		.BorderThree .Border-foot{
+			background:url(BorderThree.gif) no-repeat 0 -33px;
+			height:14px;
+		}
+				.BorderThree .Border-foot .bg{
+					background:url(BorderThree.gif) no-repeat right -33px;
+					height:14px;
+					margin-left:10px;
+				}
+
+
+/* 边框-电话联系我们*/
+/*=============================================================================================*/
+.BorderContactus{
+	width:148px;
+	height:90px;
+	margin:5px 0;
+	padding:10px;
+	background:url(BorderTwo.gif) 0 -330px;
+}
+
+.BorderIM{
+	width:158px;
+	height:139px;
+	margin:5px 0;
+	padding:5px;
+	background:url(BorderTwo.gif) 0 -442px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+

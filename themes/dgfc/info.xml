@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+	<name>动感风潮</name>
+	<id>dgfc</id>
+	<version>ShopEx4.8</version>
+	<info></info>
+	<author>ShopEx</author>
+	<site>http://www.shopex.cn</site>
+	<update_url></update_url>
+	<borders>
+		<set key="默认样式" tpl="borders/border1.html" />
+		<set key="站点公告" tpl="borders/border2.html" />
+		<set key="热卖商品" tpl="borders/border3.html" />
+		<set key="商品分类" tpl="borders/border4.html" />
+		<set key="边栏样式" tpl="borders/border5.html" />
+	</borders>
+	<views></views>
+	<config></config>
+</theme>
