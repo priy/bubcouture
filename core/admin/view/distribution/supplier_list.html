@@ -1,0 +1,235 @@
+
+ <table class="finderInform pp" border="0" cellpadding="0" cellspacing="0" width="100%" id='supplier-list'>
+
+<!--<colgroup class="auto"></colgroup>
+
+<colgroup class="span-3"></colgroup>
+<colgroup class="span-3" style="text-align: center;"></colgroup>
+<colgroup class="span-3" style="text-align: center;"></colgroup>
+<colgroup class="span-3"></colgroup>
+<colgroup class="span-2"></colgroup>
+
+<colgroup class="span-2"></colgroup>
+<colgroup class="span-3" ></colgroup>-->
+
+<thead>
+    <tr>
+
+      <th>供应商</th>
+      <th>更新列表</th>
+      <th>同步更新<{help}>此操作是更新供应商的商品操作记录，同步更新完后，您可进入更新列表对供应商的商品数据进行下载、同时对已下载数据进行编辑。<{/help}></th>
+      <th>采购价同步<{help}>此操作是同步供应商的销售价做为供应商相关货品的成本价<{/help}></th>
+      <th>最后同步时间</th>
+      <th>代销商品列表</th>
+      <th>我的采购单</th>
+      <th>商品数据下载<{help}>此下载是将商品连同商品分类一起下载<{/help}></th>
+
+    </tr>
+  </thead>
+  <tbody>
+    
+  <{foreach from=$supplier item=sitem}>
+  <tr supplierid="<{$sitem.supplier_id}>">
+     <td class="<!--<{if $sitem.status == 1}>ColColorGreen<{else}>ColColorRed<{/if}>-->"><{$sitem.supplier_brief_name}> <!--(<{$status[$sitem.status]}>)--><input type='hidden' class='supplier-id' value="<{$sitem.supplier_id}>"/></td>
+
+     <td style="text-align:center">
+     
+     <{if $sitem.sync_time_for_plat == false}>
+     -
+     <{else}>
+     <a href="javascript:void(0)" class='supplier-data-detail' onclick=show_detail('<{$sitem.supplier_id}>')><{img src="images/bundle/notebook_pencil.gif " title="进入更新列表"}></a>
+     <{/if}>
+
+     </td>
+    
+    <td style="text-align:center" class='supplier-sync-status' has_new="<{$sitem.has_new}>">
+     <{if $sitem.sync_time_for_plat == false}>
+     -
+     <{else}>
+        <{if $sitem.has_new == 'true'}>
+            <{img src="images/bundle/afresh.gif" title="点击开始同步" class="data-sync lnk"}> 
+            
+        <{else}>
+            <{if $sitem.sync_loading}>
+                <img src="images/sync_loading.gif" title="正在同步" class="data-sync-loading"> 
+            <{else}>
+                <img src="images/success.gif" title="同步完成"> 
+            <{/if}>
+        <{/if}>
+     <{/if}>
+
+    </td>
+     <td style="text-align:center"  has_new="<{$sitem.has_new}>">
+     <{if $sitem.sync_time_for_plat == false}>
+     -
+     <{else}>
+       <span class='supplier-cost-sync-status'>
+        <{if $sitem.costsync.status == 'having'}>
+            <{img src="images/bundle/afresh.gif" title="点击开始同步" class="cost-sync lnk"}> 
+            
+        <{else}>
+            <{if $sitem.costsync.status == 'syncing'}>
+                <img src="images/sync_loading.gif" title="正在同步" class="cost-sync-loading"> 
+            <{else}>
+                <img src="images/success.gif" title="同步完成">
+            <{/if}>
+        <{/if}>
+        </span>
+        <{if $sitem.costsync.num}>
+                &nbsp;<a href="index.php?ctl=goods/product&act=index&supplier_id=<{$sitem.supplier_id}>&costsync=1">定价</a>
+        <{/if}>
+     <{/if}>
+
+    </td>
+	<td style="text-align:center">
+     <{if $sitem.sync_time_for_plat == false}>
+        -
+     <{else}>
+        <{if $sitem.sync_time == 0}>
+            还未同步
+        <{else}>
+            <{if $sitem.sync_time >= $today_time}>
+                今天 <{$sitem.sync_time|usertime|substr:11}>
+            <{elseif $sitem.sync_time >= $today_time-3600*24}>
+                昨天 <{$sitem.sync_time|usertime|substr:11}>
+            <{else}>
+                <{$sitem.sync_time|usertime}>
+            <{/if}>
+        <{/if}>
+     <{/if}>
+
+    </td>
+    <td style="text-align:center">
+     <{if $sitem.sync_time_for_plat == false}>
+     -
+     <{else}>
+        <a href='index.php?ctl=goods/product&act=index&supplier_id=<{$sitem.supplier_id}>'><{img src="images/bundle/zoom_btn.gif" title="查看" }></a>
+     <{/if}>
+    </td>
+    <td style="text-align:center">
+     <{if $sitem.sync_time_for_plat == false}>
+     -
+     <{else}>
+        <a href='index.php?ctl=order/po&act=index&supplier_id=<{$sitem.supplier_id}>'><{img src="images/bundle/zoom_btn.gif" title="查看"}></a>
+     <{/if}>
+    </td>
+    <td style="text-align:center"><{img src="images/bundle/downinfo.gif" title="数据包下载" class="data-download lnk"}></td>
+
+  </tr>
+  <{/foreach}>
+  
+  
+    </tbody>
+  
+</table>
+<input type="hidden" name="sname" value="<{$sname}>" id='sname'/>
+
+<div class="mainFoot" id="finder-foot-supplier-<{$otype}>">
+<table class="footer" style="clear:both" border="0" cellspacing="0" cellpadding="0">
+  <tr>
+  <td align="center"><{pager data=$pager}></td>
+  <td width="5%" style="white-space:nowrap;text-align:right"><{t}>共<{/t}><{$pager.total}><{t}>页<{/t}></td>
+  </tr>
+</table>
+</div>
+
+<script>
+
+(function(){
+    $ES('#supplier-list .data-download').addEvent('click',function(){
+        new Request({url:'index.php?ctl=distribution/supplier&act=checkSync',method:'post',data:'supplier_id='+this.getParent('tr').getElement('.supplier-id').getValue(),onSuccess:function(responseText){
+                if(responseText == 'invalid'){
+                    alert('您没有任何商品代理权限，请联系客服。');
+                }else{                    
+                    new Dialog('index.php?ctl=distribution/supplier&act=productLine',
+                    {title:'商品数据下载',
+                    ajaxoptions:{data:'supplier_id='+this.getParent('tr').getElement('.supplier-id').getValue(), method:'post'}
+                    });
+                }
+            }.bind(this),
+            onFailure:function(){
+                if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+                	alert(decodeURIComponent(this.getHeader('notify_msg')));
+                }
+            }
+            }).send();
+    });
+    $ES('#supplier-list .data-sync').addEvent('click',function(){
+    	new Request({url:'index.php?ctl=distribution/supplier&act=checkSync',method:'post',data:'supplier_id='+this.getParent('tr').getElement('.supplier-id').getValue(),onSuccess:function(responseText){
+    		if(responseText == 'invalid'){
+                alert('您没有任何商品代理权限，请联系客服。');
+            }else{                    
+                var e = $(this);
+                var eSupplierid = e.getParent('tr').getElement('.supplier-id').getValue();
+                new Request.HTML({data:'supplier_id='+eSupplierid,
+                     onRequest:function(){
+                        e.removeEvents('click').set({'src':'images/sync_loading.gif','title':'正在同步','class':'data-sync-loading','styles':{'background-image':''}});
+                     },
+                     onComplete:function(){
+                    	doSupplierApiListJob(eSupplierid,'getGoodsIdByPline','distribution/datasync|filterUpdateList_1');
+                        doDataSync();
+                        doAutoSync(eSupplierid);
+                     },
+                     onFailure:function(){
+                         if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+                        	 alert(decodeURIComponent(this.getHeader('notify_msg')));
+                         }
+                     }
+                }).post('index.php?ctl=distribution/supplier&act=datasync');
+            }
+    	}.bind(this),
+        onFailure:function(){
+            if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+            	alert(decodeURIComponent(this.getHeader('notify_msg')));
+            }
+        }}).send();
+    });
+    
+     $ES('#supplier-list .cost-sync').addEvent('click',function(){
+    	new Request({url:'index.php?ctl=distribution/supplier&act=checkSync',method:'post',data:'supplier_id='+this.getParent('tr').getElement('.supplier-id').getValue(),onSuccess:function(responseText){
+    		if(responseText == 'invalid'){
+                alert('您没有任何商品代理权限，请联系客服。');
+            }else{                 
+                var e = $(this);
+                var eSupplierid = e.getParent('tr').getElement('.supplier-id').getValue();
+                new Request({data:'supplier_id='+eSupplierid,
+                     onRequest:function(){
+                        e.removeEvents('click').set({'src':'images/sync_loading.gif','title':'正在同步','class':'data-cost-sync-loading','styles':{'background-image':''}});
+                     },
+                     onSuccess:function(txt){
+                         txt = $H(JSON.decode(txt));
+                         
+                         doCostSync(eSupplierid,txt.count);
+                     },
+                     onFailure:function(){
+                         if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+                        	 alert(decodeURIComponent(this.getHeader('notify_msg')));
+                         }
+                     }
+                }).post('index.php?ctl=distribution/supplier&act=doCostSync');
+            }
+    	}.bind(this),
+        onFailure:function(){
+            if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+            	alert(decodeURIComponent(this.getHeader('notify_msg')));
+            }
+        }}).send();
+    });
+    
+})();
+
+function show_detail(supplier_id){
+	new Request({url:'index.php?ctl=distribution/supplier&act=checkSync',method:'post',data:'supplier_id='+supplier_id,onSuccess:function(responseText){
+		if(responseText == 'invalid'){
+            alert('您没有任何商品代理权限，请联系客服。');
+        }else{
+            W.page('index.php?ctl=distribution/supplier&act=syncDataList&supplier_id='+supplier_id);
+        }
+	},
+    onFailure:function(){
+        if(this.xhr.status == 501 && this.getHeader('notify_msg')){
+        	alert(decodeURIComponent(this.getHeader('notify_msg')));
+        }
+    }}).send();
+}
+</script>

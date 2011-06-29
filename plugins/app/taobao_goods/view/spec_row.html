@@ -1,0 +1,16 @@
+﻿<td><input type="text" size=15  name="taobao[bn][]" value=""/></td>
+<{foreach from=$goods.spec_desc item=sitem key=specid}>
+<td>
+<span spec_id="<{$specid}>" class='spec-select'><{if $spec.val[$specid][$id]}><{$spec.val[$specid][$id]}><{else}>请点击选择<{/if}></span>
+<input type="hidden" name="taobao[def_val][<{$specid}>][]" value="" />
+<input type="hidden" name="taobao[val][<{$specid}>][]" value="" />
+<input type="hidden" name="taobao[pSpecId][<{$specid}>][]" value=""/>
+<input type="hidden" name="taobao[specVId][<{$specid}>][]" value="">
+<input type="hidden" name="linkImg[<{$specid}>][]" value=""/>
+<input type="hidden" name="goodsImg[<{$specid}>][]" value=""/>
+</td>
+<{/foreach}>
+<td><input type="text" size=10 name="taobao[sku][store][]" value=""/></td>
+<td><input type="text" size=10 name="taobao[sku][price][]" value=""/></td>
+<td><{input type="hidden" name="disabled[]" value='false' }>
+<img class="operater" alt="删除" src="../statics/icons/icon_delete.gif" onclick='if(!confirm("确认删除本行"))return;$(this).getParent("tr").remove()'/></td>

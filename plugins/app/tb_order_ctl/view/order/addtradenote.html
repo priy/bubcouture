@@ -1,0 +1,26 @@
+<{if $items}>
+<form action='index.php?ctl=plugins/order_ctl&act=toaddtradenote' method='post'>
+<table>
+<tr>
+<td>宝贝</td><td>好评</td><td>中评</td><td>差评</td>
+</tr>
+<{foreach from=$items item=order key=ohmy}>
+<tr>
+<td><img src="<{$order.img_path}>" width='30' height='30'><{$order.name}></td>
+<td><input type='radio' name='result[<{$ohmy}>]' value='good' checked='true'>好评</td><td><input type='radio' name='result[<{$ohmy}>]' value='neutral'>中评</td><td><input type='radio' name='result[<{$ohmy}>]' value='bad'>差评</td>
+</tr>
+<input type='hidden' name='order_id[]' value='<{$order.taobao_order}>'/> 
+<tr>
+<td></td><td colspan='6'><textarea name="content[]"></textarea></td>
+</tr>
+<{/foreach}>
+<input type='hidden' name='tid' value='<{$tid}>'/>
+
+
+<input type='submit' value='确认提交'/>
+
+</table>
+</form>
+<{else}>
+没有可以评价的订单
+<{/if}>

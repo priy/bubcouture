@@ -1,0 +1,5 @@
+<ul>
+	<{foreach from=$tb_cats.rsp.item_cats item=item}>
+	<li><a href="index.php?ctl=plugins/ctl_taobao_goods&act=get_areas" target="{mehtod:'get',data:'area_id=<{$item.area_id}>',update:'sub_cat_id'}"><{$item.name}></a></li>
+	<{/foreach}>
+</ul>

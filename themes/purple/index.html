@@ -1,0 +1,140 @@
+<{require file="block/header.html"}>
+<div class="AllWrap clearfix">
+  <div class="mainColumn">
+    <div class="topMainBannerArea">
+      <div class="series a"><{widgets id="Banner_seriesA"}></div>
+      <div class="series b"><{widgets id="Banner_seriesB"}></div>
+      <div class="series c"><{widgets id="Banner_seriesC"}></div>
+    </div>
+  </div>
+  <div class="sideColumn"><{widgets id="toprightcolumn"}></div>
+</div>
+<div class="AllWrap clearfix" style="margin-bottom:10px;">
+  <div class="mainColumn">
+    <div id="slidergoods"><{widgets id="slidergoods"}> </div>
+  </div>
+  <div class="sideColumn cellinfo" >
+<{widgets id="middleright-vcat"}>
+  </div>
+</div>
+<div class="AllWrap middleitmeshow clearfix ">
+  <div class="mainColumn">
+    <div class="showitem red clearfix">
+      <div class="span-auto pic">
+        <div class="siderintro"><{widgets id="middleitemintro-1"}></div>
+        <{widgets id="middleitmeshowpic-1"}><img style=" position:absolute; top:0;right:0" src="images/middleshowpicshadow.png" /></div>
+      <div class="floatLeft" style="width:570px"><{widgets id="middleitmeshowPro-1"}></div>
+    </div>
+  </div>
+  <div class="sideColumn pushdown-4"><{widgets id="middleright-1"}>    <div class="clearfix" style="border-top:1px solid #ccc;padding:5px 0">
+      <div class="span-auto"><{widgets id="cellinfo_pic1"}></div>
+      <div class="floatLeft textnowrap" style="width:130px; overflow:hidden">
+        <ul>
+          <li><{widgets id="cellinfo_art1"}></li>
+          <li><{widgets id="cellinfo_art2"}></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix" style="border-top:1px solid #ccc;padding:5px 0">
+      <div class="span-auto"><{widgets id="cellinfo_pic2"}></div>
+      <div class="floatLeft textnowrap" style="width:130px;overflow:hidden">
+        <ul>
+          <li><{widgets id="cellinfo_art3"}></li>
+          <li><{widgets id="cellinfo_art4"}></li>
+        </ul>
+      </div>
+    </div>
+    <div class="clearfix" style="border-top:1px solid #ccc;padding:5px 0">
+      <div class="span-auto"><{widgets id="cellinfo_pic3"}></div>
+      <div class="floatLeft textnowrap" style="width:130px;overflow:hidden">
+        <ul>
+          <li><{widgets id="cellinfo_art5"}></li>
+          <li><{widgets id="cellinfo_art6"}></li>
+        </ul>
+      </div>
+    </div></div>
+</div>
+
+
+
+<div class="AllWrap middleSep clearfix" >
+  <div class="VsepTips colorGreen"><{widgets id="VsepTips-1"}></div>
+  <div class="middleSepContent"><{widgets id="middleSepContent-1"}></div>
+  <div class="VsepTips colorRed"><{widgets id="VsepTips-2"}></div>
+  <div class="middleSepContent"><{widgets id="middleSepContent-2"}></div>  
+  <div class="VsepTips colorYellow"><{widgets id="VsepTips-3"}></div>
+  <div class="middleSepContent"><{widgets id="middleSepContent-3"}></div>  
+    <div class="VsepTips colorGreen"><{widgets id="VsepTips-4"}></div>
+  <div class="middleSepContent"><{widgets id="middleSepContent-4"}></div> 
+    <div class="VsepTips colorRed"><{widgets id="VsepTips-5"}></div>
+  <div class="middleSepContent"><{widgets id="middleSepContent-5"}></div> 
+  
+</div>
+
+
+
+
+
+
+<div class="AllWrap middleitmeshow clearfix">
+  <div class="mainColumn">
+    <div class="showitem yellow clearfix">
+      <div class="span-auto pic">
+        <div class="siderintro"><{widgets id="middleitemintro-2"}></div>
+        <{widgets id="middleitmeshowpic-2"}><img style=" position:absolute;top:0; right:0" src="images/middleshowpicshadow.png" /></div>
+      <div class="floatLeft" style="width:570px"><{widgets id="middleitmeshowPro-2"}></div>
+    </div>
+  </div>
+  <div class="sideColumn pushdown-4"><{widgets id="middleright-2"}></div>
+</div>
+<div class="AllWrap clearfix ">
+<div class="middleCulomnPic"><{widgets id="middleCulomnPic-1"}></div>
+
+</div>
+
+<div class="AllWrap middleitmeshow clearfix  pushdown-2">
+  <div class="mainColumn">
+    <div class="showitem green clearfix">
+      <div class="span-auto pic">
+        <div class="siderintro"><{widgets id="middleitemintro-3"}></div>
+        <{widgets id="middleitmeshowpic-3"}><img style=" position:absolute;top:0 ; right:0" src="images/middleshowpicshadow.png" /></div>
+      <div class="floatLeft" style="width:570px"><{widgets id="middleitmeshowPro-3"}></div>
+      
+    </div>
+  </div>
+  <div class="sideColumn pushdown-4"><{widgets id="middleright-3"}></div>
+</div>
+<div class="AllWrap"> <img src="images/bottomRemPro-title.gif" />
+  <div class="AllWrap middleitmeshow clearfix" style="padding-top:20px;"> <{widgets id="bottomRemPro"}> </div>
+</div>
+<script>
+try{
+var goods_num = 7;
+if($('goods_num') && $('goods_num').value.toInt() > 1 && $('goods_num').value.toInt() < 7){
+    goods_num = $('goods_num').value;
+}
+if($ES('#slidergoods')){
+    var elmaskLengh=$('slidergoods').getSize().x;
+    itemsWrapLength=elmaskLengh/(goods_num-1);
+    $ES('#slidergoods .GoodsListWrap .itemsWrap').setStyle('width',itemsWrapLength);
+    $E('#slidergoods .GoodsListWrap').setStyle('width',itemsWrapLength*$ES('#slidergoods .GoodsListWrap .itemsWrap').length+10);
+    var sliderSize=0;
+    function slidergoodsOnTime(){
+        if(!$E('#slidergoods .GoodsListWrap') || !$E('#slidergoods .GoodsListWrap .itemsWrap')) return false;
+        sliderSize=sliderSize-$E('#slidergoods .GoodsListWrap .itemsWrap').getSize().x;
+        elmainLengh=$E('#slidergoods .GoodsListWrap').getSize().x;
+        overflowLength=elmainLengh-elmaskLengh;
+        if(sliderSize>-overflowLength){
+            $E('#slidergoods .GoodsListWrap').tween('left', sliderSize);
+        }
+        else{
+            $E('#slidergoods .GoodsListWrap').tween('left', 0); 
+            sliderSize=0;   
+        }
+    }
+   var MyInterval=setInterval("slidergoodsOnTime()",3000);
+}
+}catch(e){}
+
+</script>
+<{require file="block/footer.html"}> 

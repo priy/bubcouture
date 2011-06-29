@@ -1,0 +1,163 @@
+
+<div class="handles" style="margin-top:20px;">
+    <span id="" class="t-handle">已使用 (<{$useNum}>)</span>
+    <span id="" class="t-handle">所有 (<{$allNum}>)</span>
+</div>
+
+<div class="tab-items-wrap" style="padding: 5px; border: 1px solid rgb(221, 221, 221); margin-left: 5px; margin-right: 5px;">
+    <div class="tab-item">
+        <div class="tableform">
+            <!-- 使用量为0时 -->
+            <{if $useNum eq 0}>
+            <div style="padding:20px 30px;">
+                <p>
+                    <span style="color:#f60;">支付方式是指顾客在商店购物支付货款的方式。</span><br />
+                    系统为您集成了在线支付、预存款和线下付款等主流方式，您只需要点击启用即可。
+                </p>
+                <p>
+                您还没有选定支付方式,请<span id="view-payment-all" style="font-weight:bold" class="lnk">点此挑选您需要的支付方式。</span>
+                </p>
+            </div>
+            <{else}>
+            <!-- 使用量多于0 -->
+
+            <div class="division">
+                <table class="gridlist">
+                    <tbody>
+                       <{foreach from=$usePay item=item key=key}>
+                        <tr>
+                            <td width="11%" ><img height="25" src="http://esb.shopex.cn/payments/logos/<{$item.pay_ident}>.gif"></td>
+                            <td width="13%"><strong><{$item.custom_name}></strong></td>
+                            <td width="55%"><{$item.pay_intro}></td>
+
+
+                            <td>
+                                        <{if $item.update eq true}>
+                                            <a href="index.php?ctl=trading/payment&act=updateNewPayment&p[0]=<{$item.pay_ident}>&app_version=<{$item.version}>&operation_type=update">升级</a>
+                                        <{/if}>
+                                        <{if $item.exist eq true}>
+                                            <a href="index.php?ctl=trading/payment&act=updateNewPayment&p[0]=<{$item.pay_ident}>&app_version=<{$item.version}>&operation_type=repair">修复</a>
+                                        <{/if}>
+                                <a href="index.php?ctl=trading/payment&act=editPayment&p[0]=<{$item.id}>&p[1]=<{$item.pay_name|urlencode}>">配置</a>
+                                |<a href="index.php?ctl=trading/payment&act=deletePayment&p[0]=<{$item.id}>&operation_type=delete">删除</a>
+
+                                        <{if $item.dis eq 'false'}>
+                                        <a href="index.php?ctl=trading/payment&act=disApp&p[0]=<{$item.id}>&ident=<{$item.pay_ident}>&operation_type=stop">停用</a>
+                                        <{else}>
+                                        <a href="index.php?ctl=trading/payment&act=startApp&p[0]=<{$item.id}>&ident=<{$item.pay_ident}>&operation_type=start">启用</a>
+                                        <{/if}>
+                            </td>
+                        </tr>
+                       <{/foreach}>
+                    </tbody>
+                </table>
+            </div>
+            <{/if}>
+            <{if $useNum>0}>
+            <p style="margin:0 13px 3px;">还需要更多的支付方式,请<span id="view-payment-all" class="lnk">点此挑选。</span></p>
+            <{/if}>
+        </div>
+    </div>
+
+    <div class="tab-item">
+<{if $noData eq 'true' }>
+    <div class="tableform">
+    <div style="text-align: center; padding: 50px;"><h4>对不起，系统正在维护当中，请稍等...</h4></div>
+    </div>
+<{else}>
+
+        <div class="tableform">
+            <h4>常用支付方式</h4>
+            <div class="division">
+                <table class="gridlist">
+                    <tbody>
+            <{foreach from=$allPay item=item key=key}>
+            <{if $item.pay_type =='common'}>
+                        <tr> <{assign var="name" value=$item.pay_name|urlencode}>
+                            <td width="15%"><img height="25" src="http://esb.shopex.cn/payments/logos/<{$item.pay_ident}>.gif"></td>
+                            <td width="15%"><strong><{$item.pay_name}></strong></td>
+                            <td width="55%"><{$item.pay_intro}></td>
+
+                            <{if $item.disable =='true'}>
+                            <td><{button type="button" label="启用" onclick="W.page('index.php?ctl=trading/payment&act=do_install&p[0]={$item.pay_ident}&operation_type=install',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                            <{else}>
+                            <td><{button type="button" label="添加" onclick="W.page('index.php?ctl=trading/payment&act=editPayment&p[0]={$item.id}&p[1]={$name}&p[2]={$item.pay_ident}',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                            <{/if}>
+                        </tr>
+            <{/if}>
+            <{/foreach}>
+                    </tbody>
+                </table>
+            </div>
+
+
+            <h4>国内其他支付方式</h4>
+            <div class="division" id="payment-china" style="overflow-y:auto; overflow-x:hidden; height:280px">
+                <table class="gridlist">
+                    <tbody>
+            <{foreach from=$allPay item=item key=key}>
+            <{if $item.pay_type =='china'&& $item.hidden =='false'}>
+                        </tr><{assign var="name" value=$item.pay_name|urlencode}>
+                            <td width="15%"><img height="25" src="http://esb.shopex.cn/payments/logos/<{$item.pay_ident}>.gif"></td>
+                            <td width="15%"><strong><{$item.pay_name}></strong></td>
+                            <td width="56%"><{$item.pay_intro}></td>
+
+                            <{if $item.disable =='true'}>
+                            <td><{button type="button" label="启用" onclick="W.page('index.php?ctl=trading/payment&act=do_install&p[0]={$item.pay_ident}&operation_type=install',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                            <{else}>
+                            <td><{button type="button" label="添加" onclick="W.page('index.php?ctl=trading/payment&act=editPayment&p[0]={$item.id}&p[1]={$name}&p[2]={$item.pay_ident}',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                             <{/if}>
+                       </tr>
+            <{/if}>
+            <{/foreach}>
+                </table>
+            <div style="text-align:right; margin:5px 0; padding:0 20px;">
+                <span class="lnk" onclick="new Request.HTML({url:'index.php?ctl=trading/payment&act=index', update:$('payment-china'),data:'china=true'}).post();">查看更多&gt;&gt;</span>
+            </div>
+            </div>
+            <h4>国外常用支付方式</h4>
+            <div class="division" id="payment-other" style="overflow-y:auto; overflow-x:hidden; height:280px">
+                <table class="gridlist">
+                    <tbody>
+            <{foreach from=$allPay item=item key=key}>
+            <{if $item.pay_type =='other' && $item.hidden =='false'}>
+                        <tr><{assign var="name" value=$item.pay_name|urlencode}>
+                            <td width="15%"><img height="25" src="http://esb.shopex.cn/payments/logos/<{$item.pay_ident}>.gif"></td>
+                            <td width="15%"><strong><{$item.pay_name}></strong></td>
+                            <td width="56%"><{$item.pay_intro}></td>
+
+                            <{if $item.disable =='true'}>
+                            <td><{button type="button" label="启用" onclick="W.page('index.php?ctl=trading/payment&act=do_install&p[0]={$item.pay_ident}&operation_type=install',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                            <{else}>
+                            <td><{button type="button" label="添加" onclick="W.page('index.php?ctl=trading/payment&act=editPayment&p[0]={$item.id}&p[1]={$name}&p[2]={$item.pay_ident}',{onRequest:function(){window.mainwidth=$('main').getStyle('width')}})" icon="btn_add.gif"}></td>
+                            <{/if}>
+                        </tr>
+            <{/if}>
+
+            <{/foreach}>
+                    </tbody>
+
+                </table>
+                <div style="text-align:right; margin:5px 0; padding:0 20px;">
+                    <span class="lnk" onclick="new Request.HTML({url:'index.php?ctl=trading/payment&act=index', update:$('payment-other'),data:'other=true'}).post();">查看更多&gt;&gt;</span>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</div>
+<{/if}>
+<script>
+(function(){
+  var itemagg = new ItemAgg('.t-handle', '.tab-item');
+  $('view-payment-all').addEvent('click', function(){
+      itemagg.render(1);
+  });
+
+  $ES('.handles .t-handle')[1].addEvent('click',function(e){
+        
+  })
+})();
+</script>

@@ -1,0 +1,5 @@
+home/cache/admin_tmpl/*
+home/cache/front_tmpl/*
+home/cache/*
+home/logs/*
+home/tmp/*

@@ -1,0 +1,466 @@
+<div class="ss_order_actionbar">
+  <table width="100%" class="ss_order_steps" cellspacing="0">
+    <tr>
+      <td class="ss_order_step first <{if $order_status=='0' || !$order_status}>cur<{/if}>"><h4><span class="step s1"></span>确认订单时间</h4>
+        <p class="info">订单创建时间：<br />
+          <{$order.createtime|cdate:'FDATE_FTIME'}> </p></td>
+      <td class="ss_order_step <{if $order_status=='1'}>cur<{/if}>"><h4><span class="step s2"></span>付款到支付宝</h4>
+       <{if $order.pay_status==1}><p class="info"><{if $order.pay_time}>订单付款时间<br/><{$order.pay_time|cdate:'FDATE_FTIME'}><{/if}></p></td><{/if}>
+      <{if $order_status!='4'}>
+      <td class="ss_order_step <{if $order_status=='2'}>cur<{/if}>"><h4><span class="step s3"></span>确认收货</h4>
+      <{if $order.delivery_time}><p class="info">订单发货时间：<br />
+          <{$order.delivery_time|cdate:'FDATE_FTIME'}> </p><{/if}>      
+      </td>
+      <{/if}>
+      <{if $order_status=='4'}>
+      <td class="ss_order_step <{if $order_status=='4'}>cur<{/if}>"><h4><span class="step s4"></span>退款中</h4></td>
+      <{/if}>
+      <td class="ss_order_step <{if $order_status=='6'}>cur<{/if}>"><h4><span class="step s4"></span>交易成功</h4>
+      <{if $order_status=='6'}><p class="info">订单确认时间：<br />
+          <{$order.consign_time|cdate:'FDATE_FTIME'}> </p><{/if}>  
+      </td>
+      
+      <{if $order_status=='5'}>
+      <td class="ss_order_step <{if $order_status=='5'}>cur<{/if}>"><h4><span class="step s5"></span>交易关闭</h4></td>
+      <{/if}>
+      <td>&nbsp;</td>
+    </tr>
+  </table>
+
+  <div class="ss_order_acts">
+    <table width="100%" cellspacing="0">
+      <tr>
+        <td><div class="ss_order_actitem ss_order_alipay"><div><img src="<{$css_url}>/images/saas_zfb_trust.gif"></div>支付宝担保交易</div></td>
+        <td width="42%" style="white-space:normal;"><div class="ss_order_actitem">
+        <{if $order_status=='0' || !$order_status}>
+            <div class="ss_order_actinfo">买家(<{$order.uname}>)还有 <em class="time"><{$paytb_tiem}></em> 来完成本次交易的付款。</div>
+
+        <{/if}>
+        <{if $order_status=='1'}>
+             <span class="ss_order_btn"><span onClick="OrderMgr.act.run('showConsignFlow', this, '1','<{$order_id}>')">发  货</span></span>
+        <{/if}>
+        <{if $order_status=='2'}>
+            <div class="ss_order_actinfo">买家还有 <em class="time"><{$confirm_time}></em> 来完成“确认收货”。如果期间买家没有“确认收货”，也没有“申请退款”，交易将自动结束，系统将把货款支付给您。</div>
+
+       
+        <{/if}>
+        <{if $order_status=='4'}>
+            <div class="ss_order_actinfo">买家已申请退款，您还有<em class="time"><{$use_date}></em>来对处理退款。如果未在期限内与买家就退款协议达成一致或未拒绝本次退款申请，本次退款将自动达成协议，并给买家退款。</div>
+            <a href="<{$handle_refund}>" target="_blank"><span class="ss_order_btn"><span>查看并处理退款</span></span></a>
+        <{/if}>
+        <{if $order_status=='3'||$order_status=='6'}>
+            <div class="ss_order_actinfo">交易已成功</div>
+        <{/if}>
+        <{if $order_status=='5'}>
+            <div class="ss_order_actinfo">本次交易已经关闭</div>
+        <{/if}>
+        <{if $order_status=='6'}>
+            <div class="ss_order_actinfo"><span class="ss_order_btn" onclick="dialog('index.php?ctl=plugins/order_ctl&act=addtradenote&p[0]=<{$order_id}>','评价订单');" ><span>开始评价</span></span></div>
+        <{/if}>
+         </div></td>
+        <td style="border-right:none;"><div class="ss_order_actitem">
+            <div class="ss_order_actlabel">其他操作</div>
+            <ul class="ss_order_actitems">
+
+              <li><span class="lnk" onclick="dialog('index.php?ctl=plugins/order_ctl&act=detail_mark&p[0]=<{$order_id}>','订单备注');">订单备注</span></li>
+              <li class="off" onmouseover="this.className = 'on'" onmouseout="this.className = 'off'">
+                  <span class="lnk arrow-down">更多操作</span>
+                  <ul class="dropMenu">
+                    <li><span class="lnk" onclick="new Dialog('index.php?ctl=plugins/order_ctl&act=detail_logs&p[0]=<{$order_id}>', {title:'查看交易日志'})">查看交易日志</span></li>
+                    <li><span class="lnk" onclick="new Dialog('index.php?ctl=plugins/order_ctl&act=detail_bills&p[0]=<{$order_id}>', {title:'查看单据'})">查看单据</span></li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          </td>
+        <td style="border-right:none;">&nbsp;</td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+
+<script>
+
+function dialog(url,titlemsg){
+    window._taoDialog=new Dialog(url,{title:titlemsg,width:800,height:400,onShow:function(e){
+     this.dialog_body.id='dialogContent';
+     }});
+}
+</script>
+
+
+
+<!-- 商品 -->
+<{if count($goodsItems) > 0}>
+<div class="division">
+  <div  class="table-grid">
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="gridlist">
+      <thead>
+      <th><{t}>货号<{/t}></th>
+        <th><{t}>商品名称<{/t}></th>
+        <th><{t}>分类<{/t}></th>
+        <th><{t}>价格<{/t}></th>
+        <th><{t}>购买量<{/t}></th>
+        <th><{t}><{if !$has_refund}>状态<{else}>退款状态<{/if}><{/t}></th>
+        <th><{t}>操作<{/t}></th>
+
+      </tr>
+      </thead>
+      
+      <tbody>
+      <{foreach from=$goodsItems item=aGoods name="item"}>
+      <tr>
+	  <td><{$aGoods.bn}></td>
+        <td class="textleft"><a <{if $aGoods.is_type == 'goods'}>href="http://item.taobao.com/auction/item_detail.jhtml?item_id=<{$aGoods.taobao_iid}>"
+          <{else}>href="../index.php?ctl=package&act=index"<{/if}> target="_blank"><{$aGoods.name}><{if $aGoods.disabled=='true'}>(已关闭)<{/if}>
+          <{if is_array($aGoods.minfo)}>
+          <{foreach from=$aGoods.minfo item=minfo key=name}> <br>
+          <{$minfo.label}>：<{$minfo.value}>
+          <{/foreach}>
+          <{/if}></a><{if $aGoods.is_type == 'goods'}> <a  class='x-view-img' href='javascript:void(0);' onclick='viewIMG("<{$aGoods.small_pic|storager}>",this);this.blur();'  title='点击查看图片'><{/if}> </td>
+       <td><{$aGoods.cat_name}></td>
+        <td class="Colamount"><{$aGoods.price}></td>
+        <td class="Colamount"><{$aGoods.nums}></td>
+        <td><{if $aGoods.refund_msg}>
+			<{t}><{$aGoods.refund_msg}><{/t}>
+			<{else}>无
+			<{/if}></td>
+        <td><{if $aGoods.refund_id==0}>
+		    <{if $aGoods.refund_status}>
+			<a href="http://member1.taobao.com/member/login.jhtml?redirectURL=http%3A%2F%2Ftrade.taobao.com%2Ftrade%2Fitemlist%2Flist_sold_items.htm%3Fnekot%3D1257830779" target="_blank">点击去淘宝处理</a>
+			<{else}>无
+			<{/if}>
+			<{else}>
+			<a href="<{$aGoods.refund_url}>" target="_blank">查看并处理退款</a>
+			<{/if}>
+			</td>
+      </tr>
+      <{/foreach}>
+      </tbody>
+      
+    </table>
+  </div>
+</div>
+<{/if}>
+
+<{if count($pmtlist) > 0}>
+<div class="division">
+<table width="100%" border="0" cellspacing="0" cellpadding="0" class="finderInform">
+<colgroup class="Coldetails"></colgroup>
+<colgroup class="Colamount"></colgroup>
+  <thead>
+    <tr>
+      <th><{t}>优惠方案<{/t}></th>
+      <th><{t}>优惠金额<{/t}></th>
+    </tr>
+  </thead>
+  <tbody>
+  <{foreach from=$pmtlist item=aBill}>
+  <tr>
+    <td><{$aBill.pmt_describe}></td>
+    <td class="Colamount"><{$aBill.pmt_amount}></td>
+  </tr>
+  <{/foreach}>
+  </tbody>  
+</table>
+</div>
+<{/if}>
+
+  <{if count($giftItems) > 0}>
+  <div class="division">
+  <table width="100%" border="0" cellspacing="0" cellpadding="0" class="finderInform">
+      <colgroup>
+    </colgroup>
+      <colgroup class="Colamount">
+    </colgroup>
+      <colgroup class="Colamount">
+    </colgroup>
+      <colgroup class="Colamount">
+    </colgroup>
+      <thead>
+      <tr>
+          <th><{t}>赠品名称<{/t}></th>
+          <th><{t}>积分<{/t}></th>
+          <th><{t}>兑换量<{/t}></th>
+          <th><{t}>已发货量<{/t}></th>
+        </tr>
+    </thead>
+      <tbody>
+    <{foreach from=$giftItems item=aGift}>
+      <tr>
+      <td class="textleft"><{$aGift.name}><{input type='viewIMG' value=$aGift.thumbnail_pic|gimage:thumbnail }> </td>
+      <td class="Colamount"><{$aGift.point}></td>
+      <td class="Colamount"><{$aGift.nums}></td>
+      <td class="Colamount"><{$aGift.sendnum}></td>
+    </tr>
+      <{/foreach}>
+      </tbody>
+      
+    </table>
+</div>
+<{/if}>
+
+<!-- 基本信息 -->
+<h5><{if $order.refer_id}><{t}>(订单来源ID：<{/t}><{refer id=$order.refer_id url=$order.refer_url show='id'}><{t}>  订单来源网址：<{/t}><{refer id=$order.refer_id url=$order.refer_url show='url'}>)<{/if}></h5>
+
+<div class="orderdetails_basic">
+<h5><t>订单信息</t></h5>
+<table border="0" cellpadding="0" cellspacing="0" class="orderdetails_basic_box">
+  <tr>
+  <td style="vertical-align:top;" >
+      <table border="0" cellpadding="0" cellspacing="0" >
+      <tr>
+          <th width="12%"><{t}>订单号：<{/t}></th>
+          <td width="38%"><{$order_id}><{if $order.alipay_payid}>&nbsp;&nbsp;&nbsp;&nbsp;<img src="<{$css_url}>/images/saas_alipay_ico.gif" title="支付宝交易号"> <{$order.alipay_payid}><{/if}></td>
+        <th width="12%"><{t}>成交时间：<{/t}></th>
+          <td width="38%"><{$order.createtime|cdate:'FDATE_FTIME'}></td>
+        </tr>
+        <tr>
+          <th><{t}>买家：<{/t}></th>
+          <td>
+		  <a target="_blank" href="index.php?ctl=member/member&act=detail&p[0]=<{$order.member_id}>"><{$order.uname}></a>
+		  
+		  <a target="_blank" href="http://amos1.taobao.com/msg.ww?v=2&uid=<{$order.uname}>&s=2" ><img border="0" src="http://amos1.taobao.com/online.ww?v=2&uid=<{$order.uname}>&s=2" alt="in" /></a>
+          
+          <{if $order.score_g neq 0}><{img src="images/bundle/saas_point_add.gif" title="此单赠送积分"}> <{$order.score_g+0}> 积分<{/if}>
+          </td>
+        <th><{t}>配送方式：<{/t}></th>
+          <td><{$order.shipping}> <{if $order.is_protect == 'true'}><span class="fontcolorOrange"><{t}>[需保价]<{/t}></span><{/if}></td>
+        </tr>
+                    <tr>
+                <th width="18%"><{t}>收货地址信息：<{/t}></th>
+                <td colspan="3"><{$order.ship_name|escape:'html'}>, <{$order.ship_mobile}>, <{$order.ship_tel}>, <{$order.ship_area|region}>, <{$order.ship_addr|escape:'html'}>, <{$order.ship_zip|escape:'html'}> <span class="sysiconBtnNoIcon" style="cursor:pointer" id="order_receiver_copy" status="Y" info="<{$order.ship_area|region}>,<{$order.ship_addr|escape:'html'}>,<{$order.ship_name|escape:'html'}><{if $order.ship_tel}>,<{$order.ship_tel}><{/if}><{if $order.ship_mobile}>,<{$order.ship_mobile}><{/if}>,<{$order.ship_zip|escape:'html'}>"><{t}>复制<{/t}></span> &nbsp; <{help}>此功能按照将收货人信息整合后复制到剪贴板，方便店主粘贴至目标位置，如：给顾客确认地址的邮件<br />
+        <br />
+        复制格式：<br />
+        地区,地址,姓名,电话,手机,邮编<{/help}></td>
+            </tr>
+        
+      </table>
+    
+      <table border="0" cellpadding="0" cellspacing="0" class="orderdetails_highlights" >
+            <{if $order.ship_time neq '任意日期 任意时间段' && $order.ship_time}>
+                    <tr  class="orderdetails_hl">
+             <th width="18%"><{t}>要求送货时间：<{/t}></th>
+              <td><{$order.ship_time}></td>
+            </tr>
+            <{/if}>
+                    <{if $order.is_tax == 'true'}>
+                    <{if $order.tax_company}>
+            <tr class="orderdetails_hl">
+              <th width="18%"><{t}>开据发票：<{/t}></th>
+              <td><{$order.tax_company}></td>
+            </tr>
+            <{/if}>
+            <{/if}>
+             <{if $order.memo}>
+                <tr class="orderdetails_hl" >
+                    <th width="18%"><{t}>订单附言：<{/t}></th><td><{$order.memo|escape:'html'}></td>
+                </tr>
+                <{/if}>
+        </table>
+
+    </td>
+      
+      
+      
+    <td style="vertical-align:top;" >
+      <table border="0" cellpadding="0" cellspacing="0" >
+        <tr>
+          <th><{t}>商品总额：<{/t}></th>
+          <td><{$order.cost_item|cur}></td>
+        </tr>
+        <tr>
+          <th><{t}>配送费用：<{/t}></th>
+          <td><{$order.cost_freight|cur}></td>
+        </tr>
+        <{if $order.is_protect == 'true'}>
+        <tr>
+          <th><{t}>保价费用：<{/t}></th>
+          <td><{$order.cost_protect|cur}></td>
+        </tr>
+        <{/if}>
+        <{if $order.cost_payment > 0}>
+        <tr>
+          <th><{t}>支付手续费：<{/t}></th>
+          <td><{$order.cost_payment|cur}></td>
+        </tr>
+        <{/if}>
+        <{if $order.use_pmt != '' && $order.pmt_amount > 0}>
+        <tr>
+          <th><{t}>使用优惠方案名称：<{/t}></th>
+          <td><{$order.use_pmt}></td>
+        </tr>
+        <tr>
+          <th><{t}>优惠券抵扣金额：<{/t}></th>
+          <td><{$order.pmt_amount|cur}></td>
+        </tr>
+        <{/if}>
+        <{if $order.discount != 0}>
+        <tr>
+          <th><{t}>订单减免：<{/t}></th>
+          <td><{$order.discount|cur}></td>
+        </tr>
+        <{/if}>
+
+
+
+        <tr>
+          <th><{t}>订单总额：<{/t}></th>
+          <td style="font-size:16px; color:#f90; font-weight:700;"><{$order.total_amount|cur}></td>
+        </tr><!--
+        <tr>
+          <th><{t}>已支付金额：<{/t}></th>
+          <td><{$order.payed|cur}></td>
+        </tr>-->
+        
+        <{if $order.cur_rate != 1}>
+        <tr>
+          <th><{t}>货币：<{/t}></th>
+          <td><{$order.cur_name}></td>
+        </tr>
+        <tr>
+          <th><{t}>汇率：<{/t}></th>
+          <td><{$order.cur_rate}></td>
+        </tr>
+        <tr>
+          <th><{t}>结算货币金额：<{/t}></th>
+          <td><{$order.final_amount|cur:$order.currency:false:false}></td>
+        </tr>
+        <{/if}>
+        
+        
+      </table></td>
+  </tr>
+</table>
+
+ <{if $order_status!='1' && $order_status!='0'&& $order_status!='5' }>
+  <h5><{t}>物流信息<{/t}></h5>
+  <table cellpadding="0" cellspacing="0" class="orderdetails_basic_box">
+  <tr>
+    <th width="14%">物流公司名称：</th>
+    <td><{$delivery.logi_name}></td>
+  </tr>
+  <tr>
+    <th>运单号：</th>
+    <td><{$delivery.logi_no}></td>
+  </tr>
+  </table>
+  <{/if}>
+
+</div>
+<script>
+try{
+$('order_receiver_copy').addEvent('click',function(e){
+    if($('order_receiver_copy').get('status') == "Y"){
+        copy_code($('order_receiver_copy').get('info'));
+        $('order_receiver_copy').set('status','N');
+    }
+});
+}catch(e){}
+</script>
+
+
+
+
+
+
+  <script>  
+var openHandler={};
+
+OrderMgr = {act:{
+  run:function(method,el, tag,order_id){
+    var order_id=order_id;
+
+    OrderMgr.currentInfo = $(el).getParent('.infoContent');
+
+    if(tag){
+      openHandler = new Dialog('index.php?ctl=plugins/order_ctl&act='+method+'&p[0]='+order_id, {title:'订单['+order_id+']发货	操作',
+          width:window.getSize().x*0.85,
+          height:window.getSize().y*0.85
+      });
+    }else{
+      $(el).setProperty('disabled','disabled');
+      W.page('index.php?ctl=plugins/order_ctl&act='+method+'&p[0]='+order_id,{method:'post',data:{_o:'_'}},el);
+    }
+  }
+}};
+
+
+function copy_code(copyText){
+    if (window.clipboardData){
+        window.clipboardData.setData("Text", copyText);
+    }else{
+        prompt('请复制收货人信息：',copyText);
+    }
+    $('order_receiver_copy').setText('信息已经复制到剪切板中');
+    (function(){
+        if(!$('order_receiver_copy'))return;
+        $('order_receiver_copy').setText('复制收货人信息');
+        $('order_receiver_copy').set('status','Y');
+    }).delay(2000);
+}
+
+</script>
+
+<style>
+#main { position: relative; }
+.finder-detail { *position: relative; zoom:1; }
+.ss_order_acts { *position: relative; zoom:1; overflow: visible; }
+.ss_order_actionbar { zoom:1; }
+
+.ss_order_actionbar { border:1px solid #f4b13b;}
+.ss_order_steps { background:#ececec; margin:0;  padding:0;}
+.ss_order_steps td { padding:7px 10px; height:50px; vertical-align:top; border-bottom:1px solid #f8cb7b;}
+.ss_order_step { border-right:1px solid #bec6ce; border-left:1px solid #fff;  width:180px;}
+.ss_order_steps .first { border-left: none;}
+.ss_order_steps .step { background:url(<{$css_url}>/images/saas_order_bg.gif) no-repeat; float:left; width:18px; height:18px; margin-right:6px; *margin-right:3px;}
+.ss_order_steps .cur { background:url(<{$css_url}>/images/saas_order_bg.gif) repeat-x; border-right:1px solid #f8cb7b; border-bottom:1px solid #FDE3AD;}
+.ss_order_steps h4 { margin:0 0 5px;}
+.ss_order_steps .info { margin:0 0 0 25px; color:#999; font-weight:normal; line-height:1.2em;}
+.ss_order_steps .s1 { background-position:0 -150px}
+.ss_order_steps .s2 { background-position:-23px -150px}
+.ss_order_steps .s3 { background-position:-46px -150px}
+.ss_order_steps .s4 { background-position:-69px -150px}
+.ss_order_steps .cur .s1 { background-position:0 -130px}
+.ss_order_steps .cur .s2 { background-position:-23px -130px}
+.ss_order_steps .cur .s3 { background-position:-46px -130px}
+.ss_order_steps .cur .s4 { background-position:-69px -130px}
+.ss_order_acts {  background:#ffdea0 url(<{$css_url}>/images/saas_order_bg.gif) repeat-x 0 -30px; padding:8px 0 0; line-height:1.6em; border-bottom:1px solid #FFEDCF;}
+.ss_order_acts td { padding:0; vertical-align:top; border-right:1px solid #fcc954;}
+.ss_order_actitem { margin:0 20px 8px;}
+.ss_order_actitems { margin:0 0 0 -8px;}
+.ss_order_alipay  { text-align:center;}
+.ss_order_actitems li { float: left; padding:0 4px; list-style:none;}
+.ss_order_actitems .lnk { padding:1px 4px; float:left; }
+.ss_order_actitems .arrow-down { border-left:1px solid #FDE2AD; border-right:1px solid #FDE2AD; padding-right:20px; display:block; position:relative; z-index:10; }
+.ss_order_actitems .on .arrow-down { background-color:#fffdf2; border:1px solid #d39924; border-bottom:none;}
+.ss_order_actitems .off ul { display:none;}
+.ss_order_actitems ul { clear:both; display:block; background:#fffdf2; padding:5px 5px 10px; margin:20px 0 0; *margin:-1px 0 0; width:90px; z-index:1; position:absolute; border:1px solid #d39924; line-height:160%;}
+.ss_order_actitems ul li, .ss_order_actitems ul .lnk { float:none;}
+.ss_order_actinfo { margin: 0 0 4px; }
+.ss_order_actinfo .time { color:#fb7101; margin:0 2px; font-style:normal;}
+.ss_order_btn { background:url(<{$css_url}>/images/saas_order_bg.gif) 0 -210px; text-align:center; cursor:pointer; line-height:25px; padding-left:15px; padding: 7px 0 6px 15px; margin:0 1px; color:#FFF; width: auto !important; width: 70px; min-width:70px;}
+.ss_order_btn span { background:url(<{$css_url}>/images/saas_order_bg.gif) right -210px; margin: -7px 0 0 0; padding: 7px 15px 6px 0;;}
+
+.orderdetails_basic { margin:5px;}
+.orderdetails_basic .sysiconBtnNoIcon { white-space:nowrap;}
+.orderdetails_basic_box { background:#fff; border-top:1px solid #ccc;}
+.orderdetails_basic th { color:#6b6b6b; white-space:nowrap; text-align:right;}
+.orderdetails_basic td { white-space:normal;}
+.orderdetails_basic h5 { margin-bottom:0; margin-left:7px;}
+.orderdetails_highlights { margin:5px 0; padding:2px 0;}
+.orderdetails_hl { background:#fff3d8;}
+
+
+.ss_order_distribute .ss_order_steps .cur .s1 { background-position:0 -170px}
+.ss_order_distribute .ss_order_steps .cur .s2 { background-position:-23px -170px}
+.ss_order_distribute .ss_order_steps .cur .s3 { background-position:-46px -170px}
+.ss_order_distribute .ss_order_steps .cur .s4 { background-position:-69px -170px}
+.ss_order_distribute .ss_order_actionbar { border:1px solid #6abbe3;}
+.ss_order_distribute .ss_order_steps td { border-bottom:1px solid #a0cddc;}
+.ss_order_distribute .ss_order_steps .cur { background-position:0 -250px; border-right:1px solid #a0cddc; border-bottom:1px solid #d9e9fb;}
+.ss_order_distribute .ss_order_acts {background-position: 0 -280px; border-bottom:1px solid #edf4ff;}
+.ss_order_distribute .ss_order_acts td { border-right:1px solid #a0cddc;}
+
+</style>

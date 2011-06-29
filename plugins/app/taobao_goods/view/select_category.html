@@ -1,0 +1,254 @@
+<link  type="text/css" href="../plugins/app/outergoods/images/taobao.css" rel="stylesheet"/>
+<div class="sa_wrap sa_sel_wrap">
+您经常选择的类目：
+<{input type="select" nulloption=1 options=$history_list}>
+
+<div class="sa_sel_filter">
+	<div class="finder-filter-body" >
+      <table>
+         <tr id="item_cats">
+         </tr>
+      </table>
+	</div>
+</div>
+
+<div class="sa_slider" style='visibility:hidden'>
+	<div class="sarrow btn_prev">&lt;&lt;</div>
+	<div class="sarrow btn_next">&gt;&gt;</div>
+	<div class="viewport"><div class="btn_knob"><table cellpadding="0" cellspacing="0"><tr><td width="40%"><div class="flt"></div></td><td width="10%"><div class="cnt"><span>||||</span></div></td><td width="40%"><div class="frt"></div></td></tr></table></div></div>
+</div>
+<div class="sa_catpath">
+	 <div class="sa_catpath_inner">
+	    您当前选择的类目是：<span class='sci_info'></span>
+		 <input name='type_id' type='hidden' />
+		 <input name='type_name' type='hidden' />
+		 <input name='prop_id' type='hidden'/>
+		 <input name='cat_id' type='hidden' value='<{$cat_id}>'/>
+     </div>
+</div>
+<table align="center" class="tableAction">  
+  <tbody><tr>  
+    <td><b class="submitBtn"><input type="button" value="确定" id="select_category_submit"/></b></td>  
+  </tr>  
+</tbody>
+</table>
+</div>
+<script>
+
+void function(){
+
+   var sciSeriUpdate=function(){
+          var sci_info=$E('.sa_catpath_inner .sci_info');
+          var sci_hidden=$E('.sa_catpath_inner input[name=type_id]');
+          var spi_hidden=$E('.sa_catpath_inner input[name=prop_id]');
+          var sname_hidden=$E('.sa_catpath_inner input[name=type_name]');
+          var curoptions= $ES('#item_cats .select .cur'); 
+          
+          var selectTipInfo=[];
+          var spi_hidden_value=[];
+         curoptions.each(function(option,index){
+                  selectTipInfo.push("<span cat_id="+option.get('cat_id')+">"+option.get('text')+"</span>");
+                  
+                  if(!option.get('p_id')){
+                      sci_hidden.set('value',option.get('cat_id'));
+                      sname_hidden.set('value',option.get('text'));
+                  }else{
+                     spi_hidden_value.push(option.get('p_id')+":"+option.get('cat_id').split(':')[1]);
+                  }
+                  
+          });
+          
+          sci_info.set('html',selectTipInfo.join('<b>&gt;</b>'));
+          spi_hidden.set('value',spi_hidden_value.join(';'));
+
+   };
+
+    var catfilterwarp=$E('.sa_sel_wrap .finder-filter-body');
+    var catfilterwarpSize;
+    var catfilterslider=$E('.sa_sel_wrap .sa_slider');
+    var sliderBtn=catfilterslider.getElement('.btn_knob');
+    
+    catfilterslider.getElements('.sarrow').addEvent('click',function(e){
+         
+         var fx=catfilterwarp.retrieve('fxscroll',new Fx.Scroll(catfilterwarp,{link:'cancel'}));
+         if(this.hasClass('btn_prev')){
+              fx.toLeft().chain(function(){
+                  sliderBtn.setStyle('margin-left',this.element.scrollLeft);
+                  if(e&&e.callback){
+                      e.callback();
+                  }
+              });
+         }else{
+            fx.toRight().chain(function(){
+               
+                sliderBtn.setStyle('margin-left',this.element.scrollLeft);
+            });
+         }
+    
+    });
+    
+    $E('.sa_sel_wrap select').addEvent('change',function(){
+         if(this.value==0){
+         $('item_cats').empty();
+         getRemoteCat(0);
+         return;
+         }
+         var selvalue=this.value;
+         catfilterslider.getElement('.btn_prev').fireEvent('click',{callback:function(){
+         if(selvalue.test('#')){
+            var values=selvalue.split('#');
+            
+            void function(value){
+                if(!value)return;
+                
+                var fn=arguments.callee; 
+                var fixoption=catfilterwarp.getElement('.select li[cat_id='+value+']');
+                var fixselect=fixoption.getParent('ul.select');
+                
+                
+                if(fixoption.hasClass('cur')){
+                      fixoption.removeClass('cur');
+                      fixselect.store('cur',null);
+                }
+                
+                var optionlipos = fixoption.getPosition(fixselect);
+                fixselect.scrollTo(0,optionlipos.y);
+                fixoption.fireEvent('click',{callback:function(){
+                       fn(values.shift());
+                   }});
+              
+            
+            }(values.shift());
+            
+           
+            
+            
+         }else{
+            catfilterwarp.getElement('.select li[cat_id='+selvalue+']').fireEvent('click');
+         }
+   
+         }});
+    });
+    
+      var  sa_sliderUpdate=function(){
+             catfilterwarpSize=catfilterwarp.getSize();
+             catfilterslider.setStyle('visibility',catfilterwarpSize.x<catfilterwarpSize.scrollSize.x?'visible':'hidden');
+             var limitwarp=catfilterwarpSize.scrollSize.x-catfilterwarpSize.x;
+             var sbw=sliderBtn.getParent().getSize().x;
+             var scrollbarwidth=(sbw-limitwarp)/3;
+             
+                 scrollbarwidth=scrollbarwidth<300?300:scrollbarwidth;
+                 
+             sliderBtn.setStyles({'width':scrollbarwidth}).removeEvents('mousedown');
+             new Drag(sliderBtn,{modifiers:{x:'margin-left',y:null},
+                                 limit:{x:[0,760-scrollbarwidth]},
+                                 onComplete:function(el){
+                                    catfilterwarp.retrieve('fxscroll',new Fx.Scroll(catfilterwarp,{link:'cancel'}))
+                                    .start(
+                                    
+                                     el.getStyle('margin-left').toInt()
+                                    
+                                    );
+                                 }
+                                });
+                                
+            if(catfilterslider.getStyle('visibility')=='hidden'){
+               catfilterslider.getElement('.btn_prev').fireEvent('click');
+            }else{
+               catfilterslider.getElement('.btn_next').fireEvent('click');
+            }
+      };
+  
+ var getRemoteCat=function(_id,completeCall){
+    
+    var cID=_id?_id.split(':')[0]:0;
+    var pID=_id?(_id.split(':').length>1?_id.split(':')[1]:null):null;
+   
+    var fn=arguments.callee;
+    new Request.JSON({
+               onRequest:function(){
+               
+                 $('loadMask').amongTo($('item_cats')).show();
+                 
+               },
+               
+               onComplete:function(re){
+                   $('loadMask').hide();
+                  if(!re)return true;
+                  var _select=new Element('ul',{'class':'select'});
+                  re.each(function(item){
+                    _select.adopt(new Element('li',{'class':'option'+(item.is_parent=='1'?' isparent':''),
+                                                     'cat_id':item.cat_id,
+                                                     'text':item.cat_name,
+                                                     'pyszm':item.cat_py||'',
+                                                     'p_id':item.prop_id
+                                                    }));
+                  });
+                   var newTd=new Element('td');
+                   newTd.adopt(_select).inject('item_cats');
+                   sa_sliderUpdate();
+                   var _selectSize=_select.getSize();
+                   if(_selectSize.y<_selectSize.scrollSize.y){
+                      var selectFilter=new Element('input');
+                      selectFilter.set('value','输入拼音首字母、关键字、搜索').setStyle('color','#ccc').addEvents({'keyup':function(){
+                           var kwords=this.getValue().trim();
+                           var soptions=this.getParent('li').getAllNext('.option');
+                           if(!kwords){
+                              soptions.show();
+                              return;
+                           }
+                          soptions.each(function(option){
+                                
+                                 if(option.get('text').test(kwords,'i')||option.get('pyszm').test(kwords,'i')){
+                                     option.show();
+                                 }else{
+                                   option.hide();
+                                 }
+                           
+                           });
+                           
+                      
+                      },
+                      'focus':function(){
+                            if(this.value=='输入拼音首字母、关键字、搜索')
+                            this.value='';
+                            this.setStyle('color','#000');                        
+                       
+                       }
+                      });
+                      var nli = new Element('li').set('html', '<span class="shadow"></span>').getFirst().adopt(selectFilter).getParent();
+                      nli.injectTop(_select);
+                   }
+                   
+                   
+                   
+                   _select.getElements('.option').addEvent('click',function(e){
+                       
+                       var tmcur=this.getParent('.select').retrieve('cur');
+                       if(tmcur==this)return;
+                       if(tmcur)tmcur.removeClass('cur');
+                       
+                       this.getParent('.select').store('cur',this.addClass('cur'));
+                       this.getParent('td').getAllNext('td').each(Element.remove);
+                       sciSeriUpdate();
+                       if(!this.hasClass('isparent'))return;
+                       if(e&&e.callback){
+                         return fn(this.get('cat_id'),e.callback);
+                       }
+                       fn(this.get('cat_id'));
+                       
+                    });
+                    (completeCall||$empty)(_select);
+<{if $cat_selected}>
+    if(_id!=0)return;
+    $E('.sa_sel_wrap select').set('value', '<{$cat_selected}>');
+    $E('.sa_sel_wrap select').fireEvent('change');
+<{/if}>
+                    
+                }}).get('index.php?ctl=plugins/ctl_taobao_goods&act=get_cats',{'p[0]':cID,'p[1]':"-1"});
+             
+};
+getRemoteCat(0);
+
+}();
+</script>

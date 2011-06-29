@@ -1,0 +1,135 @@
+/*--------------------------------------------
+				saas
+---------------------------------------------*/
+.sa_wrap{}
+.sa_sel_wrap{width:812px;margin:20px 17px;}
+.sa_sel_filter{padding:2px; border:1px #ccc solid;background:#fff;margin-top:15px;}
+.sa_sel_filter .finder-filter-body{ width:804px;overflow:hidden;}
+.sa_sel_filter .select{background:#fff; border:1px solid #c7deff; height:270px; color:#333;overflow:auto;overflow-x:hidden;margin:0;padding-right:15px;list-style:none;*padding-right:0;}
+.sa_sel_filter .select li{ border:1px solid #fff; padding:2px; cursor:pointer; width:180px; background:#fff; color:#404040;}
+.sa_sel_filter .select li.option{ padding-left:5px; margin:0 5px;}
+.sa_sel_filter .select li.isparent{background:#fff url(saas_slider_arr.gif) no-repeat right 8px;}
+.sa_sel_filter .select li.cur{border-color:#91aed9; background-color:#D4F1F8; color:#0d49ab;}
+.sa_sel_filter .select .shadow{ background:#FFFFFF url(inputbox-bg.gif) no-repeat 0 0; border-color:#7C7C7C #CECECE #C3C3C3 #7C7C7C; border-style:solid; border-width:1px; font-family:verdana; padding:1px 2px 2px; *padding:1px 2px 0; margin:1px; display:block; width:100%;}
+.sa_sel_filter .select .shadow input{ background:url(saas_slider_arr.gif) no-repeat 0 -50px; padding:0 0 2px 18px; *padding:0 0 2px 18px; border:none;}
+
+
+.sa_catpath{ background:url(saas_slider.gif) no-repeat 0 -150px; padding:12px 0 0; margin:0 0 20px; font-family:Tahoma, Geneva, sans-serif;}
+.sa_catpath_inner{ background:#fffaf2; padding:9px 7px; border:1px solid #fedbab; border-top:none; color:#444444;}
+.sa_catpath span{ color:#a6a6a5;}
+.sa_catpath span span{ color:#0044dd;}
+
+
+.sa_slider *{ vertical-align:middle; line-height:normal;}
+.sa_slider{ background:url(saas_slider.gif) no-repeat; width:810px; height:20px; position:relative;}
+.sa_slider td{padding:0;}
+.sa_slider .btn_prev, .sa_slider .btn_next{ cursor:pointer; background:url(saas_slider.gif) no-repeat 0 -50px; text-indent:-99999em; height:20px; position:absolute; top:0; width:29px;}
+.sa_slider .btn_next{background-position:0 -100px; right:0;}
+.sa_slider .viewport{overflow:hidden; position:absolute; width:760px; left:25px; top:0;}
+.sa_slider .btn_knob{ cursor:pointer; height:16px; margin:2px 0; text-align:center;}
+.sa_slider .btn_knob div{ height:16px;}
+.sa_slider .btn_knob td{ padding:0;}
+.sa_slider .btn_knob div.flt{ background:url(saas_slider_knob.gif) no-repeat; padding-left:130px;}
+.sa_slider .btn_knob div.frt{ background:url(saas_slider_knob.gif) no-repeat right 0; padding-right:130px;}
+.sa_slider .btn_knob div.cnt{ background:url(saas_slider_knob.gif) no-repeat center 0;}
+.sa_slider .btn_knob span{ background:url(saas_slider_knob.gif) no-repeat 0 -47px; display:block; width:14px; text-indent:-99999px;}
+
+.sa_send_list{ text-align:center; padding:50px 0 30px;}
+.sa_send_list h1{ margin:0 0 15px; font-size:14px; font-weight:bold;}
+.sa_send_list .info{ color:#222222; margin:0 0 25px;}
+.sa_send_pgs{ color:#1a77eb;}
+.sa_send_pgs .pgs_bar_wrap{ background:url(saas_ajax_bar_bg.gif) no-repeat; margin:5px auto 0; width:207px; height:20px; padding:4px 7px 0; text-align:left;}
+.sa_send_pgs .pgs_bar{ width:1%;}
+.sa_send_pgs .pgs_bar .bg{ background:url(saas_ajax_bar.gif) no-repeat; padding-left:2px; height:11px; overflow:hidden; text-indent:-9999px;}
+.sa_send_pgs .pgs_bar .bg div{ background:url(saas_ajax_bar.gif) no-repeat right 0; padding-right:2px;}
+
+
+.ss_order_actionbar { border:1px solid #f4b13b;}
+.ss_order_steps { background:#ececec; margin:0;  padding:0;}
+.ss_order_steps td { padding:7px 10px; height:50px; vertical-align:top; border-bottom:1px solid #f8cb7b;}
+.ss_order_step { border-right:1px solid #bec6ce; border-left:1px solid #fff;  width:180px;}
+.ss_order_steps .first { border-left: none;}
+.ss_order_steps .step { background:url(../images/saas_order_bg.gif) no-repeat; float:left; width:18px; height:18px; margin-right:6px; *margin-right:3px;}
+.ss_order_steps .cur { background:url(../images/saas_order_bg.gif) repeat-x; border-right:1px solid #f8cb7b; border-bottom:1px solid #FDE3AD;}
+.ss_order_steps h4 { margin:0 0 5px;}
+.ss_order_steps .info { margin:0 0 0 25px; color:#999; font-weight:normal; line-height:1.2em;}
+.ss_order_steps .s1 { background-position:0 -150px}
+.ss_order_steps .s2 { background-position:-23px -150px}
+.ss_order_steps .s3 { background-position:-46px -150px}
+.ss_order_steps .s4 { background-position:-69px -150px}
+.ss_order_steps .cur .s1 { background-position:0 -130px}
+.ss_order_steps .cur .s2 { background-position:-23px -130px}
+.ss_order_steps .cur .s3 { background-position:-46px -130px}
+.ss_order_steps .cur .s4 { background-position:-69px -130px}
+.ss_order_acts {  background:#ffdea0 url(../images/saas_order_bg.gif) repeat-x 0 -30px; padding:8px 0 0; line-height:1.6em; border-bottom:1px solid #FFEDCF;}
+.ss_order_acts td { padding:0; vertical-align:top; border-right:1px solid #fcc954;}
+.ss_order_actitem { margin:0 20px 8px;}
+.ss_order_actitems { margin:0 0 0 -8px;}
+.ss_order_alipay  { text-align:center;}
+.ss_order_actitems li { float: left; padding:0 4px; list-style:none;}
+.ss_order_actitems .lnk { padding:1px 4px; float:left; }
+.ss_order_actitems .arrow-down { border-left:1px solid #FDE2AD; border-right:1px solid #FDE2AD; padding-right:20px; display:block; position:relative; z-index:10; }
+.ss_order_actitems .on .arrow-down { background-color:#fffdf2; border:1px solid #d39924; border-bottom:none;}
+.ss_order_actitems .off ul { display:none;}
+.ss_order_actitems ul { clear:both; display:block; background:#fffdf2; padding:5px 5px 10px; margin:20px 0 0; *margin:-1px 0 0; width:90px; z-index:1; border:1px solid #d39924; line-height:160%;}
+.ss_order_actitems ul li, .ss_order_actitems ul .lnk { float:none;}
+.ss_order_actinfo { margin: 0 0 4px; }
+.ss_order_actinfo .time { color:#fb7101; margin:0 2px; font-style:normal;}
+.ss_order_btn { background:url(../images/saas_order_bg.gif) 0 -210px; text-align:center; cursor:pointer; line-height:25px; padding-left:15px; padding: 7px 0 6px 15px; margin:0 1px; color:#FFF; width: auto !important; width: 70px; min-width:70px;}
+.ss_order_btn span { background:url(../images/saas_order_bg.gif) right -210px; margin: -7px 0 0 0; padding: 7px 15px 6px 0;;}
+
+.orderdetails_basic { margin:5px;}
+.orderdetails_basic .sysiconBtnNoIcon { white-space:nowrap;}
+.orderdetails_basic_box { background:#fff; border-top:1px solid #ccc;}
+.orderdetails_basic th { color:#6b6b6b; white-space:nowrap; text-align:right;}
+.orderdetails_basic td { white-space:normal;}
+.orderdetails_basic h5 { margin-bottom:0; margin-left:7px;}
+.orderdetails_highlights { margin:5px 0; padding:2px 0;}
+.orderdetails_hl { background:#fff3d8;}
+
+
+.ss_order_distribute .ss_order_steps .cur .s1 { background-position:0 -170px}
+.ss_order_distribute .ss_order_steps .cur .s2 { background-position:-23px -170px}
+.ss_order_distribute .ss_order_steps .cur .s3 { background-position:-46px -170px}
+.ss_order_distribute .ss_order_steps .cur .s4 { background-position:-69px -170px}
+.ss_order_distribute .ss_order_actionbar { border:1px solid #6abbe3;}
+.ss_order_distribute .ss_order_steps td { border-bottom:1px solid #a0cddc;}
+.ss_order_distribute .ss_order_steps .cur { background-position:0 -250px; border-right:1px solid #a0cddc; border-bottom:1px solid #d9e9fb;}
+.ss_order_distribute .ss_order_acts {background-position: 0 -280px; border-bottom:1px solid #edf4ff;}
+.ss_order_distribute .ss_order_acts td { border-right:1px solid #a0cddc;}
+
+.spage-main-boxs h3 { border-bottom:1px solid #BBBBBB; font-size:14px; font-weight:bold; padding:5px 2px 6px 5px; margin:20px 0 15px;}
+
+/*taobao_spec*/
+
+#g_taobao .spec_box{
+   color:#336699;
+   overflow:hidden;
+}
+#g_taobao .spec_box *{margin:0;padding:0;list-style:none;}
+#g_taobao .spec_box li{
+    float:left;
+    margin:2px;
+    cursor:pointer;
+}
+#g_taobao .spec_box span,.spec_box img{
+  display:block;
+  padding:1px;
+  border:1px #336699 solid;
+  cursor:pointer;
+}
+#g_taobao .spec_box span {
+  padding:2px;
+  white-space:nowrap;
+}
+#g_taobao .spec_box .selected{
+   border:1px #ff9900  solid;
+}
+#g_taobao .goods-spec-cell .spec-select{
+  border:1px #336699 solid;
+  display:inline-block;
+  padding:2px 15px 2px 2px;
+  cursor:pointer;
+  background:url(arrow-down.gif) no-repeat right center;
+}
+

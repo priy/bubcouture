@@ -1,0 +1,5 @@
+﻿body {background:url(bodybg.gif) repeat-x;}
+.headerInfo{  background:url(bodytopbg.jpg)}
+.headerInfo  .menu  li   { background:url(menulisep.gif) right 50% no-repeat}
+
+.SearchBar .btn_search{	background:url(btn-search.gif) no-repeat;}

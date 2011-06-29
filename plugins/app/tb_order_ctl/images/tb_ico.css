@@ -1,0 +1,2 @@
+.ico-tb-sync {display:none;}
+.current .ico-tb-sync { background:url(ajax-loader.gif) no-repeat; display:inline-block; display:-moz-inline-stack; *display:inline; zoom:1; width:16px; height:16px; text-indent:-9999px; line-height:normal;}

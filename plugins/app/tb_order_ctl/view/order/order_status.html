@@ -1,0 +1,15 @@
+<{if $item.pay_stat == 1 && $item.ship_stat == 1 && $item.stat=='finish'}>
+交易成功
+<{/if}>
+<{if $item.pay_stat == 1 && $item.ship_stat == 1 && $item.stat=='active'}>
+卖家已发货
+<{/if}>
+<{if $item.pay_stat == 1 && $item.ship_stat != 1 && $item.stat=='active'}>
+买家已付款
+<{/if}>
+<{if $item.pay_stat == 0 && $item.stat=='active'}>
+等待买家付款
+<{/if}>
+<{if $item.stat=='dead'}>
+交易关闭
+<{/if}>

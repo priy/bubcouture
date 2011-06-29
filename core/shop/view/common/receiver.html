@@ -1,0 +1,115 @@
+
+<div class="division receiver" id="receiver">
+
+    <{if $trading.receiver.addrlist}>
+      <ul class='list receiver-sel'>
+	  <{foreach from=$trading.receiver.addrlist key=iloop item=addr}>
+       <li>
+        <input type="radio" name="delivery[addr_id]" value="<{$addr.addr_id}>"<{if $addr.def_addr}> checked="checked"<{/if}>><{$addr.addr_region|region}> <{$addr.addr_label}>
+        &nbsp;<a href="javascript:void(0)" class="lnk addredit"><{t}>编辑<{/t}></a>	    
+		</li>
+        <{/foreach}>
+		<li>
+        <input type="radio" name="delivery[addr_id]" value="0">其他收货地址
+		</li>
+	  </ul>
+        <div id="checkout-recaddr" style='display:none'></div>
+     <{else}>
+       <div id='checkout-recaddr'>
+           <{include file="shop:common/rec_addr.html"}>
+        </div>
+     <{/if}>
+
+  <div class='receivermore' style='padding:5px;margin-top:4px;'>
+     <{t}>订单附言：<{/t}><{input class="inputstyle" name="delivery[memo]" type="text" value="" style='width:400px'}>
+    指定送货时间:<input type='checkbox' onclick='$(this).getNext("div")[this.checked?"show":"hide"]();'/>
+    <div style='display:none;margin-top:4px'>
+     <{t}>送货时间：<{/t}><select class="inputstyle" name="delivery[day]" onchange="$('specal_day').style.display=(this.value=='specal')?function(){$('specal_day').getFirst().makeCalable(); return '';}():'none'">
+            <option selected="selected" value="任意日期"><{t}>任意日期<{/t}></option>
+            <option value="仅工作日"><{t}>仅工作日<{/t}></option>
+            <option value="仅休息日"><{t}>仅休息日<{/t}></option>
+            <option value="specal"><{t}>指定日期<{/t}></option>
+          </select>&nbsp;
+          <span id="specal_day" style="display:none">
+             <{input type="text" name="delivery[specal_day]" class="cal inputstyle" value=$dlytime real=true style="width:80px" readonly=true}>
+          </span>
+        <select class="inputstyle" name="delivery[time]">
+            <option value="任意时间段"><{t}>任意时间段<{/t}></option>
+            <option value="上午"><{t}>上午<{/t}></option>
+            <option value="下午"><{t}>下午<{/t}></option>
+            <option value="晚上"><{t}>晚上<{/t}></option>
+          </select>
+      </div>
+  </div>
+</div>
+ <{if $trading.receiver.addrlist}>
+<script>
+window.addEvent('domready',function(){
+
+<{if $trading.admindo}>
+    var url_area = 'index.php?ctl=order/order&act=getAddr';
+<{else}>
+    var url_area = '<{link ctl="cart" act="getAddr"}>';
+<{/if}>
+
+
+   
+    var addlistRadios=$$('input[name^=delivery[addr_id]','receiver');
+    
+    if(addlistRadios.length){
+        addlistRadios.addEvent('click', function(e,edit){     
+                this.set('checked',true);             
+                var _value=this.value;
+                
+                if(_value!='0'){
+                   $('checkout-recaddr').hide();
+                }
+                
+                if(edit){
+                   $('checkout-recaddr').show();
+                }
+            
+                
+                new Request.HTML({
+                    url:url_area,
+                    update:'checkout-recaddr',
+                    onRequest:function(){
+                      $('checkout-recaddr').set('html','<div class="fontcolorGreen">loading...</div>');
+                    },
+                    onComplete:function(){
+					
+                     if(_value=='0'){                         
+                      $('shipping').set('html','<div class="valierror clearfix"><{t}>请先完善收货信息.<{/t}></div>');
+                         return;                      
+                     }
+                  
+                     /*$E('#checkout-recaddr .recsave td')
+                     .adopt(new Element('span',{'class':'ColColorGray'})
+                     .set('html','&nbsp;&nbsp;(勾选保存将覆盖您之前保存的收货人信息)'));*/
+                  
+                      
+                      if(lastsel=$ES('#checkout-select-area select').getLast()){
+                          
+                          if(!lastsel.getValue()||lastsel.getValue()=='_NULL_'){
+                               $('shipping').set('html','<div class="valierror clearfix"><{t}>请先完善收货信息.<{/t}></div>');
+                               MessageBox.error('请重新选择：收货地区.');
+                               $('checkout-recaddr').show();                          
+                          }
+                          
+                      }
+                    
+                    }}).get({'addr_id':_value});
+            });
+            
+       addlistRadios[0].fireEvent('click');
+       addlistRadios.getLast().addEvent('click',$('checkout-recaddr').show.bind($('checkout-recaddr')));
+   }
+
+  $$('.addredit','receiver').addEvent('click', function(e){
+            e.stop();          
+            this.getPrevious('input[name^=delivery[addr_id]').fireEvent('click',[e,true]);
+        });
+
+});
+</script>
+<{/if}>

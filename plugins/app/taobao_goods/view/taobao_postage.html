@@ -1,0 +1,5 @@
+  <select name="taobao[postage_id]" id="taobao_postage">
+	<{foreach from=$postages key=ikey item=pst_item}>
+	<option value="<{$pst_item.postage_id}>"<{if $pst_item.postage_id == $postage_id}> selected="selected"<{/if}>><{$pst_item.name}></option>
+	<{/foreach}>
+  </select>

@@ -1,0 +1,476 @@
+<script>
+(function(){
+	if(!$("taobao_css"))
+	document.head.appendChild(new Element("link",{id:"taobao_css",type:"text/css",href:"../plugins/app/taobao_goods/images/taobao.css",rel:"stylesheet"}));
+})();
+</script>
+<strong class="info" style="color:#ff721d; font-weight:bold;">
+    <input type="checkbox"<{if $pub_taobao}>checked="checked"<{/if}>value="1" name="goods[pub_taobao]" /><{t}>将此商品同时发布到淘宝<{/t}></strong>
+	<!--<span onclick="login_taobao();">登录到淘宝</span>-->
+<div class="section GoodsEditSection" id="g_taobao" style="position:static">
+    <div class="division">
+	    <h4><{t}>宝贝基本信息<{/t}></h4>
+		<input type="hidden" value="taobao" name="multi_shop[]">
+		<input type="hidden" name="taobao[setting][title]" value="1"/>
+		<input type="hidden" name="taobao[setting][price]" value="1"/>
+		<input type="hidden" name="taobao[setting][store]" value="1"/>
+		<input type="hidden" name="taobao[setting][outer_id]" value="1"/>
+	    <table width="100%">
+			<tr>
+				<th><{t}>宝贝类目：<{/t}></th>
+				<td colspan="3"><{t}><span onclick="load_cat_info('0',this)" class="lnk"><{if $cat_path}><{$cat_path.name}> 编辑类目</span><{else}>请点此选择类目<{/if}></span><{/t}><input type="hidden" name="taobao[cid]" id="taobao_cid" value="<{$taobao.goods.cid}>" class="_x_ipt" vtype="select_require"/>
+				 <script>
+				   validatorMap.set('select_require',['请选择分类',function(el){
+					   if( el.value.trim().getLength(2)>1){
+						if(el.getNext(".x-vali-error")) el.getNext(".x-vali-error").remove();
+						return true;
+					   }{
+						return false;
+					   }
+				   }]);
+				  function remove_error_info(){
+					if($('taobao_cid').getNext(".x-vali-error")) $('taobao_cid').getNext(".x-vali-error").remove();
+				  }
+				 </script>
+				</td>
+			</tr>
+				<th><{t}>宝贝类型：<{/t}></th>
+				<td><input type="radio" name="taobao[stuff_status]" value="new"<{if $taobao.goods.stuff_status=='new' || !$taobao.stuff_status}> checked="checked"<{/if}>/><{t}>全新<{/t}>
+				    <input type="radio" name="taobao[stuff_status]" value="second"<{if $taobao.goods.stuff_status=='second'}> checked="checked"<{/if}>/><{t}>二手<{/t}>
+				    <input type="radio" name="taobao[stuff_status]" value="unused"<{if $taobao.goods.stuff_status=='unused'}> checked="checked"<{/if}>/><{t}>闲置<{/t}> <em class="red">*</em>
+				</td>
+				<th><{t}>一口价：<{/t}></th>
+				<td><{input readonly="readonly" type="unsigned" required="true" value=$taobao.goods.price name="taobao[price]" maxlength="25" }><em class="red">*</em> <span class="lnk taobao-edit" field="price" title="此按钮控制一口价与基本信息中销售价是否保护关联">修改</span></td>			
+			</tr>
+			<tr>
+				<th><{t}>宝贝标题：<{/t}></th>
+				<td><input readonly="readonly" type="text" name="taobao[title]"  vtype="required&&maxlength60" class="_x_ipt" value="<{$taobao.goods.title}>" /><em class="red">*</em>
+				 <script>
+				   validatorMap.set('maxlength60',['长度不能超过60个字符',function(el){
+					   return el.value.trim().getLength(2)<=60;
+				   }]);
+				 </script>
+				<span class="lnk taobao-edit" field="title" title="此按钮控制宝贝标题与基本信息中商品名称是否保护关联">修改</span>
+				</td>
+				<th><{t}>宝贝数量：<{/t}></th>
+				<td><{input readonly="readonly" type="digits" name="taobao[store]" required="true" value=$taobao.goods.num }><em class="red">*</em> <span class="lnk taobao-edit" field="store" title="此按钮控制宝贝数量与基本信息中库存是否保护关联">修改</span></td>				
+			</tr>
+			<tr>
+				<th><{t}>所在地：<{/t}></th>
+				<td><{input id="g_province" type="select" class="x-input" required="true" onchange="selcity(this,0);" name="taobao[state]" nulloption="1" options=$states value=$taobao.goods.location_state}> <span id="g_city"></span><em class="red">*</em> </td>			
+				<th><{t}>商家编码：<{/t}></th>
+				<td><input readonly="readonly" type="text" name="taobao[outer_id]" value="<{$taobao.goods.outer_id}>" /> <span class="lnk taobao-edit" field="outer_id" title="	此按钮控制商家编码与基本信息中货号是否保护关联
+				">修改</span></td>
+			</tr>
+
+			<tr>
+				<th><{t}>返点比例：<{/t}></th>
+				<td><input  type="unsigned" required="true" value="<{$taobao.goods.auction_point}>" name="taobao[auction_point]" maxlength="25" ></td>		
+			</tr>
+			 <script>
+			$$('#g_taobao .taobao-edit').each(function(el){
+				var input_hidden = $E('input[name="taobao[setting]['+el.get('field')+']"]');
+				var input = el.getParent('td').getElement('input');
+				input.addClass('input-readonly').addEvent('focus', function(){ this.blur()});
+				
+				el.addEvent('click', function(e){
+					e.stop();
+
+					if(el.innerHTML=='修改'){
+						el.innerHTML='关联';
+						input.removeProperty('readonly').removeEvents('focus').removeClass('input-readonly');
+						input_hidden.set('value',0);
+						$try(function(){input.focus()});
+
+					}else{
+						el.innerHTML='修改';
+						input_hidden.set('value',1);
+						if(el.get('field')=='title'){input.value=$('id_gname').get('value');}
+						if(el.get('field')=='price'){
+							if($E('input[name^=goods[price]')){
+								input.value=$E('input[name^=goods[price]').get('value');
+							}else{
+								var price = 0;
+								$('productNode').getElements('input[name^=price[]').each(function(item){
+									if(price==0){
+										price = item.getValue().toInt();
+									}else{
+										if(item.getValue().toInt()<price){
+											price = item.getValue().toInt();
+										}
+									}
+								});
+								input.value	= price;
+							}
+						}
+						if(el.get('field')=='store'){
+							if($E('input[name^=goods[store]')){
+								input.value=$E('input[name^=goods[store]').get('value');
+							}else{
+								var store_num = 0;
+								$('productNode').getElements('input[name^=store[]').each(function(item){
+									store_num+=item.getValue().toInt();
+								});
+								input.value	= store_num;
+							}
+							
+						}
+						if(el.get('field')=='outer_id'){input.value=$E('input[name^=goods[bn]').get('value');}
+						input.setProperty('readonly','readonly').addClass('input-readonly').addEvent('focus', function(){ this.blur()});
+					}
+				})
+			});
+			 </script>
+				<tr>
+					<th><{t}>运费：<{/t}></th>
+					<td><input type="radio" class="x ext_props-ship" onclick="display_postage(this);" name="taobao[freight_payer]" value="seller"<{if !$taobao.freight_payer || $taobao.freight_payer=='seller'}> checked="checked"<{/if}>/><{t}>卖家承担运费<{/t}><br />
+					<input type="radio" class="x ext_props-ship" onclick="display_postage(this);" name="taobao[freight_payer]" value="buyer"<{if $taobao.freight_payer=='buyer'}> checked="checked"<{/if}>/><{t}>买家承担运费<{/t}>
+					<div style="display:none;" id="g_ship_buyer" class='division'>
+					  <ul>
+						<li>
+					  		<input type="radio" class="x ext_props-usetmpl" onclick="display_tmpl(this);"<{if $taobao.postage_id}> checked="checked"<{/if}> value="1" name="taobao[use_tmpl]" id="g_is-apply-postage-true"/>
+					  		<label>使用运费模板</label>
+							<input type="hidden" value="<{$taobao.postage_id}>" id="s_taobao.tmpl_id">
+					  		<div style="display: none;" id="g_freight-template">
+					  		  <span>如果您还没有创建运费模板，请进入淘宝创建</span>
+					  		</div>
+					  	</li>
+	                    <li class='g-normal-ship'>
+	                    <div>
+	                  	  <input type="radio" class="x ext_props-usetmpl" onclick="display_tmpl(this);"<{if !$taobao.postage_id}> checked="checked"<{/if}> value="0" name="taobao[use_tmpl]" id="g_is-apply-postage-false"/>
+	                  	  <label>平邮：</label><{input type="input" value=$taobao.post_fee name="taobao[post_fee]" size="6" maxlength="6"}> 元
+	                  	  <label>快递：</label><{input type="input" value=$taobao.express_fee name="taobao[express_fee]" size="6" maxlength="6"}> 元
+	                  	  <label>EMS：</label><{input type="input" value=$taobao.ems_fee name="taobao[ems_fee]" size="6" maxlength="6"}> 元
+	                      </div>
+	                      <input type='hidden' class='_x_ipt' vtype='v-normal-ship' value=1/>
+	                    </li>
+					  </ul>
+	                       <script>
+	                       /*快递费用验证
+	                          @借助一个hidden 进入验证框架.
+	                       */
+	                           validatorMap.set('v-normal-ship',['请正确填写费用',function(element){
+	                                    try{
+
+	                                    var ipts=element.getParent('.g-normal-ship').getElements('input[name$="fee]"]');
+	                                    var handle=element.getParent('.g-normal-ship').getElement('input[name$="use_tmpl]"]');
+
+	                                    ipts.removeEvents('blur').addEvent('blur',function(){
+	                                            if(validator.test(element.form,element)){
+	                                                 validator.removeCaution(element);
+	                                            }
+
+	                                    });
+
+	                                    if(!handle.checked){
+	                                       return true;
+	                                    }
+
+	                                    if(ipts.some(function(ipt){
+	                                        var v=ipt.value.trim();
+	                                        v=!$chk(v)||isNaN(v)||v<0;
+
+	                                       return  v;
+	                                    })){
+	                                       return false;
+	                                    }
+
+	                                    return true;
+
+	                                    }catch(e){
+	                                       return true;
+	                                    }
+
+
+	                           }]);
+	                      </script>
+					    </div></td>
+					<th><{t}>在店铺中所属类目：<{/t}></th>
+					<td><div style="border:1px solid #E4E4E4;height:135px;overflow:auto;" id="tb_goods_cat_area">
+
+						</div></td>
+	            </tr>
+				<tr>
+					<th><{t}>有效期：<{/t}></th>
+					<td><input type="radio" name="taobao[valid_thru]" value="7"<{if $taobao.valid_thru==7 || !$taobao.valid_thru}> checked="checked"<{/if}>/><{t}>7天<{/t}>
+					    <input type="radio" name="taobao[valid_thru]" value="14"<{if $taobao.valid_thru==14}> checked="checked"<{/if}>/><{t}>14天<{/t}></td>
+					<th><{t}>开始时间：<{/t}></th>
+					<td><input type="radio" <{if $is_shop==false}>"disabled"<{/if}> name="taobao[onsale_option]" value="now"<{if !$taobao.approve_status || $taobao.approve_status=='now'}> checked="checked"<{/if}>/><{t}>立刻<{/t}><br />
+					<input type="radio" name="taobao[onsale_option]" <{if $is_shop==false}>"disabled"<{/if}> value="appoint"<{if $taobao.approve_status=='appoint'}> checked="checked"<{/if}>/><{t}>设定<{/t}> 
+					<{input type="select" value=$taobao[list_time][0] name="taobao[list_time][]" options=$send_set.time_year nulloption="0"}>
+	                <{input type="select" value=$taobao.list_time[1] name="taobao[list_time][]" options=$send_set.time_hour}> 时
+	                <{input type="select" value=$taobao.list_time[2] name="taobao[list_time][]" options=$send_set.time_minute}> 分
+					<br /><input type="radio" name="taobao[onsale_option]" value="instock"<{if $taobao.approve_status=='instock'||$is_shop==false}> checked="checked"<{/if}>/><{t}>放入仓库<{/t}></td>
+				</tr>
+				<tr>
+					<th><{t}>发票：<{/t}></th>
+					<td><input type="radio" name="taobao[has_invoice]" value="false"<{if $taobao.has_invoice=='false' || !$taobao.has_invoice}> checked="checked"<{/if}>/><{t}>无<{/t}>
+					    <input type="radio" name="taobao[has_invoice]" value="true"<{if $taobao.has_invoice=='true'}> checked="checked"<{/if}>/><{t}>有<{/t}></td>
+					<th><{t}>保修：<{/t}></th>
+					<td><input type="radio" name="taobao[has_warranty]" value="false"<{if $taobao.has_warranty=='false' || !$taobao.has_warranty}> checked="checked"<{/if}>/><{t}>无<{/t}>
+					    <input type="radio" name="taobao[has_warranty]" value="true"<{if $taobao.has_warranty=='true'}> checked="checked"<{/if}>/><{t}>有<{/t}></td>
+				</tr>
+				<tr>
+					<th><{t}>会员打折：<{/t}></th>
+					<td><input type="radio" name="taobao[has_discount]" value="false"<{if $taobao.has_discount=='false' || !$taobao.has_discount}> checked="checked"<{/if}>/><{t}>无<{/t}>
+					    <input type="radio" name="taobao[has_discount]" value="true"<{if $taobao.has_discount=='true'}> checked="checked"<{/if}>/><{t}>有<{/t}></td>
+					<th><{t}>橱窗推荐：<{/t}></th>
+					<td><input type="checkbox" name="taobao[has_showcase]" value="true"<{if $taobao.has_showcase=='true'}> checked="checked"<{/if}>/><{t}>是<{/t}>
+					</td>
+				</tr>
+	    </table>
+	</div>
+	<div id="tb_cat_props">
+		<div id="g_props"></div>
+    </div>
+</div>
+<script>
+function login_taobao(){
+	new Dialog('index.php?ctl=plugins/ctl_taobao_goods&act=sess_timeout',{width:550,height:200,title:'淘宝登陆',onShow:function(e){
+		this.dialog_body.id='dialogContent';
+	},onClose:function(){
+		W.page('index.php?ctl=plugins/ctl_taobao_goods&act=get_postages', {method:'get',update:$('g_freight-template')});
+
+	}});
+}
+function load_cat_info(cat_id,target){
+	new Dialog('index.php?ctl=plugins/ctl_taobao_goods&act=show_cats&p[0]='+cat_id,{title:'分类页筛选项',width:865,
+              height:500,onLoad:function(){
+		$('select_category_submit').addEvent('click',function(){
+			var _status = true;
+			$ES('#item_cats .select').each(function(item){
+				if(item.getElement('li.cur') == null){
+					_status = false;
+				}
+			});
+			if(!_status){
+				MessageBox.error('请先选择完整类目!');
+				return;
+			}
+			var sc_type_id=$E('.sa_catpath_inner input[name=type_id]');
+			var sc_cat_id=$E('.sa_catpath_inner input[name=cat_id]');
+			var sc_type_name=$E('.sa_catpath_inner input[name=type_name]');
+			$('taobao_cid').set('value',sc_type_id.get('value'));
+            $(target).setHTML($E('.sa_catpath_inner .sci_info').innerHTML);
+
+			W.page('index.php?ctl=plugins/ctl_taobao_goods&act=get_props&p[0]='+sc_type_id.get('value'), {method:'post',update:$('g_props'),data:{local_goods_data:'<{$local_goods_data}>'}});
+			remove_error_info();
+			$('select_category_submit').getParent('.dialog').retrieve('instance').close();
+			
+		});
+	}})
+}
+
+
+var checkNum = function(num){
+        if(num < 10){
+            val = '0' + num;
+        }else{
+            val = num;
+        }
+        return val;
+    }
+void function(){
+	W.page('index.php?ctl=plugins/ctl_taobao_goods&act=get_seller_cats', {method:'post',data:{local_goods_data:'<{$local_goods_data}>'},update:$('tb_goods_cat_area'),onComplete:function(a){
+	    if($('g_freight-template')){
+	        W.page('index.php?ctl=plugins/ctl_taobao_goods&act=get_postages', {method:'get',update:$('g_freight-template'),onComplete:function(rsp){
+				<{if $taobao.cid}>
+					W.page('index.php?ctl=plugins/ctl_taobao_goods&act=get_props&p[0]=<{$taobao.cid}>', {method:'post',update:$('g_props'),data:{mode:'edit',local_goods_data:'<{$local_goods_data}>',local_goods_data_source:'<{$local_goods_data_source}>'},onComplete:function(){
+						if(rsp=='fail'){
+							login_taobao.delay(20);
+						}
+					}});
+				<{else}>
+					if(rsp=='fail'){
+						login_taobao.delay(20);
+					}
+				<{/if}>
+
+			}});
+	    }
+	}});
+}();
+var display_postage=function(obj){
+        if(obj.value == 'buyer'){
+            $('g_ship_buyer').show();
+        }else{
+            $('g_ship_buyer').hide();
+        }
+    }
+    display_tmpl=function(obj){
+        if(obj.value == 1){
+            $('g_freight-template').show();
+        }else{
+            $('g_freight-template').hide();
+        }
+    }
+    $ES('#g_taobao .ext_props-ship').each(function(item){
+        if(item.checked && item.value == 'buyer'){
+            $('g_ship_buyer').show();
+        }
+    });
+    display_postage=function(obj){
+        if(obj.value == 'buyer'){
+            $('g_ship_buyer').show();
+        }else{
+            $('g_ship_buyer').hide();
+        }
+    }
+    $ES('#g_taobao .ext_props-usetmpl').each(function(item){
+        if(item.checked && item.value == 1){
+            $('g_freight-template').show();
+        }
+    });
+
+    selcity = function (obj,v){
+        if(obj.getValue()){
+            new Request.JSON({
+                onComplete:function(re){
+                    if(!re)return true;
+                    var selobj = new Element('span').setHTML('<select name=taobao[city]></select>').getFirst();
+                    var opt;
+                    $H(re).each(function(name,k){
+                        new Element('option',{value:k}).setHTML(name).inject(selobj);
+                    });
+                    $('g_city').empty();
+                    if(v){
+                        selobj.set('value',v);
+                    }
+                    selobj.inject($('g_city'));
+                }
+            }).get('index.php?ctl=plugins/ctl_taobao_goods&act=get_areas&p[0]='+encodeURIComponent(obj.getValue()));
+        }else{
+			$('g_city').empty();
+		}
+    }
+	selcity($('g_province'), '<{$taobao.goods[location_city]}>');
+    $ES('#g_taobao input[name^=taobao[onsale_option]').each(function(item){
+        if(item.checked && item.value != 'appoint'){
+            $ES('#g_taobao select[name^=taobao[list_time]').each(function(item_time){item_time.disabled=true;});
+        }
+        item.addEvent('click', function(e){
+            if(item.value == 'appoint'){
+                $ES('#g_taobao select[name^=taobao[list_time]').each(function(item_time){item_time.disabled=false;});
+            }else{
+                $ES('#g_taobao select[name^=taobao[list_time]').each(function(item_time){item_time.disabled=true;});
+            };
+        });
+    });
+    var lastedIndex;
+    $E('#g_taobao select[name^=taobao[list_time]').addEvent('change',function(e){
+        var d = new Date();
+        var now_hour=d.getHours();
+        var now_minute=d.getMinutes();
+        var val='';
+        if(now_minute > 55){
+            now_minute = 0;
+            now_hour += 1;
+        }else{
+            while(now_minute % 5 > 0){
+                now_minute++;
+            }
+        }
+        if(now_hour == 24){
+            now_hour = 0;
+        }
+        var objHour = $ES('#g_taobao select[name^=taobao[list_time]')[1];
+        var checkHour = objHour.getValue();
+        var objMinute = $ES('#g_taobao select[name^=taobao[list_time]')[2];
+        var checkMinute = objMinute.getValue();
+        if(this.selectedIndex == 0){
+            objHour.getChildren().remove();
+            for(var i=now_hour; i<24; i++){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objHour);
+            }
+            objHour.value = checkHour;
+            objMinute.getChildren().remove();
+            if(objHour.selectedIndex > 0) now_minute = 0;
+            for(var i=now_minute; i<56; i+=5){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objMinute);
+            }
+            objMinute.value = checkMinute;
+        }else if(this.selectedIndex == this.getElements('option').length-1){
+            objHour.getChildren().remove();
+            for(var i=0; i<=now_hour; i++){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objHour);
+            }
+            objHour.value = checkHour;
+            objMinute.getChildren().remove();
+            for(var i=0; i<=now_minute; i+=5){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objMinute);
+            }
+            objMinute.value = checkMinute;
+        }else if(lastedIndex===0 || lastedIndex == this.getElements('option').length-1){
+            objHour.getChildren().remove();
+            for(var i=0; i<24; i++){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objHour);
+            }
+            objHour.value = checkHour;
+            objMinute.getChildren().remove();
+            for(var i=0; i<60; i+=5){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objMinute);
+            }
+            objMinute.value = checkMinute;
+        }
+        lastedIndex = this.selectedIndex;
+    });
+    $E('#g_taobao select[name^=taobao[list_time]').fireEvent('change');
+    $ES('#g_taobao select[name^=taobao[list_time]')[1].addEvent('change',function(e){
+        var d = new Date();
+        var now_minute=d.getMinutes();
+        var val='';
+        if(now_minute > 55){
+            now_minute = 0;
+            now_hour += 1;
+        }else{
+            while(now_minute % 5 > 0){
+                now_minute++;
+            }
+        }
+        var objMinute = $ES('#g_taobao select[name^=taobao[list_time]')[2];
+        var checkMinute = objMinute.getValue();
+        if($E('#g_taobao select[name^=taobao[list_time]').selectedIndex == 0){
+            objMinute.getChildren().remove();
+            if(this.selectedIndex > 0) now_minute=0;
+            for(var i=now_minute; i<56; i+=5){
+                val = checkNum(i);
+                new Element('option',{'value':val,'label':val}).set('text', val).inject(objMinute);
+            }
+            objMinute.value = checkMinute;
+        }
+    });
+
+  validatorMap.set("g-intro",["商品详细介绍字数限制为5-25000字",function(el){
+		var introTextArea=el.getParent().getElement("textarea[ishtml]");
+		var content=introTextArea.getValue().replace("&nbsp","");
+		if(content&&content.length>5&&content.length<25000){
+		   if(el.getNext(".x-vali-error")) el.getNext(".x-vali-error").remove();
+		   return true;
+		}
+		return false;
+  }]);
+if($E("#gEditor input[name^=goods[pub_taobao]")){
+	var el = $E("#gEditor input[name^=goods[pub_taobao]");
+	el.addEvent('click',function(){
+		var tag_name = '淘宝';
+		var taobao_tag;
+		winTag.tagmain.getElements("li").some(function(el){ if(el.get("text").trim()==tag_name) taobao_tag = el;});
+		if(this.checked){
+			taobao_tag.innerHTML=$E("ul[class=theme_tag] li[class=selected_all]").innerHTML;
+			taobao_tag.appendText(tag_name);
+		}else{
+			taobao_tag.innerHTML=$E("ul[class=theme_tag] li[class=selected_none]").innerHTML;
+			taobao_tag.appendText(tag_name);
+		}
+	});
+}
+</script><style>
+.input-readonly { border:1px solid #e4e4e4; color: #999; }
+.red { color:red}
+</style>

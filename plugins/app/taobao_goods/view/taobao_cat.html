@@ -1,0 +1,16 @@
+<ul>
+	<{foreach from=$cats item=cat}>
+	<li>
+	<{if $cat.options}>
+	<{$cat.name}>
+	<ul>
+		<{foreach from=$cat.options item=opt}>
+		<li><input name="taobao[seller_cids][<{$opt.cid}>]" value="<{$opt.cid}>" type="checkbox"<{if $seller_cids[$opt.cid]}> checked="checked"<{/if}>><label><{$opt.name}></label></li>
+		<{/foreach}>
+	</ul>
+	<{else}>
+	<input name="taobao[seller_cids][<{$cat.cid}>]" value="<{$cat.cid}>" type="checkbox"<{if $seller_cids[$cat.cid]}> checked="checked"<{/if}>><label><{$cat.name}></label>
+	<{/if}>
+	</li>
+	<{/foreach}>
+</ul>

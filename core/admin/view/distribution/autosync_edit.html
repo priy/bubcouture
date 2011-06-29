@@ -1,0 +1,176 @@
+<div class="tableform" id="autosync-rule-info">
+<div class="division">
+   <{if $rule_id}>
+     <input type="hidden" name="rule_id" value="<{$rule_id}>">
+   <{/if}>
+   <table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <th><{t}>当供应商的操作为:<{/t}></th>
+        <td> 
+            <div style="float:left;">
+            <select name="supplier_op_id" id="supplier_op_id">
+                 <option value="0">--请选择--</option>
+                 <{foreach from=$supplier_op_list key=key item=op}>
+                      <option value='<{$key}>' <{if $key == $rule_info.supplier_op_id}>selected<{/if}>><{$op.name}></option>
+                 <{/foreach}>
+            </select>
+            </div>
+            <div style="float:right;">
+               <span class="sysiconBtn" id="autosync-rule-add">添加规则</span>
+            </div>
+        </td>
+         
+     </tr>
+  </table>
+</div>
+  
+<div class="division">
+   <table width="100%" border="0" cellpadding="0" cellspacing="0">
+     <tbody id="autosync-rule-list">
+       <{foreach from=$rule_list item=rule}>
+           <tr>
+              <th><{t}>请选择供应商:<{/t}></th>
+              <td width="200">
+                 <select name="rule[supplier_id][]" onchange="changeSupplier(this);">
+                      <option value="0">所有</option>
+                      <{foreach from=$supplier_list item=supplier}>
+                            <option value="<{$supplier.supplier_id}>" <{if $supplier.supplier_id == $rule.supplier_id}>selected<{/if}>><{$supplier.supplier_brief_name}></option>
+                      <{/foreach}>
+                 </select>
+              </td>
+              <th width="150" class="_x_to_pline_title" style="display:<{if $rule_info.supplier_op_id==10}>none<{else}>''<{/if}>"><{t}>针对产品线:<{/t}></th>
+              <td width="200" class="_x_to_pline_value" style="display:<{if $rule_info.supplier_op_id==10}>none<{else}>''<{/if}>">
+                 <{if $rule.supplier_id}>
+                     <select name="rule[pline_id][]">
+                          <option value="0">所有</option>
+                          <{foreach from=$rule.pline_list item=pline key=key}>
+                               <option value="<{$key}>" <{if $key == $rule.pline_id}>selected<{/if}>><{$pline.pline_name|escape:'html'}></option>
+                          <{/foreach}>
+                     </select>
+                 <{else}>
+                     <select name="rule[pline_id][]" ><option value="0" selected>所有</option></select>
+                 <{/if}>
+              </td>
+              <td><img style="cursor: pointer;" onclick="deleteRuleItem(this)" class="operater" alt="删除" src="../statics/icons/icon_delete.gif"></td>
+           </tr>
+       <{/foreach}>
+      </tbody>
+   </table>
+</div>
+    
+<div class="division">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0">
+        <tr>
+            <th><{t}>本地操作:<{/t}></th>
+            <td><span id="local_op_span">
+               <{if $local_op_list}>
+                   <{foreach from=$local_op_list item=local_op}>
+                        <label><input type="radio" name="local_op_id" <{if $local_op.checked}>checked<{/if}> value="<{$local_op.op_id}>"><{$local_op.op_name}></label>
+                   <{/foreach}>
+               <{else}>
+                   <{t}>请选择供应商的操作<{/t}>
+               <{/if}>
+               
+            </span></td>
+        </tr>
+        <tr>
+            <th><{t}>备注:<{/t}></th>
+            <td><textarea name="memo" style="width: 500px; height: 120px;"><{$rule_info.memo}></textarea></td>
+        </tr>
+    </table>
+</div>
+
+<table border="0" align="center" cellpadding="0" cellspacing="0" class="tableAction">
+    <tr>
+       <td><b class="submitBtn" ><input id="autosync-rule-save" type="button" value="保存"></b></td>
+    </tr>
+</table>
+</div>
+<script>
+var deleteRuleItem = function(item) {
+    if($ES('.operater',$('autosync-rule-list')).length == 1) {
+         MessageBox.error('必须存在一条规则!');
+         return false;
+     }
+    
+     if(confirm("删除后无法恢复，确定要删除吗？")) {
+           $(item).getParent("tr").remove()
+     }
+}
+
+var changeSupplier = function(item){
+    var tr = item.parentNode.parentNode;
+    var temp = $ES('td',tr);
+    var pline_td = temp[1];
+    
+    if(item.value == 0) {
+        pline_td.set('html','<select name="rule[pline_id][]" ><option value="0" selected>所有</option></select>');
+    } else {
+        new XHR({data:'supplier_id='+item.value,
+            onSuccess:function(re) {pline_td.set('html',re);}
+        }).send('index.php?ctl=distribution/autosync&act=changeSupplier');
+    }
+}
+
+$('autosync-rule-add').addEvent('click',function(){
+    new XHR({data:'',
+        onRequest:function(){
+            $('loadMask').show();
+        },
+        onSuccess:function(re){
+            $('loadMask').hide();
+           
+		    var tr = new Element('tr');      
+            $('autosync-rule-list').adopt(tr);
+            tr.set('html',re);
+            
+            if($('supplier_op_id').value == 10) {
+                $('autosync-rule-info').getElements('._x_to_pline_title').each(function(item){
+                    item.setStyle('display','none');
+                });
+                $('autosync-rule-info').getElements('._x_to_pline_value').each(function(item){
+                    item.setStyle('display','none');
+                    item.getElement('select[name^=rule[pline_id]').options[0].selected = true;
+                });
+            }
+		}
+    }).send('index.php?ctl=distribution/autosync&act=addRow');
+});
+
+$('supplier_op_id').addEvent('change',function(){
+    var span = $('local_op_span');
+    if(this.value == 0) {
+        span.set('html','<{t}>请选择供应商的操作<{/t}>');
+        return false;
+    }
+    if(this.value == 10) {
+        $('autosync-rule-info').getElements('._x_to_pline_title').each(function(item){
+            item.setStyle('display','none');
+        });
+        $('autosync-rule-info').getElements('._x_to_pline_value').each(function(item){
+            item.setStyle('display','none');
+            item.getElement('select[name^=rule[pline_id]').options[0].selected = true;
+        });
+    }else{
+        $('autosync-rule-info').getElements('._x_to_pline_title').each(function(item){
+            item.setStyle('display','');
+        });
+        $('autosync-rule-info').getElements('._x_to_pline_value').each(function(item){
+            item.setStyle('display','');
+        });
+    }
+    
+    new XHR({data:'supplier_op_id='+this.value,
+            onSuccess:function(re) { span.set('html',re);}
+    }).send('index.php?ctl=distribution/autosync&act=changeSupplierOP');
+});
+
+$('autosync-rule-save').addEvent('click',function(){
+    if($('supplier_op_id').value == 0) {
+        MessageBox.error('请选择供应商操作!');
+        return false;
+    }
+    
+    W.page('index.php?ctl=distribution/autosync&act=save',{data:$('autosync-rule-info'),method:'post'})
+})
+</script>

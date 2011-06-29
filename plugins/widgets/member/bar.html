@@ -1,0 +1,40 @@
+您好<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}>：<{$env.cookie.UNAME}><{/if}></span>！
+<{if !$env.cookie.MEMBER}>
+<span id="loginBar_<{$widgets_id}>">
+<{foreach from=$data.login_content item=login}>
+<{$login}>
+<{/foreach}>
+  <a href="<{link ctl=passport act=login}>"><{t}>[请登录]<{/t}></a>&nbsp;&nbsp;
+  <{if $data.open_id_open}>
+      [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>信任登录<{/t}></a>]&nbsp;&nbsp;
+	  <div id="accountlogin" ><h5>您还可以使用以下帐号登录：</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">更多»</a></div>
+	  </div>
+	  <{/if}>
+  <a href="<{link ctl=passport act=signup}>"><{t}>[免费注册]<{/t}></a>
+</span> 
+<{else}>
+<span id="memberBar_<{$widgets_id}>">
+  <a href="<{link ctl=member act=index}>"><{t}>[会员中心]<{/t}></a>&nbsp;&nbsp;
+  <a href="<{link ctl=passport act=logout}>"><{t}>[退出]<{/t}></a>
+</span>
+<{/if}>
+  <{if $data.open_id_open && !$env.cookie.MEMBER}>
+<style id='thridpartystyle'>
+.trustlogin { background:url(statics/icons/thridparty1.gif) no-repeat left; padding-left:18px; height:20px; line-height:20px; }
+#accountlogin{visibility:hidden;cursor:pointer;padding-top:0px; }
+</style>
+
+<script>
+(function(){
+    var loginBtn=$ES('.trust__login','loginBar_<{$widgets_id}>'),timer;
+	$$(loginBtn,$('accountlogin')).addEvents({'mouseenter':function(){
+			if(timer)$clear(timer);
+			$('accountlogin').setStyles({'visibility':'visible','top':'20','left':'10'});
+		},'mouseleave':function(){
+			timer=function(){$('accountlogin').setStyle('visibility','hidden')}.delay(200);
+		}
+	});
+	$('accountlogin').addEvent('click',function(e){loginBtn.fireEvent('click');})
+})();
+</script>
+<{/if}>

@@ -1,0 +1,18 @@
+<form action='index.php?ctl=plugins/sales_ctl&act=save_tb_nick' method='post' class="settingform" id="site_basic" enctype="multipart/form-data">
+  <div class="tableform">
+    <table width="100%" border="0" cellpadding="0" cellspacing="0" ><tr><td>
+    <h4><div class='notice'>淘宝销售记录是系统默认开通的应用中心“下载淘宝销售记录”应用，您需绑定个用户名才可使用此功能，请在以下输入框中输入淘宝用户名</div></h4>
+       </td><td style="text-align:right; padding-right:10px;"></td></tr></table>
+    <div class="division">
+      <table width="100%" border="0" cellpadding="0" cellspacing="0"  class="shopping_setting">
+		<tr>
+          <th><{t}>淘宝用户名<{/t}></th>
+          <td ><{setting key="app.tb_sales_download.nick" namespace="setting" size='8' style="width:120px" }> &nbsp;</td>
+        </tr>
+      </table>
+    </div>
+
+    <div class="table-action">
+	<{button type="submit" id="on_submit" label="保存"}>
+</div>
+</form>

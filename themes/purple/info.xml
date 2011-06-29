@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<theme>
+  <name>紫气东来</name>
+  <id>purple</id>
+  <version>ShopEx4.8</version>
+  <info></info>
+  <author>ShopEx</author>
+  <site>http://www.shopex.cn</site>
+  <update_url></update_url>
+  <borders>
+    <set key="1像素灰色边框" tpl="borders/1pxGrayBorder.html" />
+    <set key="底部文章列表边框" tpl="borders/border4.html" />
+    <set key="侧边栏显著边框-红色" tpl="borders/siderMainBorder_red.html" />
+    <set key="侧边栏显著边框-绿色" tpl="borders/siderMainBorder_green.html" />
+    <set key="侧边栏显著边框-蓝色" tpl="borders/siderMainBorder_blue.html" />
+    <set key="侧边栏辅助边框" tpl="borders/siderCommonBorder.html" />
+	<set key="底部文章列表边框" tpl="borders/border4.html" />
+    <set key="通用深蓝色边框" tpl="borders/border_darkblue.html" />
+    <set key="通用亮灰色边框" tpl="borders/border_lightgray.html" />
+    <set key="通用灰色边框" tpl="borders/border_gray.html" />
+    <set key="通用靛蓝色边框" tpl="borders/border_lightblue.html" />
+    <set key="通用亮红色边框" tpl="borders/border_lightred.html" />
+    <set key="通用橙色边框" tpl="borders/border_orange.html" />
+    <set key="通用亮绿色边框" tpl="borders/border_lightgreen.html" />
+    <set key="通用圆角灰色边框" tpl="borders/border_conergray.html" />
+  </borders>
+  <views></views>
+  <config></config>
+</theme>

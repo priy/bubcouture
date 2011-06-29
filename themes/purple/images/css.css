@@ -1,0 +1,158 @@
+﻿@import url("border.css");
+@import url("widget.css");
+@import url("purple/color.css");
+
+/*在这里可以设置前台的颜色皮肤，目前此模板已经预设了四套颜色分案
+@import url("red/color.css");
+@import url("green/color.css");
+@import url("blue/color.css");
+@import url("black/color.css");
+只要把上面四种颜色方案任意个替换第三行的就可以了
+*/
+
+@import url("pageFrame_leftMain.css");
+
+/*在这里可以设置左右分栏，目前一共预设两种分栏方式
+下面这个是主区域在右边，侧边栏在左面的布局
+@import url("pageFrame_rightMain.css");
+下面这个是主区域在左边，侧边栏在右面的布局
+@import url("pageFrame_leftMain.css");
+
+
+*/
+
+
+
+
+body {font-family: "Arial";font-size: 12px;color: #666666;line-height: 180%; padding:0; margin:0}
+a{color:#464646;  text-decoration:none;}
+
+a:hover{color:#000000;	text-decoration:underline;}
+
+.AllWrap{ margin:0 auto; width:950px}
+.AllWrapInside{ margin:0 auto; width:950px;  border-top:1px solid #ddd; }
+
+
+
+.headerInfo                { height:183px; position:relative; z-index:2 }
+	.headerInfo  .logo     { position:absolute; left:0; top:3px }
+	.headerInfo  .topMenu  { position:absolute; right:0; top:5px;}
+	.headerInfo  .topMenu a{ text-decoration:underline;}
+	.headerInfo  .info     { position:absolute; right:275px; top:67px; width: 147px; }
+	.headerInfo  .cartBar  { height:29px; left:722px; position:absolute; top:68px; width:180px; }
+    .headerInfo  .menu     { position:absolute; height:35px; line-height:35px; left:170px; top:102px }
+	.headerInfo  .topbtn   { position:absolute; height:35px; line-height:35px; left:0; top:109px }
+	.headerInfo  .topbtn a {width:79px; height:29px;display:block; float:left;  margin-right:5px}
+	.headerInfo  .topbtn .cate  { background:url(topbtn-cate.gif); width:71px;}
+	.headerInfo  .topbtn .brand  {background:url(topbtn-brand.gif)  no-repeat}
+	.headerInfo  #catebox  {  background:#fff; border:1px solid #af85b2; border-top:1px solid #fff;position:absolute; top:138px; width:930px; padding:10px; z-index:10; }	
+	.headerInfo  #brandbox  { background:#fff; border:1px solid #af85b2;border-top:1px solid #fff;position:absolute; top:138px; left:80px; width:850px; padding:10px; z-index:10; }	
+	.headerInfo  .menu li  { padding-right:10px}
+	.headerInfo  .menu li a{ color:#fff}
+	.headerInfo  .headerSearchBar  { position:absolute; left:0; top:146px; width:950px; height:34px; color:#000; }
+	.headerInfo  .headerSearchBar a  { color:#000; }
+	.headerInfo  .loginBar         { height:23px; right:0; position:absolute; top:150px;}
+
+.mainColumn      { width:761px; overflow:hidden;}
+.sideColumn     { width:181px; overflow:hidden;}
+.sideColumn .AdvBanner img    { margin-top:1px;}
+
+.ShopCartWrap{ cursor:pointer}
+
+.topMainBannerArea{ background:url(topMainBannerArea.gif); width:753px; height:275px; padding:6px 4px;overflow:hidden}
+.topMainBannerArea .series{ float:left; height:275px; }
+.topMainBannerArea .a{ width:453px; position:relative;z-index:1 }
+.topMainBannerArea .b img{ border:1px solid #ccc; border-bottom:0}
+.topMainBannerArea .b{ width:119px;}
+.topMainBannerArea .c{ width:181px;}
+
+#slidergoods{position:relative; height:auto; overflow:hidden; border:1px solid #ccc;}
+#slidergoods .GoodsListWrap{ width:1180px; position:absolute; left:0; top:0;height:152px;}
+#slidergoods .GoodsListWrap .itemsWrap .item{ padding-right:10px;  border-right:1px dotted #ccc;}
+
+.middleitmeshow{background:#fff url(middleitemshowbg.gif) repeat-x;}
+.middleitmeshow .showitem { padding:15px 0 0 40px;}
+.middleitmeshow .showitem .pic{ position:relative}
+.middleitmeshow .showitem .pic .siderintro{ position:absolute; top:0; left:-30px; width: 22px; height: 106px; color:#fff; line-height:14px}
+.middleitmeshow .red{ background:url(middleitemshowTitle-red.gif) no-repeat}
+.middleitmeshow .yellow{ background:url(middleitemshowTitle-yellow.gif) no-repeat}
+.middleitmeshow .green{ background:url(middleitemshowTitle-green.gif) no-repeat}
+.middleitmeshow .middleitmeshowArt { border-top:1px solid #ccc;}
+.middleitmeshow .middleitmeshowArt h6{ margin:2px; text-align:left;}
+
+.vcat .c-cat-depth-1 { padding:0; margin:0; overflow:hidden;_height:1%}
+.vcat .c-cat-depth-1 ul{ padding:0; margin:0}
+.vcat .c-cat-depth-2 { padding:0;}
+.vcat .c-cat-depth-2  table{width:100%;}
+.vcat .c-cat-depth-2  td{width:40%; padding:2px; margin:0}
+.vcat .c-cat-depth-2  td a{ display:block; border:1px solid #ccc; background:#efefef; text-align:center; padding:1px 2px;}
+
+
+.middleSep{ border-top:1px solid #ddd; border-bottom:1px solid #ddd;padding:10px 0; margin:10px auto}
+.middleSep .VsepTips{ float:left; width:12px; padding:3px; color:#fff; line-height:14px; }
+.middleSep .colorGreen{ background:#b7b82d}
+.middleSep .colorYellow{ background:#b89c2d}
+.middleSep .colorRed{ background:#b82d55}
+.middleSep .middleSepContent{ float:left; width:161px; margin-right:5px; border-right:1px solid #ddd; margin-right:10px }
+.middleSep .middleSepContent .GoodsListWrap{ text-align:left; padding:0;}
+.middleSep .middleSepContent .GoodsListWrap h6{ margin:0;} 
+
+.middleCulomnPic{ margin:5px auto; text-align:center}
+.middleCulomnPic img{ border:1px solid #ccc; margin:10px 0}
+
+#Foot{ background:#fff url(footbg.gif) repeat-x; margin-top:10px; }
+.footArticle{ margin-top:20px;}
+.footPicInfo{padding:10px; text-align:center; border-bottom:1px solid #ccc;}
+.footPicInfo .AdvBanner{ display:inline; margin-right:10px;}
+
+.headerInfo .menu li  div{ padding:3px; margin:0; line-height:20px;}
+.headerInfo .menu li  .v-m-page a{ color:#000;}
+
+
+.pro_gonggao {
+	height: 255px;
+	width: 258px;
+	background-image: url(pro/gonggao.jpg);
+	float: left;
+}
+
+
+.pro_tuijian {
+	padding-top: 8px;
+	width: 950px;
+	float: left;
+}
+.tuijianlist ul li {
+	float: left;
+	height: 178px;
+	width: 147px;
+	list-style-type: none;
+	margin-top: 59px;
+	margin-right: 15px;
+	margin-bottom: 0px;
+	margin-left: 9px;
+	padding: 0px;
+}
+.tuijianlist ul {
+	margin: 0px;
+	padding: 0px;
+}
+
+.pro_list {
+	background-image: url(pro/bg.jpg);
+	background-repeat: no-repeat;
+	float: right;
+	height: 220px;
+	width: 728px;
+}
+
+.pro_top {
+	width: 950px;
+	padding-bottom: 8px;
+}
+.tuijianlist {
+	width: 692px;
+	height: 255px;
+	background-image: url(pro/tuijian.jpg);
+	overflow: hidden;
+}

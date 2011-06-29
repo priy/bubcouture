@@ -1,0 +1,5 @@
+<ul>
+	<{foreach from=$tb_cats.shopcats_list_get_response.shop_cats.shop_cat item=item}>
+	<li><a href="index.php?ctl=plugins/ctl_taobao_goods&act=get_cats" target="{mehtod:'get',data:'cat_id=<{$item.cid}>',update:'sub_cat_id'}"><{$item.name}></a></li>
+	<{/foreach}>
+</ul>	

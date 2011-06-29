@@ -1,0 +1,53 @@
+
+<{capture name="header"}>
+   <!--JAVASCRIPTS SRC-->     
+        <{if defined('DEBUG_JS') && DEBUG_JS}>
+                <!--src tools-->
+                <script type="text/javascript" src="js_src/moo.js"></script>
+                <script type="text/javascript" src="js_src/moomore.js"></script>
+                <script type="text/javascript" src="js_src/mooadapter.js"></script>
+                <script type="text/javascript" src="js_src/jstools.js"></script>
+                
+                <!--src component-->
+                <script type="text/javascript" src="js_src/coms/dropmenu.js"></script>
+                <script type="text/javascript" src="js_src/coms/messagebox.js"></script>
+                <script type="text/javascript" src="js_src/coms/colorpicker.js"></script>
+                <script type="text/javascript" src="js_src/coms/datapicker.js"></script>
+                <script type="text/javascript" src="js_src/coms/validator.js"></script>
+                <script type="text/javascript" src="js_src/coms/tagopt.js"></script>
+                <script type="text/javascript" src="js_src/coms/dialog.js"></script>
+                <script type="text/javascript" src="js_src/coms/areaselect.js"></script>
+                <script type="text/javascript" src="js_src/coms/uploader.js"></script>
+                
+                <!--src admin-->
+                <script type="text/javascript" src="js_src/coms/editor.js"></script>
+                <script type="text/javascript" src="js_src/coms/editor_style_1.js"></script>
+                <script type="text/javascript" src="js_src/coms/goodseditor.js"></script>
+           
+        <{elseif defined('GZIP_JS') && GZIP_JS }>
+            <script type="text/javascript" src="js/package/tools.jgz"></script>
+            <script type="text/javascript" src="js/package/component.jgz"></script>
+            <script type="text/javascript" src="js/package/goodsedit.jgz"></script>
+        <{else}>
+            <script type="text/javascript" src="js/package/tools.js"></script>
+            <script type="text/javascript" src="js/package/component.js"></script>
+            <script type="text/javascript" src="js/package/goodsedit.js"></script>
+        <{/if}>
+    <!--JAVASCRIPTS SRC END-->     
+<{/capture}>
+<script>
+		function member_submitg(){
+			var _form=$('member_form_name');
+			var _formActionURL=_form.get('action');
+			_form.set('action',_formActionURL).fireEvent('submit');
+		}
+
+</script>
+<{capture name="title"}>
+<h1><{img src="images/bundle/spage_editing.gif"}><{t}>正在编辑:<{/t}></strong><{t}>会员 - <{/t}><{$member.uname}></h1>
+<ul class="btn-bar">
+	<li><{button label="退出编辑" class="btn-quit" onclick="if(confirm('确定退出?'))window.close()"}></li>
+	<li><{button label="保　存" type="button" dropmenu="drop-save" class="btn-save" onclick='member_submitg()' }></li>
+</ul>
+<{/capture}>
+<{include file="member/sub_edit.html"}>

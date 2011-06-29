@@ -1,0 +1,60 @@
+<div class="ss_tools">
+    <div class="ss_guide_intro tic t5">
+        <h2>您可以通过此功能定期将您淘宝店铺中的宝贝销售记录以及好评同步到ShopEx商店对应商品中，这样在独立商店中也能反映商品的热卖程度，有助于顾客挑选购物。</h2>
+        <p>功能使用注意事项：<br>1：在使用该功能前，请确保您淘宝宝贝中的商家编码和ShopEx商店中对应商品的货号是一致的，这样通过商家编码和货号的对应，才可以把淘宝上一个宝贝的销售记录下载并存放到独立商店对应商品中。<br>2：只会下载淘宝宝贝的好评。<br>3：每次下载只能是下载从1个月前到现在所产生的销售记录和评价。<br>4：我们建议您每隔一周使用一次该功能。只需点击下面同步按钮，即可将上次同步时间后新增的销售记录和评价下载下来。<!-- <br /><a href="#">点此查看嵌入后的效果</a> --></p>
+    </div>
+</div>
+
+<div class="tableform">
+    <table>
+    <tr>
+    <td align="center" style="color: #999999;">点击下载按钮后，如果您的销售记录比较多，则需要一段同步时间，请耐心等待。下载完成后，页面会提示“下载完毕”。<!-- <{help type="link-mid" docid="123"}>查看详细操作步骤<{/help}> --></td></tr>
+    </table>
+<br />
+<div class="table-action" id="button_rate">
+    <{button label="点击开始下载"  onclick="do_rate();"}>
+</div>
+ <div id='dorate_info' align='center'>
+</div>
+
+</div>
+
+<script>
+    function do_rate(){
+        $('button_rate').style.display = 'none';
+        $('dorate_info').innerHTML = "下载中....，请耐心等待。";
+        new Ajax('index.php?ctl=plugins/sales_ctl&act=traderate_syn&p[0]=1',{method:'post',onComplete:function(w){donow(w);}}).request();
+    }
+
+
+    function donow(msg){
+         if(msg =='fail'){
+            new Dialog('index.php?ctl=plugins/sales_ctl&act=sess_timeout',{width:550,height:200,title:'淘宝登陆',onShow:function(e){
+            this.dialog_body.id='dialogContent';}})
+            return;
+
+         }
+         if(msg !='下载完毕'&&msg !='您目前淘宝店铺还没有评价'){
+             new Ajax('index.php?ctl=plugins/sales_ctl&act=traderate_syn&p[0]=1&p[1]='+msg,{method:'post',onComplete:function(w){donow(w);}}).request();
+         }else{
+            $('dorate_info').innerHTML = msg;
+         }
+    }
+</script>
+
+
+<style>
+.ss_tools .ss_guide_intro{ border:none; padding:10px 30px;}
+.ss_tools .ss_guide_intro h2{ padding:0;}
+.ss_tools .tic{ background:url(<{$css_url}>/images/saas_tools_icos.gif) no-repeat; padding:5px 0 0 65px;; margin:20px 10px 10px; border-bottom:1px solid #e8e8e8;}
+.ss_tools .t1{ background-position:15px 0;}
+.ss_tools .t2{ background-position:15px -100px;}
+.ss_tools .t3{ background-position:15px -205px;}
+.ss_tools .t4{ background-position:15px -295px;}
+.ss_tools .t5{ background-position:15px -390px;}
+.ss_guide_intro{ border-top:1px solid #e1e1e1; margin:10px; padding:5px 0 0 70px; }
+.ss_guide_intro h2{ color:#fb9b04; font-size:12px; font-weight:bold;}
+.ss_guide_intro p{ color:#666;}
+</style>
+
+

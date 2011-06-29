@@ -1,0 +1,373 @@
+<{if $prototype.setting.use_props}>
+<div class="division">
+    <h4><{t}>商品属性<{/t}></h4>
+        <table border="0" cellpadding="0" cellspacing="0">
+            <{if $prototype.setting.use_props}>
+            <{foreach from=$prototype.props key=key item=aProp}>
+            <{assign var="p_id" value=$aProp.taobao_id}>
+            <{assign var="p_col" value="p_{$key}"}>
+            <input type="hidden" name="taobao[props_taobao][p_<{$key}>]" value="<{$p_id}>">
+            <tr class="prop">
+                <{if $aProp.must eq 1}>
+                <{assign var="req" value="true"}>
+                <{else}>
+                <{assign var="req" value="false"}>
+                <{/if}>
+                <th><{$aProp.name}>：</th>
+                <td <{if $aProp.type eq 'multi'}>id="pid_<{$p_id}>"<{/if}> >
+                    <span class='prop-items'>
+                    <!--下拉选项-->
+                    <{if $aProp.type eq 'select'}>
+                    <{if $aProp.iskey == 1}>
+                    <{input id="pid_{$p_id}" name="taobao[{$p_col}]" required=$req type="select" iskey=$key onchange="getprops(this)" nulloption="1" options=$aProp.options value=$taobao.goods[$p_col] }>
+                    <{else}>
+                    <{input id="pid_{$p_id}" name="taobao[{$p_col}]" required=$req type="select" nulloption="1" options=$aProp.options value=$taobao.goods[$p_col] }>
+                    <{/if}>
+                    <!--复选项-->
+                    <{elseif $aProp.type eq 'multi'}>
+                    <{foreach from=$aProp.options item=props_value key="props_key"}>
+                        <{if in_array($props_key,$taobao.goods[$p_col])}>
+                            <{assign var="checked" value="checked"}>
+                        <{else}>
+                            <{assign var="checked" value=""}>
+                        <{/if}>
+                        <input type="checkbox" value="<{$props_key}>" name="taobao[p_<{$key}>][]" <{$checked}>/><{$props_value}>
+                    <{/foreach}>
+                    </span>
+                    <{else}>
+                    <{input type="text" name="taobao[{$p_col}]" maxlength="25" value=$taobao.goods[$p_col]}>
+                    <{/if}>
+                    
+                    <{if $aProp.must eq 1}><em><font color='red'>*</font></em>
+                        <input type='hidden' vtype='prop-must' class='_x_ipt'/>
+                    <{/if}>
+                    
+                    </td>
+            </tr>
+            <{/foreach}>
+            <script>
+               validatorMap.set('prop-must',['必须选择一项',function(element){
+                       
+                       var row=element.getParent('td');
+                       $$(row.getFormElements()).removeEvents('change').addEvent('change',function(){
+                             
+                             if(validator.test(element.form,element)){
+                                  
+                                  validator.removeCaution(element);
+                               
+                             }
+                       
+                       
+                       });
+                       if(!row.getElement('.prop-items').toQueryString()){
+                          return false;
+                       }
+                       return true;
+               
+               }]);
+            </script>
+            <{/if}>
+        </table>
+</div>
+<input type="hidden" name="taobao[key_props]" value="<{$taobao.goods.key_props}>"/>
+<textarea name="relation" style='display:none;'><{$relation}></textarea>
+<textarea name="tmp_type" style='display:none;'><{$tmp_type}></textarea>
+<textarea name="taobao[spec_desc]" id="goods_spec_desc_1" style='display:none;'><{$spec_desc_str}></textarea>
+<!--销售属性-->
+<{if $prototype.setting.use_spec==1}>
+<div class="division goods-spec-cell">
+    <h4><{t}>商品销售属性<{/t}></h4>
+      <table>
+        <tr>
+          <td width='70%' style='text-align:left;'  class='finder-head'><span class="sysiconBtn addorder addproduct">增加一行</span></td>
+        </tr>
+      </table>
+
+      <table width='100%' class="gridlist"  cellspacing="0" cellpadding="0" border="0">
+        <thead id="productNodesTitle">
+          <tr>
+            <th>货号</th>
+            <{foreach from=$spec_array item=varname key=key name="spec_iteration"}>
+            <th><{$varname.spec_name}><{if $varname.spec_type == 'image' && $varname.spec_type == 'text'}> <img colidx=<{$smarty.foreach.spec_iteration.iteration}> class="x-define-prop" src="./images/savetolist.gif"><{/if}><input type="hidden" name="taobao[vars][<{$key}>]" value="<{$varname.spec_name}>" /> </th>
+            <{/foreach}>
+            <th>库存</th>
+            <th>销售价</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody id='productNodes'>
+        <{if $goods_products_rows}>
+          <{$goods_products_rows}>
+        <{/if}>
+
+        <{foreach from=$specs item=spec_cols key=id}>
+          <tr>
+            <td><input type="text" size=15  name="taobao[bn][]" value="<{$taobao.goods.bn[$id]}>"/></td>
+            <{foreach from=$spec_cols item=spec_value_id key=spec_id}>
+            <{assign var=spec_row value=$spec_array[$spec_id][options][$spec_value_id]}>
+            <td>
+              <span spec_id="<{$spec_id}>" class='spec-select'>
+              <{if $spec_row.spec_image}>
+                <img src="<{$spec_row.spec_image}>" title="<{$spec_row.spec_value}>">
+              <{else}>
+                <{if $spec_row.spec_value}><{$spec_row.spec_value}><{else}>请点击选择<{/if}>
+              <{/if}></span>
+              <input type="hidden" name="taobao[def_val][<{$spec_id}>][]" value="<{$spec_row.spec_value}>" />
+              <input type="hidden" name="taobao[val][<{$spec_id}>][]" value="<{$spec_row.spec_value}>" />
+              <input type="hidden" name="taobao[pSpecId][<{$spec_id}>][]" value="<{$spec_value_id}>"/>
+              <input type="hidden" name="taobao[specVId][<{$spec_id}>][]" value="<{$spec_value_id}>"/>
+              <input type="hidden" name="taobao[linkImg][<{$spec_id}>][]" value="<{$spec_row.spec_image}>"/>
+              <input type="hidden" name="taobao[goodsImg][<{$spec_id}>][]" value=""/>
+            </td>
+            <{/foreach}>
+            <td><input type="text" size=10 name="taobao[sku][store][]" value="<{$taobao.goods.store[$id]}>"/></td>
+            <td><{input type="positive" size=10 name="taobao[sku][price][]" value=$taobao.goods.price[$id]}></td>
+            <td><{input type="hidden" name="disabled[]" value=$goods.products[$id].disabled }>
+                <img class="operater" alt="删除" src="../statics/icons/icon_delete.gif" />
+            </td>
+          </tr>
+          <{/foreach}>
+        </tbody>
+      </table>
+   <div class='spec-options spec_box' style='width:200px;position:absolute;border:1px #336699 solid;visibility:hidden;background:#fff;'>
+          <ul>
+            
+          </ul>
+      </div>
+</div>
+<{/if}>
+<script>
+
+(function(){
+
+    var SPEC_INFO=<{$spec_json}>;
+    var specOptionPanel=$E('#g_props .goods-spec-cell .spec-options');
+    if(!specOptionPanel) return;
+    var container=window||specOptionPanel.getContainer();
+    if(container && container.addEvent){
+    container.addEvent('click',function(e){if($(e.target).hasClass('spec-select'))return;
+        specOptionPanel.fireEvent('hide',specOptionPanel.retrieve('select'))
+        });
+    }
+    var checkSelect=function(sstr){
+        var selecteds=[];
+        $$('#productNodes tr').each(function(tr){
+            selecteds.include(tr.getElements('input[name^=taobao[specVId][]').getValue().join('-'));
+        });
+        return selecteds.indexOf(sstr)<0;
+    };
+    
+    specOptionPanel.addEvents({
+        'show':function(select){
+            var specId=select.get('spec_id');
+            var selectCis=select.getCis(container);
+            var _this=this;
+            var hiddens=select.getAllNext();
+            $H(SPEC_INFO[specId]['options']).each(function(spec,specvid){
+                if(spec['spec_image']){
+                    var _spec=new Element('li',{'spec_vid':specvid}).adopt(new Element('img',{'src':spec['spec_image'], 'title':spec['spec_value']}));
+                }else{
+                    var _spec=new Element('li',{'spec_vid':specvid}).adopt(new Element('span',{'text':spec['spec_value']}));
+                }
+                _spec.addEvent('click',function(){
+                    if(this.getElement('img')){
+                        select.innerHTML = '';
+                        select.adopt(this.getElement('img'));
+                    }else{
+                        select.set('text',this.get('text'));
+                    }
+                    
+                        hiddens[0].set('value',spec['spec_value']);
+                        hiddens[1].set('value',spec['spec_value']);
+                        hiddens[2].set('value',this.get('spec_vid'));
+                        hiddens[3].set('value',this.get('spec_vid'));
+                    
+                        specOptionPanel.fireEvent('hide',select);
+                });
+                var spcvids=select.getParent('tr').getElements('input[name^=taobao[specVId][]');
+                var index=spcvids.indexOf(hiddens[3]);
+
+                var gspecvids=spcvids.getValue();
+                gspecvids[index]=_spec.get('spec_vid');
+                if(checkSelect(gspecvids.join('-'))){
+                     _this.getElement('ul').adopt(_spec);
+                }
+            });
+
+            (function(){
+                this.setStyles({
+                 'visibility':'visible',
+                 'top':selectCis.bottom-this.getSize().y-select.getSize().y,
+                 'left':selectCis.left,
+                 'zIndex':65535                     
+                });
+            }).delay(200,this);
+            
+            this.store('select',select.addClass('onselect'));
+        },
+         'hide':function(select){
+             this.getElement('ul').empty();
+             this.setStyle('visibility','hidden');
+             if(select){select.removeClass('onselect');}
+         }
+    });
+    
+    
+    var attachSpecSelectEvent=(function(row){
+                
+                var selects;
+                if(row){
+                   selects=$ES('.spec-select',row);
+                }else{
+                  selects=$$('#g_props .goods-spec-cell .spec-select');
+                }
+                
+                selects.addEvent('click',function(){
+                       if(specOptionPanel.getStyle('visibility')!='hidden'){ 
+                           specOptionPanel.fireEvent('hide',specOptionPanel.retrieve('select'));
+                           if(specOptionPanel.retrieve('select')==this)return;    
+                       }
+                       
+                       specOptionPanel.fireEvent('show',this);
+                       
+                });
+                return arguments.callee;
+    })();
+       
+    getprops = function (obj,callback){
+        var sel_mark = true;
+        var el = obj.getParents('table');
+        var pid = '';
+        var g_type = $('taobao_cid');
+        var i = 0;
+        if(obj.getNext('span')){
+            obj.getNext('span').empty();
+        }
+
+        var selets=el.getElements('select[iskey]').flatten();
+        selets.each(function(item){
+            if(!item.getValue()){
+                var sel_mark = false;
+            }
+            if(i == 0) pid = item.getProperty('id').substr(4)+':'+item.getValue();
+            else pid += ';'+item.getProperty('id').substr(4)+':'+item.getValue();
+            i++;
+        });
+        if(sel_mark){
+            if($(obj.options[obj.selectedIndex]).get('is_parent') == 'n'){
+                new Request.JSON({
+                    onComplete:function(re){
+                        $E('input[name^=taobao[key_props]').set('value', pid);
+                        
+                        if(!re)return true;
+                        var a_props = re.binds.split(';');
+                        a_props.each(function(item){
+                            var tmp = item.split(':');
+                            if($('pid_'+tmp[0])){
+                                if($('pid_'+tmp[0]).tagName == 'TD'){
+                                    $('pid_'+tmp[0]).getElements('input[type=checkbox]').each(function(c_item){
+                                        if(c_item.value == tmp[1]){
+                                            c_item.checked = true;
+                                            c_item.addEvent('click',function(e){e.stop();});
+                                        }
+                                    });
+                                }else{
+                                    $('pid_'+tmp[0]).set('value',tmp[1]);
+                                    $('pid_'+tmp[0]).addEvent('focus',function(e){e.stop();});  //todo litie
+                                }
+                            }
+                        });
+                        if($('taobao_block').getElement('input[name^=taobao[title]').value == ''){
+                            $('taobao_block').getElement('input[name^=taobao[title]').set('value',re.name);
+                            $('taobao_block').getElement('input[name^=taobao[title]').fireEvent('change');
+                        }
+                        if($('taobao_block').getElement('input[name^=taobao[price]').value == ''){
+                            if(re.price.toFloat() > 0){
+                                $('taobao_block').getElement('input[name^=taobao[price]').set('value',re.price);
+                            }
+                        }
+                        //$('gEditor').getElement('.wysiwyg_body iframe').contentWindow.document.body.innerHTML = re.desc;
+                    }
+                }).get('index.php?ctl=plugins/ctl_taobao_goods&act=get_product_propsvalue&p[0]='+g_type.value+'&p[1]='+pid);
+                sel_mark = false;
+            }
+        }
+
+        if(sel_mark){
+            new Request.JSON({
+                onComplete:function(re){
+                    if(!re)return true;
+                    var nspan = new Element('span').setHTML('<input type="hidden" name="taobao[props_taobao][p_'+re.prop_key+']" value="'+re.prop_id+'"> '+re.prop_name+'：<select id="pid_'+re.prop_id+'" name=taobao[p_'+re.prop_key+'] iskey='+re.prop_key+' onchange="getprops(this)"></select>');
+                    var selobj = nspan.getElement('select');
+                    re.items.each(function(item){
+                        if(!item.is_parent){
+                            new Element('option',{'value':item.cat_id,'is_parent':'n'}).setHTML(item.cat_name).inject(selobj);
+                        }else{
+                            new Element('option',{'value':item.cat_id}).setHTML(item.cat_name).inject(selobj);
+                        }
+                    });
+                    nspan.inject(obj, 'after');
+                    (callback||$empty)();
+                }
+            }).get('index.php?ctl=plugins/ctl_taobao_goods&act=get_cats&p[0]='+g_type.value+'&p[1]='+obj.getValue()+'&p[2]=p');
+        }
+    }
+
+    var kp = $E('input[name^=taobao[key_props]').getValue();
+    if(kp){
+        var kps = kp.split(';');
+        void function(_kp){
+             if(!_kp)return;
+             var fn=arguments.callee;
+             var tmp = _kp.split(':');
+             var _pid=$('pid_'+tmp[0]).set('value',tmp[1]);
+             getprops(_pid,function(){
+                 fn(kps.shift());
+                });
+            }(kps.shift());
+    }
+        $E('#g_props .addproduct').addEvent('click',function(e){
+            e=this;
+            var _sdata = 'spec_desc='+$('goods_spec_desc_1').value;
+            new XHR({data:_sdata,
+            onRequest:function(){
+               $('loadMask').amongTo(e).show();
+            },
+            onSuccess:function(re){
+               $('loadMask').hide();
+                   var newtr=new Element('tr');
+                $('productNodes').adopt(newtr);
+                 newtr.set('html',re);
+                attachSpecSelectEvent(newtr);
+            }}).send('index.php?ctl=plugins/ctl_taobao_goods&act=addRow');
+        });
+       
+        /*删除操作*/
+        $$('#g_props .goods-spec-cell .operater').setStyle('cursor','pointer').addEvent('click',function(){
+               var tr=this.getParent('tr');
+               var trp=tr.getPrevious('tr');
+               var trn=tr.getNext('tr');
+       
+               switch (this.get('alt')) {
+                   case '删除':
+                          if(confirm('确认删除本行?'))tr.remove();
+                          return;
+               }
+       
+        });
+        
+        $$('#productNodesTitle .x-define-prop').setStyle('cursor','pointer').addEvent('click',function(e){
+            e.stop();
+            var colidx=this.get('colidx').toInt()+1;
+            var _data=$('productNodes').getElements('td:nth-child('+colidx+')').toQueryString();
+            new Dialog('index.php?ctl=goods/spec&act=edit_spec',{'title':'',ajaxoptions:{method:'post',data:_data.join('&')},callback:function(){
+            }});
+            
+
+        });
+})();
+</script>
+<{/if}>
+<{if $is_b_seller}>
+<input type='hidden' name='is_b_seller' value='1'/>
+<{/if}>

@@ -1,0 +1,32 @@
+<{capture name="header"}>
+   <!--JAVASCRIPTS SRC-->     
+        <{if defined('DEBUG_JS') && DEBUG_JS}>
+                <!--src tools-->
+                <script type="text/javascript" src="js_src/moo.js"></script>
+                <script type="text/javascript" src="js_src/moomore.js"></script>
+                <script type="text/javascript" src="js_src/mooadapter.js"></script>
+                <script type="text/javascript" src="js_src/jstools.js"></script>
+        <{elseif defined('GZIP_JS') && GZIP_JS }>
+            <script type="text/javascript" src="js/package/tools.jgz"></script>
+        <{else}>
+            <script type="text/javascript" src="js/package/tools.js"></script>
+        <{/if}>
+    <!--JAVASCRIPTS SRC END-->     
+<{/capture}>
+<div class="notice">
+    <{t}>注意：下载过程中请勿关闭此页面！<{/t}>
+</div>
+<{img src="images/loading.gif" id="id_down_progress"}>
+<div  id='download_info'></div>
+<script>
+function download(url){
+	new Request.HTML({method:'post'}).get(url);
+}
+function success(url){
+   W.page(url);
+}
+window.addEvent('domready', function(){
+	download('<{$request_url}>');
+	$('download_info').setHTML('<div class="note">正在建立下载链接...</div>');
+});
+</script>

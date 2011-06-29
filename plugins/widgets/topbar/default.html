@@ -1,0 +1,143 @@
+<span id="foobar_<{$widgets_id}>" style="position: relative;">
+ <{t}>您好,<{/t}><span id="uname_<{$widgets_id}>"><{$env.cookie.UNAME}></span>&nbsp;
+ <{if !$env.cookie.MEMBER}>
+  <span id="loginBar_<{$widgets_id}>">
+   <{foreach from=$data.login_content item=login}>
+   <{$login}>
+   <{/foreach}>
+    <a href="<{link ctl=passport act=login}>"><{t}>[请登录]<{/t}></a>&nbsp;&nbsp;
+   <{if $data.open_id_open}>
+ [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>信任登录<{/t}></a>]&nbsp;&nbsp;
+ <div id="accountlogin" ><h5>您还可以使用以下帐号登录：</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">更多»</a></div>
+     </div>
+ <{/if}>
+    <a href="<{link ctl=passport act=signup}>"><{t}>[免费注册]<{/t}></a>
+  </span>
+  <{else}>
+  <span id="memberBar_<{$widgets_id}>">
+    <a href="<{link ctl=member act=index}>"><{t}>[会员中心]<{/t}></a>&nbsp;&nbsp;
+    <a href="<{link ctl=passport act=logout}>"><{t}>[退出]<{/t}></a>
+  </span>
+  <{/if}>
+  <{if $setting.show_cur}>
+  &nbsp;
+  <span id="Cur_sel_<{$widgets_id}>" style="cursor: default;">
+  <strong></strong>
+  <{img src="statics/bundle/arrow-down.gif"}>
+  
+  </span>
+
+  <{/if}>
+  <{if $setting.show_cart}>
+  &nbsp;
+  <a href="<{link ctl=cart act=index}>" target="_blank" class="cart-container">
+    <span class="inlineblock CartIco"><{t}>购物车<{/t}></span>
+  [<span id="Cart_<{$widgets_id}>" class="cart-number">0</span>]
+  <{img  src="statics/bundle/arrow-down.gif"}>
+  </a>
+  <{/if}>
+</span>
+<{if $data.open_id_open}>
+<style id='thridpartystyle'>
+.trustlogin { background:url(statics/icons/thridparty1.gif) no-repeat left; padding-left:18px; height:20px; line-height:20px; }
+#accountlogin{visibility:hidden;cursor:pointer;padding-top:0px; }
+</style>
+
+<script>
+(function(){
+    var loginBtn=$ES('.trust__login','loginBar_<{$widgets_id}>'),timer;
+   $$(loginBtn,$('accountlogin')).addEvents({'mouseenter':function(){
+         if(timer)$clear(timer);
+         $('accountlogin').setStyles({'visibility':'visible','zIndex':'63322'});
+      },'mouseleave':function(){
+
+         timer=function(){$('accountlogin').setStyle('visibility','hidden')}.delay(200);
+      }
+   });
+   $('accountlogin').addEvent('click',function(e){loginBtn.fireEvent('click');})
+})();
+
+
+</script>
+<{/if}>
+<script>
+/*
+*foobar update:2009-9-8 13:46:55
+*@author litie[aita]shopex.cn
+*-----------------*/
+window.addEvent('domready',function(){
+       var barId ="<{$widgets_id}>";
+       var bar = $('foobar_'+barId);
+
+       var barOptions = {
+           MID:Cookie.get('S[MEMBER]'),
+           uname:Cookie.get('S[UNAME]'),
+           coin:<{$data.cur|default:'null'}>,
+           curCoin:Cookie.get('S[CUR]'),
+           cartViewURl:'<{link ctl="cart" act="view"}>',
+           stick:<{if $setting.stick}>true<{else}>false<{/if}>
+       };
+       if(barOptions.MID){$('uname_'+barId).setText(barOptions.uname);}
+       /*if(barOptions.MID){
+          $('loginBar_'+barId).hide();
+         $('memberBar_'+barId).show();
+          $('uname_'+barId).setText(barOptions.uname);
+       }else{
+          $('loginBar_'+barId).setStyle('visibility','visible');
+       }*/
+
+       if(coinBar=$('Cur_sel_'+barId)){
+             
+           var coinMenu = new Element('div',{'class':'coinmenu fmenu','styles':{'display':'none'}}).inject(document.body);
+    
+           barOptions.coin.each(function(item){
+                
+                if(item['cur_code']==barOptions['curCoin']){
+                   coinBar.getElement('strong').set('text',[item.cur_sign,item.cur_name].join(''));
+                }
+                coinMenu.adopt(new Element('div',{'class':'item',text:[item.cur_sign,item.cur_name].join(''),events:{
+                      
+                      click:function(){
+                          Cookie.set('S[CUR]',item.cur_code);
+                          window.location.href=window.location.href;
+                      }
+                
+                }}));
+           });
+           
+            coinBar.addEvents({
+                'mouseenter':function(){
+                   coinMenu.setStyles({
+                      top:coinBar.getPosition().y+coinBar.getSize().y,
+                      left:coinBar.getPosition().x,
+                      display:'block',
+                      visibility:'visible'
+                   });
+                }
+            });
+            new QMenu(coinBar,coinMenu);
+            
+       }
+       
+       if(cartCountBar = $('Cart_'+barId)){
+         cartCountBar.setText(Cookie.get('S[CART_COUNT]')?Cookie.get('S[CART_COUNT]'):0);
+            var cartViewMenu =  new Element('div',{'class':'cartviewmenu fmenu','styles':{'display':'none'}}).inject(document.body);
+            cartCountBar.addEvents({
+                 'mouseenter':function(){
+                   cartViewMenu.setStyles({
+                      top:bar.getPosition().y+bar.getSize().y,
+                      left:bar.getPosition().x,
+                      width:bar.getSize().x,
+                      display:'block',
+                      visibility:'visible'
+                   }).set('html','<div class="note">正在加载购物车信息...</div>');
+                    this.retrieve('request',{cancel:$empty}).cancel();
+                    this.store('request',new Request.HTML({update:cartViewMenu}).get(barOptions.cartViewURl));
+                }
+            });
+             new QMenu(cartCountBar,cartViewMenu);
+            
+      }
+
+});
+</script>
