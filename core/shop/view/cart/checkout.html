@@ -1,9 +1,9 @@
 <div class="CartWrap" id="log">
 <div class="CartNav clearfix">
 <div class="floatLeft">
-<img src="statics/cartnav-step3.png" alt="购物流程--确认订单填写购物信息" />
+<img src="statics/cartnav-step3.gif" alt="Shopping Procedure--Confirm Order Details" />
 </div>
-<div class="floatRight"><img src="statics/cartnav-cart.png"  /></div>
+<div class="floatRight"><img src="statics/cartnav-cart.gif"  /></div>
 </div>
 <form method="post" action='<{link ctl="order" act="create"}>' id="order-create" extra="subOrder" >
 <{if $env.post.isfastbuy}>
@@ -14,7 +14,7 @@
 <div class="FormWrap">
   <{if $trading.products}>
 
-    <h3><{t}>购买的商品<{/t}></h3>
+    <h3><{t}>Your Order List<{/t}></h3>
 
     <div class="division">
   <table width="100%" cellpadding="0" cellspacing="0" class="liststyle">
@@ -27,13 +27,13 @@
             <col class="span-2 ColColorOrange"></col>
     <thead>
       <tr>
-        <th><{t}>图片<{/t}></th>
-        <th class="product"><{t}>商品名称<{/t}></th>
-        <th class="price"><{t}>积分<{/t}></th>
-        <th class="price"><{t}>销售价格<{/t}></th>
-        <th class="number"><{t}>优惠价格<{/t}></th>
-        <th class="number"><{t}>数量<{/t}></th>
-        <th class="price"><{t}>小计<{/t}></th>
+        <th><{t}>Pic<{/t}></th>
+        <th class="product"><{t}>Name<{/t}></th>
+        <th class="price"><{t}>Credit<{/t}></th>
+        <th class="price"><{t}>MSRP<{/t}></th>
+        <th class="number"><{t}>Price<{/t}></th>
+        <th class="number"><{t}>Quantity<{/t}></th>
+        <th class="price"><{t}>Total<{/t}></th>
       </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@
       <td class="price"><{$item._pmt.score|intval}></td>
       <td class="price"><{$item.sale_price|cur}></td>
       <td class="cost"><{$item._pmt.price|cur}></td>
-      <td class="number"><{$item.nums}><{if !is_null($item.store) && $item.nums > $item.store}><h3 class="t"><{t}>(提示:需要备货)<{/t}></h3><{/if}></td>
+      <td class="number"><{$item.nums}><{if !is_null($item.store) && $item.nums > $item.store}><h3 class="t"><{t}>(Note:PRE-ORDER)<{/t}></h3><{/if}></td>
       <td class="cost"><{$item._pmt.amount|cur}></td>
     </tr>
     <{/foreach}>
@@ -95,7 +95,7 @@
   <{/if}>
   <{if $trading.package}>
 
-    <h3><{t}>捆绑商品<{/t}></h3>
+    <h3><{t}>Combine Shipping<{/t}></h3>
     <div class="division">
   <table width="100%" cellpadding="3" cellspacing="0" class="liststyle">
             <col class="span-auto"></col>
@@ -104,10 +104,10 @@
             <col class="span-2 ColColorOrange"></col>
       <thead>
         <tr>
-          <th class="product" width="53%"><{t}>捆绑名称<{/t}></th>
-          <th class="price" width="12%"><{t}>优惠价格<{/t}></th>
-          <th class="number" width="4%"><{t}>数量<{/t}></th>
-          <th class="price" width="9%"><{t}>小计<{/t}></th>
+          <th class="product" width="53%"><{t}>Name<{/t}></th>
+          <th class="price" width="12%"><{t}>Price<{/t}></th>
+          <th class="number" width="4%"><{t}>Quantity<{/t}></th>
+          <th class="price" width="9%"><{t}>Total<{/t}></th>
         </tr>
       </thead>
       <tbody>
@@ -131,8 +131,8 @@
 <input type="hidden" name="fromCart" value="true" />
 
 
-<div class="span-auto"><input class="actbtn btn-return-checkout" onClick="window.location='<{link ctl=cart act=index}>';"  type="button" value="返回购物车" /></div>
-<div class="span-auto floatRight last"><input class="actbtn btn-confirm" id="order_ct_dgc" type="submit" value="确认无误，下订单" /></div>
+<div class="span-auto"><input class="actbtn btn-return-checkout" onClick="window.location='<{link ctl=cart act=index}>';"  type="button" value="Back to Cart" /></div>
+<div class="span-auto floatRight last"><input class="actbtn btn-confirm" id="order_ct_dgc" type="submit" value="Confirm & Order Now" /></div>
 
 </div>
 
@@ -151,11 +151,11 @@ void function(){
           this.updateTotal();
         },
         setShippingFromArea:function(lastselect){
-           if(!lastselect)throw new Error('非法的地区信息.');
+           if(!lastselect)throw new Error('sorry, we cannot reach this area temporarily.');
            var _value = lastselect.value;
            var _isfastbuy = '<{$env.post.isfastbuy}>';
             new Request.HTML({url:Shop.url.shipping,update:'shipping',onRequest:function(){
-                  $('shipping').set('text','正在根据地区信息获得配送方式...');
+                  $('shipping').set('text','Downloading available shipping methods accoring to your address...');
                }}).post({area:_value, isfastbuy:_isfastbuy});
         },
         setCurrency:function(){
@@ -266,20 +266,20 @@ if(!extra_validator['subOrder']){
             }
         });
         if(checkTag==false && addr_num>0){
-            _warning('请选择收货地址！',$('checkout-recaddr'));
+            _warning('Pleae Select delivery address!',$('checkout-recaddr'));
             return false;
         }
         
         $ES('select', 'checkout-select-area').each(function(item){
             if(!item.getValue()){
-                _warning('请重新选择收货地区！',$('checkout-recaddr'));
+                _warning('Please Select delivery address again!',$('checkout-recaddr'));
                 $('checkout-recaddr').style.display='block';
                 item.focus();
                 return false;
             }
         });
         if($('checkout-recaddr').getElement('input[name^=delivery[ship_tel]').getProperty('value').trim() == '' && $('checkout-recaddr').getElement('input[name^=delivery[ship_mobile]').getProperty('value').trim() == ''){
-          _warning('请填写 电话 或 手机 其中至少一种联系方式！',$('checkout-recaddr'));
+          _warning('Please Fill in Phone Number or Cellphone Number, at least one of them!',$('checkout-recaddr'));
           return false;
         }
         
@@ -288,7 +288,7 @@ if(!extra_validator['subOrder']){
           if(item.checked == true) checkNum++;
         });
         if(checkNum == 0){
-          _warning('请选择配送方式！',$('shipping'));
+          _warning('Please select delivery method!',$('shipping'));
           return false;
         }
         
@@ -297,7 +297,7 @@ if(!extra_validator['subOrder']){
           if(item.checked == true) checkNum++;
         });
         if(checkNum == 0){
-          _warning('请选择支付方式！',$('payment'));
+          _warning('Please choose Payment Method/Term!',$('payment'));
           return false;
         }
           checkNum = 0;
@@ -306,7 +306,7 @@ if(!extra_validator['subOrder']){
                   if(item.checked == true) checkNum++;
            });
            if(checkNum == 0){
-                  _warning('请选择支付银行！',$('payment'));
+                  _warning('Please choose Payment Bank!',$('payment'));
                   return false;
          } 
       }
@@ -316,7 +316,7 @@ if(!extra_validator['subOrder']){
                   if(item.checked == true) checkNum++;
            });
            if(checkNum == 0){
-                  _warning('请选择支付银行！',$('payment'));
+                  _warning('Please choose Payment Bank!',$('payment'));
                   return false;
          } 
       }

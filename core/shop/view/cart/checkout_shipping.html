@@ -16,8 +16,8 @@
       <{if $shipping.protect}>
       <div style="border-bottom:1px solid #ccc; padding:5px 0; margin:0 0 5px 0; color:#000;">
       <input onclick="Order.shippingMerge($('shipping_<{$shipping.dt_id}>'),{protect:'true'},this.checked,event)" type="checkbox" name="delivery[is_protect][<{$shipping.dt_id}>]" value="1" >
-      <strong><{t}>保价费率<{/t}></strong>
-      <{t}>(商品价格的<{/t}><{$shipping.protect_rate*100}><{t}>% ，不足<{/t}><{$shipping.minprice|cur}><{t}>按<{/t}><{$shipping.minprice|cur}><{t}>计算)。<{/t}></div>
+      <strong><{t}>Insurance Charge Rate<{/t}></strong>
+      <{t}>(<{/t}><{$shipping.protect_rate*100}><{t}>% of total price, if less than <{/t}><{$shipping.minprice|cur}><{t}>,  just charge <{/t}><{$shipping.minprice|cur}><{t}>).<{/t}></div>
      <{/if}>
             <{$shipping.detail}>
      </td>
@@ -26,7 +26,7 @@
   </tbody>
 </table>
 <{else}>
-<div class='notice'><{t}>不支持您当前所在地区的物流配送，请直接与我们联系<{/t}></div>
+<div class='notice'><{t}>We cannot reach your address now. Please contact with our online customer service or email us.<{/t}></div>
 <{/if}>
 
   <script>

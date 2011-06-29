@@ -4,24 +4,24 @@
             <col class="span-auto ColColorGray"></col>
             <col class="span-4 ColColorOrange textright"></col>
       <tr>
-        <th><{t}>商品总价格：<{/t}></th>
+        <th><{t}>Total Price:<{/t}></th>
         <td value="<{$trading.pmt_b.totalPrice}>" class="price"><{$trading.pmt_b.totalPrice|cur}></td>
       </tr>
       <{if $trading.shipping_id}>
       <tr>
-        <th><{t}>配送费用：<{/t}></th>
+        <th><{t}>Shipping Cost:<{/t}></th>
         <td><{$trading.cost_freight|cur}></td>
       </tr>
       <{/if}>
       <{if $trading.is_protect}>
       <tr>
-        <th><{t}>配送保价费：<{/t}></th>
+        <th><{t}>Insurance charge rate:<{/t}></th>
         <td><{$trading.cost_protect|cur}></td>
       </tr>
       <{/if}>
       <{if $trading.cost_payment}>
       <tr>
-        <th><{t}>支付费率：(客户承担支付手续费)<{/t}></th>
+        <th><{t}>Payment charge rate:(Customer undertakes bank charges of payment)<{/t}></th>
         <td><{$trading.cost_payment|cur}></td>
       </tr>
       <{/if}>
@@ -29,7 +29,7 @@
           <{if  count($trading.pmt_o.list)>0 || count($trading.gift_p)>0 || count($trading.coupon_p)>0}>
             <{if count($trading.pmt_o.list)>0}>
               <tr>
-                <th><{t}>享受的优惠：<{/t}></th>
+                <th><{t}>According to your orders by now, we have special Discount for you as below list:<{/t}></th>
                         <td>
                              <ol>
                     <{foreach from=$trading.pmt_o.list item=item}>
@@ -41,7 +41,7 @@
                     <{/if}>
                     <{if count($trading.gift_p)>0}>
                     <tr>
-                      <th><{t}>获得赠品：<{/t}></th>
+                      <th><{t}>Can I get a gift?<{/t}></th>
                       <td>
                       <ol>
                       <{foreach from=$trading.gift_p item="item" key="key"}>
@@ -53,11 +53,11 @@
                     <{/if}>
                     <{if count($trading.coupon_p)>0}>
                     <tr>
-                      <th><{t}>获得优惠券：<{/t}></th>
+                      <th><{t}>Get a discount coupon:<{/t}></th>
                       <td>
                       <ol>
                           <{foreach from=$trading.coupon_p item="item" key="key"}>
-                          <li><{$item.cpns_name}> <{$item.nums}><{t}> 张<{/t}></li>
+                          <li><{$item.cpns_name}> <{$item.nums}><{t}> <{/t}></li>
                           <{/foreach}>
                       </ol></td>
                     </tr>
@@ -66,29 +66,29 @@
       
       <{if $trading.pmt_amount}>
       <tr>
-        <th><{t}>优惠金额：<{/t}></th>
+        <th><{t}>Discount Amount:<{/t}></th>
         <td style="color:#f00;">-<{$trading.pmt_amount|cur}></td>
       </tr>
       <{/if}>
       <{if $trading.discount != 0}>
       <tr>
-        <th><{t}>订单减免：<{/t}></th>
+        <th><{t}>Order Discount:<{/t}></th>
         <td style="color:#f00;"><{if $trading.discount>0}>-<{$trading.discount|cur}><{else}>+<{0-$trading.discount|cur}><{/if}></td>
       </tr>
       <{/if}>
       <{if $trading.totalConsumeScore}>
       <tr>
-        <th><{t}>抵扣积分：<{/t}></th>
+        <th><{t}>Consumption credit deducted:<{/t}></th>
         <td style="color:#f00;"><{$trading.totalConsumeScore}></td>
       </tr>
       <{/if}>
     <{if $trading.cur_code != '' && $trading.cur_code != $trading.cur_display}>
     <tr>
-    <th><{t}>货币汇率:<{/t}></th>
+    <th><{t}>Exchange rate:<{/t}></th>
     <td><{$trading.cur_rate}></td>
     </tr>
     <tr>
-    <th><{t}>货币结算金额:<{/t}></th>
+    <th><{t}>Total:<{/t}></th>
     <td><{$trading.final_amount|amount:$trading.cur_code:false:false:true}></td>
     </tr>
     <{/if}>
@@ -118,24 +118,24 @@
      <{if ($trading.totalGainScore<>0) or ($trading.totalConsumeScore<>0)}> 
      <{if $trading.totalConsumeScore}>
       <tr>
-        <th><{t}>此订单的消费积分数：<{/t}></th>
+        <th><{t}>Consumption credit from this order:<{/t}></th>
         <td style="color:#f00;"><{$trading.totalConsumeScore}></td>
       </tr>
       <{/if}>
          <{if $trading.receiver.member_id}>
          <tr>
-           <th><{t}>此订单数获得积分：<{/t}></th>
+           <th><{t}>Credit from the Order:<{/t}></th>
            <td><{$trading.totalScore}></td>
          </tr>  
          <tr>
-           <th><{t}>您的积分总计：<{/t}></th>
+           <th><{t}>Total Credit:<{/t}></th>
            <td><{$trading.history_GainScore}></td>
          </tr> 
 	    <{/if}>
       <{/if}>
    <{if count($trading.coupon_u)>0}>      
       <tr>
-        <th><{t}>使用的优惠券：<{/t}></th>
+        <th><{t}>Discount Coupon used:<{/t}></th>
         <td><ol><{foreach from=$trading.coupon_u item="item" key="key"}><li><{$key}></li><{/foreach}></ol></td>
       </tr>         
    <{/if}>  

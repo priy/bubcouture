@@ -1,12 +1,12 @@
 <{if count($trading.products)>0 || count($trading.package)>0 || count($trading.gift_e)>0 }>
 <div class="CartWrap" id="cart-index">
-<div class="CartNav clearfix"><div class="floatLeft"><img src="statics/cartnav-step1.png" alt="购物流程--查看购物车" /></div><div class="floatRight"><img src="statics/cartnav-cart.png"  /></div></div>
+<div class="CartNav clearfix"><div class="floatLeft"><img src="statics/cartnav-step1.gif" alt="Shopping Procedure--View Cart" /></div><div class="floatRight"><img src="statics/cartnav-cart.gif"  /></div></div>
 <{if count($trading.products)>0 || count($trading.package)>0 || count($trading.gift_e)>0 }>
   <div class="section" id="cart-items">
   <form id="form-cart" action="<{link ctl="cart" act="checkout"}>" method="post" extra="cart">
   <div class="FormWrap" id="cartItems">
     <{if count($trading.products) > 0}>
-    <h3><{t}>已放入购物车的商品:<{/t}></h3>
+    <h3><{t}>The goods in Cart:<{/t}></h3>
 {buy_product}
     <div id="goodsbody" class="division">
     <table width="100%" cellpadding="3" cellspacing="0" class="liststyle">
@@ -20,14 +20,14 @@
       <col class="span-2"></col>
       <thead>
         <tr>
-          <th><{t}>图片<{/t}></th>
-          <th><{t}>商品名称<{/t}></th>
-          <th><{t}>商品积分<{/t}></th>
-          <th><{t}>销售价格<{/t}></th>
-          <th><{t}>优惠价格<{/t}></th>
-          <th><{t}>数量<{/t}></th>
-          <th><{t}>小计<{/t}></th>
-          <th><{t}>删除<{/t}></th>
+          <th><{t}>Pic<{/t}></th>
+          <th><{t}>Name<{/t}></th>
+          <th><{t}>Credit<{/t}></th>
+          <th><{t}>Price<{/t}></th>
+          <th><{t}>MSRT<{/t}></th>
+          <th><{t}>Count<{/t}></th>
+          <th><{t}>Total<{/t}></th>
+          <th><{t}>Delete<{/t}></th>
         </tr>
       </thead>
       <tbody >
@@ -49,9 +49,9 @@
             <input type="text" class="_x_ipt textcenter" value="<{$item.nums}>" onchange="Cart.ItemNumUpdate(this,this.value,event);" size="3" name="cartNum[g][<{$item.key}>]" />
             <span class="numadjust increase" onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),1,event);"></span>
             <span class="numadjust decrease" onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),-1,event);"></span>
-            </div><{if !is_null($item.store) && $item.store < $alert_num}><{t}>(提示:商品缺货)<{/t}><{/if}></td>
+            </div><{if !is_null($item.store) && $item.store < $alert_num}><{t}>(Note:Not enough, please reduct your QTY)<{/t}><{/if}></td>
         <td class="itemTotal fontcolorRed"><{$item._pmt.amount|cur}></td>
-        <td><span class="lnk quiet fontcolorRed" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="删除"}></span></td>
+        <td><span class="lnk quiet fontcolorRed" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="Delete"}></span></td>
       </tr>
       <{/foreach}>
       </tbody>
@@ -60,7 +60,7 @@
     <{/if}>
 
     <{if $trading.gift_e}>
-    <h3><{t}>赠品<{/t}></h3>
+    <h3><{t}>Gift<{/t}></h3>
     <div id="giftbody"  class="division" >
     <table width="100%" cellpadding="0" cellspacing="0" class="liststyle" >
       <col class="span-2"></col>
@@ -72,13 +72,13 @@
       <col class="span-2"></col>            
       <thead>
         <tr>
-          <th><{t}>图片<{/t}></th>
-          <th><{t}>赠品名称<{/t}></th>
-          <th><{t}>所需积分<{/t}></th>
+          <th><{t}>Pic<{/t}></th>
+          <th><{t}>Name<{/t}></th>
+          <th><{t}>Credit<{/t}></th>
           <th><{t}>限购数量<{/t}></th>
-          <th><{t}>数量<{/t}></th>
-          <th><{t}>小计<{/t}></th>
-          <th><{t}>删除<{/t}></th>
+          <th><{t}>Count<{/t}></th>
+          <th><{t}>Total<{/t}></th>
+          <th><{t}>Delete<{/t}></th>
         </tr>
       </thead>
       <tbody >
@@ -93,7 +93,7 @@
           <span class="numadjust decrease"  onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),-1,event);"></span>
           </div></td>
           <td class="itemTotal"><{$item.amount}></td>
-          <td><span class="lnk quiet" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="删除"}></span></td>                    
+          <td><span class="lnk quiet" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="Delete"}></span></td>                    
         </tr>
       <{/foreach}>
       </tbody>
@@ -102,7 +102,7 @@
     <{/if}>
     
     <{if $trading.package}>
-    <h3><{t}>捆绑商品<{/t}></h3> 
+    <h3><{t}>Combine Shipping<{/t}></h3> 
     <div id="pkgbody"  class="division"> 
     <table width="100%" cellpadding="0" cellspacing="0" class="liststyle">
       <col class="span-2"></col>
