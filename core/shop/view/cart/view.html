@@ -1,5 +1,5 @@
 <div class="boxGray CartInfoItems">
-<h4><{t}>目前选购商品共<{/t}><span class="cartCount fontcolorOrange"><{$cartCount}></span><{t}>件<{/t}></h4>
+<h4><{t}>By now,you have ordered<{/t}><span class="cartCount fontcolorOrange"><{$cartCount}></span><{t}>styles<{/t}></h4>
 
   <{if count($trading.products) > 0}>
   <table>
@@ -31,7 +31,7 @@
   
   
   <{if count($trading.gift_e) > 0}>
-  <h4><{t}>可获得赠品：<{/t}></h4>
+  <h4><{t}>Gifts for you<{/t}></h4>
   <ol class="division CartInfoContent">
     <{foreach from=$trading.gift_e item="item" key="key"}>
       <li><a href="<{link ctl=gift act=index arg0=$item.gift_id}>"><{$item.name}><span class="fontcolorOrange num">x<{$item.nums}></span></a></li>
@@ -40,16 +40,16 @@
   <{/if}>
  
   <{if count($trading.package) > 0}>
-   <h4><{t}>捆绑促销商品：<{/t}></h4>
+   <h4><{t}>Bundling products<{/t}></h4>
   <ol class="division CartInfoContent">
     <{foreach from=$trading.package item="item" key="key"}>
      <li><{$item.name}><span class="fontcolorOrange num">x<{$item.nums}></span></li>
     <{/foreach}>
   </ol>
   <{/if}>
-      <div class='cart-goods-total'><{t}>商品总额:<{/t}><br />
+      <div class='cart-goods-total'><{t}>Total Price<{/t}><br />
         <span class="textright price1 total"><{$trading.totalPrice|cur}></span>&nbsp;&nbsp;&nbsp;&nbsp;
-        <a class="lnk gocart" href="<{link ctl=cart act=index}>" target="_blank"><{t}>进入购物车<{/t}></a>
+        <a class="lnk gocart" href="<{link ctl=cart act=index}>" target="_blank"><{t}>View Cart<{/t}></a>
       </div>  
 </div>
 

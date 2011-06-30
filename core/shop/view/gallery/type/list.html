@@ -19,7 +19,7 @@
             <li><span class="price1">Price:<{$product.price|cur}></span><{if $product.mktprice && $setting.mktprice}><span class="mktprice1"><{t}>MSRP: <{/t}><{$product.mktprice|cur}></span><{/if}></li>
 <!--
             <{if $product.mktprice > $product.price && $setting.mktprice && $setting.saveprice > 0}>
-            <li style="padding-left:4px; padding-top:8px;"><span class="saveprice1"> <{if $setting.saveprice == 1}>节省：<{$product.mktprice-$product.price|cur}>
+            <li style="padding-left:4px; padding-top:8px;"><span class="saveprice1"> <{if $setting.saveprice == 1}>Save:<{$product.mktprice-$product.price|cur}>
                     <{elseif $setting.saveprice == 2}>优惠:<{$product.price/$product.mktprice*100|number:'2'}>%
                     <{elseif $setting.saveprice == 3}><{$product.price/$product.mktprice*10|number:'1'}>折
 					<{/if}></span></li>

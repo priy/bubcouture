@@ -5,10 +5,10 @@
   <{foreach from=$data item=data}>
   <div class="span-5 items">
     <dl>
-      <dt class="img" style="text-align:center"><a  href="<{link ctl=brand act=index arg0=$data.brand_id}>" title="了解 <{$data.brand_name}>"><img src="<{$data.brand_logo|default:'statics/transparent.gif'|storager}>"></a></dt>
+      <dt class="img" style="text-align:center"><a  href="<{link ctl=brand act=index arg0=$data.brand_id}>" title="to know <{$data.brand_name}>"><img src="<{$data.brand_logo|default:'statics/transparent.gif'|storager}>"></a></dt>
       <dd class="intro textcenter">
-       <a href="<{link ctl=brand act=index arg0=$data.brand_id}>" title="了解 <{$data.brand_name}>"><{$data.brand_name}></a>
-       <a href="<{$data.link}>"  title="全部<{$data.brand_name}>商品">&raquo;</a>
+       <a href="<{link ctl=brand act=index arg0=$data.brand_id}>" title="to know <{$data.brand_name}>"><{$data.brand_name}></a>
+       <a href="<{$data.link}>"  title="all of <{$data.brand_name}>'s product">&raquo;</a>
      </dd>
     </dl>
   </div>

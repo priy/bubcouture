@@ -10,7 +10,7 @@
 
       <div class=" floatLeft commentMain">
         <div class="floatLeft commentAsk"><{if $items.object_type == 'ask'}><{t}>提问<{/t}><{else}><{t}>评论<{/t}><{/if}></div>
-        <span class="author fontcolorOrange"><{t}>我<{/t}><{if $items.object_type == 'ask'}><{t}>咨询：<{/t}><{else}><{t}>评论说：<{/t}><{/if}></span><span class="timpstamp font10px fontcolorGray replies"><{$items.time|cdate:FDATE_STIME}></span>
+        <span class="author fontcolorOrange"><{t}>我<{/t}><{if $items.object_type == 'ask'}><{t}>咨询：<{/t}><{else}><{t}>said:<{/t}><{/if}></span><span class="timpstamp font10px fontcolorGray replies"><{$items.time|cdate:FDATE_STIME}></span>
         <div style="clear:both;"></div>
       <!--<h4><{$comment.title|escape:'html'}></h4>-->
         <div class="commentText">
@@ -28,7 +28,7 @@
     <{foreach item=rep from=$items.items}>
      <div class="division  item " style=" margin:0px;" >
       <div class="floatLeft commentReply-admin">回答</div>
-      <span class="author fontcolorOrange"><{$rep.reply_name}></span><{t}>&nbsp;&nbsp;回复：<{/t}><span class="timpstamp font10px fontcolorGray replies"><{$rep.time|cdate:'FDATE_FTIME'}></span>
+      <span class="author fontcolorOrange"><{$rep.reply_name}></span><{t}>&nbsp;&nbsp;reply:<{/t}><span class="timpstamp font10px fontcolorGray replies"><{$rep.time|cdate:'FDATE_FTIME'}></span>
       <div  style="clear:both;"></div>
        <div class="commentText"><{$rep.comment|escape:'html'}></div>
     </div>

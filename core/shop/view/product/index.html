@@ -91,7 +91,7 @@
 
         <{if $goods.brand_name}><li><span><{t}>Brand:<{/t}></span><{if $goodsproplink}><a href="<{selector type='b' key=$goods.brand_id}>" target="_blank"><{$goods.brand_name}></a><{else}><{$goods.brand_name}><{/if}></li><{/if}>
         <{if $goods.unit}><li><span><{t}>measuring unit:<{/t}></span><{$goods.unit}></li><{/if}>
-        <{if $goods.setting.score && $goods.score}><li><span><{t}>所得积分：<{/t}></span><span id="goodsScore"><{$goods.score}></span><{/if}>
+        <{if $goods.setting.score && $goods.score}><li><span><{t}>Credit:<{/t}></span><span id="goodsScore"><{$goods.score}></span><{/if}>
     <{if $trading.score && $trading.score <>$goods.score}><li><{t}>特价积分：<{/t}><{$trading.score}></li><{/if}>
     <{if $goodspropposition<>2}>
 
@@ -156,7 +156,7 @@
       </li>
 
       <{if $goods.mktprice > $goods.price && $goods.setting.mktprice && $goods.setting.saveprice > 0}>
-            <li><span class="discount"><{if $goods.setting.saveprice == 1}>节省：
+            <li><span class="discount"><{if $goods.setting.saveprice == 1}>Save:
               <{if $goods.minprice && $goods.maxprice}>
                <{if $goods.minprice neq $goods.maxprice}>
                  <{$goods.jiesheng_min|cur}>-<{$goods.jiesheng_max|cur}>
@@ -166,7 +166,7 @@
             <{else}>
             <{$goods.mktprice-$goods.price|cur}>
             <{/if}>
-              <{elseif $goods.setting.saveprice == 2}>优惠：
+              <{elseif $goods.setting.saveprice == 2}>Discount:
                 <{if $goods.youhui_min && $goods.youhui_max}>
                  <{if $goods.youhui_min neq $goods.youhui_max}>
                    <{$goods.youhui_min|number:'2'}>%-<{$goods.youhui_max|number:'2'}>%
@@ -542,8 +542,8 @@
 
             <li class="huered"><{if $package.mktprice > $package.price && $goods.setting.mktprice && $goods.setting.saveprice > 0}>
         
-        <{if $goods.setting.saveprice == 1}>节省：<{$package.mktprice-$package.price|cur}>
-        <{elseif $goods.setting.saveprice == 2}>优惠：<{$package.price/$package.mktprice*100|number:'2'}>%<{elseif $goods.setting.saveprice == 3}><{$package.price/$package.mktprice*10|number:'3'}>折<{/if}><{/if}>
+        <{if $goods.setting.saveprice == 1}>Save:<{$package.mktprice-$package.price|cur}>
+        <{elseif $goods.setting.saveprice == 2}>Discount:<{$package.price/$package.mktprice*100|number:'2'}>%<{elseif $goods.setting.saveprice == 3}><{$package.price/$package.mktprice*10|number:'3'}>折<{/if}><{/if}>
             </li>
 
       <li><a rel="nofollow" href="<{link ctl="cart" act="addPkgToCart" arg0=$package.goods_id arg1=1}>"<{if $goods.setting.buytarget == 2}> target="_blank_cart"<{elseif $goods.setting.buytarget == 3}> target="_dialog_minicart"<{/if}>><{img class="buy" src="statics/icons/btn_pkg_buy.gif" alt="购买"}></a></li>
@@ -761,7 +761,7 @@
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
     <div class=" floatLeft commentMain">
     <div class="floatLeft commentAsk">提问</div>
-    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>说：<{/t}>
+    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>said:<{/t}>
     <span class="timpstamp font10px fontcolorGray"><{$comlist.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
     <div class="commentText"><{$comlist.comment|escape:'html'}></div>
@@ -771,7 +771,7 @@
     <{foreach from=$comlist.items item=items}>
     <div class="division  item " style=" margin:0px;" >
     <div class="floatLeft commentReply-admin">回答</div>
-    <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;回复：
+    <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;reply:
     <span class="timpstamp font10px fontcolorGray"><{$items.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
     <div class="commentText"><{$items.comment}></div>
@@ -806,18 +806,18 @@
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
     <div class=" floatLeft commentMain">
     <div class="floatLeft commentAsk">提问</div>
-    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>说：<{/t}>
+    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>said:<{/t}>
     <span class="timpstamp font10px fontcolorGray"><{$comlist.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
     <div class="commentText"><{$comlist.comment|escape:'html'}></div>
     </div>
-    <div class="floatRight"><a class="floatRight lnk " href='<{link ctl="comment" act="reply" arg0=$comlist.comment_id arg1="ask"}>'><{t}>回复此评论<{/t}></a></div>
+    <div class="floatRight"><a class="floatRight lnk " href='<{link ctl="comment" act="reply" arg0=$comlist.comment_id arg1="ask"}>'><{t}>reply<{/t}></a></div>
     </div>
     <div class="commentReply">
     <{foreach from=$comlist.items item=items}>
     <div class="division  item " style=" margin:0px;" >
     <div class="floatLeft commentReply-admin">回答</div>
-    <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;回复：
+    <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;reply:
     <span class="timpstamp font10px fontcolorGray"><{$items.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
     <div class="commentText"><{$items.comment}></div>
@@ -831,7 +831,7 @@
 
 <form class="addcomment" method="post" action='<{link ctl="comment" act="toComment" arg0=$goods.goods_id arg1="ask"}>' onsubmit='checkFormReqs(event);'>
   <h4><{t}>发表咨询<{/t}></h4>
-  <div class='title'><{t}>标题：<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[咨询]".$goods.name }></div>
+  <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[咨询]".$goods.name }></div>
   <div class="division">
       <table border="0" width="100%" cellpadding="0" cellspacing="0" class="forform">
             <tr>
@@ -841,12 +841,12 @@
             <tr>
             
            <tr>
-           <th><{t}>联系方式：<{/t}></th>
-                <td><{input type="text" class="inputstyle"   size=20 name="contact"}><span class="infotips"><{t}>(可以是电话、email、qq等)<{/t}></span></td>
+           <th><{t}>Contact Information:<{/t}></th>
+                <td><{input type="text" class="inputstyle"   size=20 name="contact"}><span class="infotips"><{t}>(Mobile Phone,email,MSN etc.)<{/t}></span></td>
             </tr>
             <{if $askshow == "on"}>
-            <th><em>*</em><{t}>验证码：<{/t}></th>
-              <td><{input type="text" required="true" size="4" maxlength="4" name="askverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="ask"}>" border="1" id="askimgVerifyCode"/><a href="javascript:changeimg('askimgVerifyCode','ask')"><{t}>&nbsp;看不清楚?换个图片<{/t}></a></td>
+            <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+              <td><{input type="text" required="true" size="4" maxlength="4" name="askverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="ask"}>" border="1" id="askimgVerifyCode"/><a href="javascript:changeimg('askimgVerifyCode','ask')"><{t}>&nbsp;Refresh for a new image<{/t}></a></td>
             </tr>
             <{/if}>
 
@@ -881,7 +881,7 @@
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
 <div class=" floatLeft commentMain">
  <div class="floatLeft commentAsk">提问</div>
-   <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>说：<{/t}><{/t}>
+   <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>said:<{/t}><{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$comlist.time|cdate:'SDATE_STIME'}></span>
  <div  style="clear:both;"></div>
 
@@ -895,7 +895,7 @@
 <{foreach from=$comlist.items item=items}>
   <div class="division  item " style=" margin:0px;" >
 <div class="floatLeft commentReply-admin">回复</div>
-<span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;回复：<{/t}>
+<span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;reply:<{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$items.time|cdate:'SDATE_STIME'}></span>
 <div  style="clear:both;"></div>
 <div class="commentText"><{$items.comment}></div>
@@ -934,7 +934,7 @@
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
 <div class=" floatLeft commentMain">
  <div class="floatLeft commentAsk">提问</div>
-   <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>说：<{/t}><{/t}>
+   <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>said:<{/t}><{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$comlist.time|cdate:'SDATE_STIME'}></span>
  <div  style="clear:both;"></div>
 
@@ -942,14 +942,14 @@
   <div class="commentText"><{$comlist.comment|escape:'html'}></div>
 </div>
 
-<div class="floatRight"><a class="floatRight lnk " href='<{link ctl="comment" act="reply" arg0=$comlist.comment_id arg1="discuss"}>'><{t}>回复此评论<{/t}></a></div>
+<div class="floatRight"><a class="floatRight lnk " href='<{link ctl="comment" act="reply" arg0=$comlist.comment_id arg1="discuss"}>'><{t}>reply<{/t}></a></div>
  </div>
 
  <div class="commentReply">
 <{foreach from=$comlist.items item=items}>
   <div class="division  item " style=" margin:0px;" >
 <div class="floatLeft commentReply-admin">回复</div>
-<span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;回复：<{/t}>
+<span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;reply:<{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$items.time|cdate:'SDATE_STIME'}></span>
 <div  style="clear:both;"></div>
 <div class="commentText"><{$items.comment}></div>
@@ -967,7 +967,7 @@
 
     <form class="addcomment" method="post" action='<{link ctl="comment" act="toComment" arg0=$goods.goods_id arg1="discuss"}>' onsubmit='checkFormReqs(event);'>
       <h4><{t}>发表评论<{/t}></h4>
-      <div class='title'><{t}>标题：<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[评论]".$goods.name}></div>
+      <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[评论]".$goods.name}></div>
       <div class="division">
           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="forform">
      
@@ -977,13 +977,13 @@
                 </tr>
      
                <tr>
-                <th><{t}>联系方式：<{/t}></th>
-                    <td><{input type="text" class="inputstyle"  size=20 name="contact"}><span class="infotips"><{t}>(可以是电话、email、qq等).<{/t}></span></td>
+                <th><{t}>Contact Information:<{/t}></th>
+                    <td><{input type="text" class="inputstyle"  size=20 name="contact"}><span class="infotips"><{t}>(Mobile Phone,email,MSN etc.).<{/t}></span></td>
                 </tr>
                <{if $discussshow == "on"}>
                 <tr>
-                <th><em>*</em><{t}>验证码：<{/t}></th>
-                    <td><{input type="text" required="true" size="4" maxlength="4" name="discussverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="discuss"}>" border="1" id="discussimgVerifyCode"/><a href="javascript:changeimg('discussimgVerifyCode','discuss')"><{t}>&nbsp;看不清楚?换个图片<{/t}></a>
+                <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+                    <td><{input type="text" required="true" size="4" maxlength="4" name="discussverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="discuss"}>" border="1" id="discussimgVerifyCode"/><a href="javascript:changeimg('discussimgVerifyCode','discuss')"><{t}>&nbsp;Refresh for a new image<{/t}></a>
                     </td>
                 </tr>
                 <{/if}>
@@ -1457,11 +1457,11 @@ $$('#goods-viewer .hightline').addEvents({
  
                           if(_priceDiff>0){
                               if(_discountValue.test(dcType.T2,'i')){
-                                referencePoint.update('discount','优惠：'+(_priceDiff/_priceMarketValue*100).toFixed(1)+'%');
+                                referencePoint.update('discount','Discount:'+(_priceDiff/_priceMarketValue*100).toFixed(1)+'%');
                               }else if(_discountValue.test(dcType.T3,'i')){
                                 referencePoint.update('discount',((1 - _priceDiff/_priceMarketValue)*10).toFixed(1)+'折');
                               }else{
-                                referencePoint.update('discount','节省：'+priceControl.format(_priceDiff));
+                                referencePoint.update('discount','Save:'+priceControl.format(_priceDiff));
                               }
                           }
                           else{

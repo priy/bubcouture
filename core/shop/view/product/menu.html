@@ -51,4 +51,4 @@
 </li>
 
 <li <{if $login!="nologin"}>star="<{$product.goods_id}>"<{/if}> title="<{$product.name|escape:html}>" class="star-off"><a  <{if $login=="nologin"}> href="<{link ctl="passport" act="login"}>" <{else}>href="#" onclick="return false;"<{/if}> class="listact" title="加入收藏" rel="nofollow"><{t}>加入收藏<{/t}></a></li>
-<li class="vdetail zoom"><a title="<{$product.name|escape:html}>" href="<{link ctl=product act=index arg0=$product.goods_id}>" pic='<{$product.big_pic|default:$env.conf.site.default_big_pic|storager}>' target="_blank" class="listact" title="查看详细"><{t}>查看详细<{/t}></a></li>
+<li class="vdetail zoom"><a title="<{$product.name|escape:html}>" href="<{link ctl=product act=index arg0=$product.goods_id}>" pic='<{$product.big_pic|default:$env.conf.site.default_big_pic|storager}>' target="_blank" class="listact" title="Details"><{t}>Details<{/t}></a></li>

@@ -15,8 +15,8 @@
           <li ><div class="span-2"><{t}>捆绑价：<{/t}></div><strong class="price1"><{$itemlist.price|cur}></strong></li>
           <{if $itemlist.mktprice > $itemlist.price && $setting.mktprice && $setting.saveprice > 0}>
           <li class="save"><div class="span-2"></div>
-            <{if $setting.saveprice == 1}><{t}>节省：<{/t}><strong><{$itemlist.mktprice-$itemlist.price|cur}></strong>
-            <{elseif $setting.saveprice == 2}><{t}>优惠：<{/t}><strong><{$itemlist.price/$itemlist.mktprice*100|number:'2'}>%
+            <{if $setting.saveprice == 1}><{t}>Save:<{/t}><strong><{$itemlist.mktprice-$itemlist.price|cur}></strong>
+            <{elseif $setting.saveprice == 2}><{t}>Discount:<{/t}><strong><{$itemlist.price/$itemlist.mktprice*100|number:'2'}>%
             <{elseif $setting.saveprice == 3}><strong><{$itemlist.price/$itemlist.mktprice*10|number:'1'}>折
 			<{/if}></strong></li>
             

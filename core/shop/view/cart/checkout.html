@@ -60,7 +60,7 @@
   <{/if}>
   <{if $trading.gift_e}>
 
-    <h3><{t}>赠品<{/t}></h3>
+    <h3><{t}>Gift<{/t}></h3>
 
     <div class="division">
   <table width="100%" cellpadding="3" cellspacing="0" class="liststyle">
@@ -71,11 +71,11 @@
             <col class="span-2 ColColorOrange"></col>
     <thead>
         <tr>
-          <th><{t}>赠品名称<{/t}></th>
-          <th><{t}>所需积分<{/t}></th>
-          <th><{t}>限制购买数量<{/t}></th>
-          <th><{t}>数量<{/t}></th>
-          <th><{t}>小计<{/t}></th>
+          <th><{t}>Name<{/t}></th>
+          <th><{t}>Credit<{/t}></th>
+          <th><{t}>QTY limit<{/t}></th>
+          <th><{t}>QTY<{/t}></th>
+          <th><{t}>Total<{/t}></th>
         </tr>
       </thead>
       <tbody>
@@ -84,7 +84,7 @@
           
           <td><{$item.name}></td>
           <td><{$item.point}></td>
-          <td ><{if $item.limit_num=='0'}><{t}>不限制<{/t}><{else}><{$item.limit_num}><{/if}></td>
+          <td ><{if $item.limit_num=='0'}><{t}>No Limit<{/t}><{else}><{$item.limit_num}><{/if}></td>
           <td><{$item.nums}></td>
           <td><{$item.amount}></td>
         </tr>

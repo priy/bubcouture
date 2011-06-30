@@ -1,6 +1,6 @@
 
 <div class="CartWrap">
-<div class="CartNav clearfix"><div class="floatLeft"><img src="statics/cartnav-step2.gif" alt="购物流程--用户认证" /></div><div class="floatRight"><img src="statics/cartnav-cart.gif"  /></div></div>
+<div class="CartNav clearfix"><div class="floatLeft"><img src="statics/cartnav-step2.png" alt="Shopping Procedure--Authentication" /></div><div class="floatRight"><img src="statics/cartnav-cart.png"  /></div></div>
 </div>
 
 <div class="RegisterWrap clearfix">
@@ -19,10 +19,10 @@
       <{if !$mustMember}>
         <div class="rightbottom" style="<{if $cart_login_content}>clear:both;<{/if}> float:left; width:47%; height:auto; margin-top:5px;">
 	 		<div class="RegisterWrap">
-               <h4><{t}>直接购买<{/t}></h4>
+               <h4><{t}>Buy Now<{/t}></h4>
                <div class="intro"><div class="customMessages">{nologin_buy}</div></div>
                <div class="form">
-               <a class="lnk" href="<{link ctl=cart act=checkout arg0=$isfastbuy}>" onclick="Cookie.set('S[ST_ShopEx-Anonymity-Buy]', 'true')" id="anonymityBuy"><{t}>直接进入购买<{/t}></a>
+               <a class="lnk" href="<{link ctl=cart act=checkout arg0=$isfastbuy}>" onclick="Cookie.set('S[ST_ShopEx-Anonymity-Buy]', 'true')" id="anonymityBuy"><{t}>Buy Now<{/t}></a>
                </div>
 			</div>
            </div>

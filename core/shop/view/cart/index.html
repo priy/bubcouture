@@ -75,7 +75,7 @@
           <th><{t}>Pic<{/t}></th>
           <th><{t}>Name<{/t}></th>
           <th><{t}>Credit<{/t}></th>
-          <th><{t}>限购数量<{/t}></th>
+          <th><{t}>QTY limit<{/t}></th>
           <th><{t}>Count<{/t}></th>
           <th><{t}>Total<{/t}></th>
           <th><{t}>Delete<{/t}></th>
@@ -87,7 +87,7 @@
           <td><a href="<{link ctl=gift act='index' arg0=$item.gift_id}>" target='_blank' style='margin:0;padding:0;text-decoration:none;'><img src="<{$item.thumbnail_pic|default:$env.conf.site.default_thumbnail_pic|storager}>"  <{if $env.conf.site.thumbnail_pic_width >0 && $env.conf.site.thumbnail_pic_height >0}>width="<{$env.conf.site.thumbnail_pic_width}>" height="<{$env.conf.site.thumbnail_pic_height}>"<{/if}> /></a></td>
           <td style='text-align:left'><a href="<{link ctl=gift act='index' arg0=$item.gift_id}>" target='_blank'><{$item.name}></a></td>
           <td><{$item.point}></td>
-          <td><{if $item.limit_num=='0'}><{t}>不限制<{/t}><{else}><{$item.limit_num}><{/if}></td>
+          <td><{if $item.limit_num=='0'}><{t}>no limit<{/t}><{else}><{$item.limit_num}><{/if}></td>
           <td><div class="Numinput"><input type="text" class="_x_ipt textcenter" onchange="Cart.ItemNumUpdate(this,this.value,event);" value=<{$item.nums}> size="3" name="cartNum[f][<{$item.gift_id}>]" >
           <span class="numadjust increase"  onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),1,event);"></span>
           <span class="numadjust decrease"  onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),-1,event);"></span>
@@ -113,12 +113,12 @@
       <col class="span-2"></col>                
       <thead>
         <tr>
-          <th><{t}>货号<{/t}></th>
-          <th><{t}>捆绑名称<{/t}></th>
-          <th><{t}>优惠价格<{/t}></th>
-          <th><{t}>数量<{/t}></th>
-          <th><{t}>小计<{/t}></th>
-          <th><{t}>删除<{/t}></th>                        
+          <th><{t}>Item NO.<{/t}></th>
+          <th><{t}>Name<{/t}></th>
+          <th><{t}>Discount Price<{/t}></th>
+          <th><{t}>Quantity<{/t}></th>
+          <th><{t}>Total<{/t}></th>
+          <th><{t}>Delete<{/t}></th>                        
         </tr>
       </thead>
       <tbody>
@@ -132,7 +132,7 @@
           <span class="numadjust decrease"  onclick="Cart.ItemNumUpdate($(this).getPrevious('input'),-1,event);"></span>
           </div></td>
           <td class="itemTotal"><{$item.amount|cur}></td>
-          <td><span class="lnk quiet" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="删除"}></span></td>    
+          <td><span class="lnk quiet" onclick='Cart.removeItem(this,event);'><{img src="statics/bundle/del.gif" alt="Delete"}></span></td>    
         </tr>
       <{/foreach}>
       </tbody>
@@ -144,9 +144,9 @@
          <div class='span-auto' style='width:45%'>
                <div id='cart-coupon'>
                   <{if count($trading.coupon_u)>0}>
-                  <div class="promotion"><{t}>使用的优惠券：<{/t}><{foreach from=$trading.coupon_u item="item" key="key"}><strong><{$key}></strong><{/foreach}><a href="<{link ctl=cart act='removeCoupon'}>" class="lnk" style="margin:0 0 0 20px;"><{t}>取消优惠券<{/t}></a></div>
+                  <div class="promotion"><{t}>Coupon Used:<{/t}><{foreach from=$trading.coupon_u item="item" key="key"}><strong><{$key}></strong><{/foreach}><a href="<{link ctl=cart act='removeCoupon'}>" class="lnk" style="margin:0 0 0 20px;"><{t}>Cancel<{/t}></a></div>
                   <{else}>
-                  <{t}>对以上商品使用优惠券：</{t}><{input type="text" name="coupon" id="-s-ipt-coupon" size="30" value="请输入优惠券号码" onclick="this.value=(this.value=='请输入优惠券号码')?'':this.value"}> <input id='cart-coupon-submitBtn' type="button" value="<{t}>确定<{/t}>" />
+                  <{t}>Use coupon:</{t}><{input type="text" name="coupon" id="-s-ipt-coupon" size="30" value="please enter your coupon code" onclick="this.value=(this.value=='please enter your coupon code')?'':this.value"}> <input id='cart-coupon-submitBtn' type="button" value="<{t}>Confirm<{/t}>" />
                   <script>
                       $('cart-coupon-submitBtn').addEvent('click',function(e){
                           e.stop();
@@ -165,9 +165,9 @@
   </div>
   
   <div class="CartBtn clearfix" style="margin-bottom:5px;">
-  <div class="span-auto"><a href="./" class="actbtn btn-return" >&laquo;继续购物</a></div>
-  <div class="span-auto"><a id="clearCart" class="actbtn btn-clearcat" href="javascript:Cart.empty('<{link ctl=cart act='removeCart' arg0=all}>');">清空购物车</a></div>
-  <div class="span-auto floatRight"><input class="actbtn btn-next" type="submit" value="<{t}>下单结算&raquo;<{/t}>" /></div>
+  <div class="span-auto"><a href="./" class="actbtn btn-return" >&laquo;continue shopping</a></div>
+  <div class="span-auto"><a id="clearCart" class="actbtn btn-clearcat" href="javascript:Cart.empty('<{link ctl=cart act='removeCart' arg0=all}>');">Clear my cart</a></div>
+  <div class="span-auto floatRight"><input class="actbtn btn-next" type="submit" value="<{t}>checkout&raquo;<{/t}>" /></div>
   </div>
   </form>
   </div>
@@ -176,11 +176,11 @@
 <div id="cart-none-msg" style='<{if count($trading.products)>0 || count($trading.package)>0 || count($trading.gift_e)>0 }>display:none;<{/if}>'>
 <br/>
 <br/>
-<div  class='success' ><{t}>您已清空了购物车.<{/t}></div>
-<h3><{t}>现在您可以:<{/t}></h3>
+<div  class='success' ><{t}>Your cart cleared.<{/t}></div>
+<h3><{t}>Now you can:<{/t}></h3>
 <ul class='list'>
-   <li><a href='./'><{t}>返回网站首页<{/t}></a></li>
-   <li><a href='javascript:opener=null;window.close();'><{t}>关闭此页面<{/t}></a></li>
+   <li><a href='./'><{t}>back to Home<{/t}></a></li>
+   <li><a href='javascript:opener=null;window.close();'><{t}>close this page<{/t}></a></li>
 </ul>
 
 </div>
@@ -284,13 +284,13 @@ void function(){
     $extend(Cart,{
          removeItem:function(handle,evt){
              evt = new Event(evt).stop();
-             if(!confirm('确认删除？'))return;
+             if(!confirm('Confirm delete?'))return;
              var item = $(handle).getParent('tr');
              var remoteURL = item.get('urlremove');
              item.getFormElements().set('disabled',true);
              this.updateTotal(remoteURL,{
              onRequest:function(){
-                 item.getFirst().set({'html':'正在删除...'});
+                 item.getFirst().set({'html':'Deleting...'});
                  item.setStyles({'background':'#FBE3E4','opacity':1})
              },
              onComplete:function(){
@@ -343,12 +343,12 @@ void function(){
             new Request.HTML($extend({update:cartTotalPanel,url:remoteURL,data:cartForm},options)).post();
          },
          empty:function(remoteURL){
-            if(!confirm('确认清空购物车？'))return;
+            if(!confirm('Confirm clear your cart?'))return;
             
             new Request({
                 
                 onRequest:function(){
-                   MessageBox.success('清空购物车成功,正在准备刷新本页');
+                   MessageBox.success('Cart cleared,Refreshing...');
                 },
                 onComplete:function(){
                   
@@ -387,10 +387,10 @@ void function(){
 <{else}>
    <div id="cart-none-msg">
        <div class='note' style='border-width:1px;'>
-         <h3> <{t}>购物车目前没有加入任何商品!<{/t}></h3>
+         <h3> <{t}>Your cart is empty!<{/t}></h3>
             <ul class='list'>
-               <li><a href='./'><{t}>继续挑选商品»»<{/t}></a></li>
-               <li><a href='javascript:opener=null;window.close();'><{t}>关闭此页面<{/t}></a></li>
+               <li><a href='./'><{t}>continue shopping»»<{/t}></a></li>
+               <li><a href='javascript:opener=null;window.close();'><{t}>close this page<{/t}></a></li>
            </ul>
        </div>
    </div>

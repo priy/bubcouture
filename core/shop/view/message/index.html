@@ -14,7 +14,7 @@
     <div class="division boxBlue clearfix mainReply" style="margin-bottom:0px;">
       <div class=" floatLeft commentMain">
         <div class="floatLeft commentAsk">留言</div>
-          <span class="author fontcolorOrange"><{$msglist.msg_from}></span>&nbsp;&nbsp;<{t}>说：<{/t}>
+          <span class="author fontcolorOrange"><{$msglist.msg_from}></span>&nbsp;&nbsp;<{t}>said:<{/t}>
           <span class="timpstamp font10px fontcolorGray replies"><{$msglist.date_line|cdate:'SDATE_STIME'}></span>
           <div style="clear:both;"></div>
        
@@ -30,7 +30,7 @@
           <{foreach from=$msglist.reply item=items}>
             <div class="division  item " style=" margin:0px;" >
              <div class="floatLeft commentReply-admin">回复</div>
-              <span class="author fontcolorOrange"><{$items.msg_from}></span><{t}>&nbsp;&nbsp;回复：<{/t}>
+              <span class="author fontcolorOrange"><{$items.msg_from}></span><{t}>&nbsp;&nbsp;reply:<{/t}>
               <span class="timpstamp font10px fontcolorGray replies"><{$items.date_line|cdate:'SDATE_STIME'}></span>
               <div  style="clear:both;"></div>
               <div class="commentText"><{$items.message|escape:'html'}></div>
@@ -84,7 +84,7 @@
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forform">
     
       <tr>
-        <th><em style='color:red'>*</em><{t}>标题：<{/t}></th>
+        <th><em style='color:red'>*</em><{t}>Title:<{/t}></th>
         <td><{input type="text" required="true" size=50 name="subject"}></td>
       </tr>
     
@@ -94,14 +94,14 @@
       </tr>
        <{if $nomember eq 'on'}>
       <tr>
-        <th><{t}>联系方式：<{/t}></th>
+        <th><{t}>Contact Information:<{/t}></th>
         <td><{input type="text"  size=24 name="email" maxlength=255 class='inputstyle'}><{t}>(QQ、MSN、Email、电话等，此信息不会被公开)<{/t}></td>
       </tr>
       <{/if}>
       <{if $msgshow == "on" }>
       <tr>
-        <th><em style='color:red'>*</em><{t}>验证码：<{/t}></th>
-        <td><{input type="text" required="true" size="4" maxlength="4" name="verifyCode" class='inputstyle'}>&nbsp;<img src="<{link ctl="passport" act="verifyCode"}>" border="1" id="imgVerifyCode"/><a href="javascript:changeimg()"><{t}>&nbsp;看不清楚?换个图片<{/t}></a></td>
+        <th><em style='color:red'>*</em><{t}>Authentication Code:<{/t}></th>
+        <td><{input type="text" required="true" size="4" maxlength="4" name="verifyCode" class='inputstyle'}>&nbsp;<img src="<{link ctl="passport" act="verifyCode"}>" border="1" id="imgVerifyCode"/><a href="javascript:changeimg()"><{t}>&nbsp;Refresh for a new image<{/t}></a></td>
       </tr>
       <{/if}>
       <tr>
