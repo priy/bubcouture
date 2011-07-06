@@ -30,8 +30,8 @@
                   
                   $E('#template-modal .dialog').get('html').substitute({
                       
-                      title:'正在加入购物车',
-                      content:'正在加入购物车...'
+                      title:'Add to the cart',
+                      content:'Adding to the cart...'
                   })
                   
                ).show();
@@ -54,18 +54,18 @@
                  url:params.remoteURL,
                  method:'post',
                  onRequest:function(){
-                     this.dialog.getElement('.title').set('html','正在加入购物车');
+                     this.dialog.getElement('.title').set('html','Adding to the cart');
                     
                  }.bind(this),
                  onSuccess:function(re){
-                     this.dialog.getElement('.title').set('html','<img src="statics/icon-success.gif" />成功加入购物车');
+                     this.dialog.getElement('.title').set('html','<img src="statics/icon-success.gif" />Added to the cart');
                      this.dialog.getElement('.dialog-content').set('html',re);
                      $$('.cart-number').set('text',Cookie.get('S[CART_COUNT]')||0);
                     
                  }.bind(this),
                  onFailure:function(xhr){
                      this.dialog.remove();
-                     MessageBox.error("加入购物车失败.<br /><ul><li>可能库存不足.</li><li>或提交信息不完整.</li></ul>");
+                     MessageBox.error("Fail to add to the cart.<br /><ul><li>Maybe it's out of stock.</li><li> OR the information submited is incompleted.</li></ul>");
                  }.bind(this)
               },params.options||{});
               if(!params.url)return false;
@@ -84,7 +84,7 @@
                url:this.action,
                method:this.method,
                data:this,
-               target:this.getElement('input[value=加入购物车]')
+               target:this.getElement('input[value=add to the cart]')
            }]);
        
        });
@@ -202,7 +202,7 @@
                // if(window.ie6) remoteURL=(remoteURL.substring(0,4)=='http')?remoteURL:remoteURL;
 
                   $pick(this.request,{cancel:$empty}).cancel();
-                      this.request = new Request.HTML({update:miniPassportDialog.getElement('.dialog-content').set('html','&nbsp;&nbsp;正在加载...'),onComplete:function(){
+                      this.request = new Request.HTML({update:miniPassportDialog.getElement('.dialog-content').set('html','&nbsp;&nbsp;Loading...'),onComplete:function(){
                             MiniPassport.onload.call(MiniPassport);
                       }}).get(remoteURL,$H({mini_passport:1}));
                 
@@ -269,7 +269,7 @@
 							 
                               if(plugin_url){
                                   MiniPassport.hide.call(MiniPassport,$pick(miniPassportDialog.retrieve('chain'),function(){
-                                       MessageBox.success('正在转向...');
+                                       MessageBox.success('Redirecting...');
                                        
                                        location.href = plugin_url;
 
@@ -278,7 +278,7 @@
                               }else{
                                   MiniPassport.hide.call(MiniPassport,$pick(miniPassportDialog.retrieve('chain'),function(){
                                        
-                                       MessageBox.success('用户登录成功,正在转向...');
+                                       MessageBox.success('Login sucessed,waiting...');
                                        location.reload();
                                   
                                   }));
@@ -337,7 +337,7 @@
               MiniPassport.show(tgt,{remoteURL:'<{link ctl="passport" act="login"}>'});
               miniPassportDialog.store('chain',function(){
                     
-                    MessageBox.success('会员认证成功,正在进入...');
+                    MessageBox.success('Authentication Success,loading...');
                     location.href= '<{link ctl="member" act="index"}>';
               
               });              
@@ -356,7 +356,7 @@
                 miniPassportDialog.store('margedata',[{t:'hidden',n:'regType',v:'buy'}]);
             }
             miniPassportDialog.store('chain',function(){
-                    MessageBox.success('正在转入...');
+                    MessageBox.success('Loading...');
                     form.submit();
             });        
      });
@@ -378,7 +378,7 @@
 
 			    onRequest:function(){
                       this.loginDialog = new Element('div',{'class':'dialog trustdialog','id':'trust_footer_login'}).set('html',$E('#template-modal .dialog').get('html').substitute({
-                      title:'信任登录',
+                      title:'Trusted Login',
                       content:'<iframe src="" id="RemoteFrm" width="100%" height="90%" frameborder="0" styles="border:none;background: none repeat scroll 0% 0% transparent; "></iframe>'
                        })).setStyles({display:'none',width:0}).inject(document.body);
 
@@ -426,7 +426,7 @@
           <{/if}>
 </li>
 <{/foreach}>
-</ul><div class="textcenter pushdown-2"><span id="closeSiderIMchat" class="lnk">关闭在线客服</span></div></div><div class="bottom"></div></div></div>
+</ul><div class="textcenter pushdown-2"><span id="closeSiderIMchat" class="lnk">Close</span></div></div><div class="bottom"></div></div></div>
 
 <script type="text/javascript">
 window.addEvent('domready', function() {                                     
@@ -462,9 +462,9 @@ window.addEvent('scroll',function(){
             var themeName=Cookie.read("S[PREVIEW_THEME]");
             var themeTip=new Element('div').inject(document.body,'top');
             themeTip.setStyles({position:'absolute',top:0,right:0, 'white-space':'nowrap', padding:'0 10px', background:'green', color:'#fff'}); 
-            themeTip.setText('模板预览：'+themeName);
+            themeTip.setText('Template Preview:'+themeName);
             var themeBtn=new Element('span',{ styles:{'cursor':'pointer', 'margin-left':'10px'}}).inject(themeTip);
-            themeBtn.setText('[退出预览]');
+            themeBtn.setText('[Exit]');
             themeBtn.addEvent('click',function(){Cookie.dispose('S[PREVIEW_THEME]');window.close();});
         }
 })();

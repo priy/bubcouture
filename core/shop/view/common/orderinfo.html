@@ -5,9 +5,9 @@
             <col class="span-5 ColColorGray"></col>
             <col class="span-4 ColColorGray "></col>
   <tr>
-    <td><h4><{t}>订单编号：<{/t}><{$order.order_id}><{if $order.status=='finish'}><label style="color:#f00;"><{t}>（已完成）<{/t}></label><{elseif $order.status=='dead'}><label style="color:#f00;"><{t}>（已作废）<{/t}></label><{/if}></h4></td>
-    <td><{t}>下单日期：<{/t}><{$order.acttime|cdate:FDATE_STIME}></td>
-    <td>状态：<{if $order.pay_status==0}>未付款<{elseif $order.pay_status==1}>已付款<{elseif $order.pay_status==2}>已付款至担保方<{elseif $order.pay_status==3}>部分付款<{elseif $order.pay_status==4}>部分退款<{elseif $order.pay_status==5}>已退款<{/if}>
+    <td><h4><{t}>Order No.<{/t}><{$order.order_id}><{if $order.status=='finish'}><label style="color:#f00;"><{t}>(finished)<{/t}></label><{elseif $order.status=='dead'}><label style="color:#f00;"><{t}>(Canceled)<{/t}></label><{/if}></h4></td>
+    <td><{t}>Order Date:<{/t}><{$order.acttime|cdate:FDATE_STIME}></td>
+    <td>Status:<{if $order.pay_status==0}>Unpaid<{elseif $order.pay_status==1}>Paid<{elseif $order.pay_status==2}>已付款至担保方<{elseif $order.pay_status==3}>Partly Paid<{elseif $order.pay_status==4}>Partly Refund<{elseif $order.pay_status==5}>Refunded<{/if}>
   [<{if $order.ship_status==0}>未发货<{elseif $order.ship_status==1}>已发货<{elseif $order.ship_status==2}>部分发货<{elseif $order.ship_status==3}>部分退货<{elseif $order.ship_status==4}>已退货<{/if}>]</td>
   </tr>
 </table>
