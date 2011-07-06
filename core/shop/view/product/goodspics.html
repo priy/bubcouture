@@ -16,7 +16,7 @@
         
         <table class='picscroll'>
             <tr>
-               <td width='5%' class='scrollarrow toleft' title='向左'>&nbsp;                  
+               <td width='5%' class='scrollarrow toleft' title='Left'>&nbsp;                  
                </td>
                 <td width='90%'>
                   <div class="goods-detail-pic-thumbnail pics">
@@ -53,13 +53,13 @@
                 <{/if}>
                   </div>
                 </td>
-               <td width='5%' class='scrollarrow toright' title='向右'>&nbsp;
+               <td width='5%' class='scrollarrow toright' title='Right'>&nbsp;
                
                </td>
             </tr>
         </table>
         <a href="<{link ctl=product act=viewpic arg0=$goods.goods_id arg0=$goods.goods_id arg1=$goods.image_default}>" target="_blank" onclick='_open(this.href);return false;'>
-            <{img src="statics/icons/btn_goods_gallery.gif" alt="查看大图"}>
+            <{img src="statics/icons/btn_goods_gallery.gif" alt="Zoom in"}>
         </a>
         <script>
       window.addEvent('domready',function(){

@@ -22,17 +22,17 @@ if(!v||!v.length)return;
       
       v.each(function(goods,index){
       var vt = ($time() - goods['viewTime']);
-          vt = Math.round(vt/(60*1000))+'分钟前浏览过:';
+          vt = Math.round(vt/(60*1000))+'minutes\' ago you have looked through:';
       if(vt.toInt()>=60){
-        vt = Math.round(vt.toInt()/60)+'小时前浏览过:';
+        vt = Math.round(vt.toInt()/60)+'hours\' ago you have looked through:';
         if(vt.toInt()>23){
-           vt = Math.round(vt.toInt()/24)+'天前浏览过:';
+           vt = Math.round(vt.toInt()/24)+'days\' ago you have looked through:';
            if(vt.toInt()>3){
-             vt = new Date(goods['viewTime']).toLocaleString()+'浏览过:';
+             vt = new Date(goods['viewTime']).toLocaleString()+'looked through:';
            }
         } 
        };
-       if(!!!vt.toInt()){vt='刚才浏览了:'}
+       if(!!!vt.toInt()){vt='You have looked through:'}
        goods['viewTime'] = vt;
        if(index<max)
        html += template.substitute(goods);
@@ -89,5 +89,5 @@ if(!v||!v.length)return;
 });
 </script>
 <div class="textright">
-  <a class="lnk clearAll" onclick="if(broswerStore){broswerStore.remove('history');$('box_<{$widgets_id}>').empty()}">清除列表</a> | <a class="lnk viewAll" href="<{link ctl="tools" act="history"}>">查看所有</a><span>&nbsp;&nbsp;</span>
+  <a class="lnk clearAll" onclick="if(broswerStore){broswerStore.remove('history');$('box_<{$widgets_id}>').empty()}">Clear the list</a> | <a class="lnk viewAll" href="<{link ctl="tools" act="history"}>">ALL</a><span>&nbsp;&nbsp;</span>
 </div>

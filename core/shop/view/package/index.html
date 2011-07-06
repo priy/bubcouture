@@ -11,8 +11,8 @@
       <div class="boxBlue">
         <div class="division">
         <ul class="clearfix">
-          <li ><div class="span-2"><{t}>原价：<{/t}></div><strong class="mktprice1"><{$itemlist.mktprice|cur}></strong></li>
-          <li ><div class="span-2"><{t}>捆绑价：<{/t}></div><strong class="price1"><{$itemlist.price|cur}></strong></li>
+          <li ><div class="span-2"><{t}>MSRP:<{/t}></div><strong class="mktprice1"><{$itemlist.mktprice|cur}></strong></li>
+          <li ><div class="span-2"><{t}>Price:<{/t}></div><strong class="price1"><{$itemlist.price|cur}></strong></li>
           <{if $itemlist.mktprice > $itemlist.price && $setting.mktprice && $setting.saveprice > 0}>
           <li class="save"><div class="span-2"></div>
             <{if $setting.saveprice == 1}><{t}>Save:<{/t}><strong><{$itemlist.mktprice-$itemlist.price|cur}></strong>
@@ -21,7 +21,7 @@
 			<{/if}></strong></li>
             
           <{/if}> 
-          <li class="textcenter"><a class="actbtn btn-buy" href="<{link ctl="cart" act="addPkgToCart" arg0=$itemlist.goods_id}>"><{t}>购买<{/t}></a></li>
+          <li class="textcenter"><a class="actbtn btn-buy" href="<{link ctl="cart" act="addPkgToCart" arg0=$itemlist.goods_id}>"><{t}>Buy<{/t}></a></li>
           </ul>
          </div>
       </div>
@@ -29,11 +29,11 @@
       
       
       <div class="push-6">
-      <h4><{t}>此捆绑促销包括：<{/t}></h4>
+      <h4><{t}>bunding sale contains:<{/t}></h4>
         <ul class="list">
           <{foreach from=$itemlist.items item="items"}>
           <li><a href="<{link ctl="product" act="index" arg0=$items.p_goods_id}>" target="_blank"><{$items.name}></a><br />
-            <{t}>数量:<{/t}><strong class="fontcolorBlue"><{$items.pkgnum}></strong><{t}> 单价:<{/t}><strong class="fontcolorBlue"><{$items.price|cur}></strong></li>
+            <{t}>QTY:<{/t}><strong class="fontcolorBlue"><{$items.pkgnum}></strong><{t}> unit price:<{/t}><strong class="fontcolorBlue"><{$items.price|cur}></strong></li>
           <{/foreach}>
         </ul>
       </div>

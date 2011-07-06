@@ -1,7 +1,7 @@
 <div class='CartWrap'>
     <div class="CartNav clearfix">
     <div class="floatLeft">
-    <img src="statics/cartnav-step4.png" alt="购物流程--确认订单填写购物信息" />
+    <img src="statics/cartnav-step4.png" alt="Shopping Procedure--Confirm order infomation" />
     </div>
     <div class="floatRight"><img src="statics/cartnav-cart.png"  /></div>
     </div>
@@ -15,7 +15,7 @@
 <input type="hidden" name="cur_def" value="<{$order.cur_def }>" /> 
 
 <div class="success clearfix pushdown-2">
-   <h3>恭喜！您的订单已经提交！</h3>
+   <h3>Congratulation！Your order is submitted！</h3>
  
 </div>
 
@@ -24,24 +24,24 @@
 
 
 
-<h3>订单信息</h3>
+<h3>Order infomation</h3>
   <div class='ColColorBlue' style='padding:5px;border:1px #ccc solid;'>
-      <span><{t}>订单编号：<{/t}></span><strong class='font14px'><{$order.order_id}></strong>&nbsp;&nbsp;[ <a href="<{link ctl=order act=detail arg0=$order.order_id}>" >查看订单详细信息&raquo;</a> ]
+      <span><{t}>Order No.<{/t}></span><strong class='font14px'><{$order.order_id}></strong>&nbsp;&nbsp;[ <a href="<{link ctl=order act=detail arg0=$order.order_id}>" >Order details&raquo;</a> ]
       <div id="billNo" style="display:none"></div>
   </div>
   <div class='division' style='padding:15px;'>
-     <span><{t}>订单金额:<{/t}></span><strong class="hueorange fontcolorRed font20px" id="span_amount"><{$order.amount.total-$order.amount.payed|amount}></strong>
+     <span><{t}>Total:<{/t}></span><strong class="hueorange fontcolorRed font20px" id="span_amount"><{$order.amount.total-$order.amount.payed|amount}></strong>
   </div>
   
 
-<h3>订单支付</h3>
+<h3>Order Payment</h3>
 <{if $order.amount.total > $order.amount.payed}>
   <div class='ColColorBlue' style='padding:5px;border:1px #ccc solid;'>
       <{if !$order.selecttype}>
-        <{t}>您选择了：<{/t}><strong class="hueorange fontcolorRed font14px"><{$order.paymethod}></strong>
-         <a href='<{link ctl=order act=index arg0=$order.order_id arg1=true}>' >[ 选择其他支付方式 ]</a>
+        <{t}>Payment method:<{/t}><strong class="hueorange fontcolorRed font14px"><{$order.paymethod}></strong>
+         <a href='<{link ctl=order act=index arg0=$order.order_id arg1=true}>' >[ Select other method ]</a>
       <{else}>
-         <{t}>请选择支付方式:<{/t}>
+         <{t}>Please choose payment method:<{/t}>
      <{/if}>
   </div>
   <{/if}>
@@ -52,7 +52,7 @@
   <{require file="common/paymethod.html"}>
   </div>
   <div class="textcenter" style="padding:10px;">
-   <input type="submit" class='actbtn btn-pay' value="立刻支付" />
+   <input type="submit" class='actbtn btn-pay' value="Pay Now" />
   </div>
 <{else}>
   <input type="hidden" name="payment[payment]" value="<{$order.payment}>" />
@@ -96,10 +96,10 @@
             <tr>
             <td>
             <{if $order.payment!=-1}>
-            <input type="submit" class='actbtn btn-pay' value="立刻支付" /><{/if}>
+            <input type="submit" class='actbtn btn-pay' value="Pay Now" /><{/if}>
             <{/if}>
           <{else}>
-             订单不需要再支付,请等待我们处理
+             The order have been paid,please waiting...
           <{/if}>
         </td>
       </tr>
@@ -128,7 +128,7 @@
                      $('hidden_money').set('value',money);
                      $('hidden_cur_money').set('value',money);
                      $('span_amount').set('text',fmoney);
-                     form.getElement('input[type=submit]').set('value',paytype!='offline'?'立即付款':'确定');
+                     form.getElement('input[type=submit]').set('value',paytype!='offline'?'Pay Now':'OK');
                      
                      form.getElement('input[type=submit]')[(paytype=='offline'?'addClass':'removeClass')]('btn-pay-ok');
                      /* $$('#_normal_payment th .ExtendCon input[type=radio]').fireEvent('checkedchange');*/
@@ -143,7 +143,7 @@
                     form.getElement('input[type=submit]').addEvent('click',function(e){
                         
                         if(!$E('#f_order_pay .select-paymethod input[checked]')){
-                        MessageBox.error('请选择支付方式');
+                        MessageBox.error('Please choose payment method');
                         return e.stop();
                         }
                     

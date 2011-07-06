@@ -27,17 +27,17 @@
           <{/if}>
             <div class='clearfix'>
               <{if $setting.showGoodsMktPrice=="on"}>
-                <div class='mktprice  textcenter'><{$setting.mktPriceText|default:'市场价'}><{$setting.mktPriceSep|default:':'}><del><{$product.mktprice|cur}></del></div>
+                <div class='mktprice  textcenter'><{$setting.mktPriceText|default:'MSRP'}><{$setting.mktPriceSep|default:':'}><del><{$product.mktprice|cur}></del></div>
               <{/if}>
               <{if $setting.showGoodsPrice=="on"}>              
-                <div class='price  textcenter'><{$setting.priceText|default:'销售价'}><{$setting.priceSep|default:':'}><em class='price1'><{$product.price|cur}></em></div>
+                <div class='price  textcenter'><{$setting.priceText|default:'Price'}><{$setting.priceSep|default:':'}><em class='price1'><{$product.price|cur}></em></div>
               <{/if}>  
               <{if $setting.showGoodsSave=="on"}> 
                
-                <div class='save  textcenter'><{$setting.saveText|default:'节省'}><{$setting.saveSep|default:':'}><em><{$product.mktprice - $product.price|cur}></em></div>
+                <div class='save  textcenter'><{$setting.saveText|default:'Save'}><{$setting.saveSep|default:':'}><em><{$product.mktprice - $product.price|cur}></em></div>
               <{/if}> 
               <{if $setting.showCount=="on"}>               
-                <div class='countsave  textcenter'><{$setting.countText|default:'折扣'}><em><{math equation=x/y*100 x=$product.mktprice-$product.price y=$product.mktprice  format="%.0f"}><{$setting.countSep|default:':'}></em></div>
+                <div class='countsave  textcenter'><{$setting.countText|default:'Discount'}><em><{math equation=x/y*100 x=$product.mktprice-$product.price y=$product.mktprice  format="%.0f"}><{$setting.countSep|default:':'}></em></div>
               <{/if}> 
                 
             </div>
@@ -60,9 +60,9 @@
       </tbody>
 </table>
 <{if $setting.showMore=="on"}> 
-<div class='more'><a href='<{$data.link}>'>更多&raquo;&raquo;</a></div>.
+<div class='more'><a href='<{$data.link}>'>More&raquo;&raquo;</a></div>.
 <{/if}>
 <{else}>
-<div class='note'>暂无商品数据</div>
+<div class='note'>No Product Data .</div>
 <{/if}>
 </div>

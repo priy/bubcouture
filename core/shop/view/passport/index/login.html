@@ -5,7 +5,7 @@
 
     <div class="RegisterWrap" style="width:420px; float:left; padding:5px;">
     
-      <h4 style="float:left;"><{t}>已注册用户，请登录<{/t}></h4>
+      <h4 style="float:left;"><{t}>Already a member,Login<{/t}></h4>
       
       <{if $openid_open}><{else}><{if $mini}> <div class="dialog-title clearfix" style="float:right; display:block; border-bottom:none;"><div class='dialog-close-btn close' id='dialog__close'>X</div></div>
 <{/if}><{/if}>
@@ -21,12 +21,12 @@
         <input name="forward" type="hidden" value="<{$options.url}>">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <th><i>*</i><{t}>用户名：<{/t}></th>
-            <td><{input name="login" class="inputstyle"  required="true" id="in_login" tabindex="1" value=$loginName}><a style="margin-left:6px; " href="<{link ctl='passport' act='signup'}>"><{t}>立即注册<{/t}></a></td>
+            <th><i>*</i><{t}>Account:<{/t}></th>
+            <td><{input name="login" class="inputstyle"  required="true" id="in_login" tabindex="1" value=$loginName}><a style="margin-left:6px; " href="<{link ctl='passport' act='signup'}>"><{t}>Sign up<{/t}></a></td>
           </tr>
           <tr>
-            <th><i>*</i><{t}>密码：<{/t}></th>
-            <td><{input name="passwd" class="inputstyle" type="password" required="true" id="in_passwd" tabindex="2"}><a style="margin-left:6px;" href="<{link ctl='passport' act='lost'}>"><{t}>忘记密码？<{/t}></a></td>
+            <th><i>*</i><{t}>Password:<{/t}></th>
+            <td><{input name="passwd" class="inputstyle" type="password" required="true" id="in_passwd" tabindex="2"}><a style="margin-left:6px;" href="<{link ctl='passport' act='lost'}>"><{t}>Forget password?<{/t}></a></td>
           </tr>
           <{if $LogInvalideCode}>
           <tr>
@@ -39,7 +39,7 @@
           <{/if}>
           <tr>
             <th></th>
-            <td><input class="actbtn btn-login" type="submit" value="登录" tabindex="4" />
+            <td><input class="actbtn btn-login" type="submit" value="Login" tabindex="4" />
                 <input type="hidden" name="forward" value="<{$forward}>">
               </td>
           </tr>
@@ -58,7 +58,7 @@
  
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <td><h4 class="thridpartyicon">信任登录</h4> </td>
+    <td><h4 class="thridpartyicon">Trusted Login</h4> </td>
     <td><{if $mini}> <div class="dialog-title clearfix" style="float:right; display:block; border-bottom:none;"><div class='dialog-close-btn close'>X</div></div>
 <{/if}></td>
   </tr>
@@ -68,7 +68,7 @@
 
 
  <div class="intro">
-  <div class="customMessages">您还可以使用以下帐号登录：</div>
+  <div class="customMessages">You can also login as:</div>
 </div> 
 
  <div id="formthridlogin" class="form"> 
@@ -81,9 +81,9 @@
     <li><img src="statics/accountlogos/trustlogo5.gif"/></li>
   </ul>
   
-  <div class="more"><a href="#">更多»</a></div>
+  <div class="more"><a href="#">More»</a></div>
 
- <center><input type="button" tabindex="4" value="登录" class="actbtn btn-login trust__login"></center>
+ <center><input type="button" tabindex="4" value="Login" class="actbtn btn-login trust__login"></center>
 </div> 
 
 </div>

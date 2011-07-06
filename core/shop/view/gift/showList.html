@@ -12,12 +12,12 @@
       </td>
         <td class="price_button" width="250">
           <ul>
-            <li><span class="price1"><{t}>积分：<{/t}><{$item.point}></span><{if $item.price}><span class="mktprice1"><{t}>原价格: <{/t}><{$item.price|cur}></span><{/if}></li>
+            <li><span class="price1"><{t}>Credit:<{/t}><{$item.point}></span><{if $item.price}><span class="mktprice1"><{t}>MSRP: <{/t}><{$item.price|cur}></span><{/if}></li>
       </ul>
     <{if $item.sale_status == '1'}>
     <ul>
-        <li class="button"><a href="<{link ctl=cart act=addGiftToCart arg0=$item.gift_id arg1=1}>" class="present"><{t}>兑换赠品<{/t}></a></li>
-        <li><a href="<{link ctl=gift act=index arg0=$item.gift_id}>"><{t}>赠品详细<{/t}></a></li>
+        <li class="button"><a href="<{link ctl=cart act=addGiftToCart arg0=$item.gift_id arg1=1}>" class="present"><{t}>exchange gift<{/t}></a></li>
+        <li><a href="<{link ctl=gift act=index arg0=$item.gift_id}>"><{t}>Gift Details<{/t}></a></li>
         </ul>
     <{/if}>
         </td>

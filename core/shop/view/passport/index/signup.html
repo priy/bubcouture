@@ -1,24 +1,24 @@
 <form method="post" action='<{link ctl="passport" act="create"}>' class='signupform'>
 	<div class="RegisterWrap">
-      <h4><{t}>用户注册<{/t}></h4>
+      <h4><{t}>Sign up<{/t}></h4>
       <div class="intro"><div class="customMessages">{register_message}</div></div>
       <div class="form">
         <input name="forward" type="hidden" value="<{$options.url}>">
         <table width="100%" border="0" cellspacing="0" cellpadding="0">
           <tr>
-            <th><i>*</i><{t}>用户名：<{/t}></th>
+            <th><i>*</i><{t}>Account:<{/t}></th>
             <td><input type="text" class="inputstyle _x_ipt" name="uname" vtype="required" required="true" id="reg_user" maxlength="50" onchange="nameCheck(this)"><span></span></td>
           </tr>
           <tr>
-            <th><i>*</i><{t}>密码：<{/t}></th>
+            <th><i>*</i><{t}>Password:<{/t}></th>
             <td><{input class="inputstyle" name="passwd" type="password" required="true" id="reg_passwd"}></td>
           </tr>
           <tr>
-            <th><i>*</i><{t}>确认密码：<{/t}></th>
+            <th><i>*</i><{t}>Password again:<{/t}></th>
             <td><{input class="inputstyle" name="passwd_r" type="password" required="true" id="reg_passwd_r"}></td>
           </tr>
           <tr>
-            <th><i>*</i><{t}>电子邮箱：<{/t}></th>
+            <th><i>*</i><{t}>Email:<{/t}></th>
             <td><input type="text" vtype="email" required="true" name="email" id="reg_email" class="inputstyle _x_ipt" />
            </td>
           </tr>
@@ -35,13 +35,13 @@
             <th></th>
             <td><label for="license" class="nof" style="width:auto; text-align:left; font-weight:normal;">
           <input type="checkbox" id="license" name="license" value="agree" checked="checked"/>
-          我已阅读并同意 <a href="<{link ctl=page act=license}>" id="terms_error" class="lnk" target='_blank'><span class="FormText" id="terms_error_sym"><{t}>会员注册协议<{/t}></span></a><{t}>和<{/t}><a href="<{link ctl=page act=privacy}>" id="privacy_error" class="lnk" target='_blank'><span class="FormText" id="privacy_error_sym"><{t}>隐私保护政策<{/t}></span></a>。
+          I have read and agree <a href="<{link ctl=page act=license}>" id="terms_error" class="lnk" target='_blank'><span class="FormText" id="terms_error_sym"><{t}>the Terms<{/t}></span></a><{t}>and<{/t}><a href="<{link ctl=page act=privacy}>" id="privacy_error" class="lnk" target='_blank'><span class="FormText" id="privacy_error_sym"><{t}>Privacy Policy<{/t}></span></a>。
           </label></td>
           </tr>          
           <tr>
             <th></th>
             <td>
-        <input class="actbtn btn-register" type="submit" value="注册新用户" />
+        <input class="actbtn btn-register" type="submit" value="Sign up" />
         <input type="hidden" name="forward" value="<{$forward}>">
               </td>
           </tr>

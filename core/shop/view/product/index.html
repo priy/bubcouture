@@ -189,7 +189,7 @@
 
     <{if $mLevel}>
        <li class='mprice' <{if $goods.FlatSpec || $goods.SelSpec }> style="display:none" <{/if}>>
-       <span><{t}>会员价:<{/t}></span>
+       <span><{t}>VIP price:<{/t}></span>
         <ul>
             <{foreach from=$mLevel item=lItem name=mlv}>
             <li>
@@ -218,14 +218,14 @@
 <div class="hight-offline">
     <div class="hightbox">
         <div class="btnBar clearfix">
-            <div class="floatLeft" style="font-weight:bold; padding-top:15px;">此商品已下架</div>
+            <div class="floatLeft" style="font-weight:bold; padding-top:15px;">Not available!</div>
             <div class="floatRight">
                 <ul>
                   <li <{if $login!="nologin"}>star="<{$goods.goods_id}>"<{/if}> class="star-off" title=<{$goods.name|escape:"html"}>>
 				  <{if $login=="nologin"}>
-				    <a href="<{link ctl="passport" act="login"}>" class="btn-fav"><{t}>收藏此商品<{/t}></a>
+				    <a href="<{link ctl="passport" act="login"}>" class="btn-fav"><{t}>Favorite<{/t}></a>
 				  <{else}>
-                    <a href="#" rel="nofollow" onclick="return false;"  class="btn-fav"><{t}>收藏此商品<{/t}></a>
+                    <a href="#" rel="nofollow" onclick="return false;"  class="btn-fav"><{t}>Favorite<{/t}></a>
                   <{/if}>
                   </li>
                     <!-- <li><a href="#" class="btn-send"><{t}>发送给好友<{/t}></a></li> -->
@@ -257,15 +257,15 @@
              <td width='80%'>
                    <h4 class='spec-tip'><em>
          <{if $SelectSpecValue.selected}>
-            您选择了：
+            You have selected:
          <{else}>
-            请选择：
+            Please choose:
          <{/if}>
          </em>
          <span><{$SelectSpecValue.value}></span>
          </h4>
              </td>
-             <td align='right' width='20%'> <div id='view-products-list'><a href='javascript:void(0)' onclick="new Event(event).stop();$('goods-products-list').fireEvent('pop')">规格列表&raquo;&raquo;</a></div></td>
+             <td align='right' width='20%'> <div id='view-products-list'><a href='javascript:void(0)' onclick="new Event(event).stop();$('goods-products-list').fireEvent('pop')">Style list&raquo;&raquo;</a></div></td>
           </tr>
       </table>
 
@@ -308,7 +308,7 @@
                     <{/if}>
                   <{/foreach}>
                     <li class="handle <{if $selectValue}>selected<{/if}>"><em><{$goodsSelSpecDesc.name}></em>：
-                    <span><{if $selectValue|trim == ''}><{assign var=selectValue value=null}><{/if}><{$selectValue|default:'请选择'}></span>
+                    <span><{if $selectValue|trim == ''}><{assign var=selectValue value=null}><{/if}><{$selectValue|default:'Please choose'}></span>
                     <{assign var="selectValue" value=' '}>
                    </li>
                   <{/foreach}>
@@ -351,7 +351,7 @@
                     <span  class="numadjust decrease"></span>
                     </div>
                </td>
-               <td><span <{if !$showStorage}>style='display:none;'<{/if}>><{t}>&nbsp;&nbsp;(库存<{/t}><span class='store'><{if $goods.store >= 9999 || $goods.store == null || $goods.store === ''}>9999+<{else}><{$goods.store - $goods.product_freez}><{/if}></span>)</span></td>
+               <td><span <{if !$showStorage}>style='display:none;'<{/if}>><{t}>&nbsp;&nbsp;(Stock<{/t}><span class='store'><{if $goods.store >= 9999 || $goods.store == null || $goods.store === ''}>9999+<{else}><{$goods.store - $goods.product_freez}><{/if}></span>)</span></td>
             </tr>
          </table>
          </div>
@@ -369,7 +369,7 @@
                     <input class="actbtn btn-fastbuy" value="Buy Now" type="button" />
                 <{/if}>
             <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
-            <input  class="actbtn btn-notify" value="缺货登记" type="submit" style="display: none;" />
+            <input  class="actbtn btn-notify" value="Arrival Notice" type="submit" style="display: none;" />
         <{else}>
             <{if $goods.store-$goods.freez>0 || $goods.store==''}>
                 <{if $env.conf.system.goods.fastbuy}>
@@ -377,7 +377,7 @@
                 <{/if}>
                 <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
             <{else}>
-                <input  class="actbtn btn-notify" value="缺货登记" type="submit" />
+                <input  class="actbtn btn-notify" value="Arrival Notice" type="submit" />
             <{/if}>
         <{/if}>
     </div>
@@ -414,7 +414,7 @@
  <div class='hightbox'>
     <{foreach from=$goods.adjunct item=adj key="adj_key"}>
     <div class="choose">
-    <div class="adjtitle"><{$adj.name}><em><{if $adj.min_num || $adj.max_num}><{t}>可选 <{/t}><{if $adj.min_num == $adj.max_num}><{$adj.min_num}><{else}><{$adj.min_num|default:0}>-<{$adj.max_num}><{/if}><{t}> 件<{/t}><{/if}></em><span adj="<{$adj.name}>"></span></div>
+    <div class="adjtitle"><{$adj.name}><em><{if $adj.min_num || $adj.max_num}><{t}>You can choose <{/t}><{if $adj.min_num == $adj.max_num}><{$adj.min_num}><{else}><{$adj.min_num|default:0}>-<{$adj.max_num}><{/if}><{t}> pieces<{/t}><{/if}></em><span adj="<{$adj.name}>"></span></div>
     <table width="100%" cellpadding="0" cellspacing="0">
       <tbody class="goods-adjunct-row" adjkey="<{$adj_key}>" adjname="<{$adj.name}>" min_num="<{$adj.min_num|default:0}>" max_num="<{$adj.max_num|default:-1}>" >
     <{foreach from=$adj.items item=items key="key" name=adjitems}>
@@ -428,12 +428,12 @@
           <{$items.name}><{if $items.pdt_desc}>[<{$items.pdt_desc}>]<{/if}></a>
          </div>
             <{if $items.price != $items.adjprice}>
-             <div class="mktprice"><{t}>原价格：<{/t}><i><{$items.price|cur}></i></div>
+             <div class="mktprice"><{t}>MSRP:<{/t}><i><{$items.price|cur}></i></div>
             <{/if}>
-            <span class="memberprice"><{t}>配件价格：<{/t}><i><{$items.adjprice|cur}></i></span>
+            <span class="memberprice"><{t}>Price:<{/t}><i><{$items.adjprice|cur}></i></span>
         </td>
         <td><{t}>Quantity:<{/t}><input size="2" maxlength='10'  type="text" autocomplete='off' value="<{if $adj.min_num == 0}>1<{else}><{$adj.min_num|default:1}><{/if}>" name='count_check_<{$items.product_id}>' /></td>
-        <td<{if $items.marketable == 'false' || $items.disabled == 'true'}> style="display:none"<{/if}>><a title="您可以单把独这个商品加入购物车" buy="<{$items.goods_id}>" product="<{$items.product_id}>" type="g" href="<{link ctl="cart" act="addGoodsToCart" arg0=$items.goods_id arg1=$items.product_id}>" <{if $goods.setting.buytarget==2}> target="_blank_cart"<{elseif $goods.setting.buytarget==3}> target="_dialog_minicart"<{/if}> class="addtocart" rel="nofollow"><{img src="statics/icons/btn_adj_buy.gif" alt="您可以单把独这个商品加入购物车"}></a></td>
+        <td<{if $items.marketable == 'false' || $items.disabled == 'true'}> style="display:none"<{/if}>><a title="您可以单把独这个商品加入购物车" buy="<{$items.goods_id}>" product="<{$items.product_id}>" type="g" href="<{link ctl="cart" act="addGoodsToCart" arg0=$items.goods_id arg1=$items.product_id}>" <{if $goods.setting.buytarget==2}> target="_blank_cart"<{elseif $goods.setting.buytarget==3}> target="_dialog_minicart"<{/if}> class="addtocart" rel="nofollow"><{img src="statics/icons/btn_adj_buy.gif" alt="You can add it to the cart ndividually"}></a></td>
         <td>
           <input type='hidden' name='goods[adjunct][<{$adj_key}>][<{$items.product_id}>]' value='' disabled='true'/>
         </td>
@@ -443,7 +443,7 @@
     </table>
     </div>
     <{/foreach}>
-    <strong><{t}>配件总价:<{/t}></strong><span class='price'></span>
+    <strong><{t}>Total:<{/t}></strong><span class='price'></span>
     </div>
   </div>
 <{/if}>
@@ -479,20 +479,20 @@
                 <{foreach from=$specShowItems item=spec key=key}>
                     <th><{$spec}></th>
                 <{/foreach}>
-                <th>货号</th>
-                <th>价格</th>
-                <{if $env.conf.site.show_storage=="true"}><th>库存</th><{/if}>
+                <th>Item No.</th>
+                <th>Price</th>
+                <{if $env.conf.site.show_storage=="true"}><th>Stock</th><{/if}>
             </tr>
         </thead>
         <tbody>
         <{foreach from=$goods.products item=item}>
-      <tr productId="<{$item.product_id}>" <{if $item.store!==null && $item.store !=='' && ($item.store - $item.freez <= 0)}>class='nostore' title='此货品缺货'<{/if}>>
+      <tr productId="<{$item.product_id}>" <{if $item.store!==null && $item.store !=='' && ($item.store - $item.freez <= 0)}>class='nostore' title='out of stock'<{/if}>>
             <{foreach from=$item.props.spec key=key item=value}>
             <td><{$value}></td>
             <{/foreach}>
             <td class="ident"><{$item.bn}></td>
             <td class="price"><{$item.price|cur}></td>
-            <{if $env.conf.site.show_storage=="true"}><td class="store"><{if $item.store!==null && $item.store !=='' && ($item.store - $item.freez <= 0)}>缺货<{else}><{$item.store}><{/if}></td><{/if}>
+            <{if $env.conf.site.show_storage=="true"}><td class="store"><{if $item.store!==null && $item.store !=='' && ($item.store - $item.freez <= 0)}>out of stock<{else}><{$item.store}><{/if}></td><{/if}>
         </tr>
         <{/foreach}>
         </tbody>
@@ -506,7 +506,7 @@
 
 <{if count($package)>0}>
 <div class="goodspackagewrap clearfix">
-<div class="active"><span><{t}>捆绑销售<{/t}></span></div>
+<div class="active"><span><{t}>Bunding sale<{/t}></span></div>
 </div>
 <div class="GoodsPackageWrap">
   <{foreach from=$package item=package key=key name=packageitems}>
@@ -521,7 +521,7 @@
             <a<{if $items.marketable == 'true' && $items.disabled == 'false' && $items.goods_id != $goods.goods_id}> href="<{link ctl="product" act="index" arg0=$items.goods_id}>" target="_blank" title="<{$items.name}>"<{/if}>>
               <img src="<{$items.thumbnail_pic|default:$env.conf.site.default_thumbnail_pic|storager}>"  alt="<{$items.name}>"/></a>
           </dt>
-        <dd><a<{if $items.marketable == 'true' && $items.disabled == 'false' && $items.goods_id != $goods.goods_id}> href="<{link ctl="product" act="index" arg0=$items.goods_id}>" target="_blank" title="<{$items.name}>"<{/if}>><{$items.name}></a><div class="fontcolorOrange">×<{$items.pkgnum}></div><{t}>价格:<{/t}><span class="fontcolorBlack fontbold"><{$items.price|cur}></span></dd>
+        <dd><a<{if $items.marketable == 'true' && $items.disabled == 'false' && $items.goods_id != $goods.goods_id}> href="<{link ctl="product" act="index" arg0=$items.goods_id}>" target="_blank" title="<{$items.name}>"<{/if}>><{$items.name}></a><div class="fontcolorOrange">×<{$items.pkgnum}></div><{t}>Price:<{/t}><span class="fontcolorBlack fontbold"><{$items.price|cur}></span></dd>
       </dl>
             </td>
             <{if !$smarty.foreach.packagetd.last}><td class="plus">+</td><{/if}>
@@ -537,8 +537,8 @@
              <span class="desc"><{$package.intro}></span>
              <{/if}>
           </h3></li>
-      <li class="mktprice1"><{t}>原价：<{/t}><{$package.mktprice|cur}></li>
-      <li class="price1"><{t}>捆绑价：<{/t}><{$package.price|cur}></li>
+      <li class="mktprice1"><{t}>MSRP:<{/t}><{$package.mktprice|cur}></li>
+      <li class="price1"><{t}>Price<{/t}><{$package.price|cur}></li>
 
             <li class="huered"><{if $package.mktprice > $package.price && $goods.setting.mktprice && $goods.setting.saveprice > 0}>
         
@@ -648,7 +648,7 @@
                 <{/if}>
             </td>
             <td><ul class="button">
-                <li><a class="viewpic" href="<{link ctl=product act=viewpic arg0=$linklist.goods_id arg1=def}>" target="_blank"><{t}>查看图片<{/t}></a></li>
+                <li><a class="viewpic" href="<{link ctl=product act=viewpic arg0=$linklist.goods_id arg1=def}>" target="_blank"><{t}>View picture<{/t}></a></li>
         <{assign var="dddd" value="333"}>
                 <{goodsmenu product=$linklist setting=$setting login=$login}>
                 <li class="btncmp">
@@ -690,10 +690,10 @@
     <col class="span-3">
     <thead>
         <tr>
-            <th><{t}>买家<{/t}></th>
-            <th><{t}>购买价<{/t}></th>
-            <th><{t}>购买数量<{/t}></th>
-            <th><{t}>购买时间<{/t}></th>
+            <th><{t}>Buyer<{/t}></th>
+            <th><{t}>Price<{/t}></th>
+            <th><{t}>QTY<{/t}></th>
+            <th><{t}>Date<{/t}></th>
         </tr>
         </thead>
         <tbody>
@@ -709,7 +709,7 @@
 
         </tbody>
     </table>
-<div class="tips"><{t}>截至今日， 累计成交<{/t}><span class="font14px fontbold fontcolorOrange"><{$sellLogList.total}></span><{t}>笔<{/t}><{if $sellLogList.total > $sellLogList.data|@count}><a href="<{link ctl=product act=selllog arg0=$goods.goods_id}>" target="_blank"><{t}>，查看更多...<{/t}></a><{/if}></div>
+<div class="tips"><{t}>Up to now, you have finish <{/t}><span class="font14px fontbold fontcolorOrange"><{$sellLogList.total}></span><{t}> orders<{/t}><{if $sellLogList.total > $sellLogList.data|@count}><a href="<{link ctl=product act=selllog arg0=$goods.goods_id}>" target="_blank"><{t}>,More...<{/t}></a><{/if}></div>
 </div>
 </div>
 <{/if}>
@@ -727,7 +727,7 @@
             if(!req.get('required')&&!req.get('vtype').contains('required'))return;
             if(req.getValue().trim()==''){
                        req.focus();
-                       MessageBox.error('请完善表单必填项<sup>*</sup>');
+                       MessageBox.error('Please complete the <sup>*</sup> field');
                        return true;
             }
 
@@ -748,8 +748,8 @@
 
 <{if $comment.switch.ask == 'on'}>
 <{if $comment.power.ask !='null' && $comment.member_lv < 0}>
-<div class="section pdtdetail" tab="购买咨询(<em><{$comment.askCount|default:'0'}></em>)">
-<div class=""><strong><{t}>购买咨询<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>（已有<{/t}><{$comment.askCount|default:'0'}><{t}>条咨询）<{/t}></a></span></div>
+<div class="section pdtdetail" tab="Inquire(<em><{$comment.askCount|default:'0'}></em>)">
+<div class=""><strong><{t}>Inquire<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>（<{/t}><{$comment.askCount|default:'0'}><{t}>）<{/t}></a></span></div>
 <div class="FormWrap" style="background:#f6f6f6; margin-top:0px;">
 <{if count($comment.list.ask) == 0}>
 <div class="boxBlue division">
@@ -760,7 +760,7 @@
 <{foreach from=$comment.list.ask item=comlist name=asklist}>
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
     <div class=" floatLeft commentMain">
-    <div class="floatLeft commentAsk">提问</div>
+    <div class="floatLeft commentAsk">Question</div>
     <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>said:<{/t}>
     <span class="timpstamp font10px fontcolorGray"><{$comlist.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
@@ -770,7 +770,7 @@
     <div class="commentReply">
     <{foreach from=$comlist.items item=items}>
     <div class="division  item " style=" margin:0px;" >
-    <div class="floatLeft commentReply-admin">回答</div>
+    <div class="floatLeft commentReply-admin">Answer</div>
     <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;reply:
     <span class="timpstamp font10px fontcolorGray"><{$items.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
@@ -780,7 +780,7 @@
  </div>
 <{/foreach}>
 </div>
-<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>查看所有咨询&gt;&gt;<{/t}></a></div>
+<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>All&gt;&gt;<{/t}></a></div>
 <{/if}>
 </div>
 <div class="boxBrown division">
@@ -788,8 +788,8 @@
 </div>
 </div>
 <{else}>
-<div class="section pdtdetail" tab="购买咨询(<em><{$comment.askCount|default:'0'}></em>)">
-<div class="commentTabLeft floatLeft"><strong><{t}>购买咨询<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>（已有<{/t}><{$comment.askCount|default:'0'}><{t}>条咨询）<{/t}></a></span></div>
+<div class="section pdtdetail" tab="Inquire(<em><{$comment.askCount|default:'0'}></em>)">
+<div class="commentTabLeft floatLeft"><strong><{t}>Inquire<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>(<{/t}><{$comment.askCount|default:'0'}><{t}>)<{/t}></a></span></div>
 <div class="floatLeft commentTabRight"></div>
 <div style="clear:both;"></div>
 <div class="FormWrap" style="background:#f6f6f6; margin-top:0px;">
@@ -805,7 +805,7 @@
 
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
     <div class=" floatLeft commentMain">
-    <div class="floatLeft commentAsk">提问</div>
+    <div class="floatLeft commentAsk">Question</div>
     <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span> <{t}>said:<{/t}>
     <span class="timpstamp font10px fontcolorGray"><{$comlist.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
@@ -816,7 +816,7 @@
     <div class="commentReply">
     <{foreach from=$comlist.items item=items}>
     <div class="division  item " style=" margin:0px;" >
-    <div class="floatLeft commentReply-admin">回答</div>
+    <div class="floatLeft commentReply-admin">Answer</div>
     <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}><{/t}></span>&nbsp;&nbsp;reply:
     <span class="timpstamp font10px fontcolorGray"><{$items.time|cdate:'SDATE_STIME'}></span>
     <div  style="clear:both;"></div>
@@ -826,16 +826,16 @@
  </div>
 <{/foreach}>
 </div>
-<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>查看所有咨询&gt;&gt;<{/t}></a></div>
+<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="ask"}>"><{t}>ALL&gt;&gt;<{/t}></a></div>
 <{/if}>
 
 <form class="addcomment" method="post" action='<{link ctl="comment" act="toComment" arg0=$goods.goods_id arg1="ask"}>' onsubmit='checkFormReqs(event);'>
-  <h4><{t}>发表咨询<{/t}></h4>
+  <h4><{t}>Comment<{/t}></h4>
   <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[咨询]".$goods.name }></div>
   <div class="division">
       <table border="0" width="100%" cellpadding="0" cellspacing="0" class="forform">
             <tr>
-            <th><em>*</em><{t}>咨询内容：<{/t}></th>
+            <th><em>*</em><{t}>Content:<{/t}></th>
               <td><{input type="textarea" class="inputstyle"  vtype="required" rows="5" name="comment" style="width:80%;"}></td>
             </tr>
             <tr>
@@ -852,7 +852,7 @@
 
             <tr>
             <td></td>
-              <td><input type="submit" value="提交咨询"></td>
+              <td><input type="submit" value="Submit"></td>
             </tr>
         </table>
   </div>
@@ -865,8 +865,8 @@
 <{if $comment.switch.discuss == 'on'}>
 
     <{if $comment.power.discuss !='null' && $comment.member_lv < 0}>
-<div class="section pdtdetail" tab="商品评论 (<em><{$comment.discussCount|default:'0'}></em>)">
-<div class=""><strong><{t}>商品评论<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>（已有<{/t}><em><{$comment.discussCount|default:'0'}></em><{t}>条评论）<{/t}></a></span></div>
+<div class="section pdtdetail" tab="Comments (<em><{$comment.discussCount|default:'0'}></em>)">
+<div class=""><strong><{t}>Comments<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>(<{/t}><em><{$comment.discussCount|default:'0'}></em><{t}>)<{/t}></a></span></div>
 <div class="FormWrap" style="background:#f6f6f6; margin-top:0px;">
 <{if count($comment.list.discuss) == 0}>
 <div class="boxBrown division">
@@ -880,7 +880,7 @@
 
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
 <div class=" floatLeft commentMain">
- <div class="floatLeft commentAsk">提问</div>
+ <div class="floatLeft commentAsk">Question</div>
    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>said:<{/t}><{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$comlist.time|cdate:'SDATE_STIME'}></span>
  <div  style="clear:both;"></div>
@@ -894,7 +894,7 @@
  <div class="commentReply">
 <{foreach from=$comlist.items item=items}>
   <div class="division  item " style=" margin:0px;" >
-<div class="floatLeft commentReply-admin">回复</div>
+<div class="floatLeft commentReply-admin">Answer</div>
 <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;reply:<{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$items.time|cdate:'SDATE_STIME'}></span>
 <div  style="clear:both;"></div>
@@ -908,7 +908,7 @@
 <{/foreach}>
 </div>
 
-<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>查看所有评论&gt;&gt;<{/t}></a></div>
+<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>ALL&gt;&gt;<{/t}></a></div>
 <{/if}>
 </div>
 <div class="boxBrown division">
@@ -917,7 +917,7 @@
 </div>
 <{else}>
 <div class="section pdtdetail" tab="商品评论 (<em><{$comment.discussCount|default:'0'}></em>)">
-<div class="commentTabLeft floatLeft"><strong><{t}>商品评论<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>（已有<{/t}><em><{$comment.discussCount|default:'0'}></em><{t}>条评论）<{/t}></a></span></div>
+<div class="commentTabLeft floatLeft"><strong><{t}>Comments<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>(<{/t}><em><{$comment.discussCount|default:'0'}></em><{t}>)<{/t}></a></span></div>
 <div class="commentTabRight floatLeft"></div>
 <div style="clear:both;"></div>
 <div class="FormWrap" style="background:#f6f6f6; margin-top:0px;">
@@ -933,7 +933,7 @@
 
   <div class="division boxBlue clearfix" style="margin-bottom:0px;">
 <div class=" floatLeft commentMain">
- <div class="floatLeft commentAsk">提问</div>
+ <div class="floatLeft commentAsk">Question</div>
    <span class="author fontcolorOrange"><{$comlist.author}><!--<{if $comlist.levelname!=""}> [<{$comlist.levelname}>]<{/if}> --></span><{t}>said:<{/t}><{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$comlist.time|cdate:'SDATE_STIME'}></span>
  <div  style="clear:both;"></div>
@@ -948,7 +948,7 @@
  <div class="commentReply">
 <{foreach from=$comlist.items item=items}>
   <div class="division  item " style=" margin:0px;" >
-<div class="floatLeft commentReply-admin">回复</div>
+<div class="floatLeft commentReply-admin">Answer</div>
 <span class="author fontcolorOrange"><{$items.author}><!--<{if $items.levelname!=""}> [<{$items.levelname}>]<{/if}> --><{t}></span>&nbsp;&nbsp;reply:<{/t}>
 <span class="timpstamp font10px fontcolorGray replies prepend-1"><{$items.time|cdate:'SDATE_STIME'}></span>
 <div  style="clear:both;"></div>
@@ -962,17 +962,17 @@
 <{/foreach}>
 </div>
 
-<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>查看所有评论&gt;&gt;<{/t}></a></div>
+<div class="textright"><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>All comments&gt;&gt;<{/t}></a></div>
 <{/if}>
 
     <form class="addcomment" method="post" action='<{link ctl="comment" act="toComment" arg0=$goods.goods_id arg1="discuss"}>' onsubmit='checkFormReqs(event);'>
-      <h4><{t}>发表评论<{/t}></h4>
+      <h4><{t}>Comments<{/t}></h4>
       <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[评论]".$goods.name}></div>
       <div class="division">
           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="forform">
      
                 <tr>
-                <th><em>*</em><{t}>评论内容：<{/t}></th>
+                <th><em>*</em><{t}>Contents：<{/t}></th>
                   <td><{input type="textarea" class="x-input inputstyle"  vtype="required" rows="5" name="comment" style="width:80%;"}></td>
                 </tr>
      
@@ -990,7 +990,7 @@
 
                 <tr>
                 <td></td>
-                  <td><input type="submit" value="提交评论"></td>
+                  <td><input type="submit" value="Submit"></td>
                 </tr>
             </table>
       </div>
@@ -1001,8 +1001,8 @@
 <{/if}>
 
 <{if count($gift)>0}>
-<div class="section pdtdetail" tab="赠品">
-<h2><{t}>赠品<{/t}></h2>
+<div class="section pdtdetail" tab="Gift">
+<h2><{t}>Gift<{/t}></h2>
 <div class="body" id="goods-gift">
   <div class="GoodsSearchWrap">
     <{foreach from=$gift item=gift key=key}>
@@ -1028,8 +1028,8 @@
 <{/if}>
 
 <{if count($coupon)>0}>
-<div class="section pdtdetail" tab="可得优惠券">
-<h2><{t}>可得优惠券<{/t}></h2>
+<div class="section pdtdetail" tab="Get Coupons">
+<h2><{t}>Get Coupons<{/t}></h2>
 <div class="body" id="goods-coupon">
   <ul style="padding:5px 20px;">
   <{foreach from=$coupon item=coupon key=key}>
@@ -1225,7 +1225,7 @@ $$('#goods-viewer .hightline').addEvents({
                     });
                     
                      if(spec_item_nocheck.length>0){
-                        $$(buyBtn,fastbuyBtn).store('tip:text','请选择：'+spec_item_nocheck.join(','));
+                        $$(buyBtn,fastbuyBtn).store('tip:text','Please choose:'+spec_item_nocheck.join(','));
 
                      }else{
                         $$(buyBtn,fastbuyBtn).store('tip:text','');
@@ -1238,7 +1238,7 @@ $$('#goods-viewer .hightline').addEvents({
                 var specs = $$('#goods-spec tr.spec-item','#goods-spec div.spec-item .content');
                     specs.each(function(si){
                           var specs=si.getElements('a[specid]');
-                          if(!specs.length){return $E('#goods-viewer .hightbox').empty().set('html','<b>该商品的所有规格货品已下架</b>').addClass('note')}
+                          if(!specs.length){return $E('#goods-viewer .hightbox').empty().set('html','<b>all style of this product is not availabel!</b>').addClass('note')}
                           if(specs.length>1)return false;
 
                           if(specs[0].hasClass('selected')||specs[0].hasClass('lock'))return false;
@@ -1410,7 +1410,7 @@ $$('#goods-viewer .hightline').addEvents({
                 }
 
                 /*规格选择提示联动*/
-                referencePoint.update('specTip','<em><{t}>您已选择：<{/t}></em><span>'+specTip.join("、")+'</span>');
+                referencePoint.update('specTip','<em><{t}>You have selected:<{/t}></em><span>'+specTip.join("、")+'</span>');
 
 
                 var product_hiddenInput=$E('#goods-spec input[name^=goods[product_id]').set('disabled',!fix);
@@ -1441,7 +1441,7 @@ $$('#goods-viewer .hightline').addEvents({
 
                       if(referencePoint['discount']&&referencePoint['marketPrice']){
                           var dcType={
-                                     T1:'节省',
+                                     T1:'Save',
                                      T2:'优惠',
                                      T3:'折'
                                     };
@@ -1521,7 +1521,7 @@ $$('#goods-viewer .hightline').addEvents({
                            this.removeClass('selected');
                            if(prt.hasClass('content')){
                                  var handle=prt.retrieve('handle');
-                                 $E('span',handle).set('text','请选择').removeClass('select');
+                                 $E('span',handle).set('text','Please choose').removeClass('select');
                                  handle.removeClass('curr');
                                  prt.removeClass('content-curr');
                            }
@@ -1840,7 +1840,7 @@ $$('#goods-viewer .hightline').addEvents({
      /*无规格商品到货通知 show*/
       window.addEvent('domready',function(){
 
-            var notifyBtn=$E('#goods-viewer .btn-notify').store('tip:text','您当前要购买的商品暂时缺货,点击进入缺货登记页.');
+            var notifyBtn=$E('#goods-viewer .btn-notify').store('tip:text','Your product is out of stock,click for note it to me.');
             new Tips(notifyBtn,{className:'cantbuy',showDelay:0,hideDelay:0});
             notifyBtn.show();
             notifyBtn.addEvent('click',function(e){
@@ -2006,7 +2006,7 @@ new ItemAgg(viewTabs,viewSections,{activeName:'active',
                                      onActive:function(tab,item){
                                                   var anotherItems=$$($A(this.items).remove(item));
 
-                                                  if(tab.getElement('span').get('text')=='商品详情'){
+                                                  if(tab.getElement('span').get('text')=='Product details'){
                                                      anotherItems.show();
                                                   }else{
                                                      anotherItems.hide();

@@ -8,7 +8,7 @@ withBroswerStore(function(broswerStore){
            if(v && v.length && v.length>0){
               v.reverse();
               var dt=[];
-              $('x-pdt-history').innerHTML='数据载入中...';
+              $('x-pdt-history').innerHTML='Loading...';
               v.each(function(i){dt.push(i['goodsId'])});
               new Ajax('<{link ctl=tools act=products}>',{method:'post',update:$('x-pdt-history'),data:'goods='+dt.join(','),onComplete:function(){
                    
@@ -17,7 +17,7 @@ withBroswerStore(function(broswerStore){
               }}).request();
              
             }else{
-               $('x-pdt-history').innerHTML='浏览记录为空.';
+               $('x-pdt-history').innerHTML='browse log is empty.';
             }
        
        });

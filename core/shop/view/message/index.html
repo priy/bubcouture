@@ -1,7 +1,7 @@
 <table width='100%'>
   <tr>
-     <td width='80%'><h3 style='margin:0;padding:0'>客户留言</h3></td>
-     <td width='20%' class='textright'><a href='#dosubmit' class='lnk'>立即发布留言</a></td>
+     <td width='80%'><h3 style='margin:0;padding:0'>Comment</h3></td>
+     <td width='20%' class='textright'><a href='#dosubmit' class='lnk'>Note</a></td>
   </tr>
 </table>
 <hr/>
@@ -13,7 +13,7 @@
   <{foreach from=$msg item=msglist}>
     <div class="division boxBlue clearfix mainReply" style="margin-bottom:0px;">
       <div class=" floatLeft commentMain">
-        <div class="floatLeft commentAsk">留言</div>
+        <div class="floatLeft commentAsk">Comment</div>
           <span class="author fontcolorOrange"><{$msglist.msg_from}></span>&nbsp;&nbsp;<{t}>said:<{/t}>
           <span class="timpstamp font10px fontcolorGray replies"><{$msglist.date_line|cdate:'SDATE_STIME'}></span>
           <div style="clear:both;"></div>
@@ -29,7 +29,7 @@
         <div class="commentReply">
           <{foreach from=$msglist.reply item=items}>
             <div class="division  item " style=" margin:0px;" >
-             <div class="floatLeft commentReply-admin">回复</div>
+             <div class="floatLeft commentReply-admin">Reply</div>
               <span class="author fontcolorOrange"><{$items.msg_from}></span><{t}>&nbsp;&nbsp;reply:<{/t}>
               <span class="timpstamp font10px fontcolorGray replies"><{$items.date_line|cdate:'SDATE_STIME'}></span>
               <div  style="clear:both;"></div>
@@ -53,7 +53,7 @@
                if(!req.get('required')&&!req.get('vtype').contains('required'))return;
             if(req.getValue().trim()==''){
                        req.focus();
-                       MessageBox.error('请完善表单必填项.');
+                       MessageBox.error('Complete * filed,please.');
                        return true;
             }
               
@@ -80,7 +80,7 @@
   <{pager data=$pager}>
   <form class="addcomment division" method="post" action='<{link ctl="message" act="sendMsgToOpt"}>' onsubmit='checkFormReqs(event);'>
   
-    <h4><a name='dosubmit'><{t}>发布留言<{/t}></a></h4>
+    <h4><a name='dosubmit'><{t}>Note<{/t}></a></h4>
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forform">
     
       <tr>
@@ -89,13 +89,13 @@
       </tr>
     
       <tr>
-        <th><em style='color:red'>*</em><{t}>留言内容：<{/t}></th>
+        <th><em style='color:red'>*</em><{t}>Content:<{/t}></th>
         <td><{input type="textarea" required="true" rows="5" name="message" class='inputstyle' style='width:80%'}></td>
       </tr>
        <{if $nomember eq 'on'}>
       <tr>
         <th><{t}>Contact Information:<{/t}></th>
-        <td><{input type="text"  size=24 name="email" maxlength=255 class='inputstyle'}><{t}>(QQ、MSN、Email、电话等，此信息不会被公开)<{/t}></td>
+        <td><{input type="text"  size=24 name="email" maxlength=255 class='inputstyle'}><{t}>(MSN.Email.Telephone,it's private)<{/t}></td>
       </tr>
       <{/if}>
       <{if $msgshow == "on" }>
@@ -106,7 +106,7 @@
       <{/if}>
       <tr>
         <th></th>
-        <td><input type="submit" value="提交" class='btn' ></td>
+        <td><input type="submit" value="submit" class='btn' ></td>
       </tr>
     </table>
   </form>

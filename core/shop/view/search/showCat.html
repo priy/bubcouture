@@ -1,5 +1,5 @@
 <{if count($cat.brand)>0}>
-<h3><{t}>选择品牌：<{/t}></h3>
+<h3><{t}>Select Brand:<{/t}></h3>
   <div class="division clearfix" >
           <{foreach from=$cat.brand item=aItems}>
               <div class="span-4 textnowrap selectBranditems">
@@ -10,7 +10,7 @@
 <{/if}>
 
 <{capture name=prop_search}>
-	<h3><{t}>选择属性：<{/t}></h3>
+	<h3><{t}>Select Attribute:<{/t}></h3>
 	<div class="division clearfix">
 	<{if $cat.setting.use_props eq 1}>
 	<{foreach from=$cat.props item=prop key=key}>
@@ -18,7 +18,7 @@
 			<{if $prop.type == 'select' && $prop.search == 'nav'}>
             
 
-				<h5><{$prop.name}>：</h5>
+				<h5><{$prop.name}>:</h5>
                 
 				<{foreach from=$prop.options item=value key=i}>
 					<div class="span-4">

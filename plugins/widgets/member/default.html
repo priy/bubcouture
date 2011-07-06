@@ -17,12 +17,12 @@
 			   </span>
 
   <{/if}>
-    <label>&nbsp;</label><input type="submit" id="btn_login" value="登录"/><br>
+    <label>&nbsp;</label><input type="submit" id="btn_login" value="Login"/><br>
   </div>
   <div class="buttonbar">
     <div class="reg"><{foreach from=$data.login_content item=login}>
 	<{$login}>|
-	<{/foreach}><a href = "<{link ctl='passport' act='signup'}>"><{t}>[Regist]<{/t}></a>|<a href = "<{link ctl='passport' act='lost'}>"><{t}>Forgot Password?<{/t}></a></div>
+	<{/foreach}><a href = "<{link ctl='passport' act='signup'}>"><{t}>[Registe]<{/t}></a>|<a href = "<{link ctl='passport' act='lost'}>"><{t}>Forgot Password?<{/t}></a></div>
   </div>
   </form>
 <{/if}>

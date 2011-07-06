@@ -12,33 +12,33 @@
               </a>
               </div>
                 <{* <a href="<{$details.small_pic|storager:'small'}>" target="_blank" onclick='_open(this.href);return false;'>
-                    <{img src="statics/icons/btn_goods_gallery.gif" alt="查看大图"}>
+                    <{img src="statics/icons/btn_goods_gallery.gif" alt="zoom in"}>
                 </a>*}>
               </td>
             </tr>
         </table>
     </td>
         <td valign="top">
-        <h1 class="goodsname"><{t}>赠品名：<{/t}><{$details.name}></h1>
+        <h1 class="goodsname"><{t}>Gift:<{/t}><{$details.name}></h1>
         <{if $details.brief}>
     <p class="brief"><{$details.intro}></p>
      <{/if}>
         <ul class="goodsprops clearfix">
-          <li><span><{t}>赠品分类：<{/t}></span><{$details.cat}></li>
+          <li><span><{t}>Gift catogery<{/t}></span><{$details.cat}></li>
             <li><span><{t}>Weight:<{/t}></span><{$details.weight}> g</li>
-            <li><span><{t}>起始时间：<{/t}></span><{$details.limit_start_time|userdate}></li>
-            <li><span><{t}>库存数量：<{/t}></span><{$details.storage}></li>
-            <li><span><{t}>截止时间：<{/t}></span><{$details.limit_end_time|userdate}></li>
-            <li><span><{t}>数量限制：<{/t}></span><{if $details.limit_num==0}><{t}>无数量限制<{/t}><{else}><{$details.limit_num}><{/if}></li>
-            <li class="memberprice"><span><{t}>市场价格：<{/t}></span><i><{$details.price|cur}></i></li>
-            <li ><span><{t}>所需积分：<{/t}></span><{$details.point}></li>
-            <li class="spec" style="white-space:normal;"><span><{t}>兑换级别：<{/t}></span>
+            <li><span><{t}>Start Date:<{/t}></span><{$details.limit_start_time|userdate}></li>
+            <li><span><{t}>Stock:<{/t}></span><{$details.storage}></li>
+            <li><span><{t}>End Date:<{/t}></span><{$details.limit_end_time|userdate}></li>
+            <li><span><{t}>QTY limit<{/t}></span><{if $details.limit_num==0}><{t}>No limit<{/t}><{else}><{$details.limit_num}><{/if}></li>
+            <li class="memberprice"><span><{t}>MSRP:<{/t}></span><i><{$details.price|cur}></i></li>
+            <li ><span><{t}>Credits needed:<{/t}></span><{$details.point}></li>
+            <li class="spec" style="white-space:normal;"><span><{t}>Exchange Level:<{/t}></span>
               <{foreach from=$details.limit_level item=level}><{$level.name}>&nbsp;&nbsp;<{/foreach}></li>
         </ul>
 
         <div>
-          <{if $details.sale_status == '1'}><a class="actbtn btn-gift" href="<{link ctl="cart" act="addGiftToCart" arg0=$details.gift_id}>" target="_blank" ><{t}>换取<{/t}></a><{else}>
-           <div class="actbtn btn-nogift"><{t}>暂无赠品<{/t}></div>
+          <{if $details.sale_status == '1'}><a class="actbtn btn-gift" href="<{link ctl="cart" act="addGiftToCart" arg0=$details.gift_id}>" target="_blank" ><{t}>Exchange<{/t}></a><{else}>
+           <div class="actbtn btn-nogift"><{t}>No Gift<{/t}></div>
         <{/if}>
         </div>
     </td>

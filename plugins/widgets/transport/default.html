@@ -9,9 +9,9 @@
     <{elseif $setting.smallPic}>
     <{img src=$setting.smallPic path="icons"}>
     <{/if}>
-订单<span class="TransportListId"><{$data.$key.order_id}></span>所购物品
-    <!--经通过<span class="TransportListShipname"><{$data.$key.ship_name}></span> -->已通过<span class="TransportListId"><{$data.$key.transport}></span>发出，
-    请注意查收.发货单号:<span class="TransportListId"><{$data.$key.delivery_id}></span>
+Items of Order : <span class="TransportListId"><{$data.$key.order_id}></span> 
+    <!--经通过<span class="TransportListShipname"><{$data.$key.ship_name}></span> -->have shipped by <span class="TransportListId"><{$data.$key.transport}></span>,
+    please check.Order NO.s:<span class="TransportListId"><{$data.$key.delivery_id}></span>
     </li>
   <{/foreach}>
   </ul>

@@ -91,11 +91,11 @@ var good_list = new Class({
       <{if $setting.showGoodsDesc=="on"}>
       <ul>
 <{assign var="savePC" value=$sData.mktprice-$sData.price}>
-        <{if $setting.showGoodsMktPrice=="on"}><li><span class="mktprice0"><{$setting.mktPriceText|default:'市场价'}><{$setting.mktPriceSep|default:':'}></span><span class="mktprice1" style="color:<{$setting.color1}>;<{$setting.mark_font|styleset}>"><{$sData.mktprice|cur}></span></li><{/if}>
-        <{if $setting.showGoodsPrice=="on"}><li><span class="price0"><{$setting.priceText|default:'销售价'}><{$setting.priceSep|default:':'}></span><span class="price1" style="color:<{$setting.color2}>;<{$setting.member_font|styleset}>"><{$sData.price|cur}></span></li><{/if}>
-        <{if $savePC>0 && $setting.showGoodsSave=="on"}><li><span class="save0"><{$setting.saveText|default:'节省'}><{$setting.saveSep|default:':'}></span><span class="save1" style="color:<{$setting.color3}>;<{$setting.save_font|styleset}>"><{$savePC|cur}></span></li><{/if}>
-        <{if $setting.showGoodsInfo=="on" && $sData.brief}><li><span class="info0">简介：<{$sData.brief}></span></li><{/if}>
-		 <{if $setting.showCount=="on"}><li><span class="countprice"><{$setting.countText|default:'折扣'}></span><span class="info1" style="color:<{$setting.color5}>;<{$setting.count_font|styleset}>"><{assign var="aCount" value=$sData.price/$sData.mktprice*100}>
+        <{if $setting.showGoodsMktPrice=="on"}><li><span class="mktprice0"><{$setting.mktPriceText|default:'MSRP'}><{$setting.mktPriceSep|default:':'}></span><span class="mktprice1" style="color:<{$setting.color1}>;<{$setting.mark_font|styleset}>"><{$sData.mktprice|cur}></span></li><{/if}>
+        <{if $setting.showGoodsPrice=="on"}><li><span class="price0"><{$setting.priceText|default:'Price'}><{$setting.priceSep|default:':'}></span><span class="price1" style="color:<{$setting.color2}>;<{$setting.member_font|styleset}>"><{$sData.price|cur}></span></li><{/if}>
+        <{if $savePC>0 && $setting.showGoodsSave=="on"}><li><span class="save0"><{$setting.saveText|default:'Save'}><{$setting.saveSep|default:':'}></span><span class="save1" style="color:<{$setting.color3}>;<{$setting.save_font|styleset}>"><{$savePC|cur}></span></li><{/if}>
+        <{if $setting.showGoodsInfo=="on" && $sData.brief}><li><span class="info0">Brief Introduction<{$sData.brief}></span></li><{/if}>
+		 <{if $setting.showCount=="on"}><li><span class="countprice"><{$setting.countText|default:'Discount'}></span><span class="info1" style="color:<{$setting.color5}>;<{$setting.count_font|styleset}>"><{assign var="aCount" value=$sData.price/$sData.mktprice*100}>
         <{math equation="countResult" countResult=$aCount format="%.0f"}>
         <{$setting.countSep|default:':'}></span></li><{/if}>
       </ul>
@@ -165,7 +165,7 @@ var good_list = new Class({
     <div id="<{$widgets_id}>_more_<{$key1}>" class="more" style="<{if $key1=='0'}><{else}>display:none;<{/if}>">
     <{if $setting.showMore == "on"}>
 	
-    <a href="<{if $data.link.$key1}><{$data.link[$key1]}><{/if}>">更多...</a><{/if}></div>
+    <a href="<{if $data.link.$key1}><{$data.link[$key1]}><{/if}>">More...</a><{/if}></div>
     
 <{/foreach}>
 <{/capture}>
@@ -251,11 +251,11 @@ var good_list = new Class({
       <{if $setting.showGoodsDesc=="on"}>
       <ul>
       <{assign var="savePC" value=$goods_data.mktprice-$goods_data.price}>
-        <{if $setting.showGoodsMktPrice=="on"}><li><span class="mktprice0"><{$setting.mktPriceText|default:'市场价'}></span><{$setting.mktPriceSep|default:':'}><span style="color:<{$setting.color1}>;<{$setting.mark_font|styleset}>"><{$goods_data.mktprice|cur}></span></li><{/if}>
-        <{if $setting.showGoodsPrice=="on"}><li><span class="price0"><{$setting.priceText|default:'销售价'}></span><{$setting.priceSep|default:':'}><span style="color:<{$setting.color2}>;<{$setting.member_font|styleset}>"><{$goods_data.price|cur}></span></li><{/if}>
-        <{if $savePC>0 && $setting.showGoodsSave=="on"}><li><span class="save0"><{$setting.saveText|default:'节省'}></span><{$setting.saveSep|default:':'}><span style="color:<{$setting.color3}>;<{$setting.save_font|styleset}>"><{$savePC|cur}></span></li><{/if}>
-        <{if $setting.showGoodsInfo=="on" && $goods_data.brief}><li><span class="info0">简介：<{$goods_data.brief}></span></li><{/if}>
-		<{if $setting.showCount=="on"}><li><span class="countprice"><{$setting.countText|default:'折扣'}></span><span class="info1" style="color:<{$setting.color5}>;<{$setting.count_font|styleset}>"><{assign var="aCount" value=$goods_data.price/$goods_data.mktprice*100}>
+        <{if $setting.showGoodsMktPrice=="on"}><li><span class="mktprice0"><{$setting.mktPriceText|default:'MSRP'}></span><{$setting.mktPriceSep|default:':'}><span style="color:<{$setting.color1}>;<{$setting.mark_font|styleset}>"><{$goods_data.mktprice|cur}></span></li><{/if}>
+        <{if $setting.showGoodsPrice=="on"}><li><span class="price0"><{$setting.priceText|default:'Price'}></span><{$setting.priceSep|default:':'}><span style="color:<{$setting.color2}>;<{$setting.member_font|styleset}>"><{$goods_data.price|cur}></span></li><{/if}>
+        <{if $savePC>0 && $setting.showGoodsSave=="on"}><li><span class="save0"><{$setting.saveText|default:'Save'}></span><{$setting.saveSep|default:':'}><span style="color:<{$setting.color3}>;<{$setting.save_font|styleset}>"><{$savePC|cur}></span></li><{/if}>
+        <{if $setting.showGoodsInfo=="on" && $goods_data.brief}><li><span class="info0">Brief Introduction<{$goods_data.brief}></span></li><{/if}>
+		<{if $setting.showCount=="on"}><li><span class="countprice"><{$setting.countText|default:'Discount'}></span><span class="info1" style="color:<{$setting.color5}>;<{$setting.count_font|styleset}>"><{assign var="aCount" value=$goods_data.price/$goods_data.mktprice*100}>
         <{math equation="countResult" countResult=$aCount format="%.0f"}>
         <{$setting.countSep|default:':'}></span></li><{/if}>
       </ul>
@@ -313,7 +313,7 @@ var good_list = new Class({
     <{/foreach}>
     <div class="clear"></div>
   <{if $setting.showMore == "on" && $data.link}>
-    <div class="more clearfix"><a href="<{$data.link}>">更多...</a></div>
+    <div class="more clearfix"><a href="<{$data.link}>">More...</a></div>
   <{/if}>
   <{/capture}>
 

@@ -1,22 +1,22 @@
 <span id="foobar_<{$widgets_id}>" style="position: relative;">
- <{t}>您好,<{/t}><span id="uname_<{$widgets_id}>"><{$env.cookie.UNAME}></span>&nbsp;
+ <{t}>Hello,<{/t}><span id="uname_<{$widgets_id}>"><{$env.cookie.UNAME}></span>&nbsp;
  <{if !$env.cookie.MEMBER}>
   <span id="loginBar_<{$widgets_id}>">
    <{foreach from=$data.login_content item=login}>
    <{$login}>
    <{/foreach}>
-    <a href="<{link ctl=passport act=login}>"><{t}>[请登录]<{/t}></a>&nbsp;&nbsp;
+    <a href="<{link ctl=passport act=login}>"><{t}>[Login]<{/t}></a>&nbsp;&nbsp;
    <{if $data.open_id_open}>
- [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>信任登录<{/t}></a>]&nbsp;&nbsp;
- <div id="accountlogin" ><h5>您还可以使用以下帐号登录：</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">更多»</a></div>
+ [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>Trusted Login<{/t}></a>]&nbsp;&nbsp;
+ <div id="accountlogin" ><h5>You can also login as</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">More»</a></div>
      </div>
  <{/if}>
-    <a href="<{link ctl=passport act=signup}>"><{t}>[免费注册]<{/t}></a>
+    <a href="<{link ctl=passport act=signup}>"><{t}>[Login]<{/t}></a>
   </span>
   <{else}>
   <span id="memberBar_<{$widgets_id}>">
-    <a href="<{link ctl=member act=index}>"><{t}>[会员中心]<{/t}></a>&nbsp;&nbsp;
-    <a href="<{link ctl=passport act=logout}>"><{t}>[退出]<{/t}></a>
+    <a href="<{link ctl=member act=index}>"><{t}>[My Account]<{/t}></a>&nbsp;&nbsp;
+    <a href="<{link ctl=passport act=logout}>"><{t}>[Logout]<{/t}></a>
   </span>
   <{/if}>
   <{if $setting.show_cur}>
@@ -31,7 +31,7 @@
   <{if $setting.show_cart}>
   &nbsp;
   <a href="<{link ctl=cart act=index}>" target="_blank" class="cart-container">
-    <span class="inlineblock CartIco"><{t}>购物车<{/t}></span>
+    <span class="inlineblock CartIco"><{t}>Cart<{/t}></span>
   [<span id="Cart_<{$widgets_id}>" class="cart-number">0</span>]
   <{img  src="statics/bundle/arrow-down.gif"}>
   </a>
@@ -130,7 +130,7 @@ window.addEvent('domready',function(){
                       width:bar.getSize().x,
                       display:'block',
                       visibility:'visible'
-                   }).set('html','<div class="note">正在加载购物车信息...</div>');
+                   }).set('html','<div class="note">Loading...</div>');
                     this.retrieve('request',{cancel:$empty}).cancel();
                     this.store('request',new Request.HTML({update:cartViewMenu}).get(barOptions.cartViewURl));
                 }
