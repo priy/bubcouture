@@ -4,25 +4,25 @@
 <col class="span-auto" />
 <tbody>
   <tr>
-    <td><em style="color:red">*</em><{t}>收货地区：<{/t}></td>
+    <td><em style="color:red">*</em><{t}>Shipping District:<{/t}></td>
     <td colspan=2>
       <span id="checkout-select-area"><{input id="shipping-area" class="inputstyle" name="delivery[ship_area]" type="region" required="true" value=$trading.receiver.area}></span>
     </td>
   </tr>
   <tr>
-    <td><em style="color:red">*</em><{t}>收货地址：<{/t}></td>
+    <td><em style="color:red">*</em><{t}>Shipping Addr.<{/t}></td>
     <td>
     <input type='hidden' name='delivery[ship_addr_area]' value='' id='selected-area-hidden'/>    
-    <span id='selected-area' class='fontcolorGray' title='系统将拼接地区选择结果到收获地址'>[地区]</span>
+    <span id='selected-area' class='fontcolorGray' title='Address will be generated automaticly'>[District]</span>
     <{input class="inputstyle" name="delivery[ship_addr]"   id="addr" vtype="required" value=$trading.receiver.addr size="30"}>
     </td>
     <td>
-	<{t}>邮编：<{/t}>
+	<{t}>Post Code:<{/t}>
 	<{input class="inputstyle span-2" name="delivery[ship_zip]" size="30" id="zip"  type="text" value=$trading.receiver.zip}>
 	</td>
   </tr>
   <tr>
-    <td><em style="color:red">*</em><{t}>收货人姓名：<{/t}></td>
+    <td><em style="color:red">*</em><{t}>Consignee Name:<{/t}></td>
     <td colspan=2><{input class="inputstyle" name="delivery[ship_name]" id="name"  size="30" required="true" type="text" value=$trading.receiver.name}></td>
   </tr>
   <{if !$trading.member_id}>
@@ -33,7 +33,7 @@
   <{/if}>
   <tr>
     <td>
-      <em style="color:red">*</em><{t}>手机：<{/t}>
+      <em style="color:red">*</em><{t}>Mobile Phone:<{/t}>
     </td>
     <td colspan=2>
      <{input class="inputstyle" name="delivery[ship_mobile]" size="30" type="text" id="mobile" value=$trading.receiver.mobile}>
@@ -41,7 +41,7 @@
   </tr>
   <tr>
     <td>
-      <em style="color:#ccc">*</em><{t}>固定电话：<{/t}>
+      <em style="color:#ccc">*</em><{t}>Telephone:<{/t}>
     </td>
     <td colspan=2>
      <{input class="inputstyle" name="delivery[ship_tel]" size="30" type="text" id="tel" value=$trading.receiver.tel}>
@@ -49,8 +49,8 @@
   </tr>
   <{if $trading.member_id}>
   <tr class="recsave">
-    <td><{t}>是否保存地址：<{/t}></td>
-    <td colspan=2><label><input name="delivery[is_save]" type="checkbox" checked="checked" value=1><{t}>保存本次收货地址<{/t}></label></td>
+    <td><{t}>Save the addr.?<{/t}></td>
+    <td colspan=2><label><input name="delivery[is_save]" type="checkbox" checked="checked" value=1><{t}>Save this consignee addr.<{/t}></label></td>
   </tr>
   <{/if}>
   </tbody>

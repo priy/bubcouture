@@ -2,15 +2,15 @@
   <div class="MemberMain">
   <div style="margin-right:175px;">
 
- <div class="title"><{t}>我的订单<{/t}></div>
+ <div class="title"><{t}>My Orders<{/t}></div>
  
  <table class="memberlist blueth" width="100%" border="0" cellspacing="0" cellpadding="0">
    <tr>
-     <th>商品名称</th>
-     <th>订单号</th>
-     <th>下单日期</th>
-     <th>总金额</th>
-     <th>订单状态</th>
+     <th>Product Name</th>
+     <th>Order No.</th>
+     <th>Order Date</th>
+     <th>Total</th>
+     <th>Status</th>
    </tr>
 <tbody>
 <{foreach from=$orders item="order" name=orders}>
@@ -21,66 +21,66 @@
   <td><{$order.createtime|cdate:FDATE_STIME}></td>
   <td><{$order.final_amount|cur:$order.currency:false:true}></td>
   <td><span class="point">
-  <{if $order.status == 'finish'}>已完成
-  <{elseif $order.status == 'dead'}>已作废
+  <{if $order.status == 'finish'}>Finished
+  <{elseif $order.status == 'dead'}>Canceled
   <{else}>
-  <{if $order.pay_status==1}>已付款
+  <{if $order.pay_status==1}>Paid
     [<{if $order.ship_status==1}>
-    已发货
+    Shipped
     <{elseif $order.ship_status==2}>
-    部分发货
+    Partical Shipped
     <{elseif $order.ship_status==3}>
-    部分退货
+    Partical Returned
     <{elseif $order.ship_status==4}>
-    已退货
+    Returned
     <{else}>
-    正在备货...
+    Prepare the stock ...
     <{/if}>]
   <{elseif $order.pay_status==2}>
-    已付款至担保方
+    Paid to the secured party
   <{elseif $order.pay_status==3}>
-    <a href="<{link ctl=member act=orderpay arg0=$order.order_id}>" ><{t}>等待补款<{/t}></a>
+    <a href="<{link ctl=member act=orderpay arg0=$order.order_id}>" ><{t}>waiting for restock of style<{/t}></a>
     <{if $order.ship_status==1}>
-    [已发货]
+    [Shipped]
     <{elseif $order.ship_status==2}>
-    [部分发货]
+    [Partical Shipped]
     <{elseif $order.ship_status==3}>
-    [部分退货]
+    [Partical Returned]
     <{elseif $order.ship_status==4}>
-    [已退货]
+    [Returned]
     <{/if}>
   <{elseif $order.pay_status==4}>
-    部分退款
+    Partical Refund
     [<{if $order.ship_status==1}>
-    已发货
+    Shipped
     <{elseif $order.ship_status==2}>
-    部分发货
+    Partical Shipped
     <{elseif $order.ship_status==4}>
-    已退货
+    Returned
     <{elseif $order.ship_status==0}>
-    未发货
+    Unship
     <{/if}>]
   <{elseif $order.pay_status==5}>
-    已退款
+    Refund
     [<{if $order.ship_status==1}>
-    已发货
+    Shipped
     <{elseif $order.ship_status==2}>
-    部分发货
+    artical Shipped
     <{elseif $order.ship_status==4}>
-    已退货
+    Returned
     <{elseif $order.ship_status==0}>
-    未发货
+    Unship
     <{/if}>]
   <{else}>
-    <a href="<{link ctl=member act=orderpay arg0=$order.order_id}>" ><{t}>等待付款<{/t}></a>
+    <a href="<{link ctl=member act=orderpay arg0=$order.order_id}>" ><{t}>waiting for restock of style<{/t}></a>
     <{if $order.ship_status==1}>
-    [已发货]
+    [Shipped]
     <{elseif $order.ship_status==2}>
-    [部分发货]
+    [Partical Shipped]
     <{elseif $order.ship_status==3}>
-    [部分退货]
+    [Partical Returned]
     <{elseif $order.ship_status==4}>
-    [已退货]
+    [Returned]
     <{/if}>
   <{/if}>
   <{/if}>

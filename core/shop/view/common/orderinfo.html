@@ -7,8 +7,8 @@
   <tr>
     <td><h4><{t}>Order No.<{/t}><{$order.order_id}><{if $order.status=='finish'}><label style="color:#f00;"><{t}>(finished)<{/t}></label><{elseif $order.status=='dead'}><label style="color:#f00;"><{t}>(Canceled)<{/t}></label><{/if}></h4></td>
     <td><{t}>Order Date:<{/t}><{$order.acttime|cdate:FDATE_STIME}></td>
-    <td>Status:<{if $order.pay_status==0}>Unpaid<{elseif $order.pay_status==1}>Paid<{elseif $order.pay_status==2}>已付款至担保方<{elseif $order.pay_status==3}>Partly Paid<{elseif $order.pay_status==4}>Partly Refund<{elseif $order.pay_status==5}>Refunded<{/if}>
-  [<{if $order.ship_status==0}>未发货<{elseif $order.ship_status==1}>已发货<{elseif $order.ship_status==2}>部分发货<{elseif $order.ship_status==3}>部分退货<{elseif $order.ship_status==4}>已退货<{/if}>]</td>
+    <td>Status:<{if $order.pay_status==0}>Unpaid<{elseif $order.pay_status==1}>Paid<{elseif $order.pay_status==2}>Paid to Secured party<{elseif $order.pay_status==3}>Partial Paid<{elseif $order.pay_status==4}>Partial Refund<{elseif $order.pay_status==5}>Refunded<{/if}>
+  [<{if $order.ship_status==0}>Unshipped<{elseif $order.ship_status==1}>Shipped<{elseif $order.ship_status==2}>Partial Shipped<{elseif $order.ship_status==3}>Partial Returned<{elseif $order.ship_status==4}>Returned<{/if}>]</td>
   </tr>
 </table>
 
@@ -19,7 +19,7 @@
 <div class="FormWrap " style="background:#F5F4EC; border:1px solid #E5DDC7;">
 <{if count($order.items) > 0}>
 
-  <h4><{t}>购买的商品<{/t}></h4>
+  <h4><{t}>Purchased<{/t}></h4>
 
 <div class="division">
 <table width="100%" cellpadding="3" cellspacing="0" class="liststyle">
@@ -31,12 +31,12 @@
             <col class="span-2 ColColorOrange"></col>
   <thead>
   <tr>
-        <th><{t}>图片<{/t}></th>
-        <th><{t}>商品名称<{/t}></th>
-        <th><{t}>商品积分<{/t}></th>
-        <th><{t}>价格<{/t}></th>
-        <th><{t}>数量<{/t}></th>
-        <th><{t}>小计<{/t}></th>
+        <th><{t}>Picture<{/t}></th>
+        <th><{t}>Name<{/t}></th>
+        <th><{t}>Credit<{/t}></th>
+        <th><{t}>Price<{/t}></th>
+        <th><{t}>QTY<{/t}></th>
+        <th><{t}>Total<{/t}></th>
       </tr>
   </thead>
   <tbody>
@@ -71,7 +71,7 @@
 
         <{if count($trading.pmt_o.list)>0}>
       <tr>
-        <th><{t}>享受的优惠：<{/t}></th>
+        <th><{t}>Preferential:<{/t}></th>
                 <td>
                      <ol>
             <{foreach from=$trading.pmt_o.list item=item}>
@@ -83,7 +83,7 @@
             <{/if}>
             <{if count($trading.gift_p)>0}>
             <tr>
-              <th><{t}>获得赠品：<{/t}></th>
+              <th><{t}>Gift:<{/t}></th>
               <td>
               <ol>
               <{foreach from=$trading.gift_p item="item" key="key"}>
@@ -95,11 +95,11 @@
             <{/if}>
             <{if count($trading.coupon_p)>0}>
             <tr>
-              <th><{t}>获得优惠券：<{/t}></th>
+              <th><{t}>Coupon:<{/t}></th>
               <td>
               <ol>
                   <{foreach from=$trading.coupon_p item="item" key="key"}>
-                  <li><{$item.cpns_name}> <{$item.nums}><{t}> 张<{/t}></li>
+                  <li><{$item.cpns_name}> <{$item.nums}><{t}><{/t}></li>
                   <{/foreach}>
               </ol></td>
             </tr>
@@ -112,7 +112,7 @@
 
 <{if $order.giftItems}>
 
-  <h4><{t}>赠品<{/t}></h4>
+  <h4><{t}>Gift<{/t}></h4>
 
 <div class="division">
 <table width="100%" cellpadding="3" cellspacing="0" class="liststyle data">
@@ -122,10 +122,10 @@
             <col class="span-2 ColColorOrange"></col>
     <thead>
       <tr>
-        <th ><{t}>赠品名称<{/t}></th>
-        <th><{t}>所需积分<{/t}></th>
-        <th><{t}>数量<{/t}></th>
-        <th><{t}>小计<{/t}></th>
+        <th ><{t}>Gift Name<{/t}></th>
+        <th><{t}>Credit Needed<{/t}></th>
+        <th><{t}>QTY<{/t}></th>
+        <th><{t}>Total<{/t}></th>
       </tr>
     </thead>
     <tbody>
@@ -141,31 +141,31 @@
 </table>
 </div>
 <{/if}>
-<h4><{t}>收货人信息<{/t}></h4>
+<h4><{t}>Consignee Information<{/t}></h4>
 <div class="division">
 <table width="100%" cellspacing="0" cellpadding="0" class="liststyle data">
   <tr>
-    <th><{t}>收货人姓名:<{/t}></th>
+    <th><{t}>Consignee Name:<{/t}></th>
     <td><{$order.receiver.name|escape:'html'}></td>
-    <th ><{t}>收货人Mail:<{/t}></th>
+    <th ><{t}>Email:<{/t}></th>
     <td><{$order.receiver.email|escape:'html'}></td>
   </tr>
   <tr>
-    <th><{t}>配送地区:<{/t}></th>
+    <th><{t}>Consignee Shipping Addr.<{/t}></th>
     <td><{$order.receiver.area|region}></td>
-    <th><{t}>联系电话:<{/t}></th>
+    <th><{t}>Telephone:<{/t}></th>
     <td><{$order.receiver.tel}><{if $order.receiver.tel && $order.receiver.mobile}> | <{/if}><{$order.receiver.mobile}></td>
   </tr>
   <tr>
-    <th><{t}>收货人邮编:<{/t}></th>
+    <th><{t}>Consignee Post Code:<{/t}></th>
     <td><{$order.receiver.zip|default:'-'|escape:'html'}></td>
-    <th><{t}>送货时间:<{/t}></th>
+    <th><{t}>Delivery Time:<{/t}></th>
     <td><{$order.shipping.time}></td>
   </tr>
     <tr>
-    <th><{t}>配送方式:<{/t}></th>
+    <th><{t}>Shipping Method:<{/t}></th>
     <td><{$order.shipping.method}></td>
-    <th><{t}>付款方式:<{/t}></th>
+    <th><{t}>Payment Method:<{/t}></th>
     <td>
 		<{$order.paymethod}>
 		&nbsp;
@@ -182,17 +182,17 @@
     <td><a href='<{$order.corp.website}>' target='_blank'><{$order.corp.website}></a></td>
   </tr>  !-->
   <tr>
-    <th><{t}>商品重量:<{/t}></th>
+    <th><{t}>Weight:<{/t}></th>
     <td><{$order.weight}> g</td>
-    <th><{t}>支付币别:<{/t}></th>
+    <th><{t}>Currency:<{/t}></th>
     <td><{$order.cur_name}></td>
   </tr>
   <tr>
-    <th valign="top"><{t}>收货人地址:<{/t}></th>
+    <th valign="top"><{t}>Consignee Addr.<{/t}></th>
     <td colspan="3" valign="top"><{$order.receiver.addr|escape:'html'}></td>
   </tr>
   <tr>
-    <th valign="top"><{t}>订单附言:<{/t}></th>
+    <th valign="top"><{t}>Note:<{/t}></th>
     <td colspan="3" valign="top"><{$order.memo}></td>
   </tr>
 </table>
@@ -206,38 +206,38 @@
             <col class="span-auto ColColorGray"></col>
             <col class="span-4 ColColorOrange textright"></col>
   <tr>
-    <th><{t}>商品总金额:<{/t}></th>
+    <th><{t}>Total:<{/t}></th>
     <td><{$order.basic.totalPrice|cur}></td>
   </tr>
   <tr>
-    <th><{t}>配送费用:<{/t}></th>
+    <th><{t}>Delivery Costs:<{/t}></th>
     <td><{$order.shipping.cost|cur}></td>
   </tr>
   <{if $order.shipping.is_protect == 'true'}>
   <tr>
-    <th><{t}>保价费用:<{/t}></th>
+    <th><{t}>Insured Costs:<{/t}></th>
     <td><{$order.shipping.protect|cur}></td>
   </tr>
   <{/if}>
   <{if $order.amount.cost_payment > 0}>
   <tr>
-    <th><{t}>支付费用:<{/t}></th>
+    <th><{t}>Pay:<{/t}></th>
     <td><{$order.amount.cost_payment|cur}></td>
   </tr>
   <{/if}>
   <{if $order.order_chgpointmoney > 0}>
   <tr>
-    <th><{t}>积分抵扣金额:<{/t}></th>
+    <th><{t}>Part of the deductible payments:<{/t}></th>
     <td><{$order.order_chgpointmoney}></td>
   </tr>
   <{/if}>
   <tr>
-    <th><{t}>您可获得积分:<{/t}></th>
+    <th><{t}>Credits got:<{/t}></th>
     <td><{$order.score_g+0}></td>
   </tr>
   <{if $order.amount.pmt_amount > 0}>
   <tr>
-    <th><{t}>优惠金额:<{/t}></th>
+    <th><{t}>Discount rate:<{/t}></th>
     <td style="color:#f00;">-<{$order.amount.pmt_amount|cur}></td>
   </tr>
   <{/if}>
@@ -253,27 +253,27 @@
   <{/if}>
   <{if $order.discount != 0}>
   <tr>
-    <th><{t}>订单减免:<{/t}></th>
+    <th><{t}>Order Cut:<{/t}></th>
     <td style="color:#f00;"><{if $order.discount lt 0}>-<{else}>+<{/if}><{$order.discount|abs|cur}></td>
   </tr>
   <{/if}>
   <tr>
-    <th><{t}>订单总金额:<{/t}></th>
+    <th><{t}>Total:<{/t}></th>
     <td class="price1"><{$order.amount.total|amount}></td>
   </tr>
   <{if $order.amount.payed > 0}>
   <tr>
-    <th><{t}>已付金额:<{/t}></th>
+    <th><{t}>Paid Count:<{/t}></th>
     <td><{$order.amount.payed|cur}></td>
   </tr>
   <{/if}>
   <{if $order.cur_rate != 1}>
   <tr>
-    <th><{t}>货币汇率:<{/t}></th>
+    <th><{t}>Currency Exchange:<{/t}></th>
     <td><{$order.cur_rate}></td>
   </tr>
   <tr>
-    <th><{t}>货币结算金额:<{/t}></th>
+    <th><{t}>Total Price:<{/t}></th>
     <td><{$order.amount.final|cur:$order.currency:false:true}></td>
   </tr>
   <{/if}>

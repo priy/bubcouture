@@ -60,20 +60,20 @@ function checkAll(obj,box) {
   }
 }
 </script>
-<div class="title"><{t}>收件箱<{/t}></div>
+<div class="title"><{t}>Inbox<{/t}></div>
 <form action="<{link ctl="member" act="delInBoxMsg"}>" method="post">
 <table width="100%" cellspacing="0" cellpadding="0" class="liststyle_option">
     <col class="span-0 textcenter"></col>
     <col class=" textleft"></col>
 
     <tr>
-      <th class="textcenter"><input type="checkbox" onclick="checkAll(this.form,this)" name="chkall" id="chkall" title="全选"></th>
-            <td><input type="submit" value="删除" name="pmsend /"></td>
-            <td class="textright"><{t}>共有短消息:<{/t}><em id="pmtotalnum"><{$total_msg}></em></td>
+      <th class="textcenter"><input type="checkbox" onclick="checkAll(this.form,this)" name="chkall" id="chkall" title="all"></th>
+            <td><input type="submit" value="Delete" name="pmsend /"></td>
+            <td class="textright"><{t}>total message:<{/t}><em id="pmtotalnum"><{$total_msg}></em></td>
     </tr>
 
     </table>
-  <table width="100%" cellspacing="0" cellpadding="0"  summary="收件箱" class="memberlist">
+  <table width="100%" cellspacing="0" cellpadding="0"  summary="Inbox" class="memberlist">
     <col class="span-0 ColColorGraydark"></col>
     <col class="span-15 textleft"></col>
     <col class="span-2 ColColorOrange"></col>
@@ -83,11 +83,11 @@ function checkAll(obj,box) {
     <thead>
       <tr>
         <th>&nbsp;</th>
-        <th><{t}>标题<{/t}></th>
-        <th ><{t}>来自<{/t}></th>
-        <th ><{t}>时间<{/t}></th>
-        <th ><{t}>操作<{/t}></th>
-        <th ><{t}>是否阅读<{/t}></th>
+        <th><{t}>Title<{/t}></th>
+        <th ><{t}>From<{/t}></th>
+        <th ><{t}>Date<{/t}></th>
+        <th ><{t}>Action<{/t}></th>
+        <th ><{t}>Unread?<{/t}></th>
       </tr>
     </thead>
     <tbody>
@@ -97,14 +97,14 @@ function checkAll(obj,box) {
         <td class="selector"><input type="checkbox" value=<{$msg.msg_id}> name="delete[]"></td>
         <td class="textleft">
           <span><a href="<{if $msg.unread}><{else}>#<{/if}>" onclick="showMsg(this,<{$msg.msg_id}>,'<{link ctl='member' act='viewMsg' arg0=$msg.msg_id }>');return false;" class="viewmsgoff"><{$msg.subject|cut:60|escape:'html'}></a></span></td>
-        <td><{if $msg.from_type == 1}><{t}>管理员<{/t}><{else}><{$msg.msg_from}><{/if}></td>
+        <td><{if $msg.from_type == 1}><{t}>Administrator<{/t}><{else}><{$msg.msg_from}><{/if}></td>
         <td><{$msg.date_line|cdate:SDATE_STIME}></td>
-        <td><a href="<{if $msg.from_type==1}><{link ctl=member act=message arg0=$msg.msg_id arg1=reply}><{else}><{link ctl=member act=send arg0=$msg.msg_id arg1=reply}><{/if}>"  ><{t}>回复<{/t}></a></td>
+        <td><a href="<{if $msg.from_type==1}><{link ctl=member act=message arg0=$msg.msg_id arg1=reply}><{else}><{link ctl=member act=send arg0=$msg.msg_id arg1=reply}><{/if}>"  ><{t}>Reply<{/t}></a></td>
         <td >
         <{if $msg.unread}>
-        已读
+        read
         <{else}>
-        未读
+        unread
         <{/if}>
         </th>
       </tr>
@@ -115,7 +115,7 @@ function checkAll(obj,box) {
       <{else}>
       <tr>
       <td height="60" colspan="6" class="ColColorWhite">
-        收件箱内没有短信息。
+        No message。
       </td>
       </tr>
       <{/if}>
@@ -127,9 +127,9 @@ function checkAll(obj,box) {
     <col class=" textleft"></col>
 
     <tr>
-      <th class="textcenter"><input type="checkbox" onclick="checkAll(this.form,this)" name="chkall" id="chkall" title="全选"></th>
-            <td><input type="submit" value="删除" name="pmsend /"></td>
-            <td class="textright"><{t}>共有短消息:<{/t}><em id="pmtotalnum"><{$total_msg}></em></td>
+      <th class="textcenter"><input type="checkbox" onclick="checkAll(this.form,this)" name="chkall" id="chkall" title="All"></th>
+            <td><input type="submit" value="Delete" name="pmsend /"></td>
+            <td class="textright"><{t}>Total message:<{/t}><em id="pmtotalnum"><{$total_msg}></em></td>
     </tr>
 
     </table>

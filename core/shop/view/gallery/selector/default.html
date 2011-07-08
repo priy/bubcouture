@@ -3,7 +3,7 @@
 <table>
 	
        <tr>
-        <td class="textright" style="padding-right:6px; width:72px; white-space:nowrap"><{t}>分类名称：<{/t}></td>
+        <td class="textright" style="padding-right:6px; width:72px; white-space:nowrap"><{t}>Category Name:<{/t}></td>
         <td style="line-height:22px; white-space:normal; word-break:break-all"><{foreach from=$childnode item="item" key=value}>
         <a href="<{$item.link}>"><{$item.cat_name}></a>  
         <{/foreach}>
@@ -64,7 +64,7 @@
             <{/if}>
         <{/foreach}>
         <span class="select">
-			<{if $selectValue}><{$selectValue}><{else}>请选择<{/if}>
+			<{if $selectValue}><{$selectValue}><{else}>Please Select <{/if}>
 		</span>
         <{assign var="selectValue" value=''}>
         </li>
