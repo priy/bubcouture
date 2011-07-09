@@ -1,6 +1,6 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
-<h1 class="title"><{t}>售后服务列表<{/t}></h1>
+<h1 class="title"><{t}>Customer Service<{/t}></h1>
 <div class="FormWrap">
 <!--<div class="division">
 <form action="<{link ctl=member act=return_product}>" method="post" name="return_product" id="return_product">
@@ -25,7 +25,7 @@
 </table>
 </form>
 </div>-->
-<a href="<{link ctl=member act=return_order_list}>" class='btn-normal'><{t}>申请售后服务<{/t}></a>
+<a href="<{link ctl=member act=return_order_list}>" class='btn-normal'><{t}>inquery<{/t}></a>
 <div class="division pushdown-1">
 
 <table width="100%" cellpadding="3" cellspacing="0" class="liststyle">
@@ -36,10 +36,10 @@
 <col class="span-2"></col>
 <thead>
 	<tr>
-		<th><{t}>订单号<{/t}></th>
-		<th><{t}>售后服务标题<{/t}></th> 
-		<th><{t}>申请时间<{/t}></th>
-	 	<th><{t}>处理状态<{/t}></th>
+		<th><{t}>Order No.<{/t}></th>
+		<th><{t}>Title<{/t}></th> 
+		<th><{t}>date<{/t}></th>
+	 	<th><{t}>Status<{/t}></th>
 	</tr>
 </thead>
 <tbody>
@@ -52,17 +52,17 @@
     </td>
 	<td class="textright"><{$return_item.add_time|cdate:'FDATE_FTIME'}></td>
     <td>
-    	<{if $return_item.status == 1}>未审核
-        <{elseif $return_item.status == 2}>审核中
-        <{elseif $return_item.status == 3}>审核通过
-        <{elseif $return_item.status == 4}>已完成
-        <{elseif $return_item.status == 5}>审核未通过
+    	<{if $return_item.status == 1}>waiting
+        <{elseif $return_item.status == 2}>processing
+        <{elseif $return_item.status == 3}>success
+        <{elseif $return_item.status == 4}>close
+        <{elseif $return_item.status == 5}>reject
         <{/if}>
     </td>
 </tr>
 <{/foreach}>
 <{else}>
-<td colspan="4"><{t}>您还没有提交过售后服务信息，如果您购买的商品需要退换货/维修等服务，您可以“<{/t}><a class="nolnk" href="<{link ctl=member act=return_order_list}>"><{t}>点此申请售后服务<{/t}></a>”。</td>
+<td colspan="4"><{t}>Submit your service information，if needed some product help.<{/t}><a class="nolnk" href="<{link ctl=member act=return_order_list}>"><{t}>Click Here<{/t}></a></td>
 <{/if}>
 </tbody>
 </table>

@@ -2,7 +2,7 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 
-<div class="title"><{t}>缺货登记<{/t}></div>
+<div class="title"><{t}>Arrival notice<{/t}></div>
 <!--//todo 页面信息判断（是否到货，是否被删除）-->
 <table width="100%" border="0" cellspacing="0" cellpadding="0" class="liststyle data GoodsSearchWrap ">
     <col class="span-3 textleft"></col>
@@ -14,9 +14,9 @@
       <{if $good.store >= 0 || $good.store ==''}><a href="<{link ctl="product" act="index" arg0=$good.goods_id}>" title="<{$good.name}>"><{/if}>
         <img src="<{$good.thumbnail_pic|default:$env.conf.site.default_thumbnail_pic|storager}>" width="<{$env.conf.site.thumbnail_pic_width}>" height="<{$env.conf.site.thumbnail_pic_height}>" alt="<{$good.name}>"/></a></td>
     <td><h3><{if $good.store >= 0 || $good.store ==''}><a href="<{link ctl="product" act="index" arg0=$good.goods_id}>" target="_blank"><{/if}><{$good.name}><{if $good.pdt_desc}> (<{$good.pdt_desc}>)<{/if}></a></h3>
-<a  href="<{link ctl="member" act="delNotify" arg0=$good.gnotify_id}>"><{t}>删除<{/t}></a>&nbsp;&nbsp;
-<{if $good.store >= 0 || $good.store ==''}><a href="<{link ctl="product" act="index" arg0=$good.goods_id}>"><{t}>查看详情<{/t}></a><{/if}></td>
-    <td><{if $good.store > 0 || $good.store ==''}><{t}>已到货<{/t}><{else}><{t}>缺货<{/t}><{/if}></td>
+<a  href="<{link ctl="member" act="delNotify" arg0=$good.gnotify_id}>"><{t}>Delete<{/t}></a>&nbsp;&nbsp;
+<{if $good.store >= 0 || $good.store ==''}><a href="<{link ctl="product" act="index" arg0=$good.goods_id}>"><{t}>Detail information<{/t}></a><{/if}></td>
+    <td><{if $good.store > 0 || $good.store ==''}><{t}>In stock<{/t}><{else}><{t}>Out of stock<{/t}><{/if}></td>
     <td><ul>
     <li><span class="price1"><{$good.price}></span></li>
         <li><{t}>MSRP:<{/t}><span class="mktprice1"><{$good.mktprice}></span></li>

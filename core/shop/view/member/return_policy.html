@@ -5,13 +5,13 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 <{if $env.conf.site.is_open_return_product }>
-<h1 class="title"><{t}>售后服务须知<{/t}></h1>
+<h1 class="title"><{t}>Return Policy<{/t}></h1>
 <div class="division uarea-output clearfix">
 <{$comment}>
 </div>
-<div class="textcenter pushdown-1"><a href="<{link ctl=member act=return_list}>" class='btn-normal'><{t}>下一步<{/t}></a></div>
+<div class="textcenter pushdown-1"><a href="<{link ctl=member act=return_list}>" class='btn-normal'><{t}>Next<{/t}></a></div>
 <{else}>
-<h1 class="title"><{t}>本站没有启用退货功能<{/t}></h1>
+<h1 class="title"><{t}>Return function is not enabled.<{/t}></h1>
 <{/if}>
 </div>
 </div>

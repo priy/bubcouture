@@ -2,7 +2,7 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 
-<div class="title"><{t}>我的优惠券<{/t}></div>
+<div class="title"><{t}>My coupons<{/t}></div>
 
 <table width="100%" cellpadding="3" cellspacing="0" class="memberlist">
     <col class="span-2 "></col>
@@ -12,12 +12,12 @@
     <col class="span-3"></col>
 <thead>
 <tr>
-  <th><{t}>号码<{/t}></th>
-  <th><{t}>名称<{/t}></th>
-  <th><{t}>有效期<{/t}></th>
-  <th><{t}>可用次数<{/t}></th>
-  <th><{t}>状态<{/t}></th>
-<!--  <th><{t}>限用商品<{/t}></th>-->
+  <th><{t}>NO.<{/t}></th>
+  <th><{t}>Name<{/t}></th>
+  <th><{t}>Validity<{/t}></th>
+  <th><{t}>Available time<{/t}></th>
+  <th><{t}>Status<{/t}></th>
+<!--  <th><{t}>Available items<{/t}></th>-->
 </tr>
 </thead>
 <tbody><{if count($coupons)>0}>
@@ -38,7 +38,7 @@
 <{else}>
 <tr>
 <td height="60" colspan="6">
-  尚无任何优惠券</td>
+  No coupon now</td>
 </tr>
 <{/if}>
 </tbody>

@@ -2,10 +2,10 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 
-<div class="title"><{t}>我收藏的商品<{/t}></div>
+<div class="title"><{t}>My favorites<{/t}></div>
 
 <{if !$favorite}>
-<div class="noinfo">暂无收藏</div>
+<div class="noinfo">No favorite item</div>
 <{else}>
 <div class="GoodsSearchWrap" id="mbc-my-fav"> 
 <div class="ItemsWarp clearfix">
@@ -18,11 +18,11 @@
           <{$good.brief}> </td>
         <td class='price_button' width="7%">
         <ul>
-            <li><span class="price1"><{$good.price|cur}></span><{if $good.mktprice && $setting.mktprice}><span class="mktprice1"><{t}>市场价: <{/t}><{$good.mktprice|cur}></span><{/if}></li>
+            <li><span class="price1"><{$good.price|cur}></span><{if $good.mktprice && $setting.mktprice}><span class="mktprice1"><{t}>MSRP: <{/t}><{$good.mktprice|cur}></span><{/if}></li>
             <{if $product.mktprice > $good.price && $setting.mktprice && $setting.saveprice > 0}>
             <li style="padding-left:4px; padding-top:8px;">
-			<span class="saveprice1"> <{if $setting.saveprice == 1}>节省:<{$good.mktprice-$good.price|cur}>
-              <{elseif $setting.saveprice == 2}>优惠:<{$good.price/$product.mktprice*100|number:'2'}>%
+			<span class="saveprice1"> <{if $setting.saveprice == 1}>Save:<{$good.mktprice-$good.price|cur}>
+              <{elseif $setting.saveprice == 2}>Discount:<{$good.price/$product.mktprice*100|number:'2'}>%
               <{elseif $setting.saveprice == 3}><{$good.price/$product.mktprice*10|number:'1'}>折
 			  <{/if}></span></li>
             <{/if}>
@@ -45,7 +45,7 @@
 			
 		<{/if}>
 
-           	<li class="star-del"><a class="listact"  onClick="doDelFav('<{$good.goods_id}>')"><{t}>删除收藏<{/t}></a></li>
+           	<li class="star-del"><a class="listact"  onClick="doDelFav('<{$good.goods_id}>')"><{t}>Remove from my favorites<{/t}></a></li>
 			</ul>
         
         </td>
@@ -60,7 +60,7 @@
 <{/if}>
 
 <div class='FormWrap goods-compare' id='goods-compare' style='display:none'>
-<div class='title'><h3>商品对比<span class='close-gc' onclick='gcompare.hide()'>[关闭]</span></h3></div>
+<div class='title'><h3>商品对比<span class='close-gc' onclick='gcompare.hide()'>[Close]</span></h3></div>
    <form action='<{link ctl="product" act="diff"}>' method='post' target='_compare_goods'>
       <ul class='compare-box'>
          <li class='division clearfix tpl'>

@@ -2,13 +2,13 @@
   <div class="MemberMain">
   <div style="margin-right:175px;">
 
-<div class="title"><{t}>个人信息<{/t}></div>
+<div class="title"><{t}>My Information<{/t}></div>
 <form method="post" action="<{link ctl="member" act="saveMember"}>" id='form_saveMember' class="section">
 <div class="FormWrap" style="background:none; border:none; padding:0; margin:0;">
 <div class="division" style="border:none;">
 <table class="forform" width="100%" border="0" cellspacing="0" cellpadding="0">
   <tr>
-    <th><{t}>货币：<{/t}></th>
+    <th><{t}>Currency:<{/t}></th>
     <td><select name="cur">
           <{foreach item=cur from=$currency}>
             <option value="<{$cur.cur_code}>" <{if $member.cur == $cur.cur_code}>selected<{/if}>><{$cur.cur_name}></option>
@@ -59,7 +59,7 @@
    <{/if}>
    <script>
      addEvent('domready',function(){
-		 validatorMap.set('area2',['你没选择完整的地区',function(el,v){
+		 validatorMap.set('area2',['Please complete the district',function(el,v){
 				 var els=el.getElements('select');
 				 if(els.length==1&&(els[0].getValue()==''||els[0].getValue()=='_NULL_')){
 					 return true;
@@ -82,13 +82,13 @@
    <{/if}>
    
    <{if $item.attr_type =='sex'}>
-  <input type='radio' name='sex' value='1'<{if $item.value==1}>checked<{/if}>><label><{t}>男<{/t}></label>
-  <input type='radio' name='sex' value='0' <{if $item.value==0}>checked<{/if}>><label><{t}>女<{/t}></label>
+  <input type='radio' name='sex' value='1'<{if $item.value==1}>checked<{/if}>><label><{t}>M<{/t}></label>
+  <input type='radio' name='sex' value='0' <{if $item.value==0}>checked<{/if}>><label><{t}>F<{/t}></label>
    <{/if}>
    
    <{if $item.attr_type =='select'}>
  <select name='<{$item.attr_id}>' <{if $item.attr_required eq 'true'}>class='_x_ipt' vtype='required'<{/if}>>
-  <option value='' <{if $item.value == ''}>selected='true'<{/if}>><{t}>- 请选择 -<{/t}></option>
+  <option value='' <{if $item.value == ''}>selected='true'<{/if}>><{t}>- Please Select -<{/t}></option>
  <{foreach from=$item.attr_option item=option name="option"}>
  <option value='<{$option}>' <{if $item.value == $option}>selected='true'<{/if}>><{$option}></option>
  <{/foreach}>
@@ -113,7 +113,7 @@
   </tr>
   <{/foreach}>  <tr>
     <th></th>
-    <td><input class="actbtn btn-save" type="submit" value="保存" /></td>
+    <td><input class="actbtn btn-save" type="submit" value="Save" /></td>
     </tr>
 </table>
 </div>
@@ -126,7 +126,7 @@
 <script>
 
 window.addEvent('domready',function(){
-validatorMap.set('selectc',['本项必填',function(element,value){
+validatorMap.set('selectc',['The option is required',function(element,value){
  
     var checkboxelement = element.getParent('td').getElements('input[name$=]]');
     var flag=checkboxelement.some(function(i){

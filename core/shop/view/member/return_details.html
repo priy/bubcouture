@@ -3,17 +3,17 @@
 
 <div class="note">
 <h3><{$return_item.title}></h3>
-  <div class="span-auto colborder"><{t}>订单编号：<{/t}><span class="font14px fontbold fontcolorOrange"><{$return_item.order_id}></span></div>
-  <div class="span-auto colborder">订单状态：
+  <div class="span-auto colborder"><{t}>Order No.<{/t}><span class="font14px fontbold fontcolorOrange"><{$return_item.order_id}></span></div>
+  <div class="span-auto colborder">Status:
   <span class="font14px fontcolorOrange fontbold">
     <{$return_item.status}>  
 	</span></div>
-  <div class="span-auto last"><{t}>退货时间：<{/t}><span class="fontcolorOrange "><{$return_item.add_time|cdate:'FDATE_FTIME'}></span></div>
+  <div class="span-auto last"><{t}>Return Date:<{/t}><span class="fontcolorOrange "><{$return_item.add_time|cdate:'FDATE_FTIME'}></span></div>
   <div class="clear"></div>
  <{if $return_item.comment }>
      <{foreach from=$return_item.comment item="comment_item" name=comment}>
       <div class="division pushdown-1 " style="clear:both">
-       <h4><{t}>店主反馈<{/t}><span class="font12px fontcolorGray fontnormal"><{$comment_item.time|cdate:'FDATE_FTIME'}></span></h4>
+       <h4><{t}>Reply<{/t}><span class="font12px fontcolorGray fontnormal"><{$comment_item.time|cdate:'FDATE_FTIME'}></span></h4>
        <{$comment_item.content}>
       </div>
      <{/foreach}>
@@ -21,7 +21,7 @@
 </div>
 
 <div class="FormWrap">
-<h4><{t}>需要售后服务的商品<{/t}></h4>
+<h4><{t}>The product for service<{/t}></h4>
 <div class="division">
 <table cellspacing="0" cellpadding="3" width="100%" class="liststyle">
   <col class="span-2"></col>
@@ -30,9 +30,9 @@
   <col class="span-2"></col>
   <thead>
     <tr>
-      <th><{t}>货号<{/t}></th>
-      <th><{t}>商品名称<{/t}></th>
-      <th><{t}>退货数量<{/t}></th>
+      <th><{t}>Item No.<{/t}></th>
+      <th><{t}>Name<{/t}></th>
+      <th><{t}>QTY<{/t}></th>
     </tr>
   </thead>
   <tbody>
@@ -51,14 +51,14 @@
 </div>
 
 <{if $return_item.image_file}>
-    <h4><{t}>关于退货附件<{/t}></h4>
+    <h4><{t}>About return attachment<{/t}></h4>
     <div class="thumbnailPic clearfix division">
-    	<a class="margin10" href="javascript:file_download()"><{t}>请点击下载该附件<{/t}></a>
+    	<a class="margin10" href="javascript:file_download()"><{t}>Download<{/t}></a>
     </div>
 <{/if}>
 
 <{if $return_item.content}>
-    <h4><{t}>详细说明<{/t}></h4>
+    <h4><{t}>Details Notice<{/t}></h4>
     <div class="division">
     	<{$return_item.content}>
     </div>

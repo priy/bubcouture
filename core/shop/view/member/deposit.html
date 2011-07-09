@@ -2,7 +2,7 @@
   <div class="MemberMain">
   <div style="margin-right:175px;">
 
-<div class="title"><{t}>充值到预存款<{/t}></div>
+<div class="title"><{t}>Recharge to pre-deposit<{/t}></div>
 <form action="<{link ctl="paycenter" act="recharge"}>" method="post"  class="section">
   <input type="hidden" name="member_id" value="<{$member_id}>" />
     
@@ -10,11 +10,11 @@
     <div class="division" style="border:none;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forform">
   <tr>
-    <th><{t}>输入充值金额：<{/t}></th>
+    <th><{t}>Recharge amount:<{/t}></th>
     <td><{input class="inputstyle" type="unsigned" name="money" required="true" id=''}></td>
   </tr>
     <tr>
-    <th><{t}>选择支付币别：<{/t}></th>
+    <th><{t}>Currency:<{/t}></th>
     <td><{input type="select" id="payment-cur" name="payment[currency]" rows=$currencys valueColumn="cur_code" labelColumn="cur_name" value=$currency}></td>
   </tr>
 </table>
@@ -26,7 +26,7 @@
     <div class="division" style="border:none;">
     <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forform">
   <tr>
-    <th><{t}>选择支付方式：<{/t}></th>
+    <th><{t}>Payment term:<{/t}></th>
     <td id="paymentlist"><{require file="common/paymethod.html"}></td>
   </tr>
     <tr>

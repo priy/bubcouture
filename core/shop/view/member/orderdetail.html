@@ -2,7 +2,7 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 
-<div class="title"><{t}>订单详情<{/t}></div>
+<div class="title"><{t}>Order detail<{/t}></div>
   <div class="note" style='border-width:1px;background:#fff;'>
     <ol>
       <{foreach from=$orderlogs item=action name="orderlog"}>
@@ -15,7 +15,7 @@
     <div class='notice' style='border-width:1px;background:#fff;'>
 	
    <{if $order.status=='active' && ($order.pay_status == 0 || $order.pay_status == 3)}>
-        <h4 class='fontcolorRed'><{t}>您尚未完成订单(<{$order.order_id}>).<{/t}></h4>
+        <h4 class='fontcolorRed'><{t}>Order is not finished yet(<{$order.order_id}>).<{/t}></h4>
        
    
        <div style="float:left; width:620px;"><a href="<{link ctl=member act=orderpay arg0=$order.order_id}>"><{t}><image src="statics/btn-payorder.gif" /><{/t}></a>
@@ -31,14 +31,14 @@
     
 <{if $ordermsg}>
 <div class="FormWrap">
-    <h4><{t}>订单留言<{/t}></h4>
+    <h4><{t}>Note to seller<{/t}></h4>
     <div class="division">
     <table border="0" cellspacing="0" cellpadding="0" class="liststyle data" width="100%">
     <{foreach from=$ordermsg item=msgitem name="ordermsg"}>
     <tr>
 
     <td width="25%">
-    <strong><{t}>时间：<{/t}></strong><{$msgitem.date_line|usertime}>
+    <strong><{t}>Time:<{/t}></strong><{$msgitem.date_line|usertime}>
     </td>
 
     <td width="45%">
@@ -46,7 +46,7 @@
     </td>
 
     <td>
-    <strong><{t}>留言人：<{/t}></strong><{$msgitem.msg_from}>
+    <strong><{t}>Name:<{/t}></strong><{$msgitem.msg_from}>
     </td>
 
     </tr>

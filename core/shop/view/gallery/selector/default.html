@@ -76,7 +76,7 @@
            <li class="handle <{if $prop.options[$prop.value]}>selected<{/if}>">
              <em><{$prop.name}></em>：
 			 <{assign var="p_value" value=$prop.value}>
-             <span class="select"><{$prop.options[$p_value]|default:'请选择'}></span>
+             <span class="select"><{$prop.options[$p_value]|default:'Select'}></span>
            </li>
            <{*/if*}>
       <{/foreach}>

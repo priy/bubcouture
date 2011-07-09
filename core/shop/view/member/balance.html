@@ -3,17 +3,17 @@
   <div style="margin-right:175px;">
 
 <form action="<{link ctl="member" act="downloadAdvanceLog"}>" method="post" target='_blank'>
-<div class="title"><{t}>预存款交易记录（预存款余额：<{/t}><{$advance|cur}>）<input type="submit" value="下载交易记录"/></div>
+<div class="title"><{t}>Pre-deposit transaction records（Pre-deposit balance:<{/t}><{$advance|cur}>）<input type="submit" value="Download transaction records"/></div>
 </form>
 
 <table class="memberlist" width="100%" cellpadding="3" cellspacing="0">
 <thead>
 <tr>
   <th><{t}>Event<{/t}></th>
-  <th><{t}>存入金额<{/t}></th>
-  <th><{t}>支出金额<{/t}></th>
-  <th><{t}>当前余额<{/t}></th>
-  <th><{t}>时间<{/t}></th>
+  <th><{t}>Deposit<{/t}></th>
+  <th><{t}>Expense<{/t}></th>
+  <th><{t}>Current balance<{/t}></th>
+  <th><{t}>Time<{/t}></th>
 </tr>
 </thead>
 <tbody>
@@ -36,7 +36,7 @@
 <{else}>
 <tr>
 <td height="60" colspan="6">
-  尚无交易历史
+  No transaction record
 </td>
 </tr>
 <{/if}>

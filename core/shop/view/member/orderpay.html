@@ -2,7 +2,7 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
 
-<div class="title"><{t}>为订单付款<{/t}></div>
+<div class="title"><{t}>Pay for order<{/t}></div>
 <form id="f_order_pay" target="_blank" action='<{link ctl="paycenter" act="order"}>' method="post">
 <input type="hidden" name="order_id" value="<{$order.order_id}>" />
 <input type="hidden" name="money" value="<{$order.amount.total-$order.amount.payed}>" id="hidden_money"/>
@@ -11,24 +11,24 @@
 <input type="hidden" name="cur_rate" value="<{$order.cur_rate }>" />
 <input type="hidden" name="cur_def" value="<{$order.cur_def }>" /> 
 
-<h3>订单信息</h3>
+<h3>Order information</h3>
   <div class='ColColorBlue' style='padding:5px;border:1px #ccc solid;'>
-      <span><{t}>订单编号：<{/t}></span><strong class='font14px'><{$order.order_id}></strong>&nbsp;&nbsp;[ <a href="<{link ctl=member act=orderdetail arg0=$order.order_id}>" >查看订单详细信息&raquo;</a> ]
+      <span><{t}>Order ID:<{/t}></span><strong class='font14px'><{$order.order_id}></strong>&nbsp;&nbsp;[ <a href="<{link ctl=member act=orderdetail arg0=$order.order_id}>" >Order datails&raquo;</a> ]
       <div id="billNo" style="display:none"></div>
   </div>
   <div class='division' style='padding:15px;'>
-     <span><{t}>订单金额:<{/t}></span><strong class="hueorange fontcolorRed font20px" id="span_amount"><{$order.amount.total-$order.amount.payed|amount}></strong>
+     <span><{t}>Total:<{/t}></span><strong class="hueorange fontcolorRed font20px" id="span_amount"><{$order.amount.total-$order.amount.payed|amount}></strong>
      
   </div>
 
 
-<h3>订单支付</h3>
+<h3>Make payment</h3>
   <div class='ColColorOrange' style='padding:5px;border:1px #ccc solid;'>
       <{if !$order.selecttype}>
-         <{t}>您选择了：<{/t}><strong  class="hueorange fontcolorRed font14px"><{$order.paymethod}></strong>
-         <a  class="link"  href='<{link ctl=member act=orderpay arg0=$order.order_id arg1=true}>' >[ 如需更改，您还可以选择其他支付方式 ]</a>
+         <{t}>You have chosen:<{/t}><strong  class="hueorange fontcolorRed font14px"><{$order.paymethod}></strong>
+         <a  class="link"  href='<{link ctl=member act=orderpay arg0=$order.order_id arg1=true}>' >[ You can also change to other payment term ]</a>
       <{else}>
-         <{t}>请选择支付方式:<{/t}>
+         <{t}>Please choose payment term:<{/t}>
      <{/if}>
   </div>
   <div class='division'>
@@ -74,7 +74,7 @@
             <{else}>
               <{if $order.payment==-1}><div class="customMessages" >{pay_wait}</div><{else}>
               <{if $order.paytype=="DEPOSIT"}>
-                <strong><{t}>您选择了预存款支付<{/t}></strong>
+                <strong><{t}>You have chosen payment by pre-deposit<{/t}></strong>
               <{else}>
                <div class="customMessages">{pay_message}</div>
               <{/if}><{/if}>
@@ -86,7 +86,7 @@
            <input type="submit" class='actbtn btn-pay' value="立刻支付" /> <{/if}>
             <{/if}>
           <{else}>
-             订单不需要再支付,请等待我们处理
+             Order paid, please wait for our processing.
           <{/if}>
         </td>
       </tr>
@@ -115,7 +115,7 @@
                      $('hidden_money').set('value',money);
                    if(cur_money)$('hidden_cur_money').set('value',cur_money);
                      $('span_amount').set('text',fmoney);
-                     form.getElement('input[type=submit]').set('value',paytype!='offline'?'立即付款':'确定');
+                     form.getElement('input[type=submit]').set('value',paytype!='offline'?'Pay now':'Confirm');
                      form.getElement('input[type=submit]')[(paytype=='offline'?'addClass':'removeClass')]('btn-pay-ok');
                      /* $$('#_normal_payment th .ExtendCon input[type=radio]').fireEvent('checkedchange');*/
                 }
@@ -129,7 +129,7 @@
                     form.getElement('input[type=submit]').addEvent('click',function(e){
                         
                         if(!$E('#f_order_pay .select-paymethod input[checked]')){
-                        MessageBox.error('请选择支付方式');
+                        MessageBox.error('Please choose payment term');
                         return e.stop();
                         }
                     

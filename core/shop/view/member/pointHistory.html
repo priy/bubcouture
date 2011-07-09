@@ -2,7 +2,7 @@
   <div class="MemberMain">
   <div style="margin-right:175px;">
 
- <div class="title"><{t}>我的积分<{/t}></div>
+ <div class="title"><{t}>My credits<{/t}></div>
  
  <div class="points">
  <table width="100%" border="0" cellspacing="0" cellpadding="0">
@@ -11,25 +11,22 @@
     
     <div class="currentpoints">
     <div style="padding-top:30px;">
-    <strong>您当前的有效积分：</strong><br />
+    <strong>Credits available:</strong><br />
     
     <span style="font-size:20px; font-weight:bold; color:#fd6b00; "><{$total}></span>
     </div>
     </div>    </td>
     <td style="line-height:20px;">
     
-   <strong>积分规则：</strong><br />
+   <strong>Credits rule:</strong><br />
 
 
-1. 当积分已达到某一兑换积分标准时，顾客可将累计积分依照网站相应积分及兑换标准兑换回馈商品，网站将即时从用户会员积分中扣减相应积分。<br />
+1. According to our credits and exchange policy, you can exchange for items when your credits reach its exchange requirements. Your credits available will be deducted。<br />
 
-2. 各项回馈项目（包含各项商品、服务或抵用券等）及兑换标准及兑换规则均以兑换当时最新回馈活动公告或目录为准。<br />
+2. QTY is limited for each item.<br />
 
-3. 部分兑换商品有数量限制的，兑完为止。<br />
+3. Exchange will not be available when time due.<br />
 
-4. 公告或目录如有有效期限的，逾期即不得兑换。<br />
-
-5. 积分兑换区的商品为只可用积分兑换的商品（如积分价格：100积分）。
   
     
     </td>
@@ -44,9 +41,9 @@
 
 <table class="memberlist" width="100%" border="0" cellspacing="0" cellpadding="0">
     <tr>
-        <th>日期</th>
-        <th>积分</th>
-        <th>摘要</th>
+        <th>Date</th>
+        <th>Credits</th>
+        <th>Abstract</th>
     </tr>
     <tbody>
     <{if count($historys)>0}>
@@ -59,7 +56,7 @@
     <{/foreach}>
     <{else}>
     <tr>
-      <td height="60" colspan="3"><{t}>尚无积分历史<{/t}></td>
+      <td height="60" colspan="3"><{t}>No credit record<{/t}></td>
     </tr>
     <{/if}>
     </tbody>

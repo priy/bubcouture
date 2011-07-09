@@ -2,7 +2,7 @@
   <div class="MemberMain">
   <div style="margin-right:175px;">
 
-<div class="title"><{t}>发送短消息<{/t}></div>
+<div class="title"><{t}>Post<{/t}></div>
 <form name="comment" action="<{link ctl="member" act="sendMsg"}>" method="post" class="section" <!--onSubmit="return Form_Validator(this)"-->>
 <{input type="hidden" name="msg_id" value=$msg_id|escape:'html' }>
 
@@ -17,7 +17,7 @@
   <div class="division" style="border:none;">
   <table width="100%" border="0" cellspacing="0" cellpadding="0" class="forform">
   <tr>
-    <th><{t}>发送给：<{/t}></th>
+    <th><{t}>TO <{/t}></th>
     <td><{input class="inputstyle _x_ipt" name="msg_to"  required="true" id="comment_name" size="30" value=$init.msg_to|escape:'html'}></td>
     </tr>
     <tr>
@@ -39,7 +39,7 @@
   </tr>
   <tr>
     <th></th>
-    <td><input type="submit" id="Submit" value="提交留言">&nbsp;&nbsp;&nbsp;&nbsp;<input name="outbox" type="checkbox" value="1"><{t}>不发送，只保存到草稿箱中<{/t}></td>
+    <td><input type="submit" id="Submit" value="提交留言">&nbsp;&nbsp;&nbsp;&nbsp;<input name="outbox" type="checkbox" value="1"><{t}>save to drafts only<{/t}></td>
   
   </tr>  
 </table>

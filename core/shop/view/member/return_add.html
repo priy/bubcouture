@@ -1,14 +1,14 @@
 <div class="MemberMain">
 <div style="margin-right:175px;">
-<h1 class="title"><{t}>申请售后服务<{/t}></h1>
+<h1 class="title"><{t}>Inquery<{/t}></h1>
 <form action="<{link ctl=member act=return_save}>" enctype="multipart/form-data" method="post" name="return_save" id='x-return-form'>
 <div class="FormWrap">
     <div class="division">
-    <h4><{t}>请输入售后服务标题<{/t}></h4>
+    <h4><{t}>Inquery Title<{/t}></h4>
     <{input name="title" id="x-return-title" class='x-inputs' type="text" size="60"}>
   </div>
   <div class="division">
-    <h4><{t}>请勾选需要售后服务的商品及数量<{/t}></h4>
+    <h4><{t}>select the items and QTY<{/t}></h4>
    
    <div id="x-return-item-list">
 	<{include file="shop:member/return_list_item.html"}>
@@ -20,17 +20,17 @@
     </div>
   </div>
   <div class="division">
-	<h4><{t}>如果您有相关附件，可以在此提交，格式:jpg,gif,bmp,jpeg,rar,zip，文件不宜过大，可能会上传失败<{/t}></h4>
+	<h4><{t}>submit your attachment if needed，file type:jpg,gif,bmp,jpeg,rar,zip,do not upload large file<{/t}></h4>
 	<input type="hidden" name="MAX_FILE_SIZE" value="8300000" />
     <input type="file" name="file" id="fileField" />
     </div>
   </div>
   <div class="division">
-    <h4><{t}>申请售后的详细原因描述<{/t}></h4>
+    <h4><{t}>inquery content<{/t}></h4>
     <{input type="textarea" id="x-return-content" name="content" class='x-inputs' cols="80" rows="5" maxlength='500'}>
   </div>
   <div class="textcenter">
-    <input type="submit" class="buttonstyle" value="提交申请" />
+    <input type="submit" class="buttonstyle" value="Submit" />
   </div>
 </div>
 <input type="hidden" name="order_id" value="<{$order_id}>">
@@ -122,7 +122,7 @@ $('x-return-form').addEvent('submit',function(e){
 			error_el.inject($('x-return-title'), 'after');
 			var el = $('x-return-title-error');
 			el.addClass('x-vali-error');
-			el.set('html',"请填写售后服务标题");
+			el.set('html',"Please complete the title");
 		}
 		return false;
 	}
@@ -134,7 +134,7 @@ $('x-return-form').addEvent('submit',function(e){
 			error_el.inject($('x-return-title'), 'after');
 			var el = $('x-return-title-error');
 			el.addClass('x-vali-error');
-			el.set('html',"您的填写有误，标题2—20字数之内");
+			el.set('html',"the title must be in 2-20 characters");
 		}
 		return false;
 	}
@@ -147,7 +147,7 @@ $('x-return-form').addEvent('submit',function(e){
 			error_el.inject($('x-return-item-list'), 'top');
 			var el = $('x-return-item-list-error');
 			el.addClass('x-vali-error');
-			el.set('html',"您没有选择商品，请先选择商品。");
+			el.set('html',"Please select the product.");
 		}
 		return false;
 	}
@@ -161,7 +161,7 @@ $('x-return-form').addEvent('submit',function(e){
 				new Element('span')
 				.injectAfter(xpn)
 				.addClass('x-vali-error x-product-nums-error')
-				.set('html','请输入数字');
+				.set('html','Number is required');
 		 }
 		 return false;	
 	}
@@ -174,7 +174,7 @@ $('x-return-form').addEvent('submit',function(e){
 				new Element('span')
 				.injectAfter(xpn)
 				.addClass('x-vali-error x-product-nums-error')
-				.set('html','退货数量不能小于0');
+				.set('html','QTY must bigger than 0');
 		 }
 		 return false;	
 	}
@@ -187,7 +187,7 @@ $('x-return-form').addEvent('submit',function(e){
 				new Element('span')
 				.injectAfter(xpn2)
 				.addClass('x-vali-error x-product-nums-error')
-				.set('html','申请售后商品的数量不能大于订购数量');
+				.set('html','The QTY of prduct must not be bigger than the roder\'s QTY');
 		  }
 	    return false;
 	}
@@ -199,7 +199,7 @@ $('x-return-form').addEvent('submit',function(e){
 			error_el.inject($('x-return-content'), 'after');
 			var el = $('x-return-content-error');
 			el.addClass('x-vali-error');
-			el.set('html',"请填写售后服务详细原因");
+			el.set('html',"Complete the inquery content");
 		}
 		return false;
 	}
@@ -210,7 +210,7 @@ $('x-return-form').addEvent('submit',function(e){
 			error_el.inject($('x-return-content'), 'after');
 			var el = $('x-return-content-error');
 			el.addClass('x-vali-error');
-			el.set('html',"您的填写有误，详细原因应不小于10个字数");
+			el.set('html',"Content must be more than 10 characters.");
 		}
 		return false;
 	}
