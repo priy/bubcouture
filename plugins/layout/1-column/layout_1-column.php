@@ -1,6 +1,18 @@
 <?php
-class layout_1_column{
-    var $name='单列';
-    var $slotsNum = 1;
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+class layout_1_column
+{
+
+    public $name = "单列";
+    public $slotsNum = 1;
+
 }
+
 ?>

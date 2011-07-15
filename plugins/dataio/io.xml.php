@@ -1,20 +1,22 @@
 <?php
-class io_xml{
-    var $name = 'xml-可扩展标识语言';
-/*
-    function export_begin($keys,$type,$count){
-        echo '尚未实现';
-        exit();
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+class io_xml
+{
+
+    public $name = "xml-可扩展标识语言";
+
+    public function import_rows( $xmlContent )
+    {
+        return array( );
     }
 
-    function export_rows($rows){
-    }
-
-    function export_finish(){
-    }*/
-
-    function import_rows($xmlContent){
-        return array();
-    }
 }
+
 ?>

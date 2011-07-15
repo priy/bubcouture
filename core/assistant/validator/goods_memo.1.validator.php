@@ -1,46 +1,55 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class goods_memo_1Validator extends BaseValidator
 {
-    function goods_memo_1Validator($sys)
+
+    public function goods_memo_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (isset($row['goods_id']) && is_numeric($row['goods_id']) && isset($row['p_key']))
+        if ( isset( $row['goods_id'] ) && is_numeric( $row['goods_id'] ) && isset( $row['p_key'] ) )
         {
-            $this->_db->exec('delete from sdb_goods_memo where goods_id='.(int)$row['goods_id'].' and p_key='.$this->_db->quote($row['p_key']));
-            return true;
+            $this->_db->exec( "delete from sdb_goods_memo where goods_id=".( integer )$row['goods_id']." and p_key=".$this->_db->quote( $row['p_key'] ) );
+            return TRUE;
         }
-        
-        return false;
+        return FALSE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

@@ -1,45 +1,19 @@
 <?php
-/**
-* @table promotion_scheme;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['promotion_scheme']=array (
-  'columns' => 
-  array (
-    'pmts_id' => 
-    array (
-      'type' => 'number',
-      'required' => true,
-      'pkey' => true,
-      'extra' => 'auto_increment',
-      'editable' => false,
-    ),
-    'pmts_name' => 
-    array (
-      'type' => 'varchar(250)',
-      'editable' => false,
-    ),
-    'pmts_memo' => 
-    array (
-      'type' => 'longtext',
-      'editable' => false,
-    ),
-    'pmts_solution' => 
-    array (
-      'type' => 'longtext',
-      'editable' => false,
-    ),
-    'pmts_type' => 
-    array (
-      'type' => 'tinyint(3)',
-      'required' => true,
-      'default' => 0,
-      'editable' => false,
-    ),
-  ),
+$db['promotion_scheme'] = array(
+    "columns" => array(
+        "pmts_id" => array( "type" => "number", "required" => TRUE, "pkey" => TRUE, "extra" => "auto_increment", "editable" => FALSE ),
+        "pmts_name" => array( "type" => "varchar(250)", "editable" => FALSE ),
+        "pmts_memo" => array( "type" => "longtext", "editable" => FALSE ),
+        "pmts_solution" => array( "type" => "longtext", "editable" => FALSE ),
+        "pmts_type" => array( "type" => "tinyint(3)", "required" => TRUE, "default" => 0, "editable" => FALSE )
+    )
 );
+?>

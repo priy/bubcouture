@@ -1,26 +1,39 @@
 <?php
-class app_pay_paypal extends app{
-    var $ver = 1.1;
-    var $name='PayPal';
-    var $website = 'http://www.shopex.cn';
-    var $author = 'shopex';
-    var $help = '';
-    var $type = 'paypal';
-    function install(){
-        parent::install();
-        return true;
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+class app_pay_paypal extends app
+{
+
+    public $ver = 1.1;
+    public $name = "PayPal";
+    public $website = "http://www.shopex.cn";
+    public $author = "shopex";
+    public $help = "";
+    public $type = "paypal";
+
+    public function install( )
+    {
+        parent::install( );
+        return TRUE;
     }
 
-    function uninstall(){
-    	$this->db->exec('delete from sdb_payment_cfg where pay_type ="'.$this->type.'"');
-        return parent::uninstall();
+    public function uninstall( )
+    {
+        $this->db->exec( "delete from sdb_payment_cfg where pay_type =\"".$this->type."\"" );
+        return parent::uninstall( );
     }
 
-	function ctl_mapper(){
-		return array(
-
-        );
-	}
+    public function ctl_mapper( )
+    {
+        return array( );
+    }
 
 }
+
 ?>

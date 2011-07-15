@@ -1,46 +1,55 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class type_brand_1Validator extends BaseValidator
 {
-    function type_brand_1Validator($sys)
+
+    public function type_brand_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (isset($row['type_id']) && isset($row['brand_id']))
+        if ( isset( $row['type_id'], $row['brand_id'] ) )
         {
-            $this->_db->exec('delete from sdb_type_brand where type_id='.intval($row['type_id']).' and brand_id='.intval($row['brand_id']));
-            return true;
+            $this->_db->exec( "delete from sdb_type_brand where type_id=".intval( $row['type_id'] )." and brand_id=".intval( $row['brand_id'] ) );
+            return TRUE;
         }
-        
-        return false;
+        return FALSE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

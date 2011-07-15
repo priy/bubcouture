@@ -1,48 +1,59 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class spec_values_1Validator extends BaseValidator
 {
-    function spec_values_1Validator($sys)
+
+    public function spec_values_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (isset($row['spec_id']) && is_numeric($row['spec_id']) && isset($row['spec_value']))
+        if ( isset( $row['spec_id'] ) && is_numeric( $row['spec_id'] ) && isset( $row['spec_value'] ) )
         {
-            $this->_db->exec("delete from sdb_spec_values where spec_id='".(int)$row['spec_id']."' and spec_value=".$this->_db->quote($row['spec_value']));
-            return true;
-        }else if (isset($row['spec_value'])){
-            return true;
+            $this->_db->exec( "delete from sdb_spec_values where spec_id='".( integer )$row['spec_id']."' and spec_value=".$this->_db->quote( $row['spec_value'] ) );
+            return TRUE;
         }
-        
-        return false;
+        else if ( isset( $row['spec_value'] ) )
+        {
+            return TRUE;
+        }
+        return FALSE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

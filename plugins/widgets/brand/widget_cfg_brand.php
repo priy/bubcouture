@@ -1,5 +1,15 @@
 <?php
-function widget_cfg_article($system){
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+function widget_cfg_article( $system )
+{
     return $data;
 }
+
 ?>

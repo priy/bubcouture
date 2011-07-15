@@ -1,37 +1,18 @@
 <?php
-/**
-* @table product_memo;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['product_memo']=array (
-  'columns' => 
-  array (
-    'product_id' => 
-    array (
-      'type' => 'number',
-      'required' => true,
-      'default' => 0,
-      'pkey' => true,
-      'editable' => false,
+$db['product_memo'] = array(
+    "columns" => array(
+        "product_id" => array( "type" => "number", "required" => TRUE, "default" => 0, "pkey" => TRUE, "editable" => FALSE ),
+        "p_key" => array( "type" => "varchar(20)", "required" => TRUE, "default" => "", "pkey" => TRUE, "editable" => FALSE ),
+        "p_value" => array( "type" => "longtext", "editable" => FALSE )
     ),
-    'p_key' => 
-    array (
-      'type' => 'varchar(20)',
-      'required' => true,
-      'default' => '',
-      'pkey' => true,
-      'editable' => false,
-    ),
-    'p_value' => 
-    array (
-      'type' => 'longtext',
-      'editable' => false,
-    ),
-  ),
-  'comment' => '物品扩展信息',
+    "comment" => "物品扩展信息"
 );
+?>

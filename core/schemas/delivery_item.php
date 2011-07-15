@@ -1,67 +1,31 @@
 <?php
-/**
-* @table delivery_item;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['delivery_item']=array (
-  'columns' => 
-  array (
-    'item_id' => 
-    array (
-      'type' => 'int unsigned',
-      'required' => true,
-      'pkey' => true,
-      'extra' => 'auto_increment',
-      'editable' => false,
+$db['delivery_item'] = array(
+    "columns" => array(
+        "item_id" => array( "type" => "int unsigned", "required" => TRUE, "pkey" => TRUE, "extra" => "auto_increment", "editable" => FALSE ),
+        "delivery_id" => array( "type" => "bigint unsigned", "required" => TRUE, "default" => 0, "editable" => FALSE ),
+        "item_type" => array(
+            "type" => array(
+                "goods" => __( "商品" ),
+                "gift" => __( "赠品" ),
+                "pkg" => __( "捆绑商品" )
+            ),
+            "default" => "goods",
+            "required" => TRUE,
+            "editable" => FALSE
+        ),
+        "product_id" => array( "type" => "bigint unsigned", "required" => TRUE, "default" => 0, "editable" => FALSE ),
+        "product_bn" => array( "type" => "varchar(30)", "editable" => FALSE ),
+        "product_name" => array( "type" => "varchar(200)", "editable" => FALSE ),
+        "number" => array( "type" => "number", "required" => TRUE, "default" => 0, "editable" => FALSE )
     ),
-    'delivery_id' => 
-    array (
-      'type' => 'bigint unsigned',
-      'required' => true,
-      'default' => 0,
-      'editable' => false,
-    ),
-    'item_type' => 
-    array (
-      'type' => 
-      array (
-        'goods' => __('商品'),
-        'gift' => __('赠品'),
-        'pkg' => __('捆绑商品'),
-      ),
-      'default' => 'goods',
-      'required' => true,
-      'editable' => false,
-    ),
-    'product_id' => 
-    array (
-      'type' => 'bigint unsigned',
-      'required' => true,
-      'default' => 0,
-      'editable' => false,
-    ),
-    'product_bn' => 
-    array (
-      'type' => 'varchar(30)',
-      'editable' => false,
-    ),
-    'product_name' => 
-    array (
-      'type' => 'varchar(200)',
-      'editable' => false,
-    ),
-    'number' => 
-    array (
-      'type' => 'number',
-      'required' => true,
-      'default' => 0,
-      'editable' => false,
-    ),
-  ),
-  'comment' => '发货/退货单明细表',
+    "comment" => "发货/退货单明细表"
 );
+?>

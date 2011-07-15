@@ -1,4 +1,19 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 $setting = array(
-	'nick'=>array('type'=>SET_T_STR,'default'=>'','desc'=>__('请在此处填写需要同步淘宝商品的店铺对应淘宝用户名。'),'display'=>'false','name'=>'淘宝店用户名')
+    "nick" => array(
+        "type" => SET_T_STR,
+        "default" => "",
+        "desc" => __( "请在此处填写需要同步淘宝商品的店铺对应淘宝用户名。" ),
+        "display" => "false",
+        "name" => "淘宝店用户名"
+    )
 );
+?>

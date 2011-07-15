@@ -1,7 +1,15 @@
 <?php
-function tpl_function_json($params, &$smarty){
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-    return json_encode($params['from']);
+function tpl_function_json( $params, &$smarty )
+{
+    return json_encode( $params['from'] );
 }
 
 ?>

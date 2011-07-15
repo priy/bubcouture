@@ -1,40 +1,58 @@
 <?php
-include_once('objectPage.php');
-class ctl_refund extends objectPage{
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-    var $workground = 'order';
-    var $object = 'trading/refund';
-    var $finder_filter_tpl='order/refund/finder_filter.html';
-    var $deleteAble = true;  //屏蔽删除
+include_once( "objectPage.php" );
+class ctl_refund extends objectPage
+{
 
-    function _detail(){
-        return array('show_detail'=>array('label'=>__('退款单信息'),'tpl'=>'order/refund/detail.html'));
+    public $workground = "order";
+    public $object = "trading/refund";
+    public $finder_filter_tpl = "order/refund/finder_filter.html";
+    public $deleteAble = TRUE;
+
+    public function _detail( )
+    {
+        return array(
+            "show_detail" => array(
+                "label" => __( "退款单信息" ),
+                "tpl" => "order/refund/detail.html"
+            )
+        );
     }
 
-    function show_detail($nID){
-        $oRefund=&$this->system->loadModel('trading/refund');
-        $aDetail=$oRefund->detail($nID);
-        $oPayment=&$this->system->loadModel('trading/payment');
-
-        $o = &$this->system->loadModel('admin/operator');
-        $aOp = $o->instance($aDetail['send_op_id'],'username');
+    public function show_detail( $nID )
+    {
+        $oRefund =& $this->system->loadModel( "trading/refund" );
+        $aDetail = $oRefund->detail( $nID );
+        $oPayment =& $this->system->loadModel( "trading/payment" );
+        $o =& $this->system->loadModel( "admin/operator" );
+        $aOp = $o->instance( $aDetail['send_op_id'], "username" );
         $aDetail['send_op_id'] = $aOp['username'];
-
-        $o = &$this->system->loadModel('member/member');
-        $aMember = $o->getFieldById($aDetail['member_id']);
+        $o =& $this->system->loadModel( "member/member" );
+        $aMember = $o->getFieldById( $aDetail['member_id'] );
         $aDetail['member_id'] = $aMember['uname'];
-        $this->pagedata['detail']=$aDetail;
+        $this->pagedata['detail'] = $aDetail;
     }
 
-    function edit(){
-        $oRefund=&$this->system->loadModel('trading/refund');
-        if($oRefund->edit($_POST)){
-            $this->splash('success','index.php?ctl=order/refund&act=index',__('修改成功'));
-        }else{
-            $this->splash('failed','index.php?ctl=order/refund&act=index',__('修改失败'));
+    public function edit( )
+    {
+        $oRefund =& $this->system->loadModel( "trading/refund" );
+        if ( $oRefund->edit( $_POST ) )
+        {
+            $this->splash( "success", "index.php?ctl=order/refund&act=index", __( "修改成功" ) );
         }
-
+        else
+        {
+            $this->splash( "failed", "index.php?ctl=order/refund&act=index", __( "修改失败" ) );
+        }
     }
 
 }
+
 ?>

@@ -1,72 +1,49 @@
 <?php
-/**
-* @table pub_files;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['pub_files']=array (
-  'columns' => 
-  array (
-    'file_id' => 
-    array (
-      'type' => 'int',
-      'required' => true,
-      'pkey' => true,
-      'extra' => 'auto_increment',
-      'editable' => false,
+$db['pub_files'] = array(
+    "columns" => array(
+        "file_id" => array( "type" => "int", "required" => TRUE, "pkey" => TRUE, "extra" => "auto_increment", "editable" => FALSE ),
+        "file_name" => array(
+            "type" => "varchar(50)",
+            "label" => __( "文件名" ),
+            "width" => 110,
+            "editable" => FALSE
+        ),
+        "file_ident" => array(
+            "type" => "varchar(100)",
+            "required" => TRUE,
+            "default" => "",
+            "label" => __( "文件" ),
+            "width" => 110,
+            "editable" => FALSE
+        ),
+        "cdate" => array(
+            "type" => "int unsigned",
+            "required" => TRUE,
+            "default" => 0,
+            "label" => __( "日期" ),
+            "width" => 110,
+            "editable" => FALSE
+        ),
+        "memo" => array(
+            "type" => "varchar(250)",
+            "label" => __( "描述" ),
+            "width" => 110,
+            "editable" => FALSE
+        ),
+        "disabled" => array( "type" => "bool", "default" => "false", "required" => TRUE, "editable" => FALSE )
     ),
-    'file_name' => 
-    array (
-      'type' => 'varchar(50)',
-      'label' => __('文件名'),
-      'width' => 110,
-      'editable' => false,
-    ),
-    'file_ident' => 
-    array (
-      'type' => 'varchar(100)',
-      'required' => true,
-      'default' => '',
-      'label' => __('文件'),
-      'width' => 110,
-      'editable' => false,
-    ),
-    'cdate' => 
-    array (
-      'type' => 'int unsigned',
-      'required' => true,
-      'default' => 0,
-      'label' => __('日期'),
-      'width' => 110,
-      'editable' => false,
-    ),
-    'memo' => 
-    array (
-      'type' => 'varchar(250)',
-      'label' => __('描述'),
-      'width' => 110,
-      'editable' => false,
-    ),
-    'disabled' => 
-    array (
-      'type' => 'bool',
-      'default' => 'false',
-      'required' => true,
-      'editable' => false,
-    ),
-  ),
-  'index' => 
-  array (
-    'ind_disabled' => 
-    array (
-      'columns' => 
-      array (
-        0 => 'disabled',
-      ),
-    ),
-  ),
+    "index" => array(
+        "ind_disabled" => array(
+            "columns" => array( 0 => "disabled" )
+        )
+    )
 );
+?>

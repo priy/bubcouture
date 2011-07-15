@@ -1,39 +1,56 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class TextUtils
 {
-    function csv2array($csvfile, $fields, $delimiter = ',', $enclosure = '"', $callback = NULL)
+
+    public function csv2array( $csvfile, $fields, $delimiter = ",", $enclosure = "\"", $callback = NULL )
     {
-        LogUtils::log_str('csv2array');
-        $handle = fopen($csvfile, "r");
-        LogUtils::log_obj($handle);
-        if (!$handle) return array();
+        LogUtils::log_str( "csv2array" );
+        $handle = fopen( $csvfile, "r" );
+        LogUtils::log_obj( $handle );
+        if ( !$handle )
+        {
+            return array( );
+        }
         $row = 1;
-        $list = array();
-        while ($data = fgetcsv($handle, 262144, $delimiter, $enclosure)) {
-            if (count($data) > count($fields))  $data   = array_slice($data, 0, count($fields));
-            if (count($fields) > count($data))  $fields = array_slice($fields, 0, count($data));
-            
-            foreach ($data as $key=>$item)
+        $list = array( );
+        while ( $data = fgetcsv( $handle, 262144, $delimiter, $enclosure ) )
+        {
+            if ( count( $fields ) < count( $data ) )
             {
-                $data[$key] = str_replace("'","\'",$item);
+                $data = array_slice( $data, 0, count( $fields ) );
             }
-            
-            $v = array();
-            for ($i = 0; $i < count($fields); $i++)
+            if ( count( $data ) < count( $fields ) )
+            {
+                $fields = array_slice( $fields, 0, count( $data ) );
+            }
+            foreach ( $data as $key => $item )
+            {
+                $data[$key] = str_replace( "'", "\\'", $item );
+            }
+            $v = array( );
+            $i = 0;
+            for ( ; $i < count( $fields ); ++$i )
             {
                 $v[$fields[$i]] = $data[$i];
-            }            
-            //$v = array_combine($fields, $data);                
+            }
             $list[] = $v;
-            if ($callback) 
+            if ( $callback )
             {
-                call_user_func($callback, $v);                
+                call_user_func( $callback, $v );
             }
         }
-        fclose($handle);
-        
+        fclose( $handle );
         return $list;
     }
+
 }
 
 ?>

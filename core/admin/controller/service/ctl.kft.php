@@ -1,72 +1,17 @@
-<?
-class ctl_kft extends adminPage{
-    var $workground ='setting';
-    function ctl_kft(){
-        parent::adminPage();
-        $this->kft=&$this->system->loadModel('service/kft');
-        $this->certi_id=$this->kft->getCerti();
-        $this->token=$this->kft->getToken();
-        $this->API_URL='http://api-client.shopex.cn/api.php';
-    }
-    function index(){
-        /**
-            @kft_action:
-                @TOCHECK    :    检测
-                @TOREG    :    注册
-                @TOOPEN    :    开通
-                @TOBIND    :    已经绑定
-        */
-        set_time_limit(0);
-        $this->pagedata['kft']=$this->kft->checkLicense();
-        switch($_POST['action']){
-            case 'toapply':
-                $return=$this->toapply();
-                break;
-            case 'toreg':
-                $return=$this->toreg();
-                break;
-            case 'topen':
-                $return=$this->topen();
-                break;
-            case 'toclear':
-                $return=$this->toclear();
-                break;
-            default :
-                break;
-        }
-        if(false){
-            echo $return;
-        }
-        $this->pagedata['action']=$this->kft->getAction();
-        $this->page('service/kft.html');
-    }
-    function toclear(){
-        /**
-            @清除状态
-        */
-        $this->kft->setAction('TOAPPLY');
-    }
-    function toapply(){
-        $this->pagedata['kft']=$this->kft->checkLicense();
-        $url=$this->url();
-        $result=$this->kft->apply($url,'TOCHECK',$aS);
-        $this->kft->setAction($this->kft->checkstr($result));
-    }
-    function toreg(){
-        $aS = array('email'=>$_POST['email']);
-        $result=$this->kft->apply($this->url(),'TOREG',$aS);
-        $this->kft->setAction($this->kft->checkstr($result));
-    }
-    function topen(){
-        $result=$this->kft->apply($this->url(),'TOPEN',$aS);
-        $this->kft->setAction($this->kft->checkstr($result));
-    }
-    function url(){
-        if(!$this->kft->getKftUrl()){
-            $url=$this->kft->apply($this->API_URL,'ShopExKFT',$aS);
-            $this->kft->setKftUrl($url);
-        }
-        return $url=$this->kft->getKftUrl();
-    }
-}
+<?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+echo "<?";
+echo "\nclass ctl_kft extends adminPage{\n    var \$workground ='setting';\n    function ctl_kft(){\n        parent::adminPage();\n        \$this->kft=&\$this->system->loadModel('service/kft');\n        \$this->certi_id=\$this->kft->getCerti();\n        \$this->token=\$this->kft->getToken();\n        \$this->API_URL='http://api-client.shopex.cn/api.php';\n    }\n    function index(){\n        /**\n            @kft_action:\n";
+echo "                @TOCHECK    :    检测\n                @TOREG    :    注册\n                @TOOPEN    :    开通\n                @TOBIND    :    已经绑定\n        */\n        set_time_limit(0);\n        \$this->pagedata['kft']=\$this->kft->checkLicense();\n        switch(\$_POST['action']){\n            case 'toapply':\n                \$return=\$this->toapply();\n                break;\n            ca";
+echo "se 'toreg':\n                \$return=\$this->toreg();\n                break;\n            case 'topen':\n                \$return=\$this->topen();\n                break;\n            case 'toclear':\n                \$return=\$this->toclear();\n                break;\n            default :\n                break;\n        }\n        if(false){\n            echo \$return;\n        }\n        \$this->pagedata['action']";
+echo "=\$this->kft->getAction();\n        \$this->page('service/kft.html');\n    }\n    function toclear(){\n        /**\n            @清除状态\n        */\n        \$this->kft->setAction('TOAPPLY');\n    }\n    function toapply(){\n        \$this->pagedata['kft']=\$this->kft->checkLicense();\n        \$url=\$this->url();\n        \$result=\$this->kft->apply(\$url,'TOCHECK',\$aS);\n        \$this->kft->setAction(\$this->kft-";
+echo ">checkstr(\$result));\n    }\n    function toreg(){\n        \$aS = array('email'=>\$_POST['email']);\n        \$result=\$this->kft->apply(\$this->url(),'TOREG',\$aS);\n        \$this->kft->setAction(\$this->kft->checkstr(\$result));\n    }\n    function topen(){\n        \$result=\$this->kft->apply(\$this->url(),'TOPEN',\$aS);\n        \$this->kft->setAction(\$this->kft->checkstr(\$result));\n    }\n    function url(){\n    ";
+echo "    if(!\$this->kft->getKftUrl()){\n            \$url=\$this->kft->apply(\$this->API_URL,'ShopExKFT',\$aS);\n            \$this->kft->setKftUrl(\$url);\n        }\n        return \$url=\$this->kft->getKftUrl();\n    }\n}\n?>";
 ?>

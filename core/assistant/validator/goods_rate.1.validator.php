@@ -1,45 +1,54 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class goods_rate_1Validator extends BaseValidator
 {
-    function goods_rate_1Validator($sys)
+
+    public function goods_rate_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (isset($row['goods_1']) && isset($row['goods_2']))
+        if ( isset( $row['goods_1'], $row['goods_2'] ) )
         {
-            $this->_db->exec("delete from sdb_goods_rate where goods_1='".(int)$row['goods_1']."' and goods_2='".(int)$row['goods_1']."'");
+            $this->_db->exec( "delete from sdb_goods_rate where goods_1='".( integer )$row['goods_1']."' and goods_2='".( integer )$row['goods_1']."'" );
         }
-        
-        return true;
+        return TRUE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

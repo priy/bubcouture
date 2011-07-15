@@ -1,132 +1,27 @@
-/*=============================================================*/
-/* ShopEx database update script                               */
-/*                                                             */
-/*         Version:                                            */
-/*   last Modified:  2009/07/23                                */
-/*=============================================================*/
+<?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-/*=============================================================*/
-/* Create tables                                               */
-/*=============================================================*/
-CREATE TABLE `sdb_image_sync` (
-  `img_sync_id` int(10) unsigned NOT NULL auto_increment,
-  `type` enum('gimage','spec_value','udfimg','brand_logo') NOT NULL default 'gimage',
-  `supplier_id` int(10) unsigned NOT NULL,
-  `supplier_object_id` mediumint(8) unsigned NOT NULL,
-  `add_time` int(10) unsigned NOT NULL,
-  `command_id` int(10) unsigned NOT NULL,
-  `failed` enum('true','false') NOT NULL default 'false',
-  PRIMARY KEY  (`img_sync_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_job_apilist` (
-  `job_id` int(10) unsigned NOT NULL auto_increment,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `api_name` varchar(100) NOT NULL,
-  `api_params` text,
-  `api_version` varchar(10) NOT NULL,
-  `api_action` varchar(100) NOT NULL,
-  `page` mediumint(8) unsigned NOT NULL,
-  `limit` mediumint(8) unsigned NOT NULL,
-  PRIMARY KEY  (`job_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_job_data_sync` (
-  `job_id` int(10) unsigned NOT NULL auto_increment,
-  `from_time` int(10) unsigned NOT NULL,
-  `to_time` int(10) unsigned NOT NULL,
-  `page` mediumint(8) unsigned NOT NULL,
-  `limit` mediumint(8) unsigned NOT NULL,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `supplier_pline` text,
-  `auto_download` enum('true','false') NOT NULL default 'false',
-  `to_cat_id` mediumint(8) unsigned default NULL,
-  PRIMARY KEY  (`job_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_job_goods_download` (
-  `job_id` int(10) unsigned NOT NULL auto_increment,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `supplier_goods_id` mediumint(8) unsigned NOT NULL,
-  `supplier_goods_count` int(10) unsigned NOT NULL default '1',
-  `command_id` int(10) unsigned NOT NULL,
-  `failed` enum('true','false') NOT NULL default 'false',
-  `to_cat_id` mediumint(8) unsigned default NULL,
-  PRIMARY KEY  (`job_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_supplier` (
-  `sp_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `supplier_brief_name` varchar(30) default NULL,
-  `status` tinyint(4) NOT NULL default '1',
-  `supplier_pline` text,
-  `sync_time` int(10) unsigned NOT NULL default '0',
-  `domain` varchar(255) NOT NULL,
-  `has_new` enum('true','false') NOT NULL default 'true',
-  `sync_time_for_plat` int(10) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`sp_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_supplier_pdtbn` (
-  `sp_id` mediumint(8) unsigned NOT NULL,
-  `local_bn` varchar(200) NOT NULL,
-  `source_bn` varchar(200) NOT NULL,
-  `default` enum('true','false') NOT NULL default 'true',
-  `supplier_id` int(10) unsigned NOT NULL,
-  PRIMARY KEY  (`sp_id`,`local_bn`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-CREATE TABLE `sdb_sync_tmp` (
-  `tmp_id` int(10) unsigned NOT NULL auto_increment,
-  `s_type` enum('goods_type','spec','brand') NOT NULL,
-  `ob_id` mediumint(8) unsigned NOT NULL,
-  `supplier_id` int(10) unsigned NOT NULL,
-  `s_data` text,
-  PRIMARY KEY  (`tmp_id`)
-)type = MyISAM DEFAULT CHARACTER SET utf8;
-
-/*=============================================================*/
-/* New columns                                                 */
-/*=============================================================*/
-ALTER TABLE `sdb_delivery` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_delivery` ADD COLUMN `supplier_delivery_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_gimages` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_gimages` ADD COLUMN `supplier_gimage_id` mediumint(8) unsigned default NULL ;
-ALTER TABLE `sdb_gimages` ADD COLUMN `sync_time` int(10) unsigned NOT NULL default '0' ;
-ALTER TABLE `sdb_order_items` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;
-
-ALTER TABLE `sdb_products` ADD COLUMN `is_local_stock` enum('true','false') NOT NULL default 'true' ;
-ALTER TABLE `sdb_spec_values` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_spec_values` ADD COLUMN `supplier_spec_value_id` mediumint(8) unsigned default NULL ;
-ALTER TABLE `sdb_specification` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_specification` ADD COLUMN `supplier_spec_id` mediumint(8) unsigned default NULL ;
-
-/*=============================================================*/
-/* Modify columns                                              */
-/*=============================================================*/
-ALTER TABLE `sdb_brand` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_brand` CHANGE COLUMN `supplier_brand_id` `supplier_brand_id` mediumint(8) unsigned default NULL ;
-ALTER TABLE `sdb_goods` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_goods_cat` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_goods_type` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;
-ALTER TABLE `sdb_operators` CHANGE COLUMN `lastip` `lastip` varchar(20) default NULL ;
-ALTER TABLE `sdb_operators` CHANGE COLUMN `op_no` `op_no` varchar(50) default NULL ;
-ALTER TABLE `sdb_operators` CHANGE COLUMN `department` `department` varchar(50) default NULL ;
-
-/*=============================================================*/
-/* Index                                                       */
-/*=============================================================*/
-
-/*=============================================================*/
-/* Drop tables                                                 */
-/*=============================================================*/
-DROP TABLE `sdb_supplier_sync`;
-
-/*=============================================================*/
-/* Drop fields                                                 */
-/*=============================================================*/
-
-/*=============================================================*/
-/* Drop index                                                  */
-/*=============================================================*/
+echo "/*=============================================================*/\n/* ShopEx database update script                               */\n/*                                                             */\n/*         Version:                                            */\n/*   last Modified:  2009/07/23                                */\n/*=============================================================*/\n\n/*=";
+echo "============================================================*/\n/* Create tables                                               */\n/*=============================================================*/\nCREATE TABLE `sdb_image_sync` (\n  `img_sync_id` int(10) unsigned NOT NULL auto_increment,\n  `type` enum('gimage','spec_value','udfimg','brand_logo') NOT NULL default 'gimage',\n  `supplier_id` int(10) unsig";
+echo "ned NOT NULL,\n  `supplier_object_id` mediumint(8) unsigned NOT NULL,\n  `add_time` int(10) unsigned NOT NULL,\n  `command_id` int(10) unsigned NOT NULL,\n  `failed` enum('true','false') NOT NULL default 'false',\n  PRIMARY KEY  (`img_sync_id`)\n)type = MyISAM DEFAULT CHARACTER SET utf8;\n\nCREATE TABLE `sdb_job_apilist` (\n  `job_id` int(10) unsigned NOT NULL auto_increment,\n  `supplier_id` int(10) unsign";
+echo "ed NOT NULL,\n  `api_name` varchar(100) NOT NULL,\n  `api_params` text,\n  `api_version` varchar(10) NOT NULL,\n  `api_action` varchar(100) NOT NULL,\n  `page` mediumint(8) unsigned NOT NULL,\n  `limit` mediumint(8) unsigned NOT NULL,\n  PRIMARY KEY  (`job_id`)\n)type = MyISAM DEFAULT CHARACTER SET utf8;\n\nCREATE TABLE `sdb_job_data_sync` (\n  `job_id` int(10) unsigned NOT NULL auto_increment,\n  `from_time`";
+echo " int(10) unsigned NOT NULL,\n  `to_time` int(10) unsigned NOT NULL,\n  `page` mediumint(8) unsigned NOT NULL,\n  `limit` mediumint(8) unsigned NOT NULL,\n  `supplier_id` int(10) unsigned NOT NULL,\n  `supplier_pline` text,\n  `auto_download` enum('true','false') NOT NULL default 'false',\n  `to_cat_id` mediumint(8) unsigned default NULL,\n  PRIMARY KEY  (`job_id`)\n)type = MyISAM DEFAULT CHARACTER SET utf8";
+echo ";\n\nCREATE TABLE `sdb_job_goods_download` (\n  `job_id` int(10) unsigned NOT NULL auto_increment,\n  `supplier_id` int(10) unsigned NOT NULL,\n  `supplier_goods_id` mediumint(8) unsigned NOT NULL,\n  `supplier_goods_count` int(10) unsigned NOT NULL default '1',\n  `command_id` int(10) unsigned NOT NULL,\n  `failed` enum('true','false') NOT NULL default 'false',\n  `to_cat_id` mediumint(8) unsigned default";
+echo " NULL,\n  PRIMARY KEY  (`job_id`)\n)type = MyISAM DEFAULT CHARACTER SET utf8;\n\nCREATE TABLE `sdb_supplier` (\n  `sp_id` mediumint(8) unsigned NOT NULL auto_increment,\n  `supplier_id` int(10) unsigned NOT NULL,\n  `supplier_brief_name` varchar(30) default NULL,\n  `status` tinyint(4) NOT NULL default '1',\n  `supplier_pline` text,\n  `sync_time` int(10) unsigned NOT NULL default '0',\n  `domain` varchar(25";
+echo "5) NOT NULL,\n  `has_new` enum('true','false') NOT NULL default 'true',\n  `sync_time_for_plat` int(10) unsigned NOT NULL default '0',\n  PRIMARY KEY  (`sp_id`)\n)type = MyISAM DEFAULT CHARACTER SET utf8;\n\nCREATE TABLE `sdb_supplier_pdtbn` (\n  `sp_id` mediumint(8) unsigned NOT NULL,\n  `local_bn` varchar(200) NOT NULL,\n  `source_bn` varchar(200) NOT NULL,\n  `default` enum('true','false') NOT NULL defau";
+echo "lt 'true',\n  `supplier_id` int(10) unsigned NOT NULL,\n  PRIMARY KEY  (`sp_id`,`local_bn`)\n)type = MyISAM DEFAULT CHARACTER SET utf8;\n\nCREATE TABLE `sdb_sync_tmp` (\n  `tmp_id` int(10) unsigned NOT NULL auto_increment,\n  `s_type` enum('goods_type','spec','brand') NOT NULL,\n  `ob_id` mediumint(8) unsigned NOT NULL,\n  `supplier_id` int(10) unsigned NOT NULL,\n  `s_data` text,\n  PRIMARY KEY  (`tmp_id`)\n";
+echo ")type = MyISAM DEFAULT CHARACTER SET utf8;\n\n/*=============================================================*/\n/* New columns                                                 */\n/*=============================================================*/\nALTER TABLE `sdb_delivery` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_delivery` ADD COLUMN `supplier_delivery_id` int(10) unsig";
+echo "ned default NULL ;\nALTER TABLE `sdb_gimages` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_gimages` ADD COLUMN `supplier_gimage_id` mediumint(8) unsigned default NULL ;\nALTER TABLE `sdb_gimages` ADD COLUMN `sync_time` int(10) unsigned NOT NULL default '0' ;\nALTER TABLE `sdb_order_items` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;\n\nALTER TABLE `sdb_products`";
+echo " ADD COLUMN `is_local_stock` enum('true','false') NOT NULL default 'true' ;\nALTER TABLE `sdb_spec_values` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_spec_values` ADD COLUMN `supplier_spec_value_id` mediumint(8) unsigned default NULL ;\nALTER TABLE `sdb_specification` ADD COLUMN `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_specification` ADD COLUMN `s";
+echo "upplier_spec_id` mediumint(8) unsigned default NULL ;\n\n/*=============================================================*/\n/* Modify columns                                              */\n/*=============================================================*/\nALTER TABLE `sdb_brand` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_brand` CHANGE COLUMN `supplier_b";
+echo "rand_id` `supplier_brand_id` mediumint(8) unsigned default NULL ;\nALTER TABLE `sdb_goods` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_goods_cat` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_goods_type` CHANGE COLUMN `supplier_id` `supplier_id` int(10) unsigned default NULL ;\nALTER TABLE `sdb_operators` CHA";
+echo "NGE COLUMN `lastip` `lastip` varchar(20) default NULL ;\nALTER TABLE `sdb_operators` CHANGE COLUMN `op_no` `op_no` varchar(50) default NULL ;\nALTER TABLE `sdb_operators` CHANGE COLUMN `department` `department` varchar(50) default NULL ;\n\n/*=============================================================*/\n/* Index                                                       */\n/*=============================";
+echo "================================*/\n\n/*=============================================================*/\n/* Drop tables                                                 */\n/*=============================================================*/\nDROP TABLE `sdb_supplier_sync`;\n\n/*=============================================================*/\n/* Drop fields                                                 */\n/";
+echo "*=============================================================*/\n\n/*=============================================================*/\n/* Drop index                                                  */\n/*=============================================================*/\n";
+?>

@@ -1,43 +1,55 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class tags_1Validator extends BaseValidator
 {
-    function tags_1Validator($sys)
+
+    public function tags_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        $row['disabled'] = (isset($row['disabled']) && $row['disabled']) ? 'true' : 'false';
-        
-        return true;
+        $row['disabled'] = isset( $row['disabled'] ) && $row['disabled'] ? "true" : "false";
+        return TRUE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        if (isset($row['disabled']))   $row['disabled'] = $row['disabled'] ? 'true' : 'false';
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        if ( isset( $row['disabled'] ) )
+        {
+            $row['disabled'] = $row['disabled'] ? "true" : "false";
+        }
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

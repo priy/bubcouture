@@ -1,46 +1,58 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class specification_1Validator extends BaseValidator
 {
-    function specification_1Validator($sys)
+
+    public function specification_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        $row['disabled'] = (isset($row['disabled']) && $row['disabled']) ? 'true' : 'false';
-        $row['spec_show_type'] = isset($row['spec_show_type']) ? $row['spec_show_type'] : 'flat';
-        $row['spec_type'] = isset($row['spec_type']) ? $row['spec_type'] : 'text';        
-        $row['p_order'] = isset($row['p_order']) ? intval($row['p_order']) : 0;        
-                
-        return true;
+        $row['disabled'] = isset( $row['disabled'] ) && $row['disabled'] ? "true" : "false";
+        $row['spec_show_type'] = isset( $row['spec_show_type'] ) ? $row['spec_show_type'] : "flat";
+        $row['spec_type'] = isset( $row['spec_type'] ) ? $row['spec_type'] : "text";
+        $row['p_order'] = isset( $row['p_order'] ) ? intval( $row['p_order'] ) : 0;
+        return TRUE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        if (isset($row['disabled']))   $row['disabled'] = $row['disabled'] ? 'true' : 'false';
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        if ( isset( $row['disabled'] ) )
+        {
+            $row['disabled'] = $row['disabled'] ? "true" : "false";
+        }
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

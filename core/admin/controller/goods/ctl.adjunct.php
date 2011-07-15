@@ -1,16 +1,35 @@
 <?php
-class ctl_adjunct extends adminPage{
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-    function addGrp(){
-        $this->pagedata['aOptions'] = array('goods'=>__('选择几件商品作为配件'), 'filter'=>__('选择一组商品搜索结果作为配件'));        
-        $this->display('product/adjunct/info.html');
+class ctl_adjunct extends adminPage
+{
+
+    public function addGrp( )
+    {
+        $this->pagedata['aOptions'] = array(
+            "goods" => __( "选择几件商品作为配件" ),
+            "filter" => __( "选择一组商品搜索结果作为配件" )
+        );
+        $this->display( "product/adjunct/info.html" );
         return;
     }
 
-    function doAddGrp(){
-        $this->pagedata['adjunct'] =array('name'=>$_POST['name'],'type'=>$_POST['type']);
-        $this->pagedata['key'] = time();
-        $this->display('product/adjunct/row.html');
+    public function doAddGrp( )
+    {
+        $this->pagedata['adjunct'] = array(
+            "name" => $_POST['name'],
+            "type" => $_POST['type']
+        );
+        $this->pagedata['key'] = time( );
+        $this->display( "product/adjunct/row.html" );
     }
+
 }
+
 ?>

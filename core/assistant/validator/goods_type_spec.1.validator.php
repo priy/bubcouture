@@ -1,48 +1,56 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class goods_type_spec_1Validator extends BaseValidator
 {
-    function goods_type_spec_1Validator($sys)
+
+    public function goods_type_spec_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        $row['spec_style'] = isset($row['spec_style']) ? $row['spec_type'] : 'flat';        
-                
-        if (isset($row['spec_id']) && isset($row['type_id']))
+        $row['spec_style'] = isset( $row['spec_style'] ) ? $row['spec_type'] : "flat";
+        if ( isset( $row['spec_id'], $row['type_id'] ) )
         {
-            $this->_db->exec('delete from sdb_goods_type_spec where spec_id='.intval($row['spec_id']).' and type_id='.intval($row['type_id']));
-            return true;
+            $this->_db->exec( "delete from sdb_goods_type_spec where spec_id=".intval( $row['spec_id'] )." and type_id=".intval( $row['type_id'] ) );
+            return TRUE;
         }
-        
-        return false;
+        return FALSE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

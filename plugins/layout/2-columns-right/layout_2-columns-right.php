@@ -1,6 +1,18 @@
 <?php
-class layout_2_columns_right{
-    var $name='两列，右为主';
-    var $slotsNum = 2;
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+class layout_2_columns_right
+{
+
+    public $name = "两列，右为主";
+    public $slotsNum = 2;
+
 }
+
 ?>

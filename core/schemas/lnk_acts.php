@@ -1,31 +1,16 @@
 <?php
-/**
-* @table lnk_acts;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['lnk_acts']=array (
-  'columns' => 
-  array (
-    'role_id' => 
-    array (
-      'type' => 'int unsigned',
-      'required' => true,
-      'default' => 0,
-      'pkey' => true,
-      'editable' => false,
-    ),
-    'action_id' => 
-    array (
-      'type' => 'int unsigned',
-      'required' => true,
-      'default' => 0,
-      'pkey' => true,
-      'editable' => false,
-    ),
-  ),
+$db['lnk_acts'] = array(
+    "columns" => array(
+        "role_id" => array( "type" => "int unsigned", "required" => TRUE, "default" => 0, "pkey" => TRUE, "editable" => FALSE ),
+        "action_id" => array( "type" => "int unsigned", "required" => TRUE, "default" => 0, "pkey" => TRUE, "editable" => FALSE )
+    )
 );
+?>

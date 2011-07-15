@@ -1,69 +1,31 @@
 <?php
-/**
-* @table gift_items;
-*
-* @package Schemas
-* @version $
-* @copyright 2003-2009 ShopEx
-* @license Commercial
-*/
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-$db['gift_items']=array (
-  'columns' => 
-  array (
-    'order_id' => 
-    array (
-      'type' => 'object:trading/order',
-      'required' => true,
-      'default' => '0',
-      'pkey' => true,
-      'editable' => false,
+$db['gift_items'] = array(
+    "columns" => array(
+        "order_id" => array( "type" => "object:trading/order", "required" => TRUE, "default" => "0", "pkey" => TRUE, "editable" => FALSE ),
+        "gift_id" => array( "type" => "number", "required" => TRUE, "default" => "0", "pkey" => TRUE, "editable" => FALSE ),
+        "name" => array( "type" => "varchar(200)", "editable" => FALSE ),
+        "point" => array( "type" => "int(8)", "editable" => FALSE ),
+        "nums" => array( "type" => "number", "editable" => FALSE ),
+        "amount" => array( "type" => "int unsigned", "editable" => FALSE ),
+        "sendnum" => array( "type" => "number", "default" => 0, "editable" => FALSE ),
+        "getmethod" => array(
+            "type" => array(
+                "present" => __( "赠送" ),
+                "exchange" => __( "兑换" )
+            ),
+            "default" => "present",
+            "required" => TRUE,
+            "editable" => FALSE
+        )
     ),
-    'gift_id' => 
-    array (
-      'type' => 'number',
-      'required' => true,
-      'default' => '0',
-      'pkey' => true,
-      'editable' => false,
-    ),
-    'name' => 
-    array (
-      'type' => 'varchar(200)',
-      'editable' => false,
-    ),
-    'point' => 
-    array (
-      'type' => 'int(8)',
-      'editable' => false,
-    ),
-    'nums' => 
-    array (
-      'type' => 'number',
-      'editable' => false,
-    ),
-    'amount' => 
-    array (
-      'type' => 'int unsigned',
-      'editable' => false,
-    ),
-    'sendnum' => 
-    array (
-      'type' => 'number',
-      'default' => 0,
-      'editable' => false,
-    ),
-    'getmethod' => 
-    array (
-      'type' => 
-      array (
-        'present' => __('赠送'),
-        'exchange' => __('兑换'),
-      ),
-      'default' => 'present',
-      'required' => true,
-      'editable' => false,
-    ),
-  ),
-  'comment' => '赠品订单明细表',
+    "comment" => "赠品订单明细表"
 );
+?>

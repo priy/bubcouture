@@ -1,46 +1,55 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class goods_spec_index_1Validator extends BaseValidator
 {
-    function goods_spec_index_1Validator($sys)
+
+    public function goods_spec_index_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (isset($row['product_id']) && isset($row['spec_value_id']))
+        if ( isset( $row['product_id'], $row['spec_value_id'] ) )
         {
-            $this->_db->exec('delete from sdb_goods_spec_index where product_id='.intval($row['product_id']).' and spec_value_id='.intval($row['spec_value_id']));
-            return true;
+            $this->_db->exec( "delete from sdb_goods_spec_index where product_id=".intval( $row['product_id'] )." and spec_value_id=".intval( $row['spec_value_id'] ) );
+            return TRUE;
         }
-        
-        return false;
+        return FALSE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {        
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

@@ -1,25 +1,27 @@
 <?php
-/**
- * api model层基类
- * @package
- * @version 1.0: 
- * @copyright 2003-2009 ShopEx
- * @author dreamdream
- * @license Commercial
- */
-class shop_api_model_object{
-    
-    /**
-    * 构造函数
-    */
-    function shop_api_model_object(){
-        if(!$this->system){
-            $this->system = &$GLOBALS['system'];
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
+class shop_api_model_object
+{
+
+    public function shop_api_model_object( )
+    {
+        if ( !$this->system )
+        {
+            $this->system =& $GLOBALS['GLOBALS']['system'];
         }
-        if(!$this->db){
-            $this->db = $this->system->database();
+        if ( !$this->db )
+        {
+            $this->db = $this->system->database( );
         }
     }
 
 }
+
 ?>

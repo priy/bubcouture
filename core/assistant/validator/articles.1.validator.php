@@ -1,48 +1,66 @@
 <?php
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
+
 class articles_1Validator extends BaseValidator
 {
-    function articles_1Validator($sys)
+
+    public function articles_1Validator( $sys )
     {
-        parent::BaseValidator($sys);
+        parent::basevalidator( $sys );
     }
-    
-    function validateInsertBefore(&$row)
+
+    public function validateInsertBefore( &$row )
     {
-        if (!isset($row['title']) || empty($row['title'])) return false;
-        
-        $row['disabled'] = (isset($row['disabled']) && $row['disabled']) ? 'true' : 'false';
-        $row['ifpub']  = isset($row['ifpub']) ? $row['ifpub'] : 1;
-        $row['uptime'] = time();
-        return true;
+        if ( !isset( $row['title'] ) || empty( $row['title'] ) )
+        {
+            return FALSE;
+        }
+        $row['disabled'] = isset( $row['disabled'] ) && $row['disabled'] ? "true" : "false";
+        $row['ifpub'] = isset( $row['ifpub'] ) ? $row['ifpub'] : 1;
+        $row['uptime'] = time( );
+        return TRUE;
     }
-    
-    function validateInsertAfter(&$row)
-    {    
-        return true;    
-    }
-    
-    function validateUpdateBefore(&$row)
+
+    public function validateInsertAfter( &$row )
     {
-        if (isset($row['disabled'])) $row['disabled'] = $row['disabled'] ? 'true' : 'false';        
-        if (isset($row['ifpub']))  $row['ifpub']  = $row['ifpub'] ? 1 : 0;
-        $row['uptime'] = time();
-        return true;
+        return TRUE;
     }
-    
-    function validateUpdateAfter(&$row)
-    {        
-        return true;
-    }
-    
-    function validateDeleteBefore(&$row)
+
+    public function validateUpdateBefore( &$row )
     {
-        return true;
+        if ( isset( $row['disabled'] ) )
+        {
+            $row['disabled'] = $row['disabled'] ? "true" : "false";
+        }
+        if ( isset( $row['ifpub'] ) )
+        {
+            $row['ifpub'] = $row['ifpub'] ? 1 : 0;
+        }
+        $row['uptime'] = time( );
+        return TRUE;
     }
-    
-    function validateDeleteAfter(&$row)
-    {                
-        return true;
+
+    public function validateUpdateAfter( &$row )
+    {
+        return TRUE;
     }
-} 
+
+    public function validateDeleteBefore( &$row )
+    {
+        return TRUE;
+    }
+
+    public function validateDeleteAfter( &$row )
+    {
+        return TRUE;
+    }
+
+}
 
 ?>

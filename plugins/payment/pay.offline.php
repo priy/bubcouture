@@ -1,18 +1,36 @@
 <?php
-require('paymentPlugin.php');
-class pay_offline extends paymentPlugin{
+/*********************/
+/*                   */
+/*  Version : 5.1.0  */
+/*  Author  : RM     */
+/*  Comment : 071223 */
+/*                   */
+/*********************/
 
-    var $name = '线下支付';    //线下支付
-    var $logo = '';
-    var $version = 200080519;
-    var $charset = 'gb2312';
-    var $supportCurrency = array("ALL"=>"1");
-    var $supportArea =  array("AREA_CNY");
-    var $desc = '线下支付';
-    var $orderby = 6;
-    
-    function getfields(){
-        return array();
+require( "paymentPlugin.php" );
+class pay_offline extends paymentPlugin
+{
+
+    public $name = "线下支付";
+    public $logo = "";
+    public $version = 200080519;
+    public $charset = "gb2312";
+    public $supportCurrency = array
+    (
+        "ALL" => "1"
+    );
+    public $supportArea = array
+    (
+        0 => "AREA_CNY"
+    );
+    public $desc = "线下支付";
+    public $orderby = 6;
+
+    public function getfields( )
+    {
+        return array( );
     }
+
 }
+
 ?>
