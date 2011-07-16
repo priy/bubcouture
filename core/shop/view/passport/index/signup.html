@@ -24,7 +24,7 @@
           </tr>
           <{if $SignUpvalideCode}>
           <tr>
-            <th><i>*</i><{t}>Authentication Code:<{/t}></th>
+            <th><i>*</i><{t}>Verification:<{/t}></th>
             <td><{input size="8" class="inputstyle"  type="digits" required="true" name="signupverifycode" id="iptsingup"}>
                 <span class='verifyCode' style='display:none;'><img src="#" codesrc='<{link ctl="passport" act="verifyCode" arg0="s"}>' border="1" /><a href="javascript:void(0)"><{t}>&nbsp;Refresh for a new image<{/t}></a>
                </span>

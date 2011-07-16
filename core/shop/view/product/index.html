@@ -845,7 +845,7 @@
                 <td><{input type="text" class="inputstyle"   size=20 name="contact"}><span class="infotips"><{t}>(Mobile Phone,email,MSN etc.)<{/t}></span></td>
             </tr>
             <{if $askshow == "on"}>
-            <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+            <th><em>*</em><{t}>Verification:<{/t}></th>
               <td><{input type="text" required="true" size="4" maxlength="4" name="askverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="ask"}>" border="1" id="askimgVerifyCode"/><a href="javascript:changeimg('askimgVerifyCode','ask')"><{t}>&nbsp;Refresh for a new image<{/t}></a></td>
             </tr>
             <{/if}>
@@ -912,7 +912,7 @@
 <{/if}>
 </div>
 <div class="boxBrown division">
-<a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-discuss.gif" /><{/t}></a>
+<a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-discuss_normal.png" /><{/t}></a>
 </div>
 </div>
 <{else}>
@@ -982,7 +982,7 @@
                 </tr>
                <{if $discussshow == "on"}>
                 <tr>
-                <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+                <th><em>*</em><{t}>Verification:<{/t}></th>
                     <td><{input type="text" required="true" size="4" maxlength="4" name="discussverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="discuss"}>" border="1" id="discussimgVerifyCode"/><a href="javascript:changeimg('discussimgVerifyCode','discuss')"><{t}>&nbsp;Refresh for a new image<{/t}></a>
                     </td>
                 </tr>

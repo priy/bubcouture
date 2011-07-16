@@ -25,7 +25,7 @@
           </tr>
           <{if $valideCode}>
           <tr>
-            <th><i>*</i><{t}>Authentication Code:<{/t}></th>
+            <th><i>*</i><{t}>Verification:<{/t}></th>
             <td><{input size="8" class="inputstyle"  type="digits" required="true" name="loginverifycode" id="iptlogin"  tabindex="3"}>
                <span class='verifyCode' style='display:none;'><img src="#" border="1" codesrc='<{link ctl="passport" act="verifyCode" arg0="l"}>'/><a href="javascript:void(0)"><{t}>&nbsp;Refresh for a new image<{/t}></a>
                </span>

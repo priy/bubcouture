@@ -112,9 +112,9 @@ function changeimg(id,type){
 <div class="division">
 <{if $ask.member_lv =='' && $comment_all != 'null'}>
       <{if $comment.pagetitle eq '商品评论'}>
-  <a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-discuss.gif" /><{/t}></a>
+  <a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-discuss_normal.png" /><{/t}></a>
    <{else}>
-   <a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-ask.gif" /><{/t}></a>
+   <a href="<{link ctl=passport act=login}>"><{t}><image src="statics/btn-ask_normal.png" /><{/t}></a>
            <{/if}>
 <{else}>
       <table border="0" width="100%" cellpadding="0" cellspacing="0" class="forform">
@@ -133,12 +133,12 @@ function changeimg(id,type){
             <tr>
             <tr>
             <{if $askshow == "on"}>
-            <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+            <th><em>*</em><{t}>Verification:<{/t}></th>
               <td><{input type="text" required="true" size="4" maxlength="4" name="askverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="ask"}>" border="1" id="askimgVerifyCode"/><a href="javascript:changeimg('askimgVerifyCode','ask')"><{t}>&nbsp;Refresh for a new image<{/t}></a></td>
             <{/if}>
             <{if $discussshow == "on"}>
              <tr>
-            <th><em>*</em><{t}>Authentication Code:<{/t}></th>
+            <th><em>*</em><{t}>Verification:<{/t}></th>
                 <td><{input type="text" required="true" size="4" maxlength="4" name="discussverifyCode"}>&nbsp;<img src="<{link ctl="passport" act="verifyCode" arg0="discuss"}>" border="1" id="discussimgVerifyCode"/><a href="javascript:changeimg('discussimgVerifyCode','discuss')"><{t}>&nbsp;Refresh for a new image<{/t}></a>
                 </td>
             </tr>

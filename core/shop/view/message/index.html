@@ -100,7 +100,7 @@
       <{/if}>
       <{if $msgshow == "on" }>
       <tr>
-        <th><em style='color:red'>*</em><{t}>Authentication Code:<{/t}></th>
+        <th><em style='color:red'>*</em><{t}>Verification:<{/t}></th>
         <td><{input type="text" required="true" size="4" maxlength="4" name="verifyCode" class='inputstyle'}>&nbsp;<img src="<{link ctl="passport" act="verifyCode"}>" border="1" id="imgVerifyCode"/><a href="javascript:changeimg()"><{t}>&nbsp;Refresh for a new image<{/t}></a></td>
       </tr>
       <{/if}>

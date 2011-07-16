@@ -63,9 +63,9 @@
 .border5 .bottom{height:15px;}
 
 .siderCommonBorder{margin-bottom:10px;}
-.siderCommonBorder .top{height:29px; background:url(siderCommonBorderTitle.gif) right}
+.siderCommonBorder .top{height:24px; background:url(bg_sidecomment.png) right}
 .siderCommonBorder .top h3{padding:2px 0 0 6px;color:#fff; margin:0}
-.siderCommonBorder .body{padding:0 5px; border:1px solid #ddd; border-top:0}
+.siderCommonBorder .body{padding:5px; border:1px solid #ddd; border-top:0}
 
 
 .siderMainBorder{ width:181px; overflow:hidden}

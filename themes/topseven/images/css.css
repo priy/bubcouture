@@ -58,8 +58,8 @@ a:hover{color:#000000;	text-decoration:underline;}
 	.headerInfo  .headerSearchBar a  { color:#000; }
 	.headerInfo  .loginBar         { height:23px; right:0; position:absolute; top:150px;}
     .headerInfo .searchBox {float:right;}
-    .headerInfo .head_cart {float:right;background: url("icons.png") no-repeat scroll 0 -40px transparent;}
-    .headerInfo .head_cart a{padding:5px 5px 0 40px;}
+    .headerInfo .head_cart {float:right;background: url("icon-cart_normal.png") no-repeat scroll 0 3px transparent;}
+    .headerInfo .head_cart a{padding:5px 5px 0 27px;}
 
 .mainColumn      { width:740px; overflow:hidden;}
 .sideColumn     { width:181px; overflow:hidden;}
