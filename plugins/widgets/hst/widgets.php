@@ -1,7 +1,7 @@
 <?php
 
 $setting['author']='dreamdream';
-$setting['name']='浏览过的商品';
+$setting['name']='Recently Viewed Items';
 $setting['version']='135711';
 
 $setting['stime']='2008-8-8';

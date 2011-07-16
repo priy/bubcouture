@@ -33,11 +33,11 @@
 .GoodsList-Tabs .current{ background:#5d355f;color:#fff;}
 .GoodsListWrap{	padding:6px 0;overflow:hidden;}
 .GoodsSearchWrap .items-list{float:left;width:230px;border:none;}
-
+.GoodsSearchWrap .title .listorder span, .GoodsSearchWrap .title .listorder a {width:89px;}
 .itemsWrap h6{ font-weight:normal; text-decoration:underline;}
 .itemsWrap{ line-height:18px;}
 /*商品导航*/
-.navi{background:#F6F6F6;}
+.navi{background:#F6F6F6; padding: 0 0 0 15px;}
 .navi .Navigation{border:none;line-height:72px;height:72px;float:left;}
 .navi .AdvBanner{float:right;}
 /*=排行榜 

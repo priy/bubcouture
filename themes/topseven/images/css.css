@@ -41,11 +41,11 @@ a:hover{color:#000000;	text-decoration:underline;}
 .headerInfo                { z-index:2 }
 	.headerInfo  .logo     { float:left;overflow:hidden; border-bottom:1px soid #ccc;}
 	.headerInfo  .topMenu  { border-bottom:2px solid #E0E0E0; text-align: right;}
-	.headerInfo  .topMenu a{ color: #14BFF4;padding: 0 10px; font-size: 14px; line-height: 30px; }
+	.headerInfo  .topMenu a{ color: #676767;padding: 0 10px; font-size: 14px; line-height: 30px; }
     .headerInfo  .topMenu a.topMenu_cart{ background: url("icons.png") repeat-y scroll 0 238px transparent; padding: 10px 0 10px 41px;}
 	.headerInfo  .info     { position:absolute; right:275px; top:67px; width: 147px; }
 	.headerInfo  .cartBar  { height:29px; left:722px; position:absolute; top:68px; width:180px; }
-    .headerInfo  .menu     { height: 24px; line-height: 24px; margin: 12px 0;width: 950px;}
+    .headerInfo  .menu     { height: 24px; line-height: 24px; margin: 12px 0;width: 940px;padding:0 0 0 15px}
 	.headerInfo  .topbtn   { position:absolute; height:35px; line-height:35px; left:0; top:109px }
 	.headerInfo  .topbtn a {width:79px; height:29px;display:block; float:left;  margin-right:5px}
 	.headerInfo  .topbtn .cate  { background:url(topbtn-cate.gif); width:71px;}
@@ -53,11 +53,13 @@ a:hover{color:#000000;	text-decoration:underline;}
 	.headerInfo  #catebox  {  background:#fff; border:1px solid #af85b2; border-top:1px solid #fff;position:absolute; top:138px; width:930px; padding:10px; z-index:10; }	
 	.headerInfo  #brandbox  { background:#fff; border:1px solid #af85b2;border-top:1px solid #fff;position:absolute; top:138px; left:80px; width:850px; padding:10px; z-index:10; }	
 	.headerInfo  .menu li  { padding-right:10px}
-	.headerInfo  .menu li a{ color:#8BDB00;font-size:18px;}
+	.headerInfo  .menu li a{ color:#fd8f20;font-size:18px;}
 	.headerInfo  .headerSearchBar  { position:absolute; left:0; top:146px; width:950px; height:34px; color:#000; }
 	.headerInfo  .headerSearchBar a  { color:#000; }
 	.headerInfo  .loginBar         { height:23px; right:0; position:absolute; top:150px;}
     .headerInfo .searchBox {float:right;}
+    .headerInfo .head_cart {float:right;background: url("icons.png") no-repeat scroll 0 -40px transparent;}
+    .headerInfo .head_cart a{padding:5px 5px 0 40px;}
 
 .mainColumn      { width:740px; overflow:hidden;}
 .sideColumn     { width:181px; overflow:hidden;}

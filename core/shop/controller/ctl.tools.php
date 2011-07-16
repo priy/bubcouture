@@ -50,7 +50,7 @@ class ctl_tools extends shopPage{
     }
 
     function history(){
-        $this->title=__('浏览过的商品');
+        $this->title=__('Recently Viewed Items');
         $this->output();
     }
 
