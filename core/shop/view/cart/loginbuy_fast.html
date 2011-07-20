@@ -9,7 +9,7 @@
                <div class='span-auto' style='width:160px; text-align:left;'><h4 style="padding-top:0;"><{t}>no register?<{/t}></h4></div><div class='span-auto close' style='width:25px'>X</div>
                <div class='clear'></div>
                <ul class="list fast-login">
-                 <li><span>No account?</span><a href='<{link ctl="passport" act="signup"}>' class="actbtn btn-newregister">Register Now</a></li>
+                 <li><span>No account?</span><a href='<{link ctl="passport" act="signup"}>' class="actbtn btn-newregister">Sign up</a></li>
                  <{if !$mustMember}>
                  <li><span>You also can...</span><a class="actbtn btn-buynow" href="<{link ctl=cart act=checkout}>" onclick="Cookie.set('S[ST_ShopEx-Anonymity-Buy]', 'true');$(this).getParent('.dialog').retrieve('chain',$empty)();return false;" ><{t}>Buy Now without register<{/t}></a></li>
                  <{/if}>
@@ -19,7 +19,7 @@
          </tr>
           <tr>
             <th><i>*</i><{t}>Username:<{/t}></th>
-            <td><{input name="login" class="inputstyle"  required="true" id="in_login" tabindex="1" value=$loginName}><a style="margin-left:6px; " href="<{link ctl='passport' act='signup'}>"><{t}>Register Now<{/t}></a></td>
+            <td><{input name="login" class="inputstyle"  required="true" id="in_login" tabindex="1" value=$loginName}><a style="margin-left:6px; " href="<{link ctl='passport' act='signup'}>"><{t}>Sign up<{/t}></a></td>
           </tr>
           <tr>
             <th><i>*</i><{t}>Password:<{/t}></th>

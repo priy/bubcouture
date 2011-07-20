@@ -64,8 +64,8 @@
 .btn-notify         {background:url(btn-notify_normal.png); width:100px; height:30px;}   /* 到货通知*/
 .btn-notify:hover   {background:url(btn-notify_focus.png); width:100px; height:30px;} 
 
-.btn-viewcart       {background:url(btn-viewcart_normal.png); width:77px; height:30px; float:left; margin-right:5px;} 
-.btn-viewcart:hover {background:url(btn-viewcart_focus.png); width:77px; height:30px; float:left; margin-right:5px;}  /* mini-cart*/
+.btn-viewcart       {background:url(btn-viewcart_normal.png) no-repeat; width:104px; height:30px; float:left; margin-right:5px;} 
+.btn-viewcart:hover {background:url(btn-viewcart_focus.png) no-repeat; width:104px; height:30px; float:left; margin-right:5px;}  /* mini-cart*/
 
 .btn-continue		{background:url(btn-continue_normal.png); width:150px; height:30px; float:left;}
 .btn-continue:hover {background:url(btn-continue_focus.png); width:150px; height:30px; float:left;}
@@ -99,4 +99,11 @@ float: right;
 .pager .next, .pager .onnext, .pager .unnext {background: url(pager_next_normal.png) no-repeat 0 0;width: 50px;}
 .pager .prev, .pager .onprev, .pager .unprev {background: url(pager_back_normal.png) no-repeat scroll 0 0 transparent;width: 50px;}
 
+.MemberMenu a {color: #464646;display: block;padding: 0 20px 0 0;text-indent: 30px;}
+.span-2 {width: 120px;}
+
+.MemberMenu .current a {background: url("siteactivemenubg.png") no-repeat;color: #FFFFFF;font-weight: bold;height: 25px;line-height: 25px;z-index: 1;}
+
+.GoodsSearchWrap .items-list-my {border: medium none;float: left;}
+.GoodsInfoWrap .btnBar .btn-fav, .GoodsInfoWrap .btnBar .btn-send {background: url("btn_ginfo_links.png") no-repeat;margin: 0;padding: 3px 0 0 24px;}
 

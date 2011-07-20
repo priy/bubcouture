@@ -5,7 +5,8 @@
             <col class="span-4 ColColorOrange textright"></col>
       <tr>
         <th><{t}>Total Price:<{/t}></th>
-        <td value="<{$trading.pmt_b.totalPrice}>" class="price"><{$trading.pmt_b.totalPrice|cur}></td>
+		
+        <td value="<{$trading.pmt_b.totalPrice}>" class="price"><span class="price1"><{$trading.pmt_b.totalPrice|cur}></span></td>
       </tr>
       <{if $trading.shipping_id}>
       <tr>
@@ -92,28 +93,6 @@
     <td><{$trading.final_amount|amount:$trading.cur_code:false:false:true}></td>
     </tr>
     <{/if}>
-    <{if $trading.cost_tax>0}>
-    <tr>
-       <th>开发票所需税金：</th>
-       <td><{$trading.cost_tax|cur}></td>
-    </tr>
-    <{/if}>
-      <tr>
-        <th><{t}>订单总金额：<{/t}></th>
-        <td><span class="price1"><{$trading.total_amount|amount}></span>
-		<br>
-		<{if $trading.is_tax == '1'}>
-		      是否需要发票?(<{t}>税金:<{/t}><strong><{$trading.tax_rate*100}>%</strong>)<input type="checkbox" id="is_tax" name="payment[is_tax]" onclick="Order.updateTotal()" <{if $trading.tax_checked}>checked=checked<{/if}> value="true">
-		      <p id='tax_company'> 发票抬头：<input type="text" name="payment[tax_company]" class="inputstyle" ></p>
-		      <script>
-		         $('is_tax').addEvent('click',function(){
-		               $('tax_company').setStyle('visibility',this.checked?'visible':'hidden');
-		         }).fireEvent('click');
-		      </script>
-		   <{/if}>
-		
-		</td>
-      </tr>
 
      <{if ($trading.totalGainScore<>0) or ($trading.totalConsumeScore<>0)}> 
      <{if $trading.totalConsumeScore}>

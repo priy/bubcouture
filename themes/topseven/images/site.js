@@ -99,20 +99,3 @@ function SetHome(obj,vrl){
                  }
         }
 }
-
-function markWidgetsetGoTop(){
-    $('mark').tween('top',$E('body').getScroll().y+50)
-}	
-	  
-window.addEvent('scroll',function(){	
-    markWidgetsetGoTop();
-})
-window.addEvent('domready', function() {
-    var x = Math.floor((document.body.clientWidth-960)/2);
-    var mark = document.getElementById("mark");
-    mark.style.display = "block";
-    mark.style.left = x - 92;
-
-    markWidgetsetGoTop();
-});
-

@@ -41,7 +41,7 @@ a:hover{color:#000000;	text-decoration:underline;}
 .headerInfo                { z-index:2 }
 	.headerInfo  .logo     { float:left;overflow:hidden; border-bottom:1px soid #ccc;}
 	.headerInfo  .topMenu  { border-bottom:2px solid #E0E0E0; text-align: right;}
-	.headerInfo  .topMenu a{ color: #676767;padding: 0 10px; font-size: 14px; line-height: 30px; }
+	.headerInfo  .topMenu a{ color: #676767;padding: 0 10px; line-height: 30px; }
     .headerInfo  .topMenu a.topMenu_cart{ background: url("icons.png") repeat-y scroll 0 238px transparent; padding: 10px 0 10px 41px;}
 	.headerInfo  .info     { position:absolute; right:275px; top:67px; width: 147px; }
 	.headerInfo  .cartBar  { height:29px; left:722px; position:absolute; top:68px; width:180px; }

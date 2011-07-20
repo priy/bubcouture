@@ -7,68 +7,68 @@ class ctl_member extends shopPage{
         parent::shopPage($system);
         $this->_verifyMember(true);
         $this->header .= '<meta name="robots" content="noindex,noarchive,nofollow" />';
-        $this->title=__('会员中心');
+        $this->title=__('My Account');
         $action = $this->system->request['action']['method'];
         $this->_tmpl = $action.'.html';
         $this->map = array(
-            array('label'=>__('交易记录'),
+            array('label'=>__('Transaction records'),
                   'mid'=>0,
                   'items'=>array(
-                      array('label'=>__('我的订单'),'link'=>'orders'),
-                      array('label'=>__('我的积分'),'link'=>'pointHistory'),
-                      array('label'=>__('积分兑换优惠券'),'link'=>'couponExchange'),
-                      array('label'=>__('我的优惠券'),'link'=>'coupon')
+                      array('label'=>__('Orders'),'link'=>'orders'),
+                      array('label'=>__('Credits'),'link'=>'pointHistory'),
+                      array('label'=>__('Exchange coupon'),'link'=>'couponExchange'),
+                      array('label'=>__('My coupon'),'link'=>'coupon')
                       )
                 ),
-            array('label'=>__('收藏夹'),
+            array('label'=>__('Favorite'),
                   'mid'=>1,
                   'items'=>array(
-                      array('label'=>__('商品收藏'),'link'=>'favorite'),
-                      array('label'=>__('缺货登记'),'link'=>'notify'),
+                      array('label'=>__('Favorites'),'link'=>'favorite'),
+                      array('label'=>__('Arrival notice'),'link'=>'notify'),
                       )
                 ),
-            array('label'=>__('商品留言'),
+            array('label'=>__('Comments'),
                   'mid'=>2,
                   'items'=>array(
-                      array('label'=>__('评论与咨询'),'link'=>'comment'),
+                      array('label'=>__('Inquery'),'link'=>'comment'),
                       )
                 ),
 
-            array('label'=>__('个人设置'),
+            array('label'=>__('Personal Setting'),
                   'mid'=>3,
                   'items'=>array(
-                      array('label'=>__('个人信息'),'link'=>'setting'),
-                      array('label'=>__('修改密码'),'link'=>'security'),
-                      array('label'=>__('收货地址'),'link'=>'receiver'),
+                      array('label'=>__('My information'),'link'=>'setting'),
+                      array('label'=>__('Change password'),'link'=>'security'),
+                      array('label'=>__('Shipping Address'),'link'=>'receiver'),
                       )
                 ),
-            array('label'=>__('预存款'),
+            array('label'=>__('Pre-deposits'),
                   'mid'=>4,
                   'items'=>array(
-                      array('label'=>__('我的预存款'),'link'=>'balance'),
-                      array('label'=>__('预存款充值'),'link'=>'deposit'),
+                      array('label'=>__('My pre-deposits'),'link'=>'balance'),
+                      array('label'=>__('Recharge'),'link'=>'deposit'),
                       )
                 ),
-            array('label'=>__("站内消息(").$this->member['unreadmsg'].")",
+            array('label'=>__("Message(").$this->member['unreadmsg'].")",
                   'mid'=>5,
                   'items'=>array(
-                      array('label'=>__('发送消息'),'link'=>'send'),
-                      array('label'=>__('收件箱'),'link'=>'inbox'),
-                      array('label'=>__('草稿箱'),'link'=>'outbox'),
-                      array('label'=>__('发件箱'),'link'=>'track'),
-                      array('label'=>__('给管理员发消息'),'link'=>'message'),
+                      array('label'=>__('Send'),'link'=>'send'),
+                      array('label'=>__('Inbox'),'link'=>'inbox'),
+                      array('label'=>__('Drafts'),'link'=>'outbox'),
+                      array('label'=>__('Outbox'),'link'=>'track'),
+                      array('label'=>__('Mail to admin'),'link'=>'message'),
                       //    array('label'=>'搜索短消息','link'=>'review'),
                       //    array('label'=>'导出短消息','link'=>'review'),
                       //    array('label'=>'忽略列表','link'=>'review'),
                       )
                 ),
-            array('label'=>__('售后服务'),
+            array('label'=>__('Service'),
                   'mid'=>6,
                   'items'=>array(
-                      array('label'=>__('申请售后服务'),'link'=>'return_policy')
+                      array('label'=>__('Inquery'),'link'=>'return_policy')
                       )
                 ),
-            array('label'=>__('应用配置'),
+            array('label'=>__('Application Setting'),
                   'mid'=>7,
                   'items'=>array(
                       

@@ -1,4 +1,4 @@
-Welcome<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}>：<{$env.cookie.UNAME}><{/if}></span>！
+Welcome&nbsp;&nbsp;<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}> <{$env.cookie.UNAME}><{/if}></span>.
 <{if !$env.cookie.MEMBER}>
 <span id="loginBar_<{$widgets_id}>">
 <{foreach from=$data.login_content item=login}>
@@ -9,7 +9,7 @@ Welcome<span id="uname_<{$widgets_id}>"><{if $env.cookie.UNAME}>：<{$env.cookie
       [<a  class="trustlogin trust__login" href="javascript:void(0)"><{t}>Trust Login<{/t}></a>]&nbsp;&nbsp;
 	  <div id="accountlogin" ><h5>You can login with follow account:</h5><div class="logoimg"><span><img src="statics/accountlogos/trustlogo1_small.gif" /></span><span><img src="statics/accountlogos/trustlogo2_small.gif" /></span><span><img src="statics/accountlogos/trustlogo3_small.gif" /></span><span><img src="statics/accountlogos/trustlogo4_small.gif" /></span><span><img src="statics/accountlogos/trustlogo5_small.gif" /></span></div><div class="more"><a href="#">More»</a></div>
 	  </div>
-	  <{/if}>
+	  <{/if}>、
   <a href="<{link ctl=passport act=signup}>"><{t}>[Register]<{/t}></a>
 </span> 
 <{else}>

@@ -146,7 +146,7 @@ class ctl_passport extends shopPage{
             break;
         }
         $this->pagedata['LogInvalideCode'] = $this->pagedata['valideCode'];
-        $this->title = __('用户登录');
+        $this->title = __('Sign in');
         $this->pagedata['ref_url'] = str_replace(array('_',',','~'),array('+','/','='),base64_decode($url));
         $baseurl='http://'.$_SERVER['HTTP_HOST'].substr(PHP_SELF, 0, strrpos(PHP_SELF, '/') + 1);
 

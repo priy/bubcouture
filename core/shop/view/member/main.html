@@ -64,7 +64,7 @@ body { font-size:12px; font-family:Arial, Helvetica, sans-serif;}
         <div class="female"></div>
     <{/if}>
     <div class="info">
-     <strong><{t}>您好：<{/t}><{$member.uname}></strong>&nbsp;&nbsp;[<a class="lnk" href="<{link ctl=member}>">会员中心</a>]&nbsp;&nbsp;[<a class="lnk" href="<{link ctl=passport act=logout}>">退出</a>]    </div>
+     <strong><{t}>Hi,<{/t}><{$member.uname}></strong>&nbsp;&nbsp;[<a class="lnk" href="<{link ctl=member}>">My Account</a>]&nbsp;&nbsp;[<a class="lnk" href="<{link ctl=passport act=logout}>">Logout</a>]    </div>
     
     <div class="time"></div>
     
@@ -80,10 +80,10 @@ body { font-size:12px; font-family:Arial, Helvetica, sans-serif;}
       <div class="body">
         <ul>
           <{foreach from=$cpmenu item=menus}>
-          <li class="MemberMenuList"><span><div class="m_<{$menus.mid}>" style="font-size:14px;"><{$menus.label}></div></span>
+          <li class="MemberMenuList"><span><div class="m_<{$menus.mid}>" style="font-size:12px;"><{$menus.label}></div></span>
             <ul>
               <{foreach from=$menus.items item=items}>
-              <li <{if $current == $items.link}> class="current"<{/if}>><a href="<{link ctl="member" act=$items.link}>" target="<{$items.target|default:"_self"}>"><{if $items.label=='我的订单'}><b><{/if}><{$items.label}><{if $items.label=='我的订单'}></b><{/if}></a></li>
+              <li <{if $current == $items.link}> class="current"<{/if}>><a href="<{link ctl="member" act=$items.link}>" target="<{$items.target|default:"_self"}>"><{if $items.label=='My Orders'}><b><{/if}><{$items.label}><{if $items.label=='My Orders'}></b><{/if}></a></li>
               <{/foreach}>
             </ul>
           </li>

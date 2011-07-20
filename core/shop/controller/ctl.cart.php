@@ -451,7 +451,7 @@ class ctl_cart extends shopPage{
             $trading = $oSale->getCartObject($this->cart, $GLOBALS['runtime']['member_lv'], true);
             if ($trading['ifCoupon']) {
                 if(!$oPromotion->apply_coupon_pmt($trading, $_POST['coupon'], $GLOBALS['runtime']['member_lv'])){
-                    $this->end(false, __('无效优惠券'),$this->system->mkUrl('cart','index') );
+                    $this->end(false, __('Invalidate coupon'),$this->system->mkUrl('cart','index') );
                 }
             }else{
 //                $this->setError('10000');
@@ -459,8 +459,8 @@ class ctl_cart extends shopPage{
                 $this->end(false, __('有促销活动期间是不否允许使用优惠'), $this->system->mkUrl('cart', 'index'));
             }
         }else{
-            trigger_error(__('请输入优惠券'),E_USER_ERROR);
-            $this->end(false, __('请输入优惠券'), $this->system->mkUrl('cart', 'index'));
+            trigger_error(__('Please enter you coupon code.'),E_USER_ERROR);
+            $this->end(false, __('Please enter you coupon code.'), $this->system->mkUrl('cart', 'index'));
         }
 
           $this->end(true, __('成功加入购物车'), $this->system->mkUrl('cart', 'index'));

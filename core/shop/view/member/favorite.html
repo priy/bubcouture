@@ -10,7 +10,7 @@
 <div class="GoodsSearchWrap" id="mbc-my-fav"> 
 <div class="ItemsWarp clearfix">
 <{foreach from=$favorite item=good key=key}>
-  <div class="items-list" product="<{$good.goods_id}>" id="goods_<{$good.goods_id}>">
+  <div class="items-list-my" product="<{$good.goods_id}>" id="goods_<{$good.goods_id}>">
     <table class="memberlist" width="100%" border="0" cellspacing="0" cellpadding="0">
       <tr>
         <td class="goodpic" width="<{$env.conf.site.thumbnail_pic_width}>"><a style="display:block;<{if $env.conf.site.thumbnail_pic_width !=0 && $env.conf.site.thumbnail_pic_height !=0}> width:<{$env.conf.site.thumbnail_pic_width}>px;height:<{$env.conf.site.thumbnail_pic_height}>px;<{/if}>" href="<{link ctl="product" act="index" arg0=$good.goods_id}>" title="<{$good.name}>"><img src="<{$good.thumbnail|default:$env.conf.site.default_thumbnail_pic|storager}>"  alt="<{$good.name}>"/></a></td>
