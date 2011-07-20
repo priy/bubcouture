@@ -136,4 +136,6 @@ a:hover{color:#000000;	text-decoration:underline;}
 .goods-spec{height:auto;}
 
 .GoodsSearchWrap .items-list .goodpic a{height:160px;overflow:hidden;}
-.GoodsSearchWrap .items-list .goodinfo{height:140px;overflow:hidden;}
+.GoodsSearchWrap .items-list .goodinfo{height:50px;overflow:hidden; width: 216px;word-wrap: break-word;}
+.goodinfo h6 {height: 40px;overflow: hidden;}
+

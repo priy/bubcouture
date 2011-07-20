@@ -14,12 +14,10 @@ window.addEvent('domready',function(){
               item.className = 'star-on';
               var itemText =item.firstChild;
               while (itemText.nodeType !=3 ){itemText = itemText.firstChild;}
-              itemText.nodeValue = '已加入收藏';
           }else{
               item.className = 'star-off';
               var itemText =item.firstChild;
               while (itemText.nodeType !=3 ){itemText = itemText.firstChild;}
-              itemText.nodeValue = '收藏此商品';
           }
           if(!gid)return;
           FAVCOOKIE.write($splat((FAVCOOKIE.read('S[GFAV]')||'').split(','))[_toogle[state+'_']](gid).clean().join(','));

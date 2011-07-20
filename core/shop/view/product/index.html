@@ -916,7 +916,7 @@
 </div>
 </div>
 <{else}>
-<div class="section pdtdetail" tab="商品评论 (<em><{$comment.discussCount|default:'0'}></em>)">
+<div class="section pdtdetail" tab="Comments (<em><{$comment.discussCount|default:'0'}></em>)">
 <div class="commentTabLeft floatLeft"><strong><{t}>Comments<{/t}></strong><span><a href="<{link ctl="comment" act="commentlist" arg0=$goods.goods_id arg1="discuss"}>"><{t}>(<{/t}><em><{$comment.discussCount|default:'0'}></em><{t}>)<{/t}></a></span></div>
 <div class="commentTabRight floatLeft"></div>
 <div style="clear:both;"></div>
@@ -967,7 +967,7 @@
 
     <form class="addcomment" method="post" action='<{link ctl="comment" act="toComment" arg0=$goods.goods_id arg1="discuss"}>' onsubmit='checkFormReqs(event);'>
       <h4><{t}>Comments<{/t}></h4>
-      <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[评论]".$goods.name}></div>
+      <div class='title'><{t}>Title:<{/t}><{input type="text" class="inputstyle blur"  required="true" size=50 name="title" value="[comment]".$goods.name}></div>
       <div class="division">
           <table border="0" cellpadding="0" cellspacing="0" width="100%" class="forform">
      
@@ -1146,7 +1146,7 @@ $$('#goods-viewer .hightline').addEvents({
          window.addEvent('domready',function(){
 
               buyBtn=$E('#goods-viewer .btn-buy').store('tip:text','');
-              notifyBtn=$E('#goods-viewer .btn-notify').store('tip:text','对不起,您当前选择的商品缺货.');
+              notifyBtn=$E('#goods-viewer .btn-notify').store('tip:text','Sorry,this product is out of stock.');
 
              new Tips(buyBtn,{showDelay:0,hideDelay:0,className:'cantbuy',
 
