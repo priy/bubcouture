@@ -195,7 +195,7 @@
             $this->path[] = array('text'=>__('SEO设置'));
             $this->pagedata['expseo'] = array(
                                         "seo"=>__("统一SEO设置"),
-                                        "homepage"=>__("首页"),
+                                        "homepage"=>__("home"),
                                         "goods"=>__("商品"),
                                         "list"=>__("列表"),
                                         "brand"=>__("品牌"),
@@ -264,7 +264,7 @@
                 $this->pagedata[$name.'_list_defTag']=$defaultTag[$name.'list'];
             $this->pagedata['expseo'] = array(
                                         "seo"=>__("统一SEO设置"),
-                                        "homepage"=>__("首页"),
+                                        "homepage"=>__("home"),
                                         "goods"=>__("商品"),
                                         "list"=>__("列表"),
                                         "brand"=>__("品牌"),

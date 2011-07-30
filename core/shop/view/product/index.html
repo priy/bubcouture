@@ -368,14 +368,14 @@
                 <{if $env.conf.system.goods.fastbuy}>
                     <input class="actbtn btn-fastbuy" value="Buy Now" type="button" />
                 <{/if}>
-            <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
+            <input class="actbtn btn-buy" value="AddToCart" type="submit" />
             <input  class="actbtn btn-notify" value="Arrival Notice" type="submit" style="display: none;" />
         <{else}>
             <{if $goods.store-$goods.freez>0 || $goods.store==''}>
                 <{if $env.conf.system.goods.fastbuy}>
                     <input class="actbtn btn-fastbuy" value="Buy Now" type="button" />
                 <{/if}>
-                <input class="actbtn btn-buy" value="Add to Cart" type="submit" />
+                <input class="actbtn btn-buy" value="AddToCart" type="submit" />
             <{else}>
                 <input  class="actbtn btn-notify" value="Arrival Notice" type="submit" />
             <{/if}>
@@ -852,7 +852,7 @@
 
             <tr>
             <td></td>
-              <td><input type="submit" value="Submit"></td>
+              <td><input class="actbtn submit_normal" type="submit" value="Submit"></td>
             </tr>
         </table>
   </div>
@@ -990,7 +990,7 @@
 
                 <tr>
                 <td></td>
-                  <td><input type="submit" value="Submit"></td>
+                  <td><input class="actbtn submit_normal" type="submit" value="Submit"></td>
                 </tr>
             </table>
       </div>

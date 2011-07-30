@@ -70,8 +70,8 @@
 .btn-continue		{background:url(btn-continue_normal.png); width:150px; height:30px; float:left;}
 .btn-continue:hover {background:url(btn-continue_focus.png); width:150px; height:30px; float:left;}
 
-.btn-pay                {background:url(btn-fastbuy_normal.png); width:120px; height:30px;}
-.btn-pay:hover          {background:url(btn-fastbuy_focus.png); width:120px; height:30px;}
+.btn-pay                {background:url(bt_payment_normal.png); width:120px; height:30px;}
+.btn-pay:hover          {background:url(bt_payment_focus.png); width:120px; height:30px;}
 
 .btn-ok				{background:url(btn-confirmed_normal.png); width:93px; height:30px; float:left;}
 .btn-ok:hover		{background:url(btn-confirmed_focus.png); width:93px; height:30px; float:left;}
@@ -82,9 +82,14 @@
 .btn-normal           {margin:0;padding:0;background: #E2E8EB;  color: #000;    text-decoration: none; display:inline;	font-weight: normal;
 					 margin-left: 3px; padding:4px 4px 2px 4px;cursor: pointer;
 					 border-top: 1px solid #fff;border-left: 1px solid #fff;border-right: 2px solid #bec6ce;border-bottom: 2px solid #bec6ce;}/* 用于普通的按钮*/
-.btn-save	        {background:url(btn-save_normal.png) no-repeat;}/*个人信息保存*/
-.btn-save:hover 	{background:url(btn-save_focus.png) no-repeat;}
+.btn-save	        {background:url(btn-save_normal.png) no-repeat;width:69px; height:30px;}/*个人信息保存*/
+.btn-save:hover 	{background:url(btn-save_focus.png) no-repeat;width:69px; height:30px;}
 
+.btn-cancel			{background:url(btn-cancel_normal.png); width:69px; height:30px;}
+.btn-cancel:hover	{background:url(btn-cancel_focus.png); width:69px; height:30px;}
+
+.submit_normal			{background:url(bt_submit_normal.png); width:89px; height:30px;}
+.submit_normal:hover	{background:url(btn_submit_focus.png); width:89px; height:30px;}
 
 div.span-1, div.span-2, div.span-3, div.span-4, div.span-5, div.span-6, div.span-7, div.span-8, div.span-9, div.span-10, div.span-11, div.span-12, div.span-13, div.span-14, div.span-15, div.span-16, div.span-17, div.span-18, div.span-19, div.span-20, div.span-21, div.span-22, div.span-23, div.span-24, div.span-auto {
 float: left;
@@ -108,3 +113,6 @@ float: right;
 .GoodsInfoWrap .btnBar .btn-fav, .GoodsInfoWrap .btnBar .btn-send {background: url("btn_ginfo_links.png") no-repeat;margin: 0;padding: 3px 0 0 24px;}
 .siteparttitle .gender {background: url("siteparttitle_male.png") no-repeat;float: left;height: 60px;width: 70px;}
 
+.GoodsBrowsed .goodpic {width:auto;}
+
+.GoodsSearchWrap .ItemsWarp td {white-space: normal;}

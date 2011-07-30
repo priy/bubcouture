@@ -296,7 +296,7 @@ class ctl_cart extends shopPage{
             $this->products = $this->cart['g'];
             $_POST['isfastbuy'] = 1;
         }
-        $this->title = __('填写购物信息');
+        $this->title = __('Order Info');
         if(count($this->products['cart'])+count($this->pkggoods)+count($this->gifts) == 0){
             $this->redirect('cart');
             exit;

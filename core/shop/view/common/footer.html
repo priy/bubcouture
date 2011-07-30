@@ -75,7 +75,6 @@
      };
      
         
-
    if(formtocart=$E('form[target=_dialog_minicart]')){
        formtocart.addEvent('submit',function(e){
            
@@ -84,7 +83,7 @@
                url:this.action,
                method:this.method,
                data:this,
-               target:this.getElement('input[value=add to the cart]')
+               target:this.getElement('input[value=AddToCart]')
            }]);
        
        });

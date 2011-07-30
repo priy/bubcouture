@@ -98,8 +98,25 @@
            <div class='filtmode'>
             <label><{t}>Sort by <{/t}></label>
               <select onchange="if(this.value!='_')window.location=this.value">
-                <optgroup label="Sort"> <{foreach from=$orderBy item=item key=order}> <option value="<{link args=$args arg2=$order}>"<{if $order eq $args.2}> class="selected" selected="selected"<{/if}>><{$item.label}>
-                </option>
+                <optgroup label="Sort"> 
+				<{foreach from=$orderBy item=item key=order}> 
+					<{if $item.label == "默认"}>
+				<option value="<{link args=$args arg2=$order}>"<{if $order eq $args.2}> class="selected" selected="selected"<{/if}>>
+					defalut
+				</option>
+					<{elseif $item.label == "按发布时间 新->旧"}>
+				<option value="<{link args=$args arg2=$order}>"<{if $order eq $args.2}> class="selected" selected="selected"<{/if}>>
+					Recent Arrivals
+				</option>
+					<{elseif $item.label == "按价格 从高到低"}>
+				<option value="<{link args=$args arg2=$order}>"<{if $order eq $args.2}> class="selected" selected="selected"<{/if}>>
+					Price Hight to Low
+				</option>
+					<{elseif $item.label == "按价格 从低到高"}>
+				<option value="<{link args=$args arg2=$order}>"<{if $order eq $args.2}> class="selected" selected="selected"<{/if}>>
+					Price Low to Hight
+				</option>
+					<{/if}>
                 <{/foreach}> </optgroup>
                 <{*
                 <optgroup label="Show"> <{foreach from=$views key=label item=view}> <option value="<{link act=$view  args=$args}>"<{if $curView==$view}> class="selected"<{/if}>><{$label}>
