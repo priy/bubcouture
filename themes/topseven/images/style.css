@@ -106,4 +106,5 @@ float: right;
 
 .GoodsSearchWrap .items-list-my {border: medium none;float: left;}
 .GoodsInfoWrap .btnBar .btn-fav, .GoodsInfoWrap .btnBar .btn-send {background: url("btn_ginfo_links.png") no-repeat;margin: 0;padding: 3px 0 0 24px;}
+.siteparttitle .gender {background: url("siteparttitle_male.png") no-repeat;float: left;height: 60px;width: 70px;}
 
